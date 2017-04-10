@@ -1,0 +1,263 @@
+﻿@{
+    ViewBag.Title = "Party Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnUpdateParty').hide();
+        BindPartyMasterList();
+    });
+    var jsonPartyDetails = {};
+    function SavePartyMaster() {
+        jsonPartyDetails.PartyName = $('#txtPartyName').val();
+        jsonPartyDetails.CivilNumber = $('#txtcivilno').val();
+        jsonPartyDetails.Email = $('#txtEmail').val();
+        jsonPartyDetails.Address = $('#txtaddress').val();
+        jsonPartyDetails.Contact = $('#txtcontact').val();
+        jsonPartyDetails.Status = $('#ddlstatus option:selected').val();
+    }
+    $(document).on('click', '#btnSavePartyMaster', function () {
+         if (ValidatePartyMaster() == true) {
+        SavePartyMaster();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertParty",
+                data: { PartyMasterModel: JSON.stringify(jsonPartyDetails) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindPartyMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+
+    function BindPartyMasterList() {
+        $.ajax({
+            url: "GetPartyDetail",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                var tr;
+                $.each(jsonObj, function (key, item) {
+                    tr += '<tr>';
+                    tr += '<td>' + item.PartyName + '</td>';
+                    tr += '<td>' + item.CivilNumber + '</td>';
+                    tr += '<td>' + item.Email + '</td>';
+                    tr += '<td>' + item.Address + '</td>';
+                    tr += '<td>' + item.Contact + '</td>';
+                    if (item.Status == 1) {
+                        item.Status = "Active";
+                    }
+                    else if (item.Status == 2) {
+                        item.Status = "InActive";
+                    }
+                    tr += '<td>' + item.Status + '</td>';
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='PartyMasterByID(" + item.PartyID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='PartyMasterDelete(" + item.PartyID + ")' ></i></a></td>");
+
+                   // tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='PartyMasterByID(" + item.PartyID + ")' >Edit</button></td>");
+                    //tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='PartyMasterDelete(" + item.PartyID + ")' >Delete</button></td>");
+                    tr += '</tr>';
+                });
+                $('#tblPartybody').html(tr);
+
+
+            },
+            error: function (msg) { alert(msg); }
+        });
+    }
+
+    function PartyMasterByID(id) {
+        $('#btnUpdateParty').show();
+        $('#btnSaveParty').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetPartyDetailById",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $('#hdnPartyID').val(jsonObj[0].PartyID);
+                $('#txtPartyName').val(jsonObj[0].PartyName);
+                $('#txtcivilno').val(jsonObj[0].CivilNumber);
+                $('#txtEmail').val(jsonObj[0].Email);
+                $('#txtaddress').val(jsonObj[0].Address);
+                $('#txtcontact').val(jsonObj[0].Contact);
+                $('#ddlstatus').val(jsonObj[0].Status);
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdatePartyMaster', function () {
+         if (ValidatePartyMaster() == true) {
+        jsonPartyDetails.PartyID = $('#hdnPartyID').val();
+        SavePartyMaster();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateParty",
+                data: { PartyMasterModel: JSON.stringify(jsonPartyDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    $('#btnSaveParty').show();
+                    $('#btnUpdateParty').hide();
+                    BindPartyMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    function PartyMasterDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteParty",
+            data: { ID: id },
+            success: function (data) {
+                BindPartyMasterList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    function ValidatePartyMaster() {
+        if ($("#txtPartyName").val() == '') {
+            alert('Please enter party name');
+            return false;
+        }
+        if ($("#txtcontact").val() == '') {
+            alert('Please enter contact No');
+            return false;
+        }
+        return true;
+
+    }
+
+    function Clear() {
+        $('#txtPartyName').val('');
+        $('#txtcivilno').val('');
+        $('#txtEmail').val('');
+        $('#txtaddress').val('');
+        $('#txtbalance').val('');
+        $('#txtcontact').val('');
+    }
+</script>
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Party Master</h4>
+    </div>
+    
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnPartyID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">PartyName</label>
+                    <div>
+                        <input type="text" id="txtPartyName" Width="100%" class="form-control" placeholder="Enter Party Name" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Civil No</label>
+                    <div>
+                        <input type="text" id="txtcivilno" Width="100%" class="form-control" placeholder="Enter Civil No" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Email</label>
+                    <div>
+                        <input type="text" id="txtEmail" Width="100%" class="form-control" placeholder="Enter Email" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Address</label>
+                    <div>
+                        <textarea name="address" rows="2" cols="20" id="txtaddress" class="form-control" placeholder="Enter Address" style="height:70px;width:100%;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Contact</label>
+                    <div>
+                        <input type="text" id="txtcontact" Width="100%" class="form-control" placeholder="Enter Contact" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Status</label>
+                    <div>
+                        <select class="form-control" id="ddlstatus" class="form-control" Width="100%">
+                            @*<option value="0">----Select Status---</option>*@
+                            <option value="1">Active</option>
+                            <option value="2">InActive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnSaveParty">
+                            <button type="button" id="btnSavePartyMaster" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateParty">
+                            <button type="button" id="btnUpdatePartyMaster" class="waves-button-input">Update</button>
+                        </i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+                <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+            </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12" id="dvcustomer">
+                    <div class="table-responsive">
+                        <table id="tblParty" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Name</label></th>
+                                    <th><label>Civil No</label></th>
+                                    <th><label>Email</label></th>
+                                    <th><label>Address</label></th>
+                                    <th><label>Contact</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblPartybody"></tbody>
+                        </table>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

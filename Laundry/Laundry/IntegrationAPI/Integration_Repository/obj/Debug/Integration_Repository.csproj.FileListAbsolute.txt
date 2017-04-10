@@ -1,0 +1,77 @@
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.csprojResolveAssemblyReference.cache
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+D:\SigmaProject\Common\Development\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.csprojResolveAssemblyReference.cache
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+F:\ASP.NET\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.csprojResolveAssemblyReference.cache
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.csprojResolveAssemblyReference.cache
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.csprojResolveAssemblyReference.cache

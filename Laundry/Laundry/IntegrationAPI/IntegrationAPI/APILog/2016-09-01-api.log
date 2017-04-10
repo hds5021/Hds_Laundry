@@ -1,0 +1,337 @@
+2016-09-01 16:11:59.8710|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 16:13:07.5343|ERROR|LoggerFactory|An error occurred while getting provider information from the database. This can be caused by Entity Framework using an incorrect connection string. Check the inner exceptions for details and ensure that the connection string is correct. - An error occurred while getting provider information from the database. This can be caused by Entity Framework using an incorrect connection string. Check the inner exceptions for details and ensure that the connection string is correct. -    at System.Data.Entity.ModelConfiguration.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   at System.Data.Entity.ModelConfiguration.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\Partial\VC_Partial.cs:line 25
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 16:13:11.3922|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 16:15:01.8038|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 16:20:51.1116|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 16:21:40.2983|ERROR|LoggerFactory|An error occurred while getting provider information from the database. This can be caused by Entity Framework using an incorrect connection string. Check the inner exceptions for details and ensure that the connection string is correct. - An error occurred while getting provider information from the database. This can be caused by Entity Framework using an incorrect connection string. Check the inner exceptions for details and ensure that the connection string is correct. -    at System.Data.Entity.ModelConfiguration.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   at System.Data.Entity.ModelConfiguration.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\Partial\VC_Partial.cs:line 25
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 16:21:40.2983|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 16:22:06.5324|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 16:23:42.5561|ERROR|LoggerFactory|The context cannot be used while the model is being created. - The context cannot be used while the model is being created. -    at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.LazyInternalContext.get_ObjectContext()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\Partial\VC_Partial.cs:line 25
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 16:23:42.5561|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 16:40:27.8504|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 16:41:00.1019|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 16:48:19.1375|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 17:06:37.2154|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 17:08:23.5717|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for :  Company Number :0
+2016-09-01 17:36:21.8756|ERROR|IntegrationAPI.Helpers.NLogger|Method: POST
+URL: http://localhost:52761/GetCompanyDetail
+Controller : IntegrationAPI.Controllers.CompanyController
+Action : GetCompanyDetail
+Action Parameters : 
+Error: Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.
+
+
+2016-09-01 17:36:49.7902|ERROR|IntegrationAPI.Helpers.NLogger|Method: POST
+URL: http://localhost:52761/GetCompanyDetail
+Controller : IntegrationAPI.Controllers.CompanyController
+Action : GetCompanyDetail
+Action Parameters : 
+Error: Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.
+
+
+2016-09-01 17:40:11.0788|ERROR|IntegrationAPI.Helpers.NLogger|Method: POST
+URL: http://localhost:52761/GetCompanyDetail
+Controller : IntegrationAPI.Controllers.CompanyController
+Action : GetCompanyDetail
+Action Parameters : 
+Error: Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.
+
+
+2016-09-01 17:40:17.0476|ERROR|IntegrationAPI.Helpers.NLogger|Method: POST
+URL: http://localhost:52761/GetCompanyDetail
+Controller : IntegrationAPI.Controllers.CompanyController
+Action : GetCompanyDetail
+Action Parameters : 
+Error: Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.
+
+
+2016-09-01 17:40:51.1049|ERROR|IntegrationAPI.Helpers.NLogger|Method: POST
+URL: http://localhost:52761/GetCompanyDetail
+Controller : IntegrationAPI.Controllers.CompanyController
+Action : GetCompanyDetail
+Action Parameters : 
+Error: Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.
+
+
+2016-09-01 17:41:08.7530|ERROR|IntegrationAPI.Helpers.NLogger|Method: POST
+URL: http://localhost:52761/GetCompanyDetail
+Controller : IntegrationAPI.Controllers.CompanyController
+Action : GetCompanyDetail
+Action Parameters : 
+Error: Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.
+
+
+2016-09-01 17:41:13.9886|ERROR|IntegrationAPI.Helpers.NLogger|Method: POST
+URL: http://localhost:52761/GetCompanyDetail
+Controller : IntegrationAPI.Controllers.CompanyController
+Action : GetCompanyDetail
+Action Parameters : 
+Error: Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.
+
+
+2016-09-01 17:42:17.5189|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:43:40.3694|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:44:07.0821|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:44:43.6175|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:44:56.1353|ERROR|LoggerFactory|Exception of type 'System.OutOfMemoryException' was thrown. - Exception of type 'System.OutOfMemoryException' was thrown. -    at System.Collections.Generic.List`1.set_Capacity(Int32 value)
+   at System.Collections.Generic.List`1.EnsureCapacity(Int32 min)
+   at System.Collections.Generic.List`1.Add(T item)
+   at System.Data.Entity.Core.Objects.EntityEntry.AddOriginalValueAt(Int32 index, StateManagerMemberMetadata memberMetadata, Object userObject, Object value)
+   at System.Data.Entity.Core.Objects.EntityEntry.TakeSnapshot(Boolean onlySnapshotComplexProperties)
+   at System.Data.Entity.Core.Objects.Internal.SnapshotChangeTrackingStrategy.TakeSnapshot(EntityEntry entry)
+   at System.Data.Entity.Core.Objects.Internal.EntityWrapper`1.TakeSnapshot(EntityEntry entry)
+   at System.Data.Entity.Core.Objects.EntityEntry.AttachObjectStateManagerToEntity()
+   at System.Data.Entity.Core.Objects.ObjectStateManager.AddEntry(IEntityWrapper wrappedObject, EntityKey passedKey, EntitySet entitySet, String argumentName, Boolean isAdded)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Partial\VC_Entity.cs:line 20
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 17:44:56.1353|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 17:45:25.2728|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:45:31.7898|ERROR|LoggerFactory|Exception of type 'System.OutOfMemoryException' was thrown. - Exception of type 'System.OutOfMemoryException' was thrown. -    at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Partial\VC_Entity.cs:line 20
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 17:45:31.7898|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 17:45:49.6371|ERROR|LoggerFactory|A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. The specified LocalDB instance does not exist.
+) - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. The specified LocalDB instance does not exist.
+) -    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   at System.Data.Entity.SqlServer.SqlProviderServices.<>c__DisplayClass33.<UsingConnection>b__32()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingMasterConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.CreateDatabaseFromScript(Nullable`1 commandTimeout, DbConnection sqlConnection, String createDatabaseScript)
+   at System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Common.DbProviderServices.CreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Objects.ObjectContext.CreateDatabase()
+   at System.Data.Entity.Migrations.Utilities.DatabaseCreator.Create(DbConnection connection)
+   at System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.Update()
+   at System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   at System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext, DatabaseExistenceState existenceState)
+   at System.Data.Entity.Database.Create(DatabaseExistenceState existenceState)
+   at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+   at System.Data.Entity.Internal.InternalContext.<>c__DisplayClassf`1.<CreateInitializationAction>b__e()
+   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+   at System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+   at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Partial\VC_Entity.cs:line 22
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 17:45:49.6371|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 17:46:41.3867|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:47:14.5676|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:48:07.6464|ERROR|LoggerFactory|A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. The specified LocalDB instance does not exist.
+) - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. The specified LocalDB instance does not exist.
+) -    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   at System.Data.Entity.SqlServer.SqlProviderServices.<>c__DisplayClass33.<UsingConnection>b__32()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingMasterConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.CreateDatabaseFromScript(Nullable`1 commandTimeout, DbConnection sqlConnection, String createDatabaseScript)
+   at System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Common.DbProviderServices.CreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Objects.ObjectContext.CreateDatabase()
+   at System.Data.Entity.Migrations.Utilities.DatabaseCreator.Create(DbConnection connection)
+   at System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.Update()
+   at System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   at System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext, DatabaseExistenceState existenceState)
+   at System.Data.Entity.Database.Create(DatabaseExistenceState existenceState)
+   at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+   at System.Data.Entity.Internal.InternalContext.<>c__DisplayClassf`1.<CreateInitializationAction>b__e()
+   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+   at System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+   at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Partial\VC_Entity.cs:line 22
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 17:48:07.7444|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 17:48:12.9614|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:49:38.5673|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 17:51:06.3190|ERROR|LoggerFactory|A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. The specified LocalDB instance does not exist.
+) - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. The specified LocalDB instance does not exist.
+) -    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   at System.Data.Entity.SqlServer.SqlProviderServices.<>c__DisplayClass33.<UsingConnection>b__32()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingMasterConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.CreateDatabaseFromScript(Nullable`1 commandTimeout, DbConnection sqlConnection, String createDatabaseScript)
+   at System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Common.DbProviderServices.CreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Objects.ObjectContext.CreateDatabase()
+   at System.Data.Entity.Migrations.Utilities.DatabaseCreator.Create(DbConnection connection)
+   at System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.Update()
+   at System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   at System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext, DatabaseExistenceState existenceState)
+   at System.Data.Entity.Database.Create(DatabaseExistenceState existenceState)
+   at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+   at System.Data.Entity.Internal.InternalContext.<>c__DisplayClassf`1.<CreateInitializationAction>b__e()
+   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+   at System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+   at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at IntegrationAPI.Partial.vc_Entities.GetCompanyDetails(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Partial\VC_Entity.cs:line 22
+   at IntegrationAPI.Services.CompanyService.getCompanyDetail(companyRequest obj) in d:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 20
+2016-09-01 17:51:06.3190|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 18:01:25.4856|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 18:03:09.2557|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 18:03:16.8784|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 18:05:19.7317|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 18:05:28.0914|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CompanyNumber":null,"CompanyName":"Test Account Sigma","BusinessType":"","Address1":"4543 Olive Street","Address2":"4543 Olive Street","City":"aaa","County":"USA","Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Alliance Funding Group","BusinessType":"SCO","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Paul Walecka"},{"CompanyNumber":null,"CompanyName":"Test Company, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"John Jones"},{"CompanyNumber":null,"CompanyName":"Vendor #1, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Jason Smith"},{"CompanyNumber":null,"CompanyName":"California Churros Corporation","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Jorge D. Martinez"},{"CompanyNumber":null,"CompanyName":"Funder #1","BusinessType":null,"Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Alliance Funding Group, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Brij Patel"},{"CompanyNumber":null,"CompanyName":"Test Company Second","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Rob Smith"},{"CompanyNumber":null,"CompanyName":"Equipment Manufacturers","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Vendor #2, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Bob Smith"}]
+2016-09-01 18:05:28.1144|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :0
+2016-09-01 18:11:36.2505|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 18:11:41.3928|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CompanyNumber":null,"CompanyName":"Test Account Sigma","BusinessType":"","Address1":"4543 Olive Street","Address2":"4543 Olive Street","City":"aaa","County":"USA","Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Alliance Funding Group","BusinessType":"SCO","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Paul Walecka"},{"CompanyNumber":null,"CompanyName":"Test Company, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"John Jones"},{"CompanyNumber":null,"CompanyName":"Vendor #1, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Jason Smith"},{"CompanyNumber":null,"CompanyName":"California Churros Corporation","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Jorge D. Martinez"},{"CompanyNumber":null,"CompanyName":"Funder #1","BusinessType":null,"Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Alliance Funding Group, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Brij Patel"},{"CompanyNumber":null,"CompanyName":"Test Company Second","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Rob Smith"},{"CompanyNumber":null,"CompanyName":"Equipment Manufacturers","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Vendor #2, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Bob Smith"}]
+2016-09-01 18:11:41.4088|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :0
+2016-09-01 18:11:48.0902|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 18:12:16.3231|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CompanyNumber":null,"CompanyName":"Test Account Sigma","BusinessType":"","Address1":"4543 Olive Street","Address2":"4543 Olive Street","City":"aaa","County":"USA","Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Alliance Funding Group","BusinessType":"SCO","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Paul Walecka"},{"CompanyNumber":null,"CompanyName":"Test Company, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"John Jones"},{"CompanyNumber":null,"CompanyName":"Vendor #1, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Jason Smith"},{"CompanyNumber":null,"CompanyName":"California Churros Corporation","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Jorge D. Martinez"},{"CompanyNumber":null,"CompanyName":"Funder #1","BusinessType":null,"Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Alliance Funding Group, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Brij Patel"},{"CompanyNumber":null,"CompanyName":"Test Company Second","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Rob Smith"},{"CompanyNumber":null,"CompanyName":"Equipment Manufacturers","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":null},{"CompanyNumber":null,"CompanyName":"Vendor #2, Inc.","BusinessType":"COR","Address1":null,"Address2":null,"City":null,"County":null,"Country":null,"Phone":null,"ContactPerson":"Bob Smith"}]
+2016-09-01 18:12:16.3231|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :0
+2016-09-01 18:12:23.7797|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 18:12:30.5623|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CompanyNumber":null,"CompanyName":"Test Account Sigma","BusinessType":"","Address1":"4543 Olive Street","Address2":"4543 Olive Street","City":"aaa","County":"USA","Country":null,"Phone":null,"ContactPerson":null}]
+2016-09-01 18:12:30.5623|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :0
+2016-09-01 19:02:30.9491|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 19:02:35.4805|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CompanyNumber":null,"CompanyName":"Test Account Sigma","BusinessType":"","Address1":"4543 Olive Street","Address2":"4543 Olive Street","City":"aaa","County":"USA","Country":null,"Phone":null,"ContactPerson":null}]
+2016-09-01 19:02:35.4936|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :0
+2016-09-01 19:11:48.3904|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 19:11:50.9872|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CompanyNumber":null,"CompanyName":"Test Account Sigma","BusinessType":"","Address1":"4543 Olive Street","Address2":"4543 Olive Street","City":"aaa","County":"USA","Country":null,"Phone":null,"ContactPerson":null}]
+2016-09-01 19:11:51.0028|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :0
+2016-09-01 19:12:12.6437|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :10
+2016-09-01 19:12:12.7628|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : []
+2016-09-01 19:12:12.7628|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :10
+2016-09-01 19:12:36.3506|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :10
+2016-09-01 19:12:36.4731|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : []
+2016-09-01 19:13:18.5536|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :10
+2016-09-01 19:15:39.9999|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :10
+2016-09-01 19:15:52.1843|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 19:40:54.5372|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :10
+2016-09-01 19:41:06.0793|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2016-09-01 19:41:16.9651|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : Test Account Sigma Company Number :0
+2016-09-01 19:41:17.0977|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CompanyNumber":null,"CompanyName":"Test Account Sigma","BusinessType":"","Address1":"4543 Olive Street","Address2":"4543 Olive Street","City":"aaa","County":"USA","Country":null,"Phone":null,"ContactPerson":null}]
+2016-09-01 19:41:17.0977|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : Test Account Sigma Company Number :0

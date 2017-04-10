@@ -1,0 +1,123 @@
+﻿@model LaundaryManagement.Models.SearchParameterModel
+ @{
+    ViewBag.Title = "Group Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        BindCustomer();
+    });
+    function BindCustomer() {
+        $.ajax({
+            url: "BindCustomer",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlCustomer").empty();
+                $("#ddlCustomer").append($("<option></option>").val('0').html('All Customers'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlCustomer").append($("<option></option>").val(item.CustomerID).html(item.CustomerName + ' - ' + item.Contact));
+                });
+            }
+        });
+    }
+    $(document).on('click', '#btnSearchGroup', function () {
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "GetgroupsDetail",
+          //  data:{format:format},
+            success: function (data) {
+                //var jsonObj = JSON.parse(data);
+            },
+            error: function () { alert('error'); }
+        });
+    });
+
+</script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Group Report</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+
+                @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+                <div class="form-material form-inline" style="width:100%">
+                    <input type="hidden" id="hdnExpenseID">
+                    <div class="form-group col-md-3">
+                        <label for="example-text">From Date</label>
+                        <div>
+                            <input type="text" id="txtFromDate" Width="100%" class="form-control mydatepicker" placeholder="Enter Date" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="example-text">To Date</label>
+                        <div>
+                            <input type="text" id="txtTODate" Width="100%" class="form-control mydatepicker" placeholder="Enter Date" />
+                        </div>
+                    </div>
+                    @*<div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
+                        <input type="text" class="form-control" value="13:14" />
+                        <span class="input-group-addon"><span class="fa fa-clock-o"></span></span>
+                    </div>*@
+
+                    <div class="input-group clockpicker">
+                        <label for="example-text">Time From</label>
+                        <div>
+                            <input type="Time" id="txtTimeFrom" Width="100%" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="example-text">Time To</label>
+                        <div>
+                            <input type="Time" id="txtTimeTo" Width="100%" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Customer</label>
+                        <div>
+                            <select class="form-control" id="ddlCustomer" class="form-control" Width="100%">
+                                @*<option value="0">All Customers</option>*@
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label></label>
+                        <div class="m-l-10 m-t-5">
+                            <i class="btn btn-info waves-effect waves-light  waves-input-wrapper">
+                                <button type="button" id="btnSearchGroup" class="waves-button-input">Search</button>
+                            </i>
+                            <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="">
+                                <button type="button" id="btnCloseGroup" class="waves-button-input">Close</button>
+                            </i>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<img src="" id="img" />
+@if (Model != null)
+{
+    <section class="social" id="ReportDisplayPanel">
+        <h4>Report Viewer Section.</h4>
+        @Html.ActionLink("View Report in PDF Format", "GenerateAndDisplayReport", new { territory = Model.Territory, format = "pdf" })
+        @Html.ActionLink("Download Report in PDF Format", "DownloadReport", new { territory = Model.Territory, format = "pdf" })
+        <img src="@Url.Action("GetgroupsDetail", "Reports", new { format = "image/jpeg" })" />
+    </section>
+}

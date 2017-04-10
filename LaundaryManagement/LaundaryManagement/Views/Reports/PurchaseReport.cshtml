@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Purchase Report";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        BindSupplier();
+    });
+    function BindSupplier() {
+        $.ajax({
+            url: "BindSupplier",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlSupplier").empty();
+                $("#ddlSupplier").append($("<option></option>").val('0').html('All Suppliers'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlSupplier").append($("<option></option>").val(item.SupplierID).html(item.SupplierName));
+                });
+            }
+        });
+    }
+</script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Purchase Report</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+
+                @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+                <div class="form-material form-inline" style="width:100%">
+                    <div class="form-group col-md-3">
+                        <label for="example-text">From Date</label>
+                        <div>
+                            <input type="text" id="txtFromDate" Width="100%" class="form-control mydatepicker" placeholder="Enter Date" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="example-text">To Date</label>
+                        <div>
+                            <input type="text" id="txtTODate" Width="100%" class="form-control mydatepicker" placeholder="Enter Date" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="example-text">Time From</label>
+                        <div>
+                            <input type="Time" id="txtTimeFrom" Width="100%" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="example-text">Time To</label>
+                        <div>
+                            <input type="Time" id="txtTimeTo" Width="100%" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Suppliers</label>
+                        <div>
+                            <select class="form-control" id="ddlSupplier" class="form-control" Width="100%">
+                                @*<option value="0">All Customers</option>*@
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Items</label>
+                        <div>
+                            <select class="form-control" id="ddlItems" class="form-control" Width="100%">
+                                <option value="0">All Items</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label></label>
+                        <div class="m-l-10 m-t-5">
+                            <i class="btn btn-info waves-effect waves-light  waves-input-wrapper">
+                                <button type="button" id="btnSearchGroup" class="waves-button-input">Search</button>
+                            </i>
+                            <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="">
+                                <button type="button" id="btnCloseGroup" class="waves-button-input">Close</button>
+                            </i>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

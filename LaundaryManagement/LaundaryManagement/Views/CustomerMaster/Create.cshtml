@@ -1,0 +1,354 @@
+﻿@{
+    ViewBag.Title = "Customer Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    var jsonCustomerDetails = {};
+    function SaveCustomer() {
+        jsonCustomerDetails.CustomerName = $('#txtcname').val();
+        jsonCustomerDetails.CivilNumber = $('#txtcivilno').val();
+        jsonCustomerDetails.Email = $('#txtEmail').val();
+        jsonCustomerDetails.Address = $('#txtaddress').val();
+        jsonCustomerDetails.Balance = $('#txtbalance').val();
+        jsonCustomerDetails.Contact = $('#txtcontact').val();
+        jsonCustomerDetails.Status = $('#ddlstatus option:selected').val();
+    }
+
+    $(document).on('click', '#btnSaveCustomerMaster', function () {
+        if (ValidateCustomerMaster() == true) {
+            SaveCustomer();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertCustomer",
+                data: { CustomerMasterModel: JSON.stringify(jsonCustomerDetails) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindCustomerMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    
+    $(document).ready(function () {
+        $('#btnUpdateCustomer').hide();
+        BindCustomerMasterList();
+    });
+    function BindCustomerMasterList()
+    {
+    $.ajax({
+        url: "GetCustomerDetail",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var jsonObj = JSON.parse(data);
+            var tr;
+            $.each(jsonObj, function (key, item) {
+                tr += '<tr>';
+                tr += '<td>' + item.CustomerName + '</td>';
+                tr += '<td>' + item.CivilNumber + '</td>';
+                tr += '<td>' + item.Email + '</td>';
+                tr += '<td>' + item.Address + '</td>';
+                tr += '<td>' + item.Contact + '</td>';
+                if (item.Status == 1) {
+                    item.Status = "Active";
+                }
+                else if (item.Status == 2) {
+                    item.Status = "InActive";
+                }
+                tr += '<td>' + item.Status + '</td>';
+                tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='CustomerMasterByID(" + item.CustomerID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='CustomerMasterDelete(" + item.CustomerID + ")' ></i></a></td>");
+
+              //  tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='CustomerMasterByID(" + item.CustomerID + ")' >Edit</button></td>");
+               // tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='CustomerMasterDelete(" + item.CustomerID + ")' >Delete</button></td>");
+                tr += '</tr>';
+            });
+            $('#tblCustomerbody').html(tr);
+
+            //for (var i = 0; i < data.length; i++) {
+            //    var jsonObj = JSON.parse(data);
+            //    tr = $('<tr/>');
+            //    tr.append("<td>" + jsonObj[i].CustomerName + "</td>");
+            //    tr.append("<td>" + jsonObj[i].CivilNumber + "</td>");
+            //    tr.append("<td>" + jsonObj[i].Email + "</td>");
+            //    tr.append("<td>" + jsonObj[i].Address + "</td>");
+            //    tr.append("<td>" + jsonObj[i].Contact + "</td>");
+            //    if (jsonObj[i].Status == 1) {
+            //        jsonObj[i].Status = "Active";
+            //    }
+            //    else if (jsonObj[i].Status == 2) {
+            //        jsonObj[i].Status = "InActive";
+            //    }
+            //    tr.append("<td>" + jsonObj[i].Status + "</td>");
+
+            //    tr.append("<td><button type='button' id='btnEdit' class='botaoadd' onclick='CustomerMasterByID(" + jsonObj[i].CustomerID + ")' >Edit</button></td>");
+            //    tr.append("<td><button type='button' id='btnDelete' class='botaoadd' onclick='CustomerMasterDelete(" + jsonObj[i].CustomerID + ")' >Delete</button></td>");
+            //    $('#tblCustomer').html(tr);
+            //}
+           
+        },
+        error: function (msg) { alert(msg); }
+    });
+    }
+    function CustomerMasterByID(id) {
+        $('#btnUpdateCustomer').show();
+        $('#btnSaveCustomer').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetCustomerDetailByID",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $('#hdnCustomerID').val(jsonObj[0].CustomerID);
+                $('#txtcname').val(jsonObj[0].CustomerName);
+                $('#txtcivilno').val(jsonObj[0].CivilNumber);
+                $('#txtEmail').val(jsonObj[0].Email);
+                $('#txtaddress').val(jsonObj[0].Address);
+                $('#txtbalance').val(jsonObj[0].Balance);
+                $('#txtcontact').val(jsonObj[0].Contact);
+                $('#ddlstatus').val(jsonObj[0].Status);
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdateCustomerMaster', function () {
+        if (ValidateCustomerMaster() == true) {
+            jsonCustomerDetails.CustomerID = $('#hdnCustomerID').val();
+            SaveCustomer();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateCustomer",
+                data: { CustomerMasterModel: JSON.stringify(jsonCustomerDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    $('#btnSaveCustomer').show();
+                    $('#btnUpdateCustomer').hide();
+                    BindCustomerMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    function CustomerMasterDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteCustomer",
+            data: { ID: id },
+            success: function (data) {
+                BindCustomerMasterList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    function ValidateCustomerMaster() {
+        if ($("#txtcname").val() == '') {
+            alert('Please enter customer name');
+            return false;
+        }
+        if ($("#txtcontact").val() == '') {
+            alert('Please enter contact No');
+            return false;
+        }
+        if ($("#txtbalance").val() == '') {
+            alert('Please enter balance');
+            return false;
+        }
+        return true;
+
+    }
+    function Clear()
+    {
+        $('#txtcname').val('');
+        $('#txtcivilno').val('');
+        $('#txtEmail').val('');
+        $('#txtaddress').val('');
+        $('#txtbalance').val('');
+        $('#txtcontact').val('');
+       // $('#ddlstatus').val(0);
+    }
+</script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Customer Master</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="~/Home/index">Laundry</a></li>
+            <li class="active">Customer Master</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnCustomerID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">Name</label>
+                    <div>
+                        <input type="text" id="txtcname" Width="100%" class="form-control" placeholder="Enter Customer Name" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Civil No</label>
+                    <div>
+                        <input type="text" id="txtcivilno"  Width="100%"  class="form-control" placeholder="Enter Civil No" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Email</label>
+                    <div>
+                        <input type="text" id="txtEmail" Width="100%" class="form-control" placeholder="Enter Email" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Contact</label>
+                    <div>
+                        <input type="text" id="txtcontact"  Width="100%" class="form-control" placeholder="Enter Contact" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Address</label>
+                    <div>
+                        <textarea name="address" rows="2" cols="20" id="txtaddress" class="form-control" placeholder="Enter Address" style="height:70px;width:100%;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Balance</label>
+                    <div>
+                        <input type="text" id="txtbalance" Width="100%" class="form-control" placeholder="Enter Balance" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Status</label>
+                    <div>
+                        <select class="form-control" id="ddlstatus" class="form-control" Width="100%">
+                            @*<option value="0">----Select Status---</option>*@
+                            <option value="1">Active</option>
+                            <option value="2">InActive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnSaveCustomer">
+                            <button type="button" id="btnSaveCustomerMaster" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateCustomer">
+                            <button type="button" id="btnUpdateCustomerMaster" class="waves-button-input">Update</button>
+                        </i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+        </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12" id="dvcustomer">
+                    <div class="table-responsive">
+                        <table id="tblCustomer" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Name</label></th>
+                                    <th><label>Civil No</label></th>
+                                    <th><label>Email</label></th>
+                                    <th><label>Address</label></th>
+                                    <th><label>Contact</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblCustomerbody"></tbody>
+                        </table>
+                        @*<table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="CheckBox5"></th>
+                                    <th><label>Name</label></th>
+                                    <th><label>Civil No</label></th>
+                                    <th><label>Contact</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="chkbox"></td>
+                                    <td>Urvish</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>Urvish</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox2"></td>
+                                    <td>Urvish</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox3"></td>
+                                    <td>Urvish</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox4"></td>
+                                    <td>Urvish</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

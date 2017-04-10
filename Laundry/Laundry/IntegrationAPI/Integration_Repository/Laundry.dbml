@@ -1,0 +1,2305 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="jptLaundry" Class="LaundryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=URVISH-PC;Initial Catalog=jptLaundry;Persist Security Info=True;User ID=sa;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="Integration_Repository.Properties.Settings" SettingsPropertyName="jptLaundryConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.customers" Member="customers">
+    <Type Name="customer">
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="customer_customers_branch" Member="customers_branches" ThisKey="CustomerID" OtherKey="CustomerID" Type="customers_branch" />
+      <Association Name="customer_item" Member="items" ThisKey="CustomerID" OtherKey="CustomerID" Type="item" />
+      <Association Name="customer_po" Member="pos" ThisKey="CustomerID" OtherKey="CustomerID" Type="po" />
+      <Association Name="customer_sms_log" Member="sms_logs" ThisKey="CustomerID" OtherKey="CustomerID" Type="sms_log" />
+      <Association Name="instance_customer" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_customer" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customers_branch" Member="customers_branches">
+    <Type Name="customers_branch">
+      <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPerson" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="customers_branch_po" Member="pos" ThisKey="CustomerBranchID" OtherKey="CustomerBranchID" Type="po" />
+      <Association Name="customer_customers_branch" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
+      <Association Name="instance_customers_branch" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_customers_branch" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmployeeMaster" Member="EmployeeMasters">
+    <Type Name="EmployeeMaster">
+      <Column Name="empid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="empName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="empAdd" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="empMobile" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="empPhoneno" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="empemailId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="isRetired" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="isDeleted" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="EmployeeMaster_UserRightsMaster" Member="UserRightsMasters" ThisKey="empid" OtherKey="empid" Type="UserRightsMaster" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Expense_Mst" Member="Expense_Msts">
+    <Type Name="Expense_Mst">
+      <Column Name="ExpenseItemID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Expense_Mst_expense" Member="expenses" ThisKey="ExpenseItemID" OtherKey="ExpenseItemID" Type="expense" />
+      <Association Name="instance_Expense_Mst" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.expenses" Member="expenses">
+    <Type Name="expense">
+      <Column Name="ExpenseID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ExpenseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="PaidBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PartyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Expense_Mst_expense" Member="Expense_Mst" ThisKey="ExpenseItemID" OtherKey="ExpenseItemID" Type="Expense_Mst" IsForeignKey="true" />
+      <Association Name="instance_expense" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_expense" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.groups" Member="groups">
+    <Type Name="group">
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ColorCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="group_item_price" Member="item_prices" ThisKey="GroupID" OtherKey="GroupID" Type="item_price" />
+      <Association Name="group_pos_item" Member="pos_items" ThisKey="GroupID" OtherKey="GroupID" Type="pos_item" />
+      <Association Name="instance_group" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_group" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.instance_settings" Member="instance_settings">
+    <Type Name="instance_setting">
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Tax1Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax1Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Tax2Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax2Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Tax3Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax3Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillNoReset" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmailFrom" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="InstanceLogo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosBillPrintLogo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosBillPrintHoliday" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PosDeliveryDays" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemLocalNameDisplay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemLocalNameBillPrint" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MobileNo" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="AccountSID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AuthToken" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HangerRate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="MessageEndOfBill" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TnCEnglish" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TnCLocalLanguage" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ItemwiseReportLocalLanguage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxDiscountPercentage" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.instances" Member="instances">
+    <Type Name="instance">
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileNo" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Logo" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastBackupDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastRestoreDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastRestoreUpto" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastResetDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="instance_customer" Member="customers" ThisKey="InstanceID" OtherKey="InstanceID" Type="customer" />
+      <Association Name="instance_customers_branch" Member="customers_branches" ThisKey="InstanceID" OtherKey="InstanceID" Type="customers_branch" />
+      <Association Name="instance_Expense_Mst" Member="Expense_Msts" ThisKey="InstanceID" OtherKey="InstanceID" Type="Expense_Mst" />
+      <Association Name="instance_expense" Member="expenses" ThisKey="InstanceID" OtherKey="InstanceID" Type="expense" />
+      <Association Name="instance_group" Member="groups" ThisKey="InstanceID" OtherKey="InstanceID" Type="group" />
+      <Association Name="instance_item" Member="items" ThisKey="InstanceID" OtherKey="InstanceID" Type="item" />
+      <Association Name="instance_office_branch" Member="office_branches" ThisKey="InstanceID" OtherKey="InstanceID" Type="office_branch" />
+      <Association Name="instance_office_branch_sale" Member="office_branch_sales" ThisKey="InstanceID" OtherKey="InstanceID" Type="office_branch_sale" />
+      <Association Name="instance_Party" Member="Parties" ThisKey="InstanceID" OtherKey="InstanceID" Type="Party" />
+      <Association Name="instance_po" Member="pos" ThisKey="InstanceID" OtherKey="InstanceID" Type="po" />
+      <Association Name="instance_posbillcount" Member="posbillcounts" ThisKey="InstanceID" OtherKey="InstanceID" Type="posbillcount" />
+      <Association Name="instance_purchase_invoice" Member="purchase_invoices" ThisKey="InstanceID" OtherKey="InstanceID" Type="purchase_invoice" />
+      <Association Name="instance_purchase_items_master" Member="purchase_items_masters" ThisKey="InstanceID" OtherKey="InstanceID" Type="purchase_items_master" />
+      <Association Name="instance_sms_log" Member="sms_logs" ThisKey="InstanceID" OtherKey="InstanceID" Type="sms_log" />
+      <Association Name="instance_sms_log1" Member="sms_logs1" ThisKey="InstanceID" OtherKey="InstanceID" Type="sms_log" />
+      <Association Name="instance_supplier" Member="suppliers" ThisKey="InstanceID" OtherKey="InstanceID" Type="supplier" />
+    </Type>
+  </Table>
+  <Table Name="dbo.item_price" Member="item_prices">
+    <Type Name="item_price">
+      <Column Name="ItemPriceID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Association Name="group_item_price" Member="group" ThisKey="GroupID" OtherKey="GroupID" Type="group" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.items" Member="items">
+    <Type Name="item">
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLocalName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="item_pos_item" Member="pos_items" ThisKey="ItemID" OtherKey="ItemID" Type="pos_item" />
+      <Association Name="customer_item" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
+      <Association Name="instance_item" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_item" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MenuMaster" Member="MenuMasters">
+    <Type Name="MenuMaster">
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="menuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="menuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="MenuMaster_PreSubMenu" Member="PreSubMenus" ThisKey="menuid" OtherKey="menuid" Type="PreSubMenu" />
+      <Association Name="MenuMaster_PreSubMenu1" Member="PreSubMenus1" ThisKey="menuid" OtherKey="menuid" Type="PreSubMenu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModuleMaster" Member="ModuleMasters">
+    <Type Name="ModuleMaster">
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="moduleName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="moduleDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ModuleMaster_PageMaster" Member="PageMasters" ThisKey="moduleid" OtherKey="moduleid" Type="PageMaster" />
+      <Association Name="ModuleMaster_UserRightsMaster" Member="UserRightsMasters" ThisKey="moduleid" OtherKey="moduleid" Type="UserRightsMaster" />
+    </Type>
+  </Table>
+  <Table Name="dbo.office_branch" Member="office_branches">
+    <Type Name="office_branch">
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="office_branch_office_branch_sale" Member="office_branch_sales" ThisKey="OfficeBranchID" OtherKey="OfficeBranchID" Type="office_branch_sale" />
+      <Association Name="office_branch_purchase_invoice" Member="purchase_invoices" ThisKey="OfficeBranchID" OtherKey="OfficeBranchID" Type="purchase_invoice" />
+      <Association Name="instance_office_branch" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_office_branch" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.office_branch_sales" Member="office_branch_sales">
+    <Type Name="office_branch_sale">
+      <Column Name="BranchSalesID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="instance_office_branch_sale" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="office_branch_office_branch_sale" Member="office_branch" ThisKey="OfficeBranchID" OtherKey="OfficeBranchID" Type="office_branch" IsForeignKey="true" />
+      <Association Name="UserMaster_office_branch_sale" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PageMaster" Member="PageMasters">
+    <Type Name="PageMaster">
+      <Column Name="pageid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pageName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pageDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PageMaster_UserRightsMaster" Member="UserRightsMasters" ThisKey="pageid" OtherKey="pageid" Type="UserRightsMaster" />
+      <Association Name="ModuleMaster_PageMaster" Member="ModuleMaster" ThisKey="moduleid" OtherKey="moduleid" Type="ModuleMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Party" Member="Parties">
+    <Type Name="Party">
+      <Column Name="PartyID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PartyName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="instance_Party" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_Party" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pos" Member="pos">
+    <Type Name="po">
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillNo" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPayable" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PaidAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaidBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="HangerRate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsClothCollected" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IsCarpetInvoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BillTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="po_pos_item" Member="pos_items" ThisKey="PosID" OtherKey="PosID" Type="pos_item" />
+      <Association Name="customers_branch_po" Member="customers_branch" ThisKey="CustomerBranchID" OtherKey="CustomerBranchID" Type="customers_branch" IsForeignKey="true" />
+      <Association Name="customer_po" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
+      <Association Name="instance_po" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_po" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pos_items" Member="pos_items">
+    <Type Name="pos_item">
+      <Column Name="PosItemID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemWidth" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLength" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Association Name="group_pos_item" Member="group" ThisKey="GroupID" OtherKey="GroupID" Type="group" IsForeignKey="true" />
+      <Association Name="item_pos_item" Member="item" ThisKey="ItemID" OtherKey="ItemID" Type="item" IsForeignKey="true" />
+      <Association Name="po_pos_item" Member="po" ThisKey="PosID" OtherKey="PosID" Type="po" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.posbillcount" Member="posbillcounts">
+    <Type Name="posbillcount">
+      <Column Name="PosBillCountID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalBills" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="instance_posbillcount" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PreSubMenu" Member="PreSubMenus">
+    <Type Name="PreSubMenu">
+      <Column Name="presubmenuid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="presubmenuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="presubmenuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="submenuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="MenuMaster_PreSubMenu" Member="MenuMaster" ThisKey="menuid" OtherKey="menuid" Type="MenuMaster" IsForeignKey="true" />
+      <Association Name="MenuMaster_PreSubMenu1" Member="MenuMaster1" ThisKey="menuid" OtherKey="menuid" Type="MenuMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.purchase_invoice" Member="purchase_invoices">
+    <Type Name="purchase_invoice">
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Narration" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="QuotationNo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="QuotationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ReferenceNo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="purchase_invoice_purchase_invoice_item" Member="purchase_invoice_items" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="purchase_invoice_item" />
+      <Association Name="instance_purchase_invoice" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="office_branch_purchase_invoice" Member="office_branch" ThisKey="OfficeBranchID" OtherKey="OfficeBranchID" Type="office_branch" IsForeignKey="true" />
+      <Association Name="UserMaster_purchase_invoice" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.purchase_invoice_items" Member="purchase_invoice_items">
+    <Type Name="purchase_invoice_item">
+      <Column Name="InvoiceItemID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="purchase_invoice_purchase_invoice_item" Member="purchase_invoice" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="purchase_invoice" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.purchase_items_master" Member="purchase_items_masters">
+    <Type Name="purchase_items_master">
+      <Column Name="PurchaseItemID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="instance_purchase_items_master" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_purchase_items_master" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RollMaster" Member="RollMasters">
+    <Type Name="RollMaster">
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="rollName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="rollDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="RollMaster_UserRightsMaster" Member="UserRightsMasters" ThisKey="rollid" OtherKey="rollid" Type="UserRightsMaster" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sms_logs" Member="sms_logs">
+    <Type Name="sms_log">
+      <Column Name="SmsLogID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SmsID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FromNumber" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="ToNumber" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="customer_sms_log" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
+      <Association Name="instance_sms_log" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="instance_sms_log1" Member="instance1" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_sms_log" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sms_templates" Member="sms_templates">
+    <Type Name="sms_template">
+      <Column Name="SmsID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ismart_sms_language" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="UserMaster_sms_template" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubMenuMaster" Member="SubMenuMasters">
+    <Type Name="SubMenuMaster">
+      <Column Name="submenuid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="submenuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="submenuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.suppliers" Member="suppliers">
+    <Type Name="supplier">
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="instance_supplier" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_supplier" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserMaster" Member="UserMasters">
+    <Type Name="UserMaster">
+      <Column Name="userid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="umusername" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="umpassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollLocation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="createDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isRetired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="insertedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="createdBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="deleteBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="viewedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="UserMaster_customer" Member="customers" ThisKey="userid" OtherKey="UserID" Type="customer" />
+      <Association Name="UserMaster_customers_branch" Member="customers_branches" ThisKey="userid" OtherKey="UserID" Type="customers_branch" />
+      <Association Name="UserMaster_expense" Member="expenses" ThisKey="userid" OtherKey="UserID" Type="expense" />
+      <Association Name="UserMaster_group" Member="groups" ThisKey="userid" OtherKey="UserID" Type="group" />
+      <Association Name="UserMaster_item" Member="items" ThisKey="userid" OtherKey="UserID" Type="item" />
+      <Association Name="UserMaster_office_branch" Member="office_branches" ThisKey="userid" OtherKey="UserID" Type="office_branch" />
+      <Association Name="UserMaster_office_branch_sale" Member="office_branch_sales" ThisKey="userid" OtherKey="UserID" Type="office_branch_sale" />
+      <Association Name="UserMaster_Party" Member="Parties" ThisKey="userid" OtherKey="UserID" Type="Party" />
+      <Association Name="UserMaster_po" Member="pos" ThisKey="userid" OtherKey="UserID" Type="po" />
+      <Association Name="UserMaster_purchase_invoice" Member="purchase_invoices" ThisKey="userid" OtherKey="UserID" Type="purchase_invoice" />
+      <Association Name="UserMaster_purchase_items_master" Member="purchase_items_masters" ThisKey="userid" OtherKey="UserID" Type="purchase_items_master" />
+      <Association Name="UserMaster_sms_log" Member="sms_logs" ThisKey="userid" OtherKey="UserID" Type="sms_log" />
+      <Association Name="UserMaster_sms_template" Member="sms_templates" ThisKey="userid" OtherKey="UserID" Type="sms_template" />
+      <Association Name="UserMaster_supplier" Member="suppliers" ThisKey="userid" OtherKey="UserID" Type="supplier" />
+      <Association Name="UserMaster_UserRightsMaster" Member="UserRightsMasters" ThisKey="userid" OtherKey="userid" Type="UserRightsMaster" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRightsMaster" Member="UserRightsMasters">
+    <Type Name="UserRightsMaster">
+      <Column Name="urid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="pageid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="isDelete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isView" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isEdit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isSearch" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isAdd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isReport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="createdDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="createdBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="updatedby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="deletedid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="EmployeeMaster_UserRightsMaster" Member="EmployeeMaster" ThisKey="empid" OtherKey="empid" Type="EmployeeMaster" IsForeignKey="true" />
+      <Association Name="ModuleMaster_UserRightsMaster" Member="ModuleMaster" ThisKey="moduleid" OtherKey="moduleid" Type="ModuleMaster" IsForeignKey="true" />
+      <Association Name="PageMaster_UserRightsMaster" Member="PageMaster" ThisKey="pageid" OtherKey="pageid" Type="PageMaster" IsForeignKey="true" />
+      <Association Name="RollMaster_UserRightsMaster" Member="RollMaster" ThisKey="rollid" OtherKey="rollid" Type="RollMaster" IsForeignKey="true" />
+      <Association Name="UserMaster_UserRightsMaster" Member="UserMaster" ThisKey="userid" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SP_customers_branch_Delete" Method="SP_customers_branch_Delete">
+    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_customers_branch_SelectAll" Method="SP_customers_branch_SelectAll">
+    <ElementType Name="SP_customers_branch_SelectAllResult">
+      <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPerson" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_customers_branch_Update" Method="SP_customers_branch_Update">
+    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BranchName" Parameter="branchName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="ContactPerson" Parameter="contactPerson" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_customers_Delete" Method="SP_customers_Delete">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_customers_SelectAll" Method="SP_customers_SelectAll">
+    <ElementType Name="SP_customers_SelectAllResult">
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_customers_SelectOne" Method="SP_customers_SelectOne">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_customers_SelectOneResult">
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_customers_Update" Method="SP_customers_Update">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerName" Parameter="customerName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_EmployeeMaster_Delete" Method="SP_EmployeeMaster_Delete">
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_EmployeeMaster_Insert" Method="SP_EmployeeMaster_Insert">
+    <Parameter Name="empName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="empAdd" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="empMobile" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="empPhoneno" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="empemailId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="isRetired" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="isDeleted" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_EmployeeMaster_SelectAll" Method="SP_EmployeeMaster_SelectAll">
+    <ElementType Name="SP_EmployeeMaster_SelectAllResult">
+      <Column Name="empid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="empName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="empAdd" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="empMobile" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="empPhoneno" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="empemailId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="isRetired" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="isDeleted" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_EmployeeMaster_SelectOne" Method="SP_EmployeeMaster_SelectOne">
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_EmployeeMaster_SelectOneResult">
+      <Column Name="empid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="empName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="empAdd" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="empMobile" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="empPhoneno" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="empemailId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="isRetired" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="isDeleted" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_EmployeeMaster_Update" Method="SP_EmployeeMaster_Update">
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="empName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="empAdd" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="empMobile" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="empPhoneno" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="empemailId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="isRetired" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="isDeleted" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Expense_Mst_Delete" Method="SP_Expense_Mst_Delete">
+    <Parameter Name="ExpenseItemID" Parameter="expenseItemID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Expense_Mst_SelectAll" Method="SP_Expense_Mst_SelectAll">
+    <ElementType Name="SP_Expense_Mst_SelectAllResult">
+      <Column Name="ExpenseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_Expense_Mst_SelectOne" Method="SP_Expense_Mst_SelectOne">
+    <Parameter Name="ExpenseItemID" Parameter="expenseItemID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_Expense_Mst_SelectOneResult">
+      <Column Name="ExpenseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_Expense_Mst_Update" Method="SP_Expense_Mst_Update">
+    <Parameter Name="ExpenseItemID" Parameter="expenseItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_groups_Delete" Method="SP_groups_Delete">
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_groups_SelectOne" Method="SP_groups_SelectOne">
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_groups_SelectOneResult">
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ColorCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_groups_Update" Method="SP_groups_Update">
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="GroupCode" Parameter="groupCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="ColorCode" Parameter="colorCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_instance_settings_Delete" Method="SP_instance_settings_Delete">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_instance_settings_SelectAll" Method="SP_instance_settings_SelectAll">
+    <ElementType Name="SP_instance_settings_SelectAllResult">
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Tax1Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax1Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Tax2Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax2Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Tax3Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax3Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillNoReset" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmailFrom" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="InstanceLogo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosBillPrintLogo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosBillPrintHoliday" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PosDeliveryDays" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemLocalNameDisplay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemLocalNameBillPrint" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MobileNo" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="AccountSID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AuthToken" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HangerRate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="MessageEndOfBill" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TnCEnglish" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TnCLocalLanguage" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ItemwiseReportLocalLanguage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxDiscountPercentage" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_instance_settings_SelectOne" Method="SP_instance_settings_SelectOne">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_instance_settings_SelectOneResult">
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Tax1Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax1Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Tax2Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax2Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Tax3Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tax3Value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillNoReset" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmailFrom" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="InstanceLogo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosBillPrintLogo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosBillPrintHoliday" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PosDeliveryDays" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemLocalNameDisplay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosItemLocalNameBillPrint" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MobileNo" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="AccountSID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AuthToken" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HangerRate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="MessageEndOfBill" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TnCEnglish" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TnCLocalLanguage" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ItemwiseReportLocalLanguage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxDiscountPercentage" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_instance_settings_Update" Method="SP_instance_settings_Update">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Tax1Name" Parameter="tax1Name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tax1Value" Parameter="tax1Value" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Tax2Name" Parameter="tax2Name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tax2Value" Parameter="tax2Value" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Tax3Name" Parameter="tax3Name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tax3Value" Parameter="tax3Value" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="BillNoReset" Parameter="billNoReset" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmailFrom" Parameter="emailFrom" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="InstanceLogo" Parameter="instanceLogo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosBillPrintLogo" Parameter="posBillPrintLogo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosBillPrintHoliday" Parameter="posBillPrintHoliday" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="PosDeliveryDays" Parameter="posDeliveryDays" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PosItemOrder" Parameter="posItemOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosItemLocalNameDisplay" Parameter="posItemLocalNameDisplay" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosItemLocalNameBillPrint" Parameter="posItemLocalNameBillPrint" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CountryCode" Parameter="countryCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="MobileNo" Parameter="mobileNo" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="AccountSID" Parameter="accountSID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AuthToken" Parameter="authToken" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="HangerRate" Parameter="hangerRate" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="MessageEndOfBill" Parameter="messageEndOfBill" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="TnCEnglish" Parameter="tnCEnglish" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="TnCLocalLanguage" Parameter="tnCLocalLanguage" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="ItemwiseReportLocalLanguage" Parameter="itemwiseReportLocalLanguage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MaxDiscountPercentage" Parameter="maxDiscountPercentage" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_instances_Delete" Method="SP_instances_Delete">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_instances_SelectAll" Method="SP_instances_SelectAll">
+    <ElementType Name="SP_instances_SelectAllResult">
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileNo" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Logo" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastBackupDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastRestoreDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastRestoreUpto" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastResetDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_instances_SelectOne" Method="SP_instances_SelectOne">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_instances_SelectOneResult">
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileNo" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Logo" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastBackupDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastRestoreDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastRestoreUpto" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastResetDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_instances_Update" Method="SP_instances_Update">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceName" Parameter="instanceName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="MobileNo" Parameter="mobileNo" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Version" Parameter="version" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Logo" Parameter="logo" Type="System.String" DbType="VarChar(35)" />
+    <Parameter Name="LastUpdateDateTime" Parameter="lastUpdateDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastBackupDate" Parameter="lastBackupDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastRestoreDate" Parameter="lastRestoreDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastRestoreUpto" Parameter="lastRestoreUpto" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastResetDate" Parameter="lastResetDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_item_price_Delete" Method="SP_item_price_Delete">
+    <Parameter Name="ItemPriceID" Parameter="itemPriceID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_item_price_SelectAll" Method="SP_item_price_SelectAll">
+    <ElementType Name="SP_item_price_SelectAllResult">
+      <Column Name="ItemPriceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_item_price_SelectOne" Method="SP_item_price_SelectOne">
+    <Parameter Name="ItemPriceID" Parameter="itemPriceID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_item_price_SelectOneResult">
+      <Column Name="ItemPriceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_item_price_Update" Method="SP_item_price_Update">
+    <Parameter Name="ItemPriceID" Parameter="itemPriceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Price" Parameter="price" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_items_Delete" Method="SP_items_Delete">
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_items_SelectAll" Method="SP_items_SelectAll">
+    <ElementType Name="SP_items_SelectAllResult">
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLocalName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_items_SelectOne" Method="SP_items_SelectOne">
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_items_SelectOneResult">
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLocalName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_items_Update" Method="SP_items_Update">
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="ItemLocalName" Parameter="itemLocalName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="PriceRate" Parameter="priceRate" Type="System.String" DbType="VarChar(11)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_MenuMaster_Delete" Method="SP_MenuMaster_Delete">
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_MenuMaster_SelectAll" Method="SP_MenuMaster_SelectAll">
+    <ElementType Name="SP_MenuMaster_SelectAllResult">
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="menuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="menuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_MenuMaster_SelectOne" Method="SP_MenuMaster_SelectOne">
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_MenuMaster_SelectOneResult">
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="menuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="menuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_MenuMaster_Update" Method="SP_MenuMaster_Update">
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="menuName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="menuDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ModuleMaster_Delete" Method="SP_ModuleMaster_Delete">
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ModuleMaster_Insert" Method="SP_ModuleMaster_Insert">
+    <Parameter Name="moduleName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="moduleDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ModuleMaster_SelectOne" Method="SP_ModuleMaster_SelectOne">
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_ModuleMaster_SelectOneResult">
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="moduleName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="moduleDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_ModuleMaster_Update" Method="SP_ModuleMaster_Update">
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="moduleName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="moduleDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_office_branch_Delete" Method="SP_office_branch_Delete">
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_office_branch_SelectAll" Method="SP_office_branch_SelectAll">
+    <ElementType Name="SP_office_branch_SelectAllResult">
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_office_branch_SelectOne" Method="SP_office_branch_SelectOne">
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_office_branch_SelectOneResult">
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_office_branch_Update" Method="SP_office_branch_Update">
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BranchName" Parameter="branchName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_PageMaster_Delete" Method="SP_PageMaster_Delete">
+    <Parameter Name="pageid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_PageMaster_Insert" Method="SP_PageMaster_Insert">
+    <Parameter Name="pageName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pageDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pageid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_PageMaster_SelectAll" Method="SP_PageMaster_SelectAll">
+    <ElementType Name="SP_PageMaster_SelectAllResult">
+      <Column Name="pageid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="pageName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pageDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_PageMaster_SelectOne" Method="SP_PageMaster_SelectOne">
+    <Parameter Name="pageid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_PageMaster_SelectOneResult">
+      <Column Name="pageid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="pageName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pageDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_PageMaster_Update" Method="SP_PageMaster_Update">
+    <Parameter Name="pageid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="pageName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pageDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Party_Delete" Method="SP_Party_Delete">
+    <Parameter Name="PartyID" Parameter="partyID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Party_SelectAll" Method="SP_Party_SelectAll">
+    <ElementType Name="SP_Party_SelectAllResult">
+      <Column Name="PartyID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PartyName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_Party_SelectOne" Method="SP_Party_SelectOne">
+    <Parameter Name="PartyID" Parameter="partyID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_Party_SelectOneResult">
+      <Column Name="PartyID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PartyName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_Party_Update" Method="SP_Party_Update">
+    <Parameter Name="PartyID" Parameter="partyID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_Delete" Method="SP_pos_items_Delete">
+    <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_SelectAll" Method="SP_pos_items_SelectAll">
+    <ElementType Name="SP_pos_items_SelectAllResult">
+      <Column Name="PosItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemWidth" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLength" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_items_SelectOne" Method="SP_pos_items_SelectOne">
+    <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_pos_items_SelectOneResult">
+      <Column Name="PosItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemWidth" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLength" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_items_Update" Method="SP_pos_items_Update">
+    <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemWidth" Parameter="itemWidth" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="ItemLength" Parameter="itemLength" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="PriceRate" Parameter="priceRate" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Price" Parameter="price" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_PreSubMenu_Delete" Method="SP_PreSubMenu_Delete">
+    <Parameter Name="presubmenuid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_PreSubMenu_Insert" Method="SP_PreSubMenu_Insert">
+    <Parameter Name="presubmenuName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="presubmenuDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="submenuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="presubmenuid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_PreSubMenu_SelectAll" Method="SP_PreSubMenu_SelectAll">
+    <ElementType Name="SP_PreSubMenu_SelectAllResult">
+      <Column Name="presubmenuid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="presubmenuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="presubmenuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="submenuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_PreSubMenu_SelectOne" Method="SP_PreSubMenu_SelectOne">
+    <Parameter Name="presubmenuid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_PreSubMenu_SelectOneResult">
+      <Column Name="presubmenuid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="presubmenuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="presubmenuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="submenuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_PreSubMenu_Update" Method="SP_PreSubMenu_Update">
+    <Parameter Name="presubmenuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="presubmenuName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="presubmenuDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="submenuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_items_Delete" Method="SP_purchase_invoice_items_Delete">
+    <Parameter Name="InvoiceItemID" Parameter="invoiceItemID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_items_SelectAll" Method="SP_purchase_invoice_items_SelectAll">
+    <ElementType Name="SP_purchase_invoice_items_SelectAllResult">
+      <Column Name="InvoiceItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_items_SelectOne" Method="SP_purchase_invoice_items_SelectOne">
+    <Parameter Name="InvoiceItemID" Parameter="invoiceItemID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_purchase_invoice_items_SelectOneResult">
+      <Column Name="InvoiceItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_items_Update" Method="SP_purchase_invoice_items_Update">
+    <Parameter Name="InvoiceItemID" Parameter="invoiceItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PurchaseItemID" Parameter="purchaseItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Rate" Parameter="rate" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_items_master_Delete" Method="SP_purchase_items_master_Delete">
+    <Parameter Name="PurchaseItemID" Parameter="purchaseItemID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_items_master_SelectAll" Method="SP_purchase_items_master_SelectAll">
+    <ElementType Name="SP_purchase_items_master_SelectAllResult">
+      <Column Name="PurchaseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_purchase_items_master_SelectOne" Method="SP_purchase_items_master_SelectOne">
+    <Parameter Name="PurchaseItemID" Parameter="purchaseItemID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_purchase_items_master_SelectOneResult">
+      <Column Name="PurchaseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_purchase_items_master_Update" Method="SP_purchase_items_master_Update">
+    <Parameter Name="PurchaseItemID" Parameter="purchaseItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_RollMaster_Delete" Method="SP_RollMaster_Delete">
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_RollMaster_Insert" Method="SP_RollMaster_Insert">
+    <Parameter Name="rollName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="rollDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_RollMaster_SelectAll" Method="SP_RollMaster_SelectAll">
+    <ElementType Name="SP_RollMaster_SelectAllResult">
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="rollName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="rollDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_RollMaster_SelectOne" Method="SP_RollMaster_SelectOne">
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_RollMaster_SelectOneResult">
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="rollName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="rollDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_RollMaster_Update" Method="SP_RollMaster_Update">
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="rollName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="rollDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_sms_logs_Delete" Method="SP_sms_logs_Delete">
+    <Parameter Name="SmsLogID" Parameter="smsLogID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_sms_logs_SelectAll" Method="SP_sms_logs_SelectAll">
+    <ElementType Name="SP_sms_logs_SelectAllResult">
+      <Column Name="SmsLogID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SmsID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FromNumber" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="ToNumber" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_sms_logs_SelectOne" Method="SP_sms_logs_SelectOne">
+    <Parameter Name="SmsLogID" Parameter="smsLogID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_sms_logs_SelectOneResult">
+      <Column Name="SmsLogID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SmsID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FromNumber" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="ToNumber" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_sms_logs_Update" Method="SP_sms_logs_Update">
+    <Parameter Name="SmsLogID" Parameter="smsLogID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SmsID" Parameter="smsID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TemplateName" Parameter="templateName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CountryCode" Parameter="countryCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="FromNumber" Parameter="fromNumber" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="ToNumber" Parameter="toNumber" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="Details" Parameter="details" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_sms_templates_Delete" Method="SP_sms_templates_Delete">
+    <Parameter Name="SmsID" Parameter="smsID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_sms_templates_SelectAll" Method="SP_sms_templates_SelectAll">
+    <ElementType Name="SP_sms_templates_SelectAllResult">
+      <Column Name="SmsID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ismart_sms_language" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_sms_templates_SelectOne" Method="SP_sms_templates_SelectOne">
+    <Parameter Name="SmsID" Parameter="smsID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_sms_templates_SelectOneResult">
+      <Column Name="SmsID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ismart_sms_language" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_sms_templates_Update" Method="SP_sms_templates_Update">
+    <Parameter Name="SmsID" Parameter="smsID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TemplateName" Parameter="templateName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Details" Parameter="details" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="ismart_sms_language" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_SubMenuMaster_Delete" Method="SP_SubMenuMaster_Delete">
+    <Parameter Name="submenuid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_SubMenuMaster_Insert" Method="SP_SubMenuMaster_Insert">
+    <Parameter Name="submenuName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="submenuDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="submenuid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_SubMenuMaster_SelectAll" Method="SP_SubMenuMaster_SelectAll">
+    <ElementType Name="SP_SubMenuMaster_SelectAllResult">
+      <Column Name="submenuid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="submenuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="submenuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SubMenuMaster_SelectOne" Method="SP_SubMenuMaster_SelectOne">
+    <Parameter Name="submenuid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_SubMenuMaster_SelectOneResult">
+      <Column Name="submenuid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="submenuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="submenuDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="menuid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SubMenuMaster_Update" Method="SP_SubMenuMaster_Update">
+    <Parameter Name="submenuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="submenuName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="submenuDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_suppliers_Delete" Method="SP_suppliers_Delete">
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_suppliers_SelectAll" Method="SP_suppliers_SelectAll">
+    <ElementType Name="SP_suppliers_SelectAllResult">
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_suppliers_SelectOne" Method="SP_suppliers_SelectOne">
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_suppliers_SelectOneResult">
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_suppliers_Update" Method="SP_suppliers_Update">
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SupplierName" Parameter="supplierName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_UserMaster_Delete" Method="SP_UserMaster_Delete">
+    <Parameter Name="userid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_UserMaster_Insert" Method="SP_UserMaster_Insert">
+    <Parameter Name="umusername" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="umpassword" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="rollLocation" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="createDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="isRetired" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isDeleted" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="insertedBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="createdBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="deleteBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="viewedBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="userid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_UserMaster_SelectAll" Method="SP_UserMaster_SelectAll">
+    <ElementType Name="SP_UserMaster_SelectAllResult">
+      <Column Name="userid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="umusername" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="umpassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollLocation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="createDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isRetired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="insertedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="createdBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="deleteBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="viewedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_UserMaster_SelectOne" Method="SP_UserMaster_SelectOne">
+    <Parameter Name="userid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_UserMaster_SelectOneResult">
+      <Column Name="userid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="umusername" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="umpassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollLocation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="createDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isRetired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="insertedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="createdBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="deleteBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="viewedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_UserMaster_Update" Method="SP_UserMaster_Update">
+    <Parameter Name="userid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="umusername" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="umpassword" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="rollLocation" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="createDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="isRetired" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isDeleted" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="insertedBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="createdBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="deleteBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="viewedBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_UserRightsMaster_Delete" Method="SP_UserRightsMaster_Delete">
+    <Parameter Name="urid" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_UserRightsMaster_SelectAll" Method="SP_UserRightsMaster_SelectAll">
+    <ElementType Name="SP_UserRightsMaster_SelectAllResult">
+      <Column Name="urid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="pageid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="isDelete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isView" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isEdit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isSearch" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isAdd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isReport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="createdDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="createdBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="updatedby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="deletedid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_UserRightsMaster_SelectOne" Method="SP_UserRightsMaster_SelectOne">
+    <Parameter Name="urid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_UserRightsMaster_SelectOneResult">
+      <Column Name="urid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rollid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="pageid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="isDelete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isView" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isEdit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isSearch" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isAdd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isReport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="createdDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="createdBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="updatedby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="deletedid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_UserRightsMaster_Update" Method="SP_UserRightsMaster_Update">
+    <Parameter Name="urid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="userid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="pageid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="isDelete" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isView" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isEdit" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isSearch" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isAdd" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isReport" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="createdDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="applyDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="createdBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="updatedby" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="deletedid" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_customers_branch_SelectOne" Method="SP_customers_branch_SelectOne">
+    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_customers_branch_SelectOneResult">
+      <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPerson" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_customers_branch_Insert" Method="SP_customers_branch_Insert">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BranchName" Parameter="branchName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="ContactPerson" Parameter="contactPerson" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_customers_Insert" Method="SP_customers_Insert">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerName" Parameter="customerName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Expense_Mst_Insert" Method="SP_Expense_Mst_Insert">
+    <Parameter Name="ExpenseItemID" Parameter="expenseItemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_expenses_Delete" Method="SP_expenses_Delete">
+    <Parameter Name="ExpenseID" Parameter="expenseID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_expenses_Insert" Method="SP_expenses_Insert">
+    <Parameter Name="ExpenseID" Parameter="expenseID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ExpenseItemID" Parameter="expenseItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Details" Parameter="details" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="PaidBy" Parameter="paidBy" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PartyId" Parameter="partyId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DeletedDate" Parameter="deletedDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="UpdatedDate" Parameter="updatedDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_expenses_SelectAll" Method="SP_expenses_SelectAll">
+    <ElementType Name="SP_expenses_SelectAllResult">
+      <Column Name="ExpenseID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ExpenseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="PaidBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PartyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_expenses_SelectOne" Method="SP_expenses_SelectOne">
+    <Parameter Name="ExpenseID" Parameter="expenseID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_expenses_SelectOneResult">
+      <Column Name="ExpenseID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ExpenseItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="PaidBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PartyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_expenses_Update" Method="SP_expenses_Update">
+    <Parameter Name="ExpenseID" Parameter="expenseID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ExpenseItemID" Parameter="expenseItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemId" Parameter="itemId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Details" Parameter="details" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="PaidBy" Parameter="paidBy" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PartyId" Parameter="partyId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DeletedDate" Parameter="deletedDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="UpdatedDate" Parameter="updatedDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_groups_Insert" Method="SP_groups_Insert">
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GroupName" Parameter="groupName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="GroupCode" Parameter="groupCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="ColorCode" Parameter="colorCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_instance_settings_Insert" Method="SP_instance_settings_Insert">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="Tax1Name" Parameter="tax1Name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tax1Value" Parameter="tax1Value" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Tax2Name" Parameter="tax2Name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tax2Value" Parameter="tax2Value" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Tax3Name" Parameter="tax3Name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tax3Value" Parameter="tax3Value" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="BillNoReset" Parameter="billNoReset" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmailFrom" Parameter="emailFrom" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="InstanceLogo" Parameter="instanceLogo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosBillPrintLogo" Parameter="posBillPrintLogo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosBillPrintHoliday" Parameter="posBillPrintHoliday" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="PosDeliveryDays" Parameter="posDeliveryDays" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PosItemOrder" Parameter="posItemOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosItemLocalNameDisplay" Parameter="posItemLocalNameDisplay" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PosItemLocalNameBillPrint" Parameter="posItemLocalNameBillPrint" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CountryCode" Parameter="countryCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="MobileNo" Parameter="mobileNo" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="AccountSID" Parameter="accountSID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AuthToken" Parameter="authToken" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="HangerRate" Parameter="hangerRate" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="MessageEndOfBill" Parameter="messageEndOfBill" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="TnCEnglish" Parameter="tnCEnglish" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="TnCLocalLanguage" Parameter="tnCLocalLanguage" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="ItemwiseReportLocalLanguage" Parameter="itemwiseReportLocalLanguage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MaxDiscountPercentage" Parameter="maxDiscountPercentage" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_instances_Insert" Method="SP_instances_Insert">
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceName" Parameter="instanceName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="MobileNo" Parameter="mobileNo" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Version" Parameter="version" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Logo" Parameter="logo" Type="System.String" DbType="VarChar(35)" />
+    <Parameter Name="LastUpdateDateTime" Parameter="lastUpdateDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastBackupDate" Parameter="lastBackupDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastRestoreDate" Parameter="lastRestoreDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastRestoreUpto" Parameter="lastRestoreUpto" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LastResetDate" Parameter="lastResetDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_item_price_Insert" Method="SP_item_price_Insert">
+    <Parameter Name="ItemPriceID" Parameter="itemPriceID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Price" Parameter="price" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_items_Insert" Method="SP_items_Insert">
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="ItemLocalName" Parameter="itemLocalName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="PriceRate" Parameter="priceRate" Type="System.String" DbType="VarChar(11)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_MenuMaster_Insert" Method="SP_MenuMaster_Insert">
+    <Parameter Name="menuName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="menuDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="menuid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_office_branch_Insert" Method="SP_office_branch_Insert">
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BranchName" Parameter="branchName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_office_branch_sales_Delete" Method="SP_office_branch_sales_Delete">
+    <Parameter Name="BranchSalesID" Parameter="branchSalesID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_office_branch_sales_Insert" Method="SP_office_branch_sales_Insert">
+    <Parameter Name="BranchSalesID" Parameter="branchSalesID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_office_branch_sales_SelectAll" Method="SP_office_branch_sales_SelectAll">
+    <ElementType Name="SP_office_branch_sales_SelectAllResult">
+      <Column Name="BranchSalesID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_office_branch_sales_SelectOne" Method="SP_office_branch_sales_SelectOne">
+    <Parameter Name="BranchSalesID" Parameter="branchSalesID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_office_branch_sales_SelectOneResult">
+      <Column Name="BranchSalesID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_office_branch_sales_Update" Method="SP_office_branch_sales_Update">
+    <Parameter Name="BranchSalesID" Parameter="branchSalesID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Party_Insert" Method="SP_Party_Insert">
+    <Parameter Name="PartyID" Parameter="partyID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_Delete" Method="SP_pos_Delete">
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_Insert" Method="SP_pos_Insert">
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BillNo" Parameter="billNo" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TotalQuantity" Parameter="totalQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Discount" Parameter="discount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="TotalPayable" Parameter="totalPayable" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="PaidAmount" Parameter="paidAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ReturnAmount" Parameter="returnAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="IsPaid" Parameter="isPaid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PaidBy" Parameter="paidBy" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PaymentDateTime" Parameter="paymentDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Comment" Parameter="comment" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="HangerQuantity" Parameter="hangerQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="HangerRate" Parameter="hangerRate" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="HangerAmount" Parameter="hangerAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="IsClothCollected" Parameter="isClothCollected" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="IsCarpetInvoice" Parameter="isCarpetInvoice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="BillTime" Parameter="billTime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="DeliveryDate" Parameter="deliveryDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DeliveryTime" Parameter="deliveryTime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DeletedDateTime" Parameter="deletedDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_SelectAll" Method="SP_pos_SelectAll">
+    <ElementType Name="SP_pos_SelectAllResult">
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillNo" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPayable" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PaidAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaidBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="HangerRate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsClothCollected" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IsCarpetInvoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BillTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_SelectOne" Method="SP_pos_SelectOne">
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_pos_SelectOneResult">
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillNo" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPayable" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PaidAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaidBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="HangerRate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsClothCollected" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IsCarpetInvoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BillTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_Update" Method="SP_pos_Update">
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BillNo" Parameter="billNo" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TotalQuantity" Parameter="totalQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Discount" Parameter="discount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="TotalPayable" Parameter="totalPayable" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="PaidAmount" Parameter="paidAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ReturnAmount" Parameter="returnAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="IsPaid" Parameter="isPaid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PaidBy" Parameter="paidBy" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PaymentDateTime" Parameter="paymentDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Comment" Parameter="comment" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="HangerQuantity" Parameter="hangerQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="HangerRate" Parameter="hangerRate" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="HangerAmount" Parameter="hangerAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="IsClothCollected" Parameter="isClothCollected" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="IsCarpetInvoice" Parameter="isCarpetInvoice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="BillTime" Parameter="billTime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="DeliveryDate" Parameter="deliveryDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DeliveryTime" Parameter="deliveryTime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DeletedDateTime" Parameter="deletedDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_Insert" Method="SP_pos_items_Insert">
+    <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GroupID" Parameter="groupID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemWidth" Parameter="itemWidth" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="ItemLength" Parameter="itemLength" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="PriceRate" Parameter="priceRate" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Price" Parameter="price" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_posbillcount_Delete" Method="SP_posbillcount_Delete">
+    <Parameter Name="PosBillCountID" Parameter="posBillCountID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_posbillcount_Insert" Method="SP_posbillcount_Insert">
+    <Parameter Name="PosBillCountID" Parameter="posBillCountID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalBills" Parameter="totalBills" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_posbillcount_SelectAll" Method="SP_posbillcount_SelectAll">
+    <ElementType Name="SP_posbillcount_SelectAllResult">
+      <Column Name="PosBillCountID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalBills" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_posbillcount_SelectOne" Method="SP_posbillcount_SelectOne">
+    <Parameter Name="PosBillCountID" Parameter="posBillCountID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_posbillcount_SelectOneResult">
+      <Column Name="PosBillCountID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalBills" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_posbillcount_Update" Method="SP_posbillcount_Update">
+    <Parameter Name="PosBillCountID" Parameter="posBillCountID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalBills" Parameter="totalBills" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_Delete" Method="SP_purchase_invoice_Delete">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_Insert" Method="SP_purchase_invoice_Insert">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BranchName" Parameter="branchName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TotalQuantity" Parameter="totalQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Narration" Parameter="narration" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="QuotationNo" Parameter="quotationNo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="QuotationDate" Parameter="quotationDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ReferenceNo" Parameter="referenceNo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DeletedDateTime" Parameter="deletedDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_SelectAll" Method="SP_purchase_invoice_SelectAll">
+    <ElementType Name="SP_purchase_invoice_SelectAllResult">
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Narration" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="QuotationNo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="QuotationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ReferenceNo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_SelectOne" Method="SP_purchase_invoice_SelectOne">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_purchase_invoice_SelectOneResult">
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Narration" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="QuotationNo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="QuotationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ReferenceNo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_Update" Method="SP_purchase_invoice_Update">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="OfficeBranchID" Parameter="officeBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BranchName" Parameter="branchName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TotalQuantity" Parameter="totalQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Narration" Parameter="narration" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="QuotationNo" Parameter="quotationNo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="QuotationDate" Parameter="quotationDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ReferenceNo" Parameter="referenceNo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DeletedDateTime" Parameter="deletedDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_invoice_items_Insert" Method="SP_purchase_invoice_items_Insert">
+    <Parameter Name="InvoiceItemID" Parameter="invoiceItemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PurchaseItemID" Parameter="purchaseItemID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Rate" Parameter="rate" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_purchase_items_master_Insert" Method="SP_purchase_items_master_Insert">
+    <Parameter Name="PurchaseItemID" Parameter="purchaseItemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_sms_logs_Insert" Method="SP_sms_logs_Insert">
+    <Parameter Name="SmsLogID" Parameter="smsLogID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SmsID" Parameter="smsID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TemplateName" Parameter="templateName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CountryCode" Parameter="countryCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="FromNumber" Parameter="fromNumber" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="ToNumber" Parameter="toNumber" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="Details" Parameter="details" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_sms_templates_Insert" Method="SP_sms_templates_Insert">
+    <Parameter Name="SmsID" Parameter="smsID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TemplateName" Parameter="templateName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Details" Parameter="details" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="ismart_sms_language" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_suppliers_Insert" Method="SP_suppliers_Insert">
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SupplierName" Parameter="supplierName" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CivilNumber" Parameter="civilNumber" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Decimal(10,3)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_UserRightsMaster_Insert" Method="SP_UserRightsMaster_Insert">
+    <Parameter Name="userid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="moduleid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="rollid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="pageid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="isDelete" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isView" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isEdit" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isSearch" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isAdd" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isReport" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="createdDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="applyDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="createdBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="updatedby" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="deletedid" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="urid" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_groups_SelectAll" Method="SP_groups_SelectAll">
+    <ElementType Name="SP_groups_SelectAllResult">
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ColorCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_ModuleMaster_SelectAll" Method="SP_ModuleMaster_SelectAll">
+    <ElementType Name="SP_ModuleMaster_SelectAllResult">
+      <Column Name="moduleid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="moduleName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="moduleDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

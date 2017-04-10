@@ -1,0 +1,279 @@
+﻿@{
+    ViewBag.Title = "Expense Invoice Transaction";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="well well-sm col-md-3 m0" style="height: 600px;">
+        <table style="width: 100%;background-color: #ee9201;color: #fff;" class="table table-striped table-condensed m0">
+            <thead>
+                <tr class="table-header">
+                    <td class="text-center" style="width: 50px;">Bill</td>
+                    <td class="text-center" style="width: 100px;">Mobile</td>
+                    <td class="text-center">Name</td>
+                </tr>
+            </thead>
+        </table>
+        <div id="orders-div" style="height: 375px; overflow-y: auto; border-bottom: solid #D4D0C8;" class="mbottom5">
+            <table style="margin:0; width: 100%;" id="billList" class="table table-striped table-condensed table-hover protable" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr class="pointer">
+                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
+                            <div class="custom-checkbox">
+                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
+                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
+                            </div>
+                        </td>
+                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
+                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="btn-group" style="width: 100%;">
+                            <button id="btn-save" type="button" class="btn btn-primary m0 p0" style="width: 50%; height: 40px; border-radius: 0 !important;" tabindex="14">Save</button>
+                            <button id="btn-save-print" type="button" class="btn btn-warning m0 p0" style="height:40px; width: 50%; border: 0px; border-radius: 0 !important;" tabindex="15">Save + Print</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="btn-group" style="width: 100%;">
+                            <button id="btn-payment" type="button" class="btn btn-success m0 p0" style="width: 50%; height: 40px; border-radius: 0 !important;" tabindex="16">Payment</button>
+                            <button id="btn-quick" type="button" class="btn btn-success m0 p0" style="width: 50%; height: 40px; background-color: rgb(136, 136, 221); border-color: rgb(136, 136, 221); border-radius: 0px !important;" tabindex="17" onmouseover="this.style.backgroundColor='#563d7c'" onmouseout="this.style.backgroundColor ='#8888dd'">Pay + Print</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="btn-group" style="width: 100%;">
+                            <button type="button" onclick="location.href='http://bhartitechnologies.com/laundry/dashboard/view';" tabindex="18" class="btn btn-danger m0 p0" style="height:40px; width: 50%; border: 0px; border-radius: 0 !important;">Close</button>
+                            <button id="btn-delete" type="button" class="btn btn-info m0 p0" style="height:40px; width: 50%; border: 0px; border-radius: 0 !important;" tabindex="19">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-9">
+        <div class="well well-sm m0" style="height: 599px;padding-left: 0px;padding-right: 0px;">
+            <div class="col-md-12">
+                <table style="width: 100%;background-color: #ee9201;color: #fff;" class="table table-striped table-condensed m0">
+                    <thead>
+                        <tr class="table-header">
+                            <td>Product</td>
+                            <td style="width: 85px;">Qty</td>
+                            <td style="width: 100px;">Width</td>
+                            <td style="width: 100px;">Length</td>
+                            <td style="width: 80px;">Rate</td>
+                            <td style="width: 85px;">Amount</td>
+                            <td style="width: 15px;"><i data-groupid="2" data-itemid="23" class="fa fa-close fa-lg delete_item pointer"></i></td>
+                        </tr>
+                    </thead>
+                </table>
+                <div id="prodiv" style="height: 225px; overflow-y: auto;">
+                    <table style="margin:0; width: 100%;" id="itemList" class="table table-striped table-condensed table-hover protable" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+
+                            <tr class="NoOrder"><td class="text-center" colspan="12">Item List Empty</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-5 padd">
+                <table style="width: 100%;" class="m0">
+                    <thead>
+                        <tr style="background-color: #D4D0C8;">
+                            <td><strong>Total Qty</strong></td>
+                            <td style="width: 50px;"><label id="total-qty">0</label></td>
+                            <td><strong>Total Amount</strong></td>
+                            <td style="width: 60px;"><label id="total-amount">0.000</label></td>
+                        </tr>
+                    </thead>
+                </table>
+                <table style="width: 100%;" class="table m0">
+                    <tbody>
+                        <tr>
+                            <td>Amount</td>
+                            <td style="padding-left: 0px; padding-right: 0px;"><input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text"></td>
+                            <td>Dis.</td>
+                            <td style="padding-left: 0px; padding-right: 0px;"><input name="Discount" id="Discount" maxlength="10" class="form-control" required="required" value="" tabindex="7" style="width: 55%; display: inline; padding-left: 7px; padding-right: 5px;" type="text">&nbsp;<input id="DiscountPercentage" maxlength="5" class="form-control" value="" style="width: 30%; display: inline; padding-left: 5px; padding-right: 0px;" type="text">%</td>
+                        </tr>
+                        <tr>
+                            <td>Return</td>
+                            <td style="padding-left: 0px; padding-right: 0px;"><input name="ReturnAmount" id="ReturnAmount" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="9" type="text"></td>
+                            <td>Total</td>
+                            <td style="padding-left: 0px; padding-right: 0px;"><input name="TotalPayable" id="TotalPayable" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="10" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td style="padding-left: 0px; padding-right: 0px; width: 87px;"><input class="form-control pleft5 pright5" id="DeliveryDate" name="DeliveryDate" readonly="readonly" style="cursor: pointer; background-color: white;" tabindex="11" type="text"></td>
+                            <td>Time</td>
+                            <td style="padding-left: 0px; padding-right: 0px;">
+                                <select name="DeliveryTime" id="DeliveryTime" class="form-control pleft5 pright5" tabindex="12">
+                                    <option value="00:00">00:00</option>
+                                    <option value="00:15">00:15</option>
+                                    <option value="00:30">00:30</option>
+                                    <option value="00:45">00:45</option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="01:15">01:15</option>
+                                    <option value="01:30">01:30</option>
+                                    <option value="01:45">01:45</option>
+                                    <option value="02:00">02:00</option>
+                                    <option value="02:15">02:15</option>
+                                    <option value="02:30">02:30</option>
+                                    <option value="02:45">02:45</option>
+                                    <option value="03:00">03:00</option>
+                                    <option value="03:15">03:15</option>
+                                    <option value="03:30">03:30</option>
+                                    <option value="03:45">03:45</option>
+                                    <option value="04:00">04:00</option>
+                                    <option value="04:15">04:15</option>
+                                    <option value="04:30">04:30</option>
+                                    <option value="04:45">04:45</option>
+                                    <option value="05:00">05:00</option>
+                                    <option value="05:15">05:15</option>
+                                    <option value="05:30">05:30</option>
+                                    <option value="05:45">05:45</option>
+                                    <option value="06:00">06:00</option>
+                                    <option value="06:15">06:15</option>
+                                    <option value="06:30">06:30</option>
+                                    <option value="06:45">06:45</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="07:15">07:15</option>
+                                    <option value="07:30">07:30</option>
+                                    <option value="07:45">07:45</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="08:15">08:15</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="08:45">08:45</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:15">09:15</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="09:45">09:45</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:15">10:15</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="10:45">10:45</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:15">11:15</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="11:45">11:45</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:15">12:15</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="12:45">12:45</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:15">13:15</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="13:45">13:45</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:15">14:15</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="14:45">14:45</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:15">15:15</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="15:45">15:45</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:15">16:15</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="16:45">16:45</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:15">17:15</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="17:45">17:45</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="18:15">18:15</option>
+                                    <option value="18:30">18:30</option>
+                                    <option value="18:45">18:45</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:15">19:15</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="19:45">19:45</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:15">20:15</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="20:45">20:45</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:15">21:15</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="21:45">21:45</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:15">22:15</option>
+                                    <option value="22:30">22:30</option>
+                                    <option value="22:45">22:45</option>
+                                    <option value="23:00">23:00</option>
+                                    <option value="23:15">23:15</option>
+                                    <option value="23:30">23:30</option>
+                                    <option value="23:45">23:45</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Packing</td>
+                            <td colspan="3" style="padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn" style="background-color: #FF4500; color: #ffffff; height: 25px; padding-top: 0px; padding-bottom: 0px;" data-toggle="modal" data-target="#hanger_modal">Hanger</button>
+                                <span class="pleft5 pright5 ">Collected</span>
+                                <input name="IsClothCollected" id="IsClothCollectedYes" value="Yes" class="" type="radio">&nbsp;&nbsp;<label class="label-normal pointer " for="IsClothCollectedYes">Yes</label>
+                                <div class="" style="display: inline; padding-left: 5px;">
+                                    <input name="IsClothCollected" id="IsClothCollectedNo" value="No" checked="checked" type="radio">&nbsp;&nbsp;<label class="label-normal pointer" for="IsClothCollectedNo">No</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><textarea name="Comment" id="Comment" class="form-control ptop0 pbottom0" cols="33" rows="1" placeholder="Comment Area..." title="Enter Your Comment" style="resize: none;" tabindex="13"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-7">
+                <table style="width: 100%;background-color: #ee9201;color: #fff;" class="table table-striped table-condensed m0">
+                    <thead>
+                        <tr class="table-header">
+                            <td><label class="label-normal pointer" id="item_name" title="Click to Search Item">Item Name&nbsp;&nbsp;<i class="fa fa-search"></i></label><input id="search_item" style="width: 100%; display: none;" placeholder="Search Item" type="text"></td>
+                            <td class="text-center" style="width: 60px;">DC</td>
+                            <td class="text-center" style="width: 60px;">IR</td>
+                            <td class="text-center" style="width: 60px;">IREx</td>
+                            <td class="text-center" style="width: 60px;">W</td>
+                            <td class="text-center" style="width: 60px;">WEx</td>
+                        </tr>
+                    </thead>
+                </table>
+                <div id="items-div" style="height: 250px; overflow-y: auto;">
+                    <table style="width: 100%;" id="items_list_table" class="table table-striped table-condensed table-hover protable m0">
+                        <tbody>
+                            <tr>
+                                <td>Carpet<br></td>
+                                <td class="text-center" style="width: 55px;">
+                                    <button type="button" class="btn btn-primary m0 p0 btn-item" data-itemid="6" data-itemname="Carpet" data-itemlocalname="" data-price="3.500" data-pricerate="Variable" data-groupid="2" data-groupname="Dry Clean" style="width: 100%; height: 35px; background-color: rgb(45, 189, 196); border-color: rgb(45, 189, 196);" onmouseover="this.style.backgroundColor='#000000'" onmouseout="this.style.backgroundColor = '#2dbdc4'">DC</button>
+                                </td>
+                                <td class="text-center" style="width: 55px;">
+                                    <button type="button" class="btn m0 p0" style="width: 100%; height:35px;" onclick="this.blur(); return false;"></button>
+                                </td>
+                                <td class="text-center" style="width: 55px;">
+                                    <button type="button" class="btn m0 p0" style="width: 100%; height:35px;" onclick="this.blur(); return false;"></button>
+                                </td>
+                                <td class="text-center" style="width: 55px;">
+                                    <button type="button" class="btn btn-primary m0 p0 btn-item" data-itemid="6" data-itemname="Carpet" data-itemlocalname="" data-price="2.000" data-pricerate="Variable" data-groupid="5" data-groupname="Washing" style="width: 100%; height: 35px; background-color: rgb(238, 146, 1); border-color: rgb(238, 146, 1);" onmouseover="this.style.backgroundColor='#000000'" onmouseout="this.style.backgroundColor = '#ee9201'">W</button>
+                                </td>
+                                <td class="text-center" style="width: 55px;">
+                                    <button type="button" class="btn m0 p0" style="width: 100%; height:35px;" onclick="this.blur(); return false;"></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .col-md-5.padd td {
+        padding: 8px;
+    }
+</style> 

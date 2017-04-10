@@ -1,0 +1,623 @@
+﻿
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+
+<script type="text/javascript">
+
+    var jsonUserDetails = {};
+    function SaveUserInfo() {
+        jsonUserDetails.firstname = $('#txtFirstName').val();
+        jsonUserDetails.lastname = $('#txtLastName').val();
+        jsonUserDetails.civilno = $('#txtCivilNo').val();
+        jsonUserDetails.empemailId = $('#txtEmail').val();
+        jsonUserDetails.empAdd = $('#txtAddress').val();
+        jsonUserDetails.empMobile = $('#txtMobile').val();
+        jsonUserDetails.empPhoneno = $('#txtPhone').val();
+        jsonUserDetails.status = $('#ddlstatus').val();
+        jsonUserDetails.umusername = $('#txtUserName').val();
+        jsonUserDetails.umpassword = $('#txtPassword').val();
+    }
+
+    function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        var id = getUrlParameter('ID');
+        $.ajax({
+            type: "POST",
+            url: "GetUserInfoDetailById",
+            // var ID = getParameterByName("a"), // query string ni value get karav
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $('#hdnempidID').val(jsonObj[0].empid);
+                $('#hdnuseridID').val(jsonObj[0].userid);
+                $('#txtFirstName').val(jsonObj[0].firstname);
+                $('#txtLastName').val(jsonObj[0].lastname);
+                $('#txtCivilNo').val(jsonObj[0].civilno);
+                $('#txtUserName').val(jsonObj[0].umusername);
+                $('#txtPassword').val(jsonObj[0].umpassword);
+                $('#txtEmail').val(jsonObj[0].empemailId);
+                $('#txtAddress').val(jsonObj[0].empAdd);
+                $('#txtMobile').val(jsonObj[0].empMobile);
+                $('#txtPhone').val(jsonObj[0].empPhoneno);
+                $('#ddlstatus').val(jsonObj[0].status);
+            },
+            error: function () { alert('error'); }
+        });
+    });
+    //function ValidateUserInfo() {
+
+    //    if ($("#txtFirstName").val() == '') {
+    //        alert('Please enter first name');
+    //        return false;
+    //    }
+
+    //    if ($("#txtLastName").val() == '') {
+    //        alert('Please last name');
+    //        return false;
+    //    }
+    //    if ($("#txtCivilNo").val() == '') {
+    //        alert('Please enter civil no');
+    //        return false;
+    //    }
+
+    //    if ($("#txtUserName").val() == '') {
+    //        alert('Please enter user name');
+    //        return false;
+    //    }
+
+    //    if ($("#txtPassword").val() == '') {
+    //        alert('Please enter password');
+    //        return false;
+    //    }
+
+    //    if ($("#txtConfirmPassword").val() == '') {
+    //        alert('Please enter confirm password');
+    //        return false;
+    //    }
+
+    //    if ($("#txtPassword").val() != $("#txtConfirmPassword").val()) {
+    //        alert('Password and Confirm Password does not match');
+    //        return false;
+    //    }
+
+    //    //if ($("#txtEmail").val() == '') {
+    //    //    alert('Please enter email');
+    //    //    return false;
+    //    //}
+
+    //    //if ($("#txtEmail").val() != null)
+    //    //{
+    //    //    var email = $("#txtEmail").val();
+    //    //    var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+    //    //    if (filter.test(email)) {
+    //    //    }
+    //    //    else {
+    //    //        alert('Please Enter Valid Email');
+    //    //        return false;
+    //    //    }
+    //    //}
+
+    //    if ($("#txtContact").val() == '') {
+    //        alert('Please enter contact');
+    //        return false;
+    //    }
+
+    //    if ($("#ddlstatus").val() == 0) {
+    //        alert('Please select status');
+    //        return false;
+    //    }
+
+    //    return true;
+
+    //}
+    $(document).on('click', '#btnUpdateUser', function () {
+       // if (ValidateExpense() == true) {
+        jsonUserDetails.empid = $('#hdnempidID').val();
+        jsonUserDetails.userid = $('#hdnuseridID').val();
+        SaveUserInfo();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateUserMaster",
+                data: { UserMasterModel: JSON.stringify(jsonUserDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    window.location.href = 'Create';
+                    //BindExpenseMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+       // }
+    });
+
+    $(document).on('click', '#btnReset', function () {
+        Clear();
+    });
+    function Clear() {
+       $('#txtFirstName').val('');
+       $('#txtLastName').val('');
+       $('#txtCivilNo').val('');
+       $('#txtEmail').val('');
+       $('#txtAddress').val('');
+       $('#txtMobile').val('');
+       $('#txtPhone').val('');
+       $('#ddlstatus').val(0);
+       $('#txtUserName').val('');
+       $('#txtPassword').val('');
+       $('#txtConfirmPassword').val('');
+
+    }
+</script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">User Information</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="~/Home/index">Laundry</a></li>
+            <li class="active">My Profile</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width: 100%">
+                <input type="hidden" id="hdnempidID">
+                <input type="hidden" id="hdnuseridID">
+                <form data-toggle="validator">
+                    <div class="form-group col-md-4">
+                        <label>First Name</label>
+                        <div>
+                            @*@Html.TextBoxFor(m=>m.FirstName)*@
+                            <input type="text" style="width:100%" id="txtFirstName" name="example-text" class="form-control" placeholder="enter your First name" required />
+                            @*<input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required>*@
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Last Name</label>
+                        <div>
+                            <input type="text" style="width:100%" id="txtLastName" name="example-text" class="form-control" placeholder="enter your Last name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Civil No</label>
+                        <div>
+                            <input type="text" style="width:100%" id="txtCivilNo" name="example-text" class="form-control" placeholder="enter your civil no" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>User Name</label>
+                        <div>
+                            <input type="text" style="width:100%" id="txtUserName" name="example-text" class="form-control" placeholder="enter your user name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Password</label>
+                        <div>
+                            <input type="password" style="width:100%" id="txtPassword" name="example-text" class="form-control" placeholder="enter your Password" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Confirm Password</label>
+                        <div>
+                            <input type="password" style="width:100%" id="txtConfirmPassword" name="example-text" class="form-control" placeholder="enter your Password" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Email</label>
+                        <div>
+                            @*<input type="email" style="width:100%" id="txtEmail"  name="example-text" class="form-control" placeholder="enter your Email" />*@
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                            @*<div class="help-block with-errors"></div>*@
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Address</label>
+                        <div>
+                            <input type="text" style="width:100%" id="txtAddress" name="example-text" class="form-control" placeholder="enter your address" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Mobile</label>
+                        <div>
+                            <input type="text" style="width:100%" id="txtMobile" name="example-text" class="form-control" placeholder="enter your mobile no" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Phone No</label>
+                        <div>
+                            <input type="text" style="width:100%" id="txtPhone" name="example-text" class="form-control" placeholder="enter your contact no" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Status</label>
+                        <div>
+                            <select class="form-control" id="ddlstatus" class="form-control" Width="100%">
+                                <option value="0">--Select Status--</option>
+                                <option value="1">Active</option>
+                                <option value="2">InActive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group col-md-3">
+                            <label>Re_Password</label>
+                            <div>
+                                <input type="text" style="width:100%" id="txtRePassword" name="example-text" class="form-control" placeholder="reenter your password" />
+                            </div>
+                        </div>*@
+                    <div class="form-group col-md-4">
+                        <label></label>
+                        <div class="m-l-10 m-t-5">
+                            <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="">
+                                <button type="button" id="btnUpdateUser" class="waves-button-input">Update</button>
+                            </i>
+                            <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="">
+                                <button type="button" id="btnReset" class="waves-button-input">Reset</button>
+                            </i>
+
+                        </div>
+
+
+                    </div>
+                </form>
+                @*<div class="col-sm-6">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Form Validation</h3>
+                            <p class="text-muted m-b-30"> Bootstrap Form Validation</p>
+                            <form data-toggle="validator">
+                                <div class="form-group">
+                                    <label for="inputName" class="control-label">Name</label>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail2" class="control-label">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail2" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword2" class="control-label">Password</label>
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword2" placeholder="Password" required>
+                                            <span class="help-block">Minimum of 6 characters</span>
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <input type="password" class="form-control" id="inputPasswordConfirm2" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="terms2" data-error="Before you wreck yourself" required>
+                                        <label for="terms"> Remember Me?</label>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>*@
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="panel panel-info">
+
+
+    <div class="panel-heading">
+        Masters Role
+
+        <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-plus"></i></a>
+        </div>
+    </div>
+    <div class="panel-wrapper collapse out" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width: 100%">
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Model Role</th>
+                                    <th>Add</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Items Master</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Groups Master</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Customers</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Customers Branch</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="panel panel-info">
+
+    <div class="panel-heading">
+        Transaction Role
+
+        <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-plus"></i></a>
+        </div>
+    </div>
+    <div class="panel-wrapper collapse out" aria-expanded="false">
+        <div class="panel-body">
+            <div class="form-material " style="width: 100%">
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Model Role</th>
+                                    <th>Add</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>POS Discount</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>POS</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Branch Sales</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        Reports Role
+
+        <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="panel-wrapper collapse out" aria-expanded="false">
+        <div class="panel-body">
+            <div class="form-material " style="width: 100%">
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Reports Role</th>
+                                    <th>Chart</th>
+                                    <th>Export</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Daily Sales</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Day End</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Itemwise</td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox1" data-error="Before you wreck yourself" required>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

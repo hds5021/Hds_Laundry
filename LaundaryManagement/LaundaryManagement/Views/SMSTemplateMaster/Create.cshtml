@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "SMS Template Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    var jsonSMSTemplateDetails = {};
+    function SaveSMSTemplate() {
+        jsonSMSTemplateDetails.TemplateName = $('#txtname').val();
+        jsonSMSTemplateDetails.Details = $('#txtdetail').val();
+        jsonSMSTemplateDetails.ismart_sms_language = $('#ddllanguage option:selected').val();
+    }
+
+    $(document).on('click', '#btnSaveSMSTemplate', function () {
+        if (ValidateTemplate() == true) {
+            SaveSMSTemplate();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertSMStemplates",
+                data: { SMSTemplateModel: JSON.stringify(jsonSMSTemplateDetails) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindSMSTemplateList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    $(document).ready(function () {
+        $('#btnUpdateSMS').hide();
+        BindSMSTemplateList();
+    });
+    function BindSMSTemplateList()
+    {
+        $.ajax({
+            url: "GetSMSTemplatesDetail",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tr;
+                var jsonObj = JSON.parse(data);
+                $.each(jsonObj, function (key, item) {
+                    tr += '<tr>';
+                    tr += '<td>' + item.TemplateName + '</td>';
+                    tr += '<td>' + item.Details + '</td>';
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='SMSTemplateMasterByID(" + item.SmsID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='SMSTemplateDelete(" + item.SmsID + ")' ></i></a></td>");
+                    tr += '</tr>';
+                });
+                $('#tblSMSTemplatebody').html(tr);
+            },
+            error: function (msg) { alert(msg); }
+        });
+    }
+    function SMSTemplateMasterByID(id) {
+        $('#btnUpdateSMS').show();
+        $('#btnSaveSMS').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetSMSTemplatesDetailById",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $('#hdnSmsID').val(jsonObj[0].SmsID);
+                $('#txtname').val(jsonObj[0].TemplateName);
+                $('#txtdetail').val(jsonObj[0].Details);
+                $('#ddllanguage').val(jsonObj[0].ismart_sms_language);
+
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdateSMSTemplate', function () {
+        if (ValidateTemplate() == true) {
+            jsonSMSTemplateDetails.SmsID = $('#hdnSmsID').val();
+            SaveSMSTemplate();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateSMStemplates",
+                data: { SMSTemplateModel: JSON.stringify(jsonSMSTemplateDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    $('#btnSaveSMS').show();
+                    $('#btnUpdateSMS').hide();
+                    BindSMSTemplateList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+
+    function SMSTemplateDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteSMStemplates",
+            data: { ID: id },
+            success: function (data) {
+                BindSMSTemplateList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    function ValidateTemplate() {
+        if ($("#txtname").val() == '') {
+            alert('Please enter template name');
+            return false;
+        }
+
+        return true;
+
+    }
+    function Clear() {
+        $('#txtname').val('');
+        $('#txtdetail').val('');
+    }
+
+
+</script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">SMS Template Master</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="~/Home/index">Laundry</a></li>
+            <li class="active">SMS Template Master</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnSmsID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">Template Name</label>
+                    <div>
+                        <input type="text" id="txtname" Width="100%" class="form-control" placeholder="Enter Template Name" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Language</label>
+                    <div>
+                        <select class="form-control" id="ddllanguage" class="form-control" Width="100%">
+                            <option value="1">English</option>
+                            <option value="2">Arabic</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Detail</label>
+                    <div>
+                        <textarea name="detail" rows="2" cols="20" id="txtdetail" class="form-control" placeholder="Enter Detail" style="height:70px;width:100%;"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" id="btnSaveSMS">
+                            <button type="button" id="btnSaveSMSTemplate" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateSMS">
+                            <button type="button" id="btnUpdateSMSTemplate" class="waves-button-input">Update</button>
+                        </i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+        </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table id="tblSMSTemplate" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Name</label></th>
+                                    <th><label>Details</label></th>
+                                    <th><label>Actions</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblSMSTemplatebody">
+                            </tbody>
+                        </table>
+                        @*<table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="CheckBox1"></th>
+                                    <th>Name</th>
+                                    <th>Detail</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>New year</td>
+                                    <td>SMS Desc here</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>New year</td>
+                                    <td>SMS Desc here</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>New year</td>
+                                    <td>SMS Desc here</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>New year</td>
+                                    <td>SMS Desc here</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

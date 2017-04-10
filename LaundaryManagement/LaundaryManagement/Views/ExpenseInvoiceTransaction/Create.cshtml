@@ -1,0 +1,390 @@
+﻿@{
+    ViewBag.Title = "Expense Invoice Transaction";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnUpdateExpense').hide();
+        BindExpense();
+        BindBranch();
+        BindParty();
+        BindExpenseInvoiceTransactionList();
+    });
+    function BindExpense() {
+        $.ajax({
+            url: "BindExpense",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlitemname").empty();
+                $("#ddlitemname").append($("<option></option>").val('0').html('--Select Expense Item--'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlitemname").append($("<option></option>").val(item.ExpenseItemID).html(item.ItemName));
+                });
+            }
+        });
+    }
+    function BindBranch() {
+        $.ajax({
+            url: "BindBranch",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlBranch").empty();
+                $("#ddlBranch").append($("<option></option>").val('0').html('--Select Branch--'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlBranch").append($("<option></option>").val(item.OfficeBranchID).html(item.BranchName + ' - ' + item.Contact));
+                });
+            }
+        });
+    }
+    function BindParty() {
+        $.ajax({
+            url: "BindParty",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlpartyname").empty();
+                $("#ddlpartyname").append($("<option></option>").val('0').html('--Select Party--'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlpartyname").append($("<option></option>").val(item.PartyID).html(item.PartyName));
+                });
+            }
+        });
+    }
+    var jsonExpenseInvoiceDetails = {};
+    function SaveExpenseInvoice() {
+        jsonExpenseInvoiceDetails.ExpenseItemID = $('#ddlitemname option:selected').val();
+        jsonExpenseInvoiceDetails.PartyId = $('#ddlpartyname option:selected').val();
+        jsonExpenseInvoiceDetails.BillDate = $('#txtdate').val();
+        jsonExpenseInvoiceDetails.Amount = $('#txtamount').val();
+        jsonExpenseInvoiceDetails.PaidBy = $('#ddlPaidBy option:selected').val();
+        jsonExpenseInvoiceDetails.OfficeBranchID = $('#ddlBranch option:selected').val();
+        jsonExpenseInvoiceDetails.Details = $('#txtdetail').val();
+    }
+    $(document).on('click', '#btnSaveExpenseInvoice', function () {
+      //  if (ValidateBranchSalesTransaction() == true) {
+        SaveExpenseInvoice();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertExpenses",
+                data: { ExpenseInvoiceModel: JSON.stringify(jsonExpenseInvoiceDetails) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindExpenseInvoiceTransactionList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+       // }
+    });
+
+    function BindExpenseInvoiceTransactionList() {
+        $.ajax({
+            url: "GetExpensesDetail",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tr;
+                var jsonObj = JSON.parse(data);
+
+                $.each(jsonObj, function (key, item) {
+                    var date = new Date(parseInt(item.BillDate.substring(6, item.BillDate.length - 2)));
+                    var dtbilldate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                    tr += '<tr>';
+                    tr += '<td>' + dtbilldate + '</td>';
+                    tr += '<td>' + item.OfficeBranchID + '</td>';
+                    tr += '<td>' + item.ExpenseItemID + '</td>';
+                    tr += '<td>' + item.Amount + '</td>';
+                    tr += '<td>' + item.PartyId + '</td>';
+                    tr += '<td>' + item.Details + '</td>';
+                    tr += '<td>' + item.PaidBy + '</td>';
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='GetExpensesDetailById(" + item.ExpenseID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='ExpenseInvoiceTransactionDelete(" + item.ExpenseID + ")' ></i></a></td>");
+                    tr += '</tr>';
+                });
+                $('#tblExpenseInvoiceTransationbody').html(tr);
+            }
+        });
+    }
+
+    function GetExpensesDetailById(id) {
+        $('#btnUpdateExpense').show();
+        $('#btnSaveExpense').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetExpensesDetailById",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                var date = new Date(parseInt(jsonObj[0].BillDate.substring(6, jsonObj[0].BillDate.length - 2)));
+                var dtbilldate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                $('#hdnExpenseID').val(jsonObj[0].ExpenseID);
+                $('#ddlitemname').val(jsonObj[0].ExpenseItemID);
+                $('#ddlpartyname').val(jsonObj[0].PartyId);
+                $('#txtamount').val(jsonObj[0].Amount);
+                $('#txtdate').val(dtbilldate);
+                $('#ddlBranch').val(jsonObj[0].OfficeBranchID);
+                $('#txtdetail').val(jsonObj[0].Details);
+                $('#ddlPaidBy').val(jsonObj[0].PaidBy);
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdateExpenseInvoice', function () {
+       // if (ValidateBranchSalesTransaction() == true) {
+        jsonExpenseInvoiceDetails.ExpenseID = $('#hdnExpenseID').val();
+        SaveExpenseInvoice();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateExpenses",
+                data: { ExpenseInvoiceModel: JSON.stringify(jsonExpenseInvoiceDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    $('#btnSaveExpense').show();
+                    $('#btnUpdateExpense').hide();
+                    BindExpenseInvoiceTransactionList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        //}
+    });
+    function ExpenseInvoiceTransactionDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteExpenses",
+            data: { ID: id },
+            success: function (data) {
+                BindExpenseInvoiceTransactionList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    function Clear() {
+        $('#ddlitemname').val(0);
+        $('#ddlpartyname').val(0);
+        $('#txtdate').val('');
+        $('#txtamount').val('');
+        $('#ddlBranch').val(0);
+        $('#txtdetail').val('');
+    }
+    function ValidateExpenseInvoiceTransaction() {
+        if ($("#ddlitemname").val() == 0) {
+            alert('Please select Expense Item');
+            return false;
+        }
+        if ($("#txtamount").val() == '') {
+            alert('Please enter amount');
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Expense Invoice Transaction</h4>
+    </div>
+    @*<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.aspx">Laundry</a></li>
+            <li class="active">Customer Master</li>
+        </ol>
+    </div>*@
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnExpenseID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">Item name</label>
+                    <div>
+                        <select class="form-control" id="ddlitemname" Width="100%" class="form-control" Width="100%"></select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Party Name</label>
+                    <select class="form-control" id="ddlpartyname" class="form-control" Width="100%">
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Date</label>
+                    <div>
+                        <input type="text" id="txtdate" Width="100%" class="form-control mydatepicker" placeholder="Enter Date" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Amount</label>
+                    <div>
+                        <input type="text" id="txtamount" Width="100%" class="form-control" placeholder="Enter Amount" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Contact </label>
+                    <div>
+                        <input type="text" id="txtcontact" Width="100%" class="form-control" placeholder="Enter Contact" />
+                    </div>
+                </div>  
+
+                <div class="form-group col-md-3">
+                    <label>Paid By</label>
+                    <div>
+                        <select class="form-control" id="ddlPaidBy" class="form-control" Width="100%">
+                            <option value="1">Cash</option>
+                            <option value="2">Cheque</option>
+                            <option value="3">Card</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Branch</label>
+                    <div>
+                        <select class="form-control" id="ddlBranch" class="form-control" Width="100%">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Detail</label>
+                    <div>
+                        <textarea name="detail" rows="2" cols="20" id="txtdetail" class="form-control" placeholder="Enter Detail" style="height:70px;width:100%;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" id="btnSaveExpense">
+                            <button type="button" id="btnSaveExpenseInvoice" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateExpense">
+                            <button type="button" id="btnUpdateExpenseInvoice" class="waves-button-input">Update</button>
+                        </i>
+
+                    </div> 
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+        </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table id="tblExpenseInvoiceTransation" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Date</label></th>
+                                    <th><label>Branch</label></th>
+                                    <th><label>Name</label></th>
+                                    <th><label>Amount</label></th>
+                                    <th><label>Party Name</label></th>
+                                    @*<th><label>Contact</label></th>*@
+                                    <th><label>Details</label></th>
+                                    <th><label>Paid By</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblExpenseInvoiceTransationbody"></tbody>
+                        </table>
+                        @*<table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="CheckBox1"></th>
+                                    <th><label>Date</label></th>
+                                    <th><label>Branch</label></th>
+                                    <th><label>Name</label></th>
+                                    <th><label>Amount</label></th>
+                                    <th><label>Party Name</label></th>
+                                    <th><label>Contact </label></th>
+                                    <th><label>Paid By </label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>31/3/2017</td>
+                                    <td>HO</td>
+                                    <td>Rent</td>
+                                    <td>50.000</td>
+                                    <td>Urvish</td>
+                                    <td>8888666688</td>
+                                    <td>Cash</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>31/3/2017</td>
+                                    <td>HO</td>
+                                    <td>Rent</td>
+                                    <td>50.000</td>
+                                    <td>Urvish</td>
+                                    <td>8888666688</td>
+                                    <td>Cash</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>31/3/2017</td>
+                                    <td>HO</td>
+                                    <td>Rent</td>
+                                    <td>50.000</td>
+                                    <td>Urvish</td>
+                                    <td>8888666688</td>
+                                    <td>Cash</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>31/3/2017</td>
+                                    <td>HO</td>
+                                    <td>Rent</td>
+                                    <td>50.000</td>
+                                    <td>Urvish</td>
+                                    <td>8888666688</td>
+                                    <td>Cash</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

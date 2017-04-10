@@ -1,0 +1,214 @@
+2017-03-20 10:45:15.0155|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 14:34:11.2644|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 14:34:28.9513|ERROR|LoggerFactory|A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) -    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at System.Data.Linq.SqlClient.SqlConnectionManager.UseConnection(IConnectionUser user)
+   at System.Data.Linq.SqlClient.SqlProvider.get_IsSqlCe()
+   at System.Data.Linq.SqlClient.SqlProvider.InitializeProviderMode()
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.DataContext.ExecuteMethodCall(Object instance, MethodInfo methodInfo, Object[] parameters)
+   at Integration_Repository.LaundryDBDataContext.SP_groups_SelectOne(Nullable`1 groupID) in D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\LaundryDB.designer.cs:line 578
+   at IntegrationAPI.Partial.groups_Entity.GetgroupsDetailById(clsgroups obj) in D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\groups_Entity.cs:line 72
+2017-03-20 14:34:28.9819|ERROR|LoggerFactory|A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) -    at IntegrationAPI.Partial.groups_Entity.GetgroupsDetailById(clsgroups obj) in D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\groups_Entity.cs:line 78
+   at IntegrationAPI.Services.groupsService.GetgroupsDetailById(clsgroups obj) in D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Services\groupsService.cs:line 49
+2017-03-20 14:34:28.9819|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2017-03-20 14:39:13.4414|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 14:48:55.0419|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 14:59:06.9939|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:01:51.1598|ERROR|LoggerFactory|The query results cannot be enumerated more than once. - The query results cannot be enumerated more than once. -    at System.Data.Linq.SqlClient.SqlProvider.OneTimeEnumerable`1.GetEnumerator()
+   at System.Data.Linq.SqlClient.SqlProvider.SingleResult`1.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at IntegrationAPI.Partial.groups_Entity.GetgroupsDetail(clsgroups obj) in D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\groups_Entity.cs:line 33
+2017-03-20 15:01:51.1758|ERROR|LoggerFactory|The query results cannot be enumerated more than once. - The query results cannot be enumerated more than once. -    at IntegrationAPI.Partial.groups_Entity.GetgroupsDetail(clsgroups obj) in D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\groups_Entity.cs:line 38
+   at IntegrationAPI.Services.groupsService.GetgroupsDetail(clsgroups obj) in D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Services\groupsService.cs:line 28
+2017-03-20 15:01:51.1768|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2017-03-20 15:01:51.1768|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:01:51.3247|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"}]
+2017-03-20 15:01:51.3247|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:02:23.1300|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:10:29.6867|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:13:42.1582|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"}]
+2017-03-20 15:13:42.2033|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:15:46.6319|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:18:51.6574|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:18:51.6574|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:18:51.7988|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:20:02.2808|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:20:15.3277|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:24:17.1442|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:25:08.6024|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:25:15.9918|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:26:57.5168|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:27:26.9910|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:27:38.6352|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:39:04.9777|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:39:07.7236|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:39:07.7236|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:39:26.4977|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:39:27.2159|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:39:27.2159|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:40:28.9975|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:40:29.8453|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:40:29.8453|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:41:56.9502|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:41:57.7620|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:41:57.7620|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:42:27.1971|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:42:28.0124|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:42:28.0124|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:43:39.5693|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:43:40.2369|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:43:40.2369|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:44:30.6927|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:44:39.0263|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:44:43.9761|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:49:33.0218|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:49:41.9141|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:49:44.8918|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:56:19.7717|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:56:32.3707|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:56:37.9409|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 15:58:36.1924|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 15:58:40.0207|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 15:58:42.6021|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:00:33.6689|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:00:36.5300|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:00:38.6119|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:03:51.3844|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:03:54.0670|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:03:54.0670|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:05:55.8355|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:05:57.1034|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:05:57.1034|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:07:58.3291|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:07:59.5828|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:07:59.5828|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:11:15.7143|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:11:16.5929|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:11:16.5929|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:12:10.6351|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:12:11.7658|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:12:11.7658|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:14:20.2552|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:14:21.6799|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:14:21.7022|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:19:06.1385|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:19:17.0236|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:19:17.0236|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:36:50.9345|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:37:00.1650|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:37:15.9885|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:37:40.7346|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:38:21.2558|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:38:21.2558|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:38:21.2558|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:38:21.2558|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:38:21.3959|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:38:21.3959|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:38:21.3959|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:38:21.3959|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:38:52.0274|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:38:53.6340|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:38:53.6340|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:46:19.0045|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:46:22.6055|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:46:22.6055|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:57:04.7698|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:57:07.4993|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:57:07.4993|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 16:57:44.7069|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 16:57:44.7977|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 16:57:44.7977|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:11:26.1057|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:11:26.4651|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:11:26.4651|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:17:33.2041|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:17:33.2483|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:17:33.2483|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:21:05.6681|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:21:05.6852|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:21:05.6852|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:23:20.8083|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:23:20.8620|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:23:20.8767|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:25:51.6481|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:25:51.7329|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:25:51.7329|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:33:56.3758|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:33:56.4459|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:33:56.4459|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:36:19.7979|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:36:19.8766|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:36:19.8766|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:38:17.2939|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:38:17.3134|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:38:17.3134|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:49:09.6426|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:49:10.7183|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:49:10.7183|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 17:53:00.8285|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 17:53:00.8345|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 17:53:00.8345|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:02:06.3270|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:02:06.6242|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:02:06.6242|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:02:22.6884|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:02:22.7206|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:02:22.7206|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:02:30.0252|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:02:30.0821|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:02:31.0953|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:04:25.5753|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:04:25.6927|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:04:25.6927|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:05:05.2986|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:07:07.3813|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:08:34.1573|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:09:14.6812|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:09:16.5164|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:09:16.5204|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:09:16.5204|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:14:57.7195|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:14:58.8045|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:14:58.8045|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:15:08.5817|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:15:09.9711|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:15:09.9711|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:20:42.8358|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:21:58.7462|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:21:58.7562|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:22:01.0706|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:22:03.0753|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:22:03.0753|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:22:03.0753|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:22:03.1029|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:22:03.1029|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:24:59.0947|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:25:00.1134|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:25:00.1144|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:26:18.8315|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:26:20.0471|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:26:20.0531|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:27:17.1051|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:27:18.5944|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:27:18.5944|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:34:07.4565|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:34:08.3755|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:34:08.3755|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:41:14.0325|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:41:15.8238|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:41:15.8238|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :
+2017-03-20 18:45:28.4544|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-20 18:45:29.7474|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"},{"GroupID":2,"InstanceID":1,"UserID":1,"GroupName":"group2","GroupCode":"grp002","ColorCode":"#ffffff","Status":1,"CreatedDate":"\/Date(1489553346780)\/"}]
+2017-03-20 18:45:29.7474|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :

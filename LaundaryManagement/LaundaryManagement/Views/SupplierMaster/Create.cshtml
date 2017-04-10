@@ -1,0 +1,329 @@
+﻿@{
+    ViewBag.Title = "Supplier Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    var jsonSupplierDetails = {};
+    function SaveSupplier() {
+        jsonSupplierDetails.SupplierName = $('#txtcname').val();
+        jsonSupplierDetails.CivilNumber = $('#txtcivilno').val();
+        jsonSupplierDetails.Email = $('#txtEmail').val();
+        jsonSupplierDetails.Address = $('#txtaddress').val();
+        jsonSupplierDetails.Balance = $('#txtbalance').val();
+        jsonSupplierDetails.Contact = $('#txtcontact').val();
+        jsonSupplierDetails.Status = $('#ddlstatus option:selected').val();
+    }
+
+    $(document).on('click', '#btnSaveSupplierMaster', function () {
+        if (ValidateSupplier() == true) {
+            SaveSupplier();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertSupplier",
+                data: { SupplierMasterModel: JSON.stringify(jsonSupplierDetails) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindSupplierMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    $(document).ready(function () {
+        $('#btnUpdateSupplier').hide();
+        BindSupplierMasterList();
+    });
+    function BindSupplierMasterList() {
+        $.ajax({
+            url: "GetSupplierDetail",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tr;
+                var jsonObj = JSON.parse(data);
+                $.each(jsonObj, function (key, item) {
+                    tr += '<tr>';
+                    tr += '<td>' + item.SupplierName + '</td>';
+                    tr += '<td>' + item.CivilNumber + '</td>';
+                    tr += '<td>' + item.Email + '</td>';
+                    tr += '<td>' + item.Address + '</td>';
+                    tr += '<td>' + item.Balance + '</td>';
+                    tr += '<td>' + item.Contact + '</td>';
+                    if (item.Status == 1) {
+                        item.Status = "Active";
+                    }
+                    else if (item.Status == 2) {
+                        item.Status = "InActive";
+                    }
+                    tr += ("<td>" + item.Status + "</td>");
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='SupplierMasterByID(" + item.SupplierID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='SupplierMasterDelete(" + item.SupplierID + ")' ></i></a></td>");
+
+                  //  tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='SupplierMasterByID(" + item.SupplierID + ")' >Edit</button></td>");
+                  //  tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='SupplierMasterDelete(" + item.SupplierID + ")' >Delete</button></td>");
+                    tr += '</tr>';
+                });
+                $('#tblSupplierbody').html(tr);
+            },
+            error: function (msg) { alert(msg); }
+        });
+    }
+    function SupplierMasterByID(id) {
+        $('#btnUpdateSupplier').show();
+        $('#btnSaveSupplier').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetSuppliersDetailBYId",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $('#hdnSupplierID').val(jsonObj[0].SupplierID);
+                $('#txtcname').val(jsonObj[0].SupplierName);
+                $('#txtcivilno').val(jsonObj[0].CivilNumber);
+                $('#txtEmail').val(jsonObj[0].Email);
+                $('#txtaddress').val(jsonObj[0].Address);
+                $('#txtbalance').val(jsonObj[0].Balance);
+                $('#txtcontact').val(jsonObj[0].Contact);
+                $('#ddlstatus').val(jsonObj[0].Status);
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdateSupplierMaster', function () {
+        if (ValidateSupplier() == true) {
+            jsonSupplierDetails.SupplierID = $('#hdnSupplierID').val();
+            SaveSupplier();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateSupplier",
+                data: { SupplierMasterModel: JSON.stringify(jsonSupplierDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    $('#btnSaveSupplier').show();
+                    $('#btnUpdateSupplier').hide();
+                    BindSupplierMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    function SupplierMasterDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteSupplier",
+            data: { ID: id },
+            success: function (data) {
+                BindSupplierMasterList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    function ValidateSupplier() {
+        if ($("#txtcname").val() == '') {
+            alert('Please enter supplier name');
+            return false;
+        }
+        if ($("#txtcontact").val() == '') {
+            alert('Please enter contact No');
+            return false;
+        }
+        if ($("#txtbalance").val() == '') {
+            alert('Please enter balance');
+            return false;
+        }
+
+        return true;
+
+    }
+    function Clear() {
+        $('#txtcname').val('');
+        $('#txtcivilno').val('');
+        $('#txtEmail').val('');
+        $('#txtaddress').val('');
+        $('#txtbalance').val('');
+        $('#txtcontact').val('');
+       
+    }
+</script>
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Supplier Master</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="~/Home/index">Laundry</a></li>
+            <li class="active">Supplier Master</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnSupplierID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">Name</label>
+                    <div>
+                        <input type="text" id="txtcname" Width="100%" class="form-control" placeholder="Enter Supplier Name" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Civil No</label>
+                    <div>
+                        <input type="text" id="txtcivilno" Width="100%" class="form-control" placeholder="Enter Civil No" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Email</label>
+                    <div>
+                        <input type="text" id="txtEmail" Width="100%" class="form-control" placeholder="Enter Email" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Contact</label>
+                    <div>
+                        <input type="text" id="txtcontact" Width="100%" class="form-control" placeholder="Enter Contact" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Address</label>
+                    <div>
+                        <textarea name="address" rows="2" cols="20" id="txtaddress" class="form-control" placeholder="Enter Address" style="height:70px;width:100%;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Balance</label>
+                    <div>
+                        <input type="text" id="txtbalance" Width="100%" class="form-control" placeholder="Enter Balance" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Status</label>
+                    <div>
+                        <select class="form-control" id="ddlstatus" class="form-control" Width="100%">
+                            <option value="1">Active</option>
+                            <option value="2">InActive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper"  id="btnSaveSupplier">
+                            <button type="button" id="btnSaveSupplierMaster" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateSupplier">
+                            <button type="button" id="btnUpdateSupplierMaster" class="waves-button-input">Update</button>
+                        </i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+                <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+            </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table id="tblSupplier" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Name</label></th>
+                                    <th><label>Civil No</label></th>
+                                    <th><label>Email</label></th>
+                                    <th><label>Address</label></th>
+                                    <th><label>Contact</label></th>
+                                    <th><label>Balance</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblSupplierbody"></tbody>
+                        </table>
+                        @*<table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" id="CheckBox5"></th>
+                                        <th><label>Name</label></th>
+                                        <th><label>Civil No</label></th>
+                                        <th><label>Balance</label></th>
+                                        <th><label>Contact</label></th>
+                                        <th><label>Status</label></th>
+                                        <th><label>Action</label></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" id="CheckBox5"></td>
+                                        <td>Supplier1</td>
+                                        <td>12345</td>
+                                        <td>0.000</td>
+                                        <td>8888888</td>
+                                        <td>Active</td>
+                                        <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="CheckBox5"></td>
+                                        <td>Supplier1</td>
+                                        <td>12345</td>
+                                        <td>0.000</td>
+                                        <td>8888888</td>
+                                        <td>Active</td>
+                                        <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="CheckBox5"></td>
+                                        <td>Supplier1</td>
+                                        <td>12345</td>
+                                        <td>0.000</td>
+                                        <td>8888888</td>
+                                        <td>Active</td>
+                                        <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="CheckBox10"></td>
+                                        <td>Supplier1</td>
+                                        <td>12345</td>
+                                        <td>0.000</td>
+                                        <td>8888888</td>
+                                        <td>Active</td>
+                                        <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

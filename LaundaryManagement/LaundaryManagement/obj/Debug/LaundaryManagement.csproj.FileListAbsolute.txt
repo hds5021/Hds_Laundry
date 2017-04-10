@@ -1,0 +1,453 @@
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\csc.exe
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Collections.Immutable.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Reflection.Metadata.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\vbc.exe
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe.config
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll.config
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.pdb
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\EntityFramework.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Web.Infrastructure.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Owin.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\WebGrease.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.pdb
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\EntityFramework.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.csprojResolveAssemblyReference.cache
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.pdb
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.dll
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.xml
+D:\@Chaitali's Work\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\csc.exe
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Collections.Immutable.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Reflection.Metadata.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\vbc.exe
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe.config
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll.config
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.pdb
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Web.Infrastructure.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Owin.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\WebGrease.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.pdb
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.dll
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.pdb
+F:\Download\WebApiDataProject\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.csprojResolveAssemblyReference.cache
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\csc.exe
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Collections.Immutable.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Reflection.Metadata.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\vbc.exe
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe.config
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll.config
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.pdb
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Web.Infrastructure.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Owin.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\WebGrease.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.pdb
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.csprojResolveAssemblyReference.cache
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.dll
+D:\Kandarpsir\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\csc.exe
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Collections.Immutable.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Reflection.Metadata.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\vbc.exe
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe.config
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll.config
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Web.Infrastructure.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Owin.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\WebGrease.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.csprojResolveAssemblyReference.cache
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.pdb
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\csc.exe
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Collections.Immutable.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Reflection.Metadata.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\vbc.exe
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe.config
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll.config
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.pdb
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\EntityFramework.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Web.Infrastructure.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Owin.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\WebGrease.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.pdb
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\EntityFramework.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.pdb
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\csc.exe
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Collections.Immutable.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\System.Reflection.Metadata.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\vbc.exe
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\roslyn\VBCSCompiler.exe.config
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll.config
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\LaundaryManagement.pdb
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\EntityFramework.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Web.Infrastructure.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Owin.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\WebGrease.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Net.Http.Formatting.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Http.WebHost.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Helpers.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Mvc.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Optimization.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.Razor.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Deployment.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\System.Web.WebPages.Razor.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Antlr3.Runtime.pdb
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Newtonsoft.Json.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\EntityFramework.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\EntityFramework.SqlServer.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Google.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.csprojResolveAssemblyReference.cache
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.dll
+D:\Rikul\Laundry Mgmt\LaundaryManagement(27-03-2017)\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.pdb
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\bin\Microsoft.ReportViewer.WebForms.dll
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\obj\Debug\RdlCompile.cache
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\obj\Debug\RdlCompile.compiled
+D:\@Chaitali's Work\LaundryManagement\LaundaryManagement\LaundaryManagement\obj\Debug\LaundaryManagement.csprojResolveAssemblyReference.cache

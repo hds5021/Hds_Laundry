@@ -1,0 +1,635 @@
+﻿
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/png" sizes="16x16" href="~/plugins/images/favicon.png" />
+    <title>Fiona Laundry Management</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Menu CSS -->
+    <link href="~/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet" />
+    <!-- morris CSS -->
+    <link href="~/plugins/bower_components/morrisjs/morris.css" rel="stylesheet" />
+    <link href="~/plugins/bower_components/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet" />
+    <link href="~/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet" />
+    <!-- Color picker plugins css -->
+    <link href="~/plugins/bower_components/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet" />
+    <!-- Date picker plugins css -->
+    <link href="~/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker plugins css -->
+    <link href="~/plugins/bower_components/timepicker/bootstrap-timepicker.min.css" rel="stylesheet" />
+    <link href="~/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/plugins/bower_components/dropify/dist/css/dropify.min.css" />
+    <!-- animation CSS -->
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <!-- color CSS -->
+    <link href="~/css/colors/megna.css" id="theme" rel="stylesheet" />
+    @*<%--
+    <link type='text/css' rel='stylesheet' href='http://bhartitechnologies.com/laundry/application/assets/public/css/bootstrap-multiselect.css' />--%>*@
+    <link href="~/css/bootstrap-multiselect.css" rel="stylesheet" />
+   
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top m-b-0">
+                <div class="navbar-header">
+                    <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+                    <div class="top-left-part"><a class="logo" href="index.html"><b><img src="~/plugins/images/eliteadmin-logo.png" alt="home" /></b><span class="hidden-xs"><strong>elite</strong>hospital</span></a></div>
+                    <ul class="nav navbar-top-links navbar-left hidden-xs">
+                        <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
+                        <li>
+                            <h3 class="text-white" style="padding-top:5px"><strong>Fiona Laundry Management System</strong></h3>
+                            @*<div role="search" class="app-search hidden-xs">
+                                <input type="text" placeholder="Search..." class="form-control"> <a href="#"><i class="fa fa-search"></i></a>
+                            </div>*@
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-top-links navbar-right pull-right">
+
+
+                        <!-- /.dropdown -->
+                        @*<li class="dropdown">
+                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="~/plugins/images/users/d1.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Dr. Steave</b> </a>
+                            <ul class="dropdown-menu dropdown-user animated flipInY">
+                                <li><a href="stmMyProfile.aspx"><i class="ti-user"></i>  My Profile</a></li>
+                                <li><a href="stmChangePassword.aspx"><i class="ti-settings"></i>  Change Password</a></li>
+                                <li><a href="login.aspx"><i class="fa fa-power-off"></i>  Logout</a></li>
+                            </ul>
+                            
+                        </li>*@
+
+                    </ul>
+                </div>
+                <!-- /.navbar-header -->
+                <!-- /.navbar-top-links -->
+                <!-- /.navbar-static-side -->
+            </nav>
+            <!-- Left navbar-header -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+                    <ul class="nav" id="side-menu">
+
+                       
+                        @*<li class="user-pro">
+                            <a href="#" class="waves-effect">
+                                <img src="plugins/images/users/d1.jpg" alt="user-img" class="img-circle"> <span class="hide-menu">Dr. Steve Gection<span class="fa arrow"></span></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
+                                <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
+                                <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
+                                <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </li>*@
+                      
+                        @*<li class="nav-small-cap m-t-10">--- Main Menu</li>*@
+                        <li> <a href="index.aspx" class="waves-effect"><i class="ti-dashboard p-r-10"></i> <span class="hide-menu">Dashboard</span></a> </li>
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="linea-icon linea-basic fa-fw text-danger" data-icon="7"></i> <span class="hide-menu text-danger"> Master <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li> <a href="~/ItemMaster/Create"> Items </a></li>
+                                <li> <a href="~/GroupMaster/Create"> Groups </a></li>
+                                <li> <a href="~/CustomerMaster/Create"> Customer</a> </li>
+                                <li> <a href="~/CustomerBranchMaster/Create"> Customer Branch </a></li>
+                                <li> <a href="~/PartyMaster/Create"> Party </a></li>
+                                <li> <a href="~/SupplierMaster/Create"> Supplier </a></li>
+                                <li> <a href="~/PurchaseMaster/Create"> Purchase </a></li>
+                                <li> <a href="~/ExpenseMaster/Create">Expense  </a></li>
+                                <li> <a href="~/OfficeBranchMaster/Create"> Office Branch</a> </li>
+                                <li> <a href="~/SMSTemplateMaster/Create"> SMS Template</a> </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-money p-r-10"></i> <span class="hide-menu"> Transaction <span class="fa arrow"></span></span></a>
+                            <ul class="nav nav-second-level">
+                                <li> <a href="POS.aspx">POS</a></li>
+                                <li> <a href="~/CarpetInvoice/Create">Carpet POS</a></li>
+                                <li> <a href="~/BranchSalesTransaction/Create">Branch Sales</a></li>
+                                <li> <a href="#">Purchase Invoice</a></li>
+                                <li> <a href="~/ExpenseInvoiceTransaction/Create">Expense Invoice</a></li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="icon-chart p-r-10"></i> <span class="hide-menu"> Reports <span class="fa arrow"></span></span></a>
+                            <ul class="nav nav-second-level">
+                                <li> <a href="~/Reports/SalesReport">Daily Sales</a></li>
+                                <li> <a href="~/Reports/DayEndReport">Day End Report</a></li>
+                                <li> <a href="~/Reports/ItemsReport">Itemwise Sales</a></li>
+                                <li> <a href="~/Reports/Create">Groupwise Sales</a></li>
+                                <li> <a href="~/Reports/CustomerSalesReport">Customer Report</a></li>
+                                <li> <a href="~/Reports/CancelledBillsReport">Cancelled Bills</a></li>
+                                <li> <a href="~/Reports/PurchaseReport">Purchase Report</a></li>
+                                <li> <a href="~/Reports/ExpenseReport">Expense Report</a></li>
+                                <li> <a href="~/Reports/ProfitableReport">Profitable Report</a></li>
+                                <li><a href="~/Reports/SMSReport">SMS Report</a></li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu"> System <span class="fa arrow"></span></span></a>
+                            <ul class="nav nav-second-level">
+                                <li> <a href="~/stmMyProfile/Create">My Profile</a></li>
+                                <li> <a href="~/stmChangePassword/Create">Change Passsword</a></li>
+                                <li> <a href="#">Backup & Restore</a></li>
+                                <li> <a href="~/stmSystemReset/Create">System Reset</a></li>
+                                <li> <a href="~/stmSystemUsers/Create">System Users</a></li>
+                                <li> <a href="~/stmSMSSetting/Create">SMS Settings</a></li>
+                                <li> <a href="~/stmPOSSetting/Create">POS Settings</a></li>
+                                <li> <a href="~/stmSystemSetting/Create">System Settings</a></li>
+                            </ul>
+
+                        </li>
+
+
+                        <li><a href="#" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+                    </ul>
+                    <div class="p-10 hide-menu">
+                        <h5> For Support :</h5>
+                        <p> <i class="fa fa-phone-square"></i> +968 9927 0660</p>
+                        <p> <i class="fa fa-phone-square"></i> +968 9645 1851</p>
+                        <p><%--<i class="icon-envelope "></i>--%><a href="mailto:info@jupitertechnoway.com"> info@jupitertechnoway.com</a></p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Left navbar-header end -->
+            <!-- Page Content -->
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                @RenderBody()
+
+
+
+                </div>
+                <!-- /.container-fluid -->
+                <footer class="footer text-center"> 2017 &copy; All Rights Reserved | Developed By : <a href="http://jupitertechnoway.com/">Jupiter Technoway</a> </footer>
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="~/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="~/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Menu Plugin JavaScript -->
+        <script src="~/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+        <!--slimscroll JavaScript -->
+        <script src="~/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="~/js/waves.js"></script>
+      
+
+        <!--Morris JavaScript -->
+        <script src="~/plugins/bower_components/raphael/raphael-min.js"></script>
+        <script src="~/plugins/bower_components/morrisjs/morris.js"></script>
+        <!-- Sparkline chart JavaScript -->
+        <script src="~/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <!-- jQuery peity -->
+        <script src="~/plugins/bower_components/peity/jquery.peity.min.js"></script>
+        <script src="~/plugins/bower_components/peity/jquery.peity.init.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="~/js/custom.min.js"></script>
+        <script src="~/js/dashboard1.js"></script>
+        <script src="~/js/validator.js"></script>
+        <!--Style Switcher -->
+        <script src="~/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+        <script src="~/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+        <script src="~/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+        <script src="~/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+        <script src="~/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+        <script src="../plugins/bower_components/moment/moment.js"></script>
+        <!-- Clock Plugin JavaScript -->
+        <script src="~/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
+        <!-- Date range Plugin JavaScript -->
+        <script src="~/plugins/bower_components/timepicker/bootstrap-timepicker.min.js"></script>
+        <script src="~/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="~/plugins/bower_components/dropify/dist/js/dropify.min.js"></script>
+
+     
+        <%--
+        <script type='text/javascript' src='http://bhartitechnologies.com/laundry/application/assets/public/js/bootstrap-multiselect.js'></script>--%>
+        <script src="~/js/bootstrap-multiselect.js"></script>
+        <script>
+            $(".colorpicker").asColorPicker();
+            $(".complex-colorpicker").asColorPicker({
+                mode: 'complex'
+            });
+            $(".gradient-colorpicker").asColorPicker({
+                mode: 'gradient'
+            });
+
+            // Date Picker
+            jQuery('.mydatepicker').datepicker();
+
+            // Clock pickers
+            $('#single-input').clockpicker({
+                placement: 'bottom',
+                align: 'left',
+                autoclose: true,
+                'default': 'now'
+
+            });
+
+            $('.clockpicker').clockpicker({
+                donetext: 'Done',
+
+            })
+              .find('input').change(function () {
+                  console.log(this.value);
+              });
+
+            $('#check-minutes').click(function (e) {
+                // Have to stop propagation here
+                e.stopPropagation();
+                input.clockpicker('show')
+                    .clockpicker('toggleView', 'minutes');
+            });
+            if (/mobile/i.test(navigator.userAgent)) {
+                $('input').prop('readOnly', true);
+            }
+
+            jQuery('.mydatepicker, #datepicker').datepicker();
+            jQuery('#datepicker-autoclose').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            jQuery('#date-range').datepicker({
+                toggleActive: true
+            });
+            jQuery('#datepicker-inline').datepicker({
+
+                todayHighlight: true
+            });
+
+            // Daterange picker
+
+            $('.input-daterange-datepicker').daterangepicker({
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-danger',
+                cancelClass: 'btn-inverse'
+            });
+            $('.input-daterange-timepicker').daterangepicker({
+                timePicker: true,
+                format: 'MM/DD/YYYY h:mm A',
+                timePickerIncrement: 30,
+                timePicker12Hour: true,
+                timePickerSeconds: false,
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-danger',
+                cancelClass: 'btn-inverse'
+            });
+            $('.input-limit-datepicker').daterangepicker({
+                format: 'MM/DD/YYYY',
+                minDate: '06/01/2015',
+                maxDate: '06/30/2015',
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-danger',
+                cancelClass: 'btn-inverse',
+                dateLimit: {
+                    days: 6
+                }
+            });
+            $(document).ready(function () {
+                // Basic
+                $('.dropify').dropify();
+
+                // Translated
+                $('.dropify-fr').dropify({
+                    messages: {
+                        default: 'Glissez-déposez un fichier ici ou cliquez',
+                        replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                        remove: 'Supprimer',
+                        error: 'Désolé, le fichier trop volumineux'
+                    }
+                });
+
+                // Used events
+                var drEvent = $('#input-file-events').dropify();
+
+                drEvent.on('dropify.beforeClear', function (event, element) {
+                    return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+                });
+
+                drEvent.on('dropify.afterClear', function (event, element) {
+                    alert('File deleted');
+                });
+
+                drEvent.on('dropify.errors', function (event, element) {
+                    console.log('Has Errors');
+                });
+
+                var drDestroy = $('#input-file-to-destroy').dropify();
+                drDestroy = drDestroy.data('dropify')
+                $('#toggleDropify').on('click', function (e) {
+                    e.preventDefault();
+                    if (drDestroy.isDropified()) {
+                        drDestroy.destroy();
+                    } else {
+                        drDestroy.init();
+                    }
+                })
+            });
+        </script>
+        <script>
+            $("#Dya").val();
+         
+          
+          
+         
+           // Array.FindIndex(a, x => x == value)
+           
+           // var groups_html = '<div class="form-group mbottom0"><label class="control-label col-md-4">Group</label><div class="col-md-8"><select class="form-control group_class" id="ddlGroupName" name="GroupID[]" required="required"><option value="" style="display: none">Select Group</option><option value="2" label="Dry Clean">Dry Clean</option><option value="3" label="Dry Clean">Ironing</option><option value="4">IroningExp</option><option value="5">Washing</option><option value="7">WashingExp</option></select></div></div>';
+     //     var groups_html = '<div class="form-group mbottom0"><label class="control-label col-md-4">Group</label><div class="col-md-8"><select class="form-control group_class" id="ddlGroupName" name="GroupID[]" required="required"><option value="" style="display: none">Select Group</option><option value="2"></option></select></div></div>';
+            
+               // var groups_html = '<div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="' + j + '" class="form-control group_class add' + j + '"  name="GroupID[]"  required="required"></select></div></div>';
+        
+            var html = [
+              //  j++,
+            '<tr>',
+            '<td style="width: 48%;">',
+          //  ghtml,
+         //   groups_html,
+          '<div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id=' + j + ' class="form-control group_class add' + j + '"  name="GroupID[]"  required="required"></select></div></div>',
+            '</td>',
+            '<td>',
+            '<div class="form-group mbottom0">',
+            '<label for="Price" class="control-label col-md-5">Price</label>',
+            '<div class="col-md-7">',
+            '<input type="text" name="Price[]" id="txtGroupPrice" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off">',
+            '</div>',
+            '</div>',
+            '</td>',
+            '<td style="padding-top: 13px;">',
+             '<input type="hidden" id="Add" name="country" value='+j+'>',
+            '<i class="fa fa-plus add_row pointer"  style="color: limegreen;"></i>&nbsp;',
+            '<i class="fa fa-minus delete_row pointer" style="color: red;"></i>',
+            '</td>',
+            '</tr>',
+        ].join('');
+        $(document).ready(function() {
+            changePaginationLinks();
+            $("#PerPage").on("change", function () {
+                $("#list-form").submit();
+            });
+
+            $("#form").on("submit", function () {
+                if($("#formtype").val()==""){
+                    return false;
+                }
+            });
+
+            $("#Search").keydown(function(event){
+                var key = window.event ? event.keyCode : event.which;
+                if(key == 13){
+                    $("#list-form").submit();
+                }
+            });
+
+            $("#form").on("keypress", ".DecimalOnly", function( event ) {
+                var key = window.event ? event.keyCode : event.which;
+                var keychar = String.fromCharCode(key);
+                if (key == 0) {
+                    return;
+                }
+                if(key == 46){
+                    var str = $(this).val().toString();
+                    if(str.indexOf('.') != -1){
+                        event.preventDefault();
+                        event.stopPropagation();
+                        return false;
+                    }
+                }
+                reg = /[\t\d\b.]+$/;
+                return reg.test(keychar);
+            });
+
+            $("#deleteform").on("submit", function () {
+                if($("#deleteformtype").val()==""){
+                    return false;
+                }
+            });
+
+            $("#ResetButton").on("click",function(){
+                resetAll();
+            });
+
+            $("#AddButton").click(function(){
+                $("#ItemID").val("");
+                $("#formtype").val("add");
+                $("#submit").trigger("click");
+            });
+
+            $("#DeleteButton").click(function(){
+                if($('.table').find('input[type=checkbox]:checked').length == 0)
+                {
+                    alert('Please select at least one checkbox');
+                } else {
+                    if(confirm("Are You Sure to Delete Selected Records.!!!")) {
+                        $("#deleteformtype").val("delete");
+                        $("#deletesubmit").trigger("click");
+                    }
+                }
+            });
+            $(".EditButton").click(function(){
+                if($("#"+$(this).attr("id")).html()=="Save"){
+                    $("#formtype").val("save");
+                    $("#submit").trigger("click");
+                } else {
+                    $(".EditButton").html("Edit");
+                    $(".EditButton").removeClass("edit-button-color");
+                    $(".EditButton").addClass("button-color");
+                    loadData($(this).attr("id"));
+                }
+            });
+            $("#grouplist").on("keydown", ".price_class", function ( event ) {
+                var key = window.event ? event.keyCode : event.which;
+                if(key == 13){
+                    var row = $(this).closest('TR');
+                    row.after(html);
+                    row.next().find(".group_class").focus();
+                }
+            });
+            $("#grouplist").on("keydown", ".group_class", function ( event ) {
+                var key = window.event ? event.keyCode : event.which;
+                if(key == 13){
+                    $(this).closest('TR').find(".price_class").focus();
+                }
+            });
+            $("#ItemName").on("keydown", function ( event ) {
+                var key = window.event ? event.keyCode : event.which;
+                if(key == 13){
+                    $('#grouplist > tbody > tr:first').find(".group_class").focus();
+                }
+            });
+            $("#grouplist").on("click", ".delete_row", function () {
+                $(this).parent().parent().remove();
+                var index = $('#grouplist > tbody > tr:last').index();
+                if(index < 0){
+                    $("#grouplist").append(html);
+                }
+            });
+            $("#grouplist").on("click", ".add_row", function () {
+                 
+                //alert(j);
+                $(this).closest('TR').after(html);
+              //  BindGroup();
+            });
+            //function BindGroup() {
+            //    $.ajax({
+            //        url: "BindGroup",
+            //        type: 'POST',
+            //        contentType: "application/json; charset=utf-8",
+            //        dataType: "json",
+            //        success: function (data) {
+            //            var jsonObj = JSON.parse(data);
+            //            //  $("#ddlGroupName").empty();
+            //            //  alert(j);
+            //            //  var ab = "";
+            //         //   if  (".group_class").em
+            //            //{
+            //            //var prod = $("select.group_class option:selected").val();
+
+            //            //if (prod == "" || prod == 0) {
+            //            //    $("select.group_class").attr('disabled', 'true');
+            //            //}
+
+            //          //  else {
+            //                $(".group_class").append($("<option></option>").val('0').html('Select Group'));
+            //                $.each(jsonObj, function (key, item) {
+            //                    // ab += [item.GroupName, ","
+            //                    //  ].join('');
+            //                    $(".group_class").append($("<option ></option>").val(item.GroupID).html(item.GroupName));
+            //                });
+            //            //}
+            //               // var groups_html = '<div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="abc" class="form-control group_class add' + j + '"  name="GroupID[]"  required="required"></select></div></div>';
+            //           // }
+            //            //$("#Add").val(ab);
+            //        }
+            //    });
+          //  }
+            $("#grouplist").on("change", ".group_class", function(){
+                var id = $(this).val();
+                var duplicate = false;
+                $(".group_class").not(this).each(function () {
+                    if($(this).val() == id){
+                        duplicate = true;
+                    }
+                });
+                if(duplicate){
+                    alert("Sorry, you have already selected this group.!!!");
+                    $(this).closest('tr').find(".price_class").val("");
+                    $(this).val("");
+                }
+            });
+            $("#CustomerID").multiselect({
+                checkboxName: 'CustomerID',
+                buttonWidth: '100%',
+                maxHeight: 200,
+                numberDisplayed: 1,
+                enableFiltering: true,
+                enableCaseInsensitiveFiltering: true,
+                filterPlaceholder: 'Search Customer'
+            });
+            resetAll();
+        });
+
+        function resetAll() {
+            $("#ItemID").val("");
+            $("#CustomerID").multiselect('select',"");
+//            $("#CustomerID").multiselect('refresh');
+            $("#CustomerID").val("");
+            $(".EditButton").html("Edit");
+            $(".EditButton").removeClass("edit-button-color");
+            $(".EditButton").addClass("button-color");
+            $("#ItemName").val("");
+            $("#PriceRate").val("Fixed");
+            $("#Status").val("Active");
+            $('#grouplist > tbody > tr').remove();
+            $("#grouplist").append(html);
+            $("#ResetButton").hide();
+        }
+
+        function loadData(id) {
+            //Change Edit Button Text & Color
+            $("#CustomerID").multiselect('select',"");
+//            $("#CustomerID").multiselect('refresh');
+            $("#"+id).removeClass("button-color");
+            $("#"+id).addClass("edit-button-color");
+            $("#"+id).html("Save");
+            $("#ResetButton").show();
+            //Load Data for Edit
+            $("#ItemID").val(id);
+            $("#CustomerID").multiselect('select', $("#CustomerID_"+id).val());
+//            $("#CustomerID").val($("#CustomerID_"+id).val());
+            $("#ItemName").val($("#ItemName_"+id).html());
+            $("#ItemLocalName").val($("#ItemLocalName_"+id).val());
+            $("#PriceRate").val($("#PriceRate_"+id).val());
+            $("#Status").val($("#Status_"+id).html());
+            var price = JSON.parse($("#Price_"+id).val());
+            $('#grouplist > tbody > tr').remove();
+            $(price).each(function (i, obj) {
+                var row = [
+                    '<tr>',
+                    '<td style="width: 48%;">',
+                    groups_html.replace('value="' + obj.GroupID + '"', 'value="' + obj.GroupID + '" selected="selected"'),
+                   // groups_html.replace('id="' + ddlGroupName + '"', 'value="' + ddlGroupName + '" selected="selected"'),
+                    '</td>',
+                    '<td>',
+                    '<div class="form-group mbottom0">',
+                    '<label for="Price" class="control-label col-md-5">Price</label>',
+                    '<div class="col-md-7">',
+                    '<input type="text" name="Price[]" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="'+obj.Price+'" maxlength="6" autocomplete="off">',
+                    '</div>',
+                    '</div>',
+                    '</td>',
+                    '<td style="padding-top: 13px;">',
+                    '<i class="fa fa-plus add_row pointer" style="color: limegreen;"></i>&nbsp;',
+                    '<i class="fa fa-minus delete_row pointer" style="color: red;"></i>',
+                    '</td>',
+                    '</tr>',
+                ].join('');
+                $("#grouplist").append(row);
+            });
+        }
+
+        function changePaginationLinks() {
+            var PerPage = parseInt("5");
+            if((PerPage != undefined) && (PerPage != 5)){
+                var listItems = $(".pagination a");
+                var href;
+                listItems.each(function(index, list) {
+                    href = $(list).attr("href");
+                    if((href != undefined) && (href != "#")) {
+                        $(list).attr("href",href+"?PerPage="+PerPage);
+                    }
+                });
+            }
+        }
+        </script>
+    </form>
+</body>
+</html>

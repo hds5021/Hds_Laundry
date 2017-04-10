@@ -1,0 +1,253 @@
+﻿@{
+    ViewBag.Title = "Purchase Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    var jsonPurchaseDetails = {};
+    function SavePurchaseItem() {
+        jsonPurchaseDetails.ItemName = $('#txtpurname').val();
+        jsonPurchaseDetails.Status = $('#ddlstatus').val();
+    }
+
+    $(document).on('click', '#btnSavePurchaseMaster', function () {
+        if (ValidatePurchaseItem() == true) {
+            SavePurchaseItem();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertPurchaseItem",
+                data: { PurchaseMasterModel: JSON.stringify(jsonPurchaseDetails) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindPurchaseMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    $(document).ready(function () {
+        $('#btnUpdatePurchase').hide();
+        BindPurchaseMasterList();
+    });
+    function BindPurchaseMasterList()
+    {
+        $.ajax({
+            url: "GetPurchaseItemsMasterDetail",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tr;
+                var jsonObj = JSON.parse(data);
+                $.each(jsonObj, function (key, item) {
+                    tr += '<tr>';
+                    tr += '<td>' + item.ItemName + '</td>';
+                    if (item.Status == 1) {
+                        item.Status = "Active";
+                    }
+                    else if (item.Status == 2) {
+                        item.Status = "InActive";
+                    }
+                    tr += ("<td>" + item.Status + "</td>");
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='PurchaseItemByID(" + item.PurchaseItemID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='PurchaseItemDelete(" + item.PurchaseItemID + ")' ></i></a></td>");
+
+                    //tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='PurchaseItemByID(" + item.PurchaseItemID + ")' >Edit</button></td>");
+//tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='PurchaseItemDelete(" + item.PurchaseItemID + ")' >Delete</button></td>");
+                    tr += '</tr>';
+                });
+                $('#tblPurchasebody').html(tr);
+              
+            },
+            error: function (msg) { alert(msg); }
+        });
+    }
+
+    function PurchaseItemByID(id) {
+        $('#btnUpdatePurchase').show();
+        $('#btnSavePurchase').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetPurchaseItemsMasterDetailById",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $('#hdnPurchaseItemID').val(jsonObj[0].PurchaseItemID);
+                $('#txtpurname').val(jsonObj[0].ItemName);
+                $('#ddlstatus').val(jsonObj[0].Status);
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdatePurchaseMaster', function () {
+        if (ValidatePurchaseItem() == true) {
+            jsonPurchaseDetails.PurchaseItemID = $('#hdnPurchaseItemID').val();
+            SavePurchaseItem();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdatePurchaseItemsMaster",
+                data: { PurchaseMasterModel: JSON.stringify(jsonPurchaseDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    $('#btnSavePurchase').show();
+                    $('#btnUpdatePurchase').hide();
+                    BindPurchaseMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    function PurchaseItemDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeletePurchaseItemsMaster",
+            data: { ID: id },
+            success: function (data) {
+                BindPurchaseMasterList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    function ValidatePurchaseItem() {
+        if ($("#txtpurname").val() == '') {
+            alert('Please enter item name');
+            return false;
+        }
+
+        return true;
+
+    }
+    function Clear() {
+        $('#txtpurname').val('');
+    }
+</script>
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Purchase Master</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.aspx">Laundry</a></li>
+            <li class="active">Purchase Master</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnPurchaseItemID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">Name</label>
+                    <div>
+                        <input type="text" id="txtpurname" Width="100%" class="form-control" placeholder="Enter Name" />
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Status</label>
+                    <div>
+                        <select class="form-control" id="ddlstatus" class="form-control" Width="100%">
+                            <option value="1">Active</option>
+                            <option value="2">InActive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" id="btnSavePurchase">
+                            <button type="button" id="btnSavePurchaseMaster" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdatePurchase">
+                            <button type="button" id="btnUpdatePurchaseMaster" class="waves-button-input">Update</button>
+                        </i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+        </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table id="tblPurchase" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Name</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblPurchasebody"></tbody>
+                        </table>
+                        @*<table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="CheckBox6"></th>
+                                    <th><label>Name</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox7"></td>
+                                    <td>Iron</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox8"></td>
+                                    <td>Iron</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox9"></td>
+                                    <td>Iron</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox10"></td>
+                                    <td>Iron</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

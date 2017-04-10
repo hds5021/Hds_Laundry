@@ -1,0 +1,364 @@
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\NLog.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+D:\Dharmesh\Project\IntegrationAPI\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+D:\SigmaProject\Common\Development\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+D:\Dharmesh\Project\New IntegrationAPI\IntegrationAPI\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+F:\ASP.NET\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+E:\@Jupiter\@Product\Laundry Mgmt\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+D:\@Chaitali's Work\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Owin.dll
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.xml
+D:\Kandarpsir\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.OAuth.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.OAuth.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Owin.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.OAuth.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb
+E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.csprojResolveAssemblyReference.cache
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll.config
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\IntegrationAPI.pdb
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.OAuth.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Owin.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\WebGrease.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\EntityFramework.SqlServer.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Integration_Repository.pdb
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Microsoft.Owin.Security.OAuth.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Newtonsoft.Json.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Net.Http.Formatting.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Helpers.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Http.WebHost.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Mvc.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Optimization.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.Razor.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Deployment.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\System.Web.WebPages.Razor.xml
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\bin\Antlr3.Runtime.pdb
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.dll
+D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\IntegrationAPI\obj\Debug\IntegrationAPI.pdb

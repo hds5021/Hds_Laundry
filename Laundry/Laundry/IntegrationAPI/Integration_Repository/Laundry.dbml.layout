@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 23, 34.375" name="Laundry">
+  <DataContextMoniker Name="/LaundryDataContext" />
+  <nestedChildShapes>
+    <classShape Id="38faeb7e-0230-47cd-a0f3-306ce903ab51" absoluteBounds="9.5, 22.25, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/LaundryDataContext/customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce78a82c-3902-461b-81f9-5a19f1db8fbc" absoluteBounds="9.515, 22.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="62b2feb0-5961-4f62-96c8-92928c5d2e04" absoluteBounds="15.25, 22.25, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/LaundryDataContext/customers_branch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8736444b-34a8-4707-ae24-0f3d349164b0" absoluteBounds="15.265, 22.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3210cdb2-81cd-452c-b0e3-b9df067de254" absoluteBounds="6.75, 1, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/LaundryDataContext/EmployeeMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2fb7c58d-05a8-4fa9-976c-e3f1f73cf438" absoluteBounds="6.765, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a807afa-a53e-4e3d-bfe8-a2cd0eaaa1bd" absoluteBounds="3.5, 21.5, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/LaundryDataContext/Expense_Mst" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9fbf5ec4-6917-45dc-960b-4f0b664ad256" absoluteBounds="3.515, 21.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bc3530a2-597c-49ec-877b-f6d599627e98" absoluteBounds="6.25, 21.5, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/LaundryDataContext/expense" />
+      <nestedChildShapes>
+        <elementListCompartment Id="49bbd743-1516-4424-ad8e-6c7ec360fdfb" absoluteBounds="6.265, 21.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dea7ac17-86df-4d58-8dc2-3144d2bba663" absoluteBounds="6.5, 26.5, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/LaundryDataContext/group" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e9ce4346-182e-4113-a671-c4fd85f4f661" absoluteBounds="6.515, 26.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d3c1f046-a965-495d-a721-46ba8e1d6ec5" absoluteBounds="0.75, 0.75, 2, 6.0015283203125">
+      <DataClassMoniker Name="/LaundryDataContext/instance_setting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="23e66295-d378-4edb-9939-d1bf3eeff939" absoluteBounds="0.765, 1.21, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" absoluteBounds="0.75, 22.125, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/LaundryDataContext/instance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="efd704e1-baa3-456a-b6e7-4323b2d2c58c" absoluteBounds="0.765, 22.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8518474c-e23e-4df4-857e-54399964d291" absoluteBounds="9.25, 26.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LaundryDataContext/item_price" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1fb76399-e961-4b1d-939b-928f7aedb2ab" absoluteBounds="9.265, 27.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="43ec2f5a-d8e9-4475-8641-e19b6855c495" absoluteBounds="12.25, 22.375, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/LaundryDataContext/item" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ee313c3-ba22-4a6a-aa90-9ed3c442b980" absoluteBounds="12.265, 22.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="91fac7a0-ffad-4db9-a586-dcd982778c6c" absoluteBounds="9.75, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LaundryDataContext/MenuMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c21e9cc5-f000-478a-a176-92f941fc3b08" absoluteBounds="9.765, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b368b2b9-b2c9-4ada-a144-3d3e9b4ba61a" absoluteBounds="6.75, 9.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LaundryDataContext/ModuleMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="63d3583d-dece-4e65-b45a-49a46602e9b6" absoluteBounds="6.765, 10.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="83c9ea5c-0c48-4d68-8d26-8728a98f525b" absoluteBounds="3.5, 27.375, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/LaundryDataContext/office_branch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea331d84-ac6b-4043-b7fa-37030e9a011e" absoluteBounds="3.515, 27.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="57d1f42c-1970-4584-8fb9-b87a7a82521f" absoluteBounds="6.25, 30, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/LaundryDataContext/office_branch_sale" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6ea93875-ecca-41fc-b3aa-74cc073897e4" absoluteBounds="6.265, 30.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="63ef8da3-a02a-46dd-9513-7d6f86a3df45" absoluteBounds="6.75, 4.5, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/LaundryDataContext/PageMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f78cb386-60b0-4a57-973e-9aeaa0f392cd" absoluteBounds="6.765, 4.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="75900ad8-fb6f-49c5-bee1-858f2a377996" absoluteBounds="6.5, 17.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/LaundryDataContext/Party" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9c44e06-5ba6-4d01-b42b-2d16870f00c9" absoluteBounds="6.515, 17.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0e8ba9c-782e-4930-8644-c1cc1f2300ee" absoluteBounds="18, 20.375, 2, 6.5784326171875023">
+      <DataClassMoniker Name="/LaundryDataContext/po" />
+      <nestedChildShapes>
+        <elementListCompartment Id="327d3c7d-894a-46f0-8171-3f4c66c9c2c3" absoluteBounds="18.015, 20.835, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="55b4cc3a-b94c-4379-b811-4650735e47ce" absoluteBounds="20.75, 23.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/LaundryDataContext/pos_item" />
+      <nestedChildShapes>
+        <elementListCompartment Id="52e47224-d5a4-4ba0-a6bb-3bfe30bc32d0" absoluteBounds="20.765, 23.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="960b6229-9fb2-45bc-a1d9-ceb703060bce" absoluteBounds="3.5, 24.125, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/LaundryDataContext/posbillcount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="75b17485-d9e8-4224-9bea-998e1c77ee59" absoluteBounds="3.515, 24.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f357c87-2e4f-4abd-af1f-3712041daca2" absoluteBounds="12.5, 0.875, 2, 1.9631982421875003">
+      <DataClassMoniker Name="/LaundryDataContext/PreSubMenu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e926eb3b-170e-4292-89a1-4aedf8bd9cb5" absoluteBounds="12.515, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9e5e5066-7d55-4b6f-9c78-abd8b28d9614" absoluteBounds="9.25, 29.875, 2, 4.2708154296875023">
+      <DataClassMoniker Name="/LaundryDataContext/purchase_invoice" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84f9e671-a405-4ce7-b2b9-365dc2a0492f" absoluteBounds="9.265, 30.335, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1f27bed7-e59f-49d9-97ae-7e4f08c474e6" absoluteBounds="12, 31, 2, 2.155499674479163">
+      <DataClassMoniker Name="/LaundryDataContext/purchase_invoice_item" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a414efa-26cf-450d-b68f-29ab7b102e21" absoluteBounds="12.015, 31.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9207eae5-3c97-4454-b976-3be1e08f8e05" isExpanded="false" absoluteBounds="3.5, 18.75, 2, 0.45">
+      <DataClassMoniker Name="/LaundryDataContext/purchase_items_master" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3304d45-3a4a-46b4-863d-b24e9e62e01a" absoluteBounds="3.515, 19.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ea6f08bc-52fd-425a-9a7c-61c9b4d389e2" absoluteBounds="6.75, 7.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LaundryDataContext/RollMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5ca97a6c-bc0d-44c2-8a7e-9df5f4efac62" absoluteBounds="6.765, 7.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d647094c-a4dc-422e-9b0d-5cfe7bdb5dd4" absoluteBounds="12.25, 18.125, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/LaundryDataContext/sms_log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb7790bc-edf2-4d08-90bf-e09a053b1dc5" absoluteBounds="12.265, 18.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e1cc4234-c8f1-46c6-9c44-022d3222fdfa" absoluteBounds="6.5, 13.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/LaundryDataContext/sms_template" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df581027-e734-4a8f-8c66-af0cabbee6e9" absoluteBounds="6.515, 14.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d7880a4f-fd8e-418d-ab54-811168c0afec" absoluteBounds="0.75, 7.75, 2, 1.7708968098958335">
+      <DataClassMoniker Name="/LaundryDataContext/SubMenuMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc3a6490-a0b7-4a6d-9501-f8948b19eef9" absoluteBounds="0.765, 8.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b9f082be-df94-4dba-ac69-00d28caba82e" absoluteBounds="9.5, 18.25, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/LaundryDataContext/supplier" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ca1e30a-ee98-4364-b23b-014dcf88e8ae" absoluteBounds="9.515, 18.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" absoluteBounds="3.75, 14, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/LaundryDataContext/UserMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f88fe430-ae3d-4a69-8eb3-1b4b298605ea" absoluteBounds="3.765, 14.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99dc3486-a321-4331-b063-defe7c1190a0" absoluteBounds="9.5, 12.625, 2, 4.2708154296875005">
+      <DataClassMoniker Name="/LaundryDataContext/UserRightsMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98a7aa15-37c9-4521-ab8e-62691c0b2873" absoluteBounds="9.515, 13.085, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.5 : 25.0761539713542); (13.1666666666667 : 25.0761539713542 : JumpStart); (13.3333333333333 : 25.0761539713542 : JumpEnd); (15.25 : 25.0761539713542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/customer/customer_customers_branch" />
+      <nodes>
+        <classShapeMoniker Id="38faeb7e-0230-47cd-a0f3-306ce903ab51" />
+        <classShapeMoniker Id="62b2feb0-5961-4f62-96c8-92928c5d2e04" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 22.3854484049479); (5.65104166666667 : 22.3854484049479 : JumpStart); (5.81770833333333 : 22.3854484049479 : JumpEnd); (6.25 : 22.3854484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/Expense_Mst/Expense_Mst_expense" />
+      <nodes>
+        <classShapeMoniker Id="7a807afa-a53e-4e3d-bfe8-a2cd0eaaa1bd" />
+        <classShapeMoniker Id="bc3530a2-597c-49ec-877b-f6d599627e98" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 23.6979484049479); (5.65104166666667 : 23.6979484049479 : JumpStart); (5.81770833333333 : 23.6979484049479 : JumpEnd); (6 : 23.6979484049479); (6 : 25.4439111328125); (10.5 : 25.4439111328125); (10.5 : 25.1747054036458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_customer" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="38faeb7e-0230-47cd-a0f3-306ce903ab51" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 23.911476702474); (5.75 : 23.911476702474); (5.75 : 25.6747054036458); (16.25 : 25.6747054036458); (16.25 : 25.1747054036458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_customers_branch" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="62b2feb0-5961-4f62-96c8-92928c5d2e04" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 22.6979484049479); (3.5 : 22.6979484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_Expense_Mst" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="7a807afa-a53e-4e3d-bfe8-a2cd0eaaa1bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 23.4531726074219); (3.04166666666667 : 23.4531726074219 : JumpStart); (3.20833333333333 : 23.4531726074219 : JumpEnd); (5.54166666666667 : 23.4531726074219 : JumpStart); (5.81770833333333 : 23.4531726074219 : JumpEnd); (6.25 : 23.4531726074219)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_expense" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="bc3530a2-597c-49ec-877b-f6d599627e98" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 25.2420068359375); (1.75 : 26.90625); (1.93229291666667 : 26.90625 : JumpStart); (2.09895958333333 : 26.90625 : JumpEnd); (2.19791916666667 : 26.90625 : JumpStart); (2.36458583333333 : 26.90625 : JumpEnd); (3.04166666666667 : 26.90625 : JumpStart); (3.20833333333333 : 26.90625 : JumpEnd); (5.65104166666667 : 26.90625 : JumpStart); (5.81770833333333 : 26.90625 : JumpEnd); (6.5 : 26.90625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_group" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="dea7ac17-86df-4d58-8dc2-3144d2bba663" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 27.6642976888021); (9.25 : 27.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/group/group_item_price" />
+      <nodes>
+        <classShapeMoniker Id="dea7ac17-86df-4d58-8dc2-3144d2bba663" />
+        <classShapeMoniker Id="8518474c-e23e-4df4-857e-54399964d291" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.5 : 23.6450512695313); (12.25 : 23.6450512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/customer/customer_item" />
+      <nodes>
+        <classShapeMoniker Id="38faeb7e-0230-47cd-a0f3-306ce903ab51" />
+        <classShapeMoniker Id="43ec2f5a-d8e9-4475-8641-e19b6855c495" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 23.5755605061849); (5.65104166666667 : 23.5755605061849 : JumpStart); (5.81770833333333 : 23.5755605061849 : JumpEnd); (6.125 : 23.5755605061849); (6.125 : 25.3189111328125); (10.4166666666667 : 25.3189111328125 : JumpStart); (10.5833333333333 : 25.3189111328125 : JumpEnd); (13.25 : 25.3189111328125); (13.25 : 24.9151025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_item" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="43ec2f5a-d8e9-4475-8641-e19b6855c495" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 25.2420068359375); (2.2812525 : 28.6450512695313); (3.5 : 28.6450512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_office_branch" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="83c9ea5c-0c48-4d68-8d26-8728a98f525b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 25.2420068359375); (1.2187475 : 31.0777498372396); (1.93229291666667 : 31.0777498372396 : JumpStart); (2.09895958333333 : 31.0777498372396 : JumpEnd); (4.41666666666667 : 31.0777498372396 : JumpStart); (4.58333333333333 : 31.0777498372396 : JumpEnd); (5.65104166666667 : 31.0777498372396 : JumpStart); (5.81770833333333 : 31.0777498372396 : JumpEnd); (6.25 : 31.0777498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_office_branch_sale" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="57d1f42c-1970-4584-8fb9-b87a7a82521f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 29.4127018229167); (5.65104166666667 : 29.4127018229167 : JumpStart); (5.81770833333333 : 29.4127018229167 : JumpEnd); (6.34375 : 29.4127018229167); (6.34375 : 30)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/office_branch/office_branch_office_branch_sale" />
+      <nodes>
+        <classShapeMoniker Id="83c9ea5c-0c48-4d68-8d26-8728a98f525b" />
+        <classShapeMoniker Id="57d1f42c-1970-4584-8fb9-b87a7a82521f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.75 : 9.875); (6.375 : 9.5); (6.375 : 6.64589680989583); (6.75 : 6.27089680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/ModuleMaster/ModuleMaster_PageMaster" />
+      <nodes>
+        <classShapeMoniker Id="b368b2b9-b2c9-4ada-a144-3d3e9b4ba61a" />
+        <classShapeMoniker Id="63ef8da3-a02a-46dd-9513-7d6f86a3df45" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 22.125); (1.75 : 18.1258048502604); (3.04166666666667 : 18.1258048502604 : JumpStart); (3.20833333333333 : 18.1258048502604 : JumpEnd); (4.57291916666667 : 18.1258048502604 : JumpStart); (4.73958583333333 : 18.1258048502604 : JumpEnd); (5.54166416666667 : 18.1258048502604 : JumpStart); (5.81770833333333 : 18.1258048502604 : JumpEnd); (6.5 : 18.1258048502604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_Party" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="75900ad8-fb6f-49c5-bee1-858f2a377996" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.25 : 23.7123527018229); (18 : 23.7123527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/customers_branch/customers_branch_po" />
+      <nodes>
+        <classShapeMoniker Id="62b2feb0-5961-4f62-96c8-92928c5d2e04" />
+        <classShapeMoniker Id="b0e8ba9c-782e-4930-8644-c1cc1f2300ee" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.40625 : 25.1747054036458); (11.40625 : 26.2436027018229); (14.9166666666667 : 26.2436027018229 : JumpStart); (15.0833333333333 : 26.2436027018229 : JumpEnd); (18 : 26.2436027018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/customer/customer_po" />
+      <nodes>
+        <classShapeMoniker Id="38faeb7e-0230-47cd-a0f3-306ce903ab51" />
+        <classShapeMoniker Id="b0e8ba9c-782e-4930-8644-c1cc1f2300ee" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.54687875 : 25.2420068359375); (2.54687875 : 26.0697472558594); (5.65104166666667 : 26.0697472558594 : JumpStart); (5.81770833333333 : 26.0697472558594 : JumpEnd); (18 : 26.0697472558594)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_po" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="b0e8ba9c-782e-4930-8644-c1cc1f2300ee" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 28.6819482421875); (21.75 : 28.6819482421875); (21.75 : 25.9824039713542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/group/group_pos_item" />
+      <nodes>
+        <classShapeMoniker Id="dea7ac17-86df-4d58-8dc2-3144d2bba663" />
+        <classShapeMoniker Id="55b4cc3a-b94c-4379-b811-4650735e47ce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.25 : 22.375); (13.25 : 22.125); (15 : 22.125); (15 : 27.2034326171875); (20.375 : 27.2034326171875); (20.375 : 24.6162019856771); (20.75 : 24.6162019856771)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/item/item_pos_item" />
+      <nodes>
+        <classShapeMoniker Id="43ec2f5a-d8e9-4475-8641-e19b6855c495" />
+        <classShapeMoniker Id="55b4cc3a-b94c-4379-b811-4650735e47ce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(20 : 23.8706009928385); (20.75 : 23.8706009928385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/po/po_pos_item" />
+      <nodes>
+        <classShapeMoniker Id="b0e8ba9c-782e-4930-8644-c1cc1f2300ee" />
+        <classShapeMoniker Id="55b4cc3a-b94c-4379-b811-4650735e47ce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 24.6835034179688); (3.5 : 24.6835034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_posbillcount" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="960b6229-9fb2-45bc-a1d9-ceb703060bce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.75 : 1.91429768880208); (12.5 : 1.91429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/MenuMaster/MenuMaster_PreSubMenu" />
+      <nodes>
+        <classShapeMoniker Id="91fac7a0-ffad-4db9-a586-dcd982778c6c" />
+        <classShapeMoniker Id="7f357c87-2e4f-4abd-af1f-3712041daca2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.75 : 1.45714884440104); (12.5 : 1.45714884440104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/MenuMaster/MenuMaster_PreSubMenu1" />
+      <nodes>
+        <classShapeMoniker Id="91fac7a0-ffad-4db9-a586-dcd982778c6c" />
+        <classShapeMoniker Id="7f357c87-2e4f-4abd-af1f-3712041daca2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.01562625 : 25.2420068359375); (2.01562625 : 33.1819075520833); (5.65104166666667 : 33.1819075520833 : JumpStart); (5.81770833333333 : 33.1819075520833 : JumpEnd); (9.25 : 33.1819075520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_purchase_invoice" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="9e5e5066-7d55-4b6f-9c78-abd8b28d9614" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 29.9151025390625); (4.5 : 32.6687011132812); (5.65104166666667 : 32.6687011132812 : JumpStart); (5.81770833333333 : 32.6687011132812 : JumpEnd); (9.25 : 32.6687011132812)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/office_branch/office_branch_purchase_invoice" />
+      <nodes>
+        <classShapeMoniker Id="83c9ea5c-0c48-4d68-8d26-8728a98f525b" />
+        <classShapeMoniker Id="9e5e5066-7d55-4b6f-9c78-abd8b28d9614" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 32.0777498372396); (12 : 32.0777498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/purchase_invoice/purchase_invoice_purchase_invoice_item" />
+      <nodes>
+        <classShapeMoniker Id="9e5e5066-7d55-4b6f-9c78-abd8b28d9614" />
+        <classShapeMoniker Id="1f27bed7-e59f-49d9-97ae-7e4f08c474e6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 22.125); (2.2812525 : 18.975); (3.5 : 18.975)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_purchase_items_master" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="9207eae5-3c97-4454-b976-3be1e08f8e05" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.5 : 22.25); (11.875 : 21.875); (11.875 : 19.6835034179688); (11.9166666666667 : 19.6835034179688 : JumpStart); (12.0833333333333 : 19.6835034179688 : JumpEnd); (12.25 : 19.6835034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/customer/customer_sms_log" />
+      <nodes>
+        <classShapeMoniker Id="38faeb7e-0230-47cd-a0f3-306ce903ab51" />
+        <classShapeMoniker Id="d647094c-a4dc-422e-9b0d-5cfe7bdb5dd4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 23.8047125537109); (3.04166666666667 : 23.8047125537109 : JumpStart); (3.20833333333333 : 23.8047125537109 : JumpEnd); (5.51041541666667 : 23.8047125537109 : JumpStart); (5.81770833333333 : 23.8047125537109 : JumpEnd); (5.875 : 23.8047125537109); (5.875 : 21.25); (8.91666666666667 : 21.25 : JumpStart); (9.08333333333333 : 21.25 : JumpEnd); (9.25 : 21.25); (9.25 : 21.4247054036458); (9.29166666666667 : 21.4247054036458 : JumpStart); (9.45833333333333 : 21.4247054036458 : JumpEnd); (11.7916666666667 : 21.4247054036458 : JumpStart); (12.0833333333333 : 21.4247054036458 : JumpEnd); (12.6354146666667 : 21.4247054036458 : JumpStart); (12.8020813333333 : 21.4247054036458 : JumpEnd); (13.25 : 21.4247054036458); (13.25 : 21.2420068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_sms_log" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="d647094c-a4dc-422e-9b0d-5cfe7bdb5dd4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 24.018240851237); (3.04166666666667 : 24.018240851237 : JumpStart); (3.20833333333333 : 24.018240851237 : JumpEnd); (5.625 : 24.018240851237); (5.625 : 21); (5.65104166666667 : 21 : JumpStart); (5.81770833333333 : 21 : JumpEnd); (9 : 21); (9 : 21.5497054036458); (9.29166666666667 : 21.5497054036458 : JumpStart); (9.45833333333333 : 21.5497054036458 : JumpEnd); (11.9166666666667 : 21.5497054036458 : JumpStart); (12.0833333333333 : 21.5497054036458 : JumpEnd); (12.718748 : 21.5497054036458); (12.718748 : 21.2420068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_sms_log1" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="d647094c-a4dc-422e-9b0d-5cfe7bdb5dd4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 22.125); (1.2187475 : 20.8878491210938); (5.65104166666667 : 20.8878491210938 : JumpStart); (5.81770833333333 : 20.8878491210938 : JumpEnd); (9.5 : 20.8878491210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/instance/instance_supplier" />
+      <nodes>
+        <classShapeMoniker Id="d2c1aaa0-6222-4b5b-bfe7-1ad17322551f" />
+        <classShapeMoniker Id="b9f082be-df94-4dba-ac69-00d28caba82e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 15.7508048502604); (6.25 : 15.7508048502604); (6.25 : 17.1458154296875); (9.375 : 17.1458154296875); (9.375 : 21.875); (10.468748 : 21.875); (10.468748 : 22.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_customer" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="38faeb7e-0230-47cd-a0f3-306ce903ab51" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 17.0520654296875); (16.25 : 17.0520654296875); (16.25 : 22.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_customers_branch" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="62b2feb0-5961-4f62-96c8-92928c5d2e04" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.6875 : 17.5016097005208); (5.6875 : 23.6367544555664); (6.25 : 23.6367544555664)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_expense" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="bc3530a2-597c-49ec-877b-f6d599627e98" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.71875 : 17.5016097005208); (5.71875 : 26.6718725); (6.5 : 26.6718725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_group" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="dea7ac17-86df-4d58-8dc2-3144d2bba663" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 14.8441504251302); (6 : 14.8441504251302); (6 : 17.2083154296875); (12 : 17.2083154296875); (12 : 22); (12.718748 : 22); (12.718748 : 22.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_item" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="43ec2f5a-d8e9-4475-8641-e19b6855c495" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.75 : 17.5016097005208); (3.375 : 17.8766097005208); (3.125 : 17.8766097005208); (3.125 : 27); (3.5 : 27.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_office_branch" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="83c9ea5c-0c48-4d68-8d26-8728a98f525b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.65625 : 17.5016097005208); (5.65625 : 30.5076224186198); (6.25 : 30.5076224186198)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_office_branch_sale" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="57d1f42c-1970-4584-8fb9-b87a7a82521f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.6249975 : 17.5016097005208); (5.6249975 : 19.838254046224); (5.65104166666667 : 19.838254046224 : JumpStart); (5.81770833333333 : 19.838254046224 : JumpEnd); (6.5 : 19.838254046224)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_Party" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="75900ad8-fb6f-49c5-bee1-858f2a377996" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.59374875 : 17.5016097005208); (5.59374875 : 26.3718038509115); (5.63541666666667 : 26.3718038509115 : JumpStart); (5.81770833333333 : 26.3718038509115 : JumpEnd); (14.9166666666667 : 26.3718038509115 : JumpStart); (15.0833333333333 : 26.3718038509115 : JumpEnd); (18 : 26.3718038509115)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_po" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="b0e8ba9c-782e-4930-8644-c1cc1f2300ee" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.734375 : 17.5016097005208); (5.734375 : 33.6951139908854); (9.25 : 33.6951139908854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_purchase_invoice" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="9e5e5066-7d55-4b6f-9c78-abd8b28d9614" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.6562525 : 17.5016097005208); (4.6562525 : 18.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_purchase_items_master" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="9207eae5-3c97-4454-b976-3be1e08f8e05" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 17.2604077148438); (13.25 : 17.2604077148438); (13.25 : 18.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_sms_log" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="d647094c-a4dc-422e-9b0d-5cfe7bdb5dd4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 15.3411743336589); (5.91666666666667 : 15.3411743336589 : JumpStart); (6.08333333333333 : 15.3411743336589 : JumpEnd); (6.5 : 15.3411743336589)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_sms_template" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="e1cc4234-c8f1-46c6-9c44-022d3222fdfa" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.703125 : 17.5016097005208); (5.703125 : 20.497624046224); (9.5 : 20.497624046224)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_supplier" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="b9f082be-df94-4dba-ac69-00d28caba82e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 3.15309895833333); (9.59375 : 3.15309895833333); (9.59375 : 12.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/EmployeeMaster/EmployeeMaster_UserRightsMaster" />
+      <nodes>
+        <classShapeMoniker Id="3210cdb2-81cd-452c-b0e3-b9df067de254" />
+        <classShapeMoniker Id="99dc3486-a321-4331-b063-defe7c1190a0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.65625 : 11.4535953776042); (8.65625 : 16.3357568359375); (9.5 : 16.3357568359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/ModuleMaster/ModuleMaster_UserRightsMaster" />
+      <nodes>
+        <classShapeMoniker Id="b368b2b9-b2c9-4ada-a144-3d3e9b4ba61a" />
+        <classShapeMoniker Id="99dc3486-a321-4331-b063-defe7c1190a0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 5.38544840494792); (10.5781275 : 5.38544840494792); (10.5781275 : 12.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/PageMaster/PageMaster_UserRightsMaster" />
+      <nodes>
+        <classShapeMoniker Id="63ef8da3-a02a-46dd-9513-7d6f86a3df45" />
+        <classShapeMoniker Id="99dc3486-a321-4331-b063-defe7c1190a0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 7.91429768880208); (10.08593875 : 7.91429768880208); (10.08593875 : 12.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/RollMaster/RollMaster_UserRightsMaster" />
+      <nodes>
+        <classShapeMoniker Id="ea6f08bc-52fd-425a-9a7c-61c9b4d389e2" />
+        <classShapeMoniker Id="99dc3486-a321-4331-b063-defe7c1190a0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 16.6782861328125); (5.91666666666667 : 16.6782861328125 : JumpStart); (6.08333333333333 : 16.6782861328125 : JumpEnd); (6.16666666666667 : 16.6782861328125 : JumpStart); (6.33333333333333 : 16.6782861328125 : JumpEnd); (9.5 : 16.6782861328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LaundryDataContext/UserMaster/UserMaster_UserRightsMaster" />
+      <nodes>
+        <classShapeMoniker Id="b0057c98-25d6-444f-8b2d-98fb13ea349d" />
+        <classShapeMoniker Id="99dc3486-a321-4331-b063-defe7c1190a0" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

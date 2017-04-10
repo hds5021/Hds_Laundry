@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GroupsDataset" targetNamespace="http://tempuri.org/GroupsDataset.xsd" xmlns:mstns="http://tempuri.org/GroupsDataset.xsd" xmlns="http://tempuri.org/GroupsDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="GroupsDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="GroupsDataset" msprop:Generator_UserDSName="GroupsDataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GroupsDataset" msprop:Generator_TableClassName="GroupsDatasetDataTable" msprop:Generator_TableVarName="tableGroupsDataset" msprop:Generator_TablePropName="_GroupsDataset" msprop:Generator_RowDeletingName="GroupsDatasetRowDeleting" msprop:Generator_RowChangingName="GroupsDatasetRowChanging" msprop:Generator_RowEvHandlerName="GroupsDatasetRowChangeEventHandler" msprop:Generator_RowDeletedName="GroupsDatasetRowDeleted" msprop:Generator_UserTableName="GroupsDataset" msprop:Generator_RowChangedName="GroupsDatasetRowChanged" msprop:Generator_RowEvArgName="GroupsDatasetRowChangeEvent" msprop:Generator_RowClassName="GroupsDatasetRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_UserColumnName="GroupName" type="xs:string" minOccurs="0" />
+              <xs:element name="GroupCode" msprop:Generator_ColumnVarNameInTable="columnGroupCode" msprop:Generator_ColumnPropNameInRow="GroupCode" msprop:Generator_ColumnPropNameInTable="GroupCodeColumn" msprop:Generator_UserColumnName="GroupCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ColorCode" msprop:Generator_ColumnVarNameInTable="columnColorCode" msprop:Generator_ColumnPropNameInRow="ColorCode" msprop:Generator_ColumnPropNameInTable="ColorCodeColumn" msprop:Generator_UserColumnName="ColorCode" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListDatset" msprop:Generator_TableClassName="ListDatsetDataTable" msprop:Generator_TableVarName="tableListDatset" msprop:Generator_TablePropName="ListDatset" msprop:Generator_RowDeletingName="ListDatsetRowDeleting" msprop:Generator_RowChangingName="ListDatsetRowChanging" msprop:Generator_RowEvHandlerName="ListDatsetRowChangeEventHandler" msprop:Generator_RowDeletedName="ListDatsetRowDeleted" msprop:Generator_UserTableName="ListDatset" msprop:Generator_RowChangedName="ListDatsetRowChanged" msprop:Generator_RowEvArgName="ListDatsetRowChangeEvent" msprop:Generator_RowClassName="ListDatsetRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Territory" msprop:Generator_ColumnVarNameInTable="columnTerritory" msprop:Generator_ColumnPropNameInRow="Territory" msprop:Generator_ColumnPropNameInTable="TerritoryColumn" msprop:Generator_UserColumnName="Territory" type="xs:string" minOccurs="0" />
+              <xs:element name="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_UserColumnName="Country" type="xs:string" minOccurs="0" />
+              <xs:element name="Stats" msprop:Generator_ColumnVarNameInTable="columnStats" msprop:Generator_ColumnPropNameInRow="Stats" msprop:Generator_ColumnPropNameInTable="StatsColumn" msprop:Generator_UserColumnName="Stats" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

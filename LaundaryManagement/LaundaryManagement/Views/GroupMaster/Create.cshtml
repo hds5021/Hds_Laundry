@@ -1,0 +1,357 @@
+﻿
+@{
+    ViewBag.Title = "Group Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).on('click', '#btnSaveGroupMaster', function () {
+        if (ValidateGroupMaster() == true) {
+            SaveGroup();
+            // var name = $("#txtgname").val();
+            //  alert(name);
+            //var code = $("#txtgcode").val();
+            //var color = $("#txtgcolor").val();
+            //var status = $("#drpGroupState").val();
+            $.ajax({
+
+                //  url: "InsertGroups",
+                type: "POST",
+                async: false,
+                url: "InsertGroups",
+                //data: JSON.stringify([name, code, color, status]), //{ Name: name,
+                // Address: address, DOB: dob },
+                data: { GroupMasterModel: JSON.stringify(jsonGroupDetails) },
+                // contentType: 'application/json; charset=utf-8',
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindGroupMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+        //alert(data);
+    });
+    $(document).ready(function () {
+        $('#btnUpdateGroup').hide();
+        BindGroupMasterList();
+    });
+    function BindGroupMasterList() {
+        $.ajax({
+            url: "GetgroupsDetail",
+            type: "POST",
+            //data: "{ itemId:10}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tr;
+                var jsonObj = JSON.parse(data);
+                $.each(jsonObj, function (key, item) {
+                    tr += '<tr>';
+                    tr += '<td>' + item.GroupName + '</td>';
+                    tr += '<td>' + item.GroupCode + '</td>';
+                    tr += '<td>' + item.ColorCode + '</td>';
+                    if (item.Status == 1) {
+                        item.Status = "Active";
+                    }
+                    else if (item.Status == 2) {
+                        item.Status = "InActive";
+                    }
+                    tr += ("<td>" + item.Status + "</td>");
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='GroupMasterByID(" + item.GroupID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='GroupMasterDelete(" + item.GroupID + ")' ></i></a></td>");
+
+                  //  tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='GroupMasterByID(" + item.GroupID + ")' >Edit</button></td>");
+                  //  tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='GroupMasterDelete(" + item.GroupID + ")' >Delete</button></td>");
+                    tr += '</tr>';
+                });
+                $('#tblGroupbody').html(tr);
+            },
+            error: function (msg) { alert(msg); }
+        });
+
+    }
+    function GroupMasterByID(id) {
+        $('#btnUpdateGroup').show();
+        $('#btnSaveGroup').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetGroupDetailByID",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $('#hdnGroupId').val(jsonObj[0].GroupID);
+                $('#txtgname').val(jsonObj[0].GroupName);
+                $('#txtgcode').val(jsonObj[0].GroupCode);
+                $('#drpGroupStatus').val(jsonObj[0].Status);
+                $('#txtgcolor').val(jsonObj[0].ColorCode);
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdateGroupMaster', function () {
+        if (ValidateGroupMaster() == true) {
+        jsonGroupDetails.GroupID = $('#hdnGroupId').val();
+        SaveGroup();
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "UpdateGroups",
+            data: { GroupMasterModel: JSON.stringify(jsonGroupDetails) },
+            success: function (data) {
+                alert("Data Update Successfully");
+                $('#btnSaveGroup').show();
+                $('#btnUpdateGroup').hide();
+                BindGroupMasterList();
+                Clear();
+            },
+            error: function () { alert('error'); }
+        });
+         }
+    });
+    function GroupMasterDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteGroups",
+            data: { ID: id },
+            success: function (data) {
+                BindGroupMasterList();
+
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    var jsonGroupDetails = {};
+    function SaveGroup() {
+        jsonGroupDetails.GroupName = $('#txtgname').val();
+        jsonGroupDetails.GroupCode = $('#txtgcode').val();
+        jsonGroupDetails.ColorCode = $('#txtgcolor').val();
+        jsonGroupDetails.Status = $('#drpGroupStatus option:selected').val();
+    }
+    function ValidateGroupMaster() {
+        if ($("#txtgname").val() == '') {
+          //  $('#Spntxtgname').text('Please enter group name');
+            alert('Please enter group name');
+            return false;
+        }
+        if ($("#txtgcode").val() == '') {
+            alert('Please enter group code');
+            return false;
+        }
+        if ($("#txtgcolor").val() == '') {
+            alert('Please enter group color');
+            return false;
+        }
+        //if ($("#drpGroupStatus").val().trim() == '') {
+        //    alert('Please select Status');
+        //    return false;
+        //}
+        return true;
+
+    }
+
+    function Clear() {
+        $('#txtgname').val('');
+        $('#txtgcode').val('');
+        $('#drpGroupStatus').val(0);
+        $('#txtgcolor').val('');
+        $('#txtbalance').val('');
+        $('#txtcontact').val('');
+    }
+</script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Group Master</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="~/Home/index">Laundry</a></li>
+            <li class="active">Group Master</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+@*<Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    </Content>*@
+@*<Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">*@
+@*<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Group Wise Sales</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="index.aspx">Laundry</a></li>
+                <li class="active">Group Wise Sales</li>
+            </ol>
+        </div>
+
+    </div>*@
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnGroupId">
+                <div class="form-group col-md-3 ">
+                    <label for="example-text">Name</label>
+                    <div>
+                        <input type="text" style="width:100%" id="txtgname" placeholder="Enter Group Name" required="required" class="form-control" />
+                        @*<span id="Spntxtgname" class="red-required"></span>*@
+
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Code</label>
+                    <div>
+                        <input type="text" id="txtgcode" placeholder="Enter Group Code" required class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Status</label>
+                    <div>
+                        <select name="drpGroupStatus" id="drpGroupStatus" class="form-control" required>
+                            <option value="0">--Select Group Status--</option>
+                            <option value="1">Active</option>
+                            <option value="2">InActive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Color Code</label>
+                    <div>
+                        <input type="text" id="txtgcolor" required class=" colorpicker form-control" />
+                    </div>
+                </div>
+                <div class="m-l-10">
+                    <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnSaveGroup">
+                        <button type="button" id="btnSaveGroupMaster" class="waves-button-input">Save</button>
+                    </i>
+                    <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateGroup">
+                        <button type="button" id="btnUpdateGroupMaster" class="waves-button-input">Update</button>
+                    </i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+                <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+            </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="form-material " style="width:100%">
+                @*<%--<div class="form-group col-md-3">
+                        <div role="search" class="app-search ">
+                            <input type="text" placeholder="Filter by Item o..." class="form-control"> <a href="#"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>--%>*@
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+
+                        @*<table id="tableab" class="table-bordered table-condensed table-hover table-striped">*@
+                        <table id="tableab" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Group Name</label></th>
+                                    <th><label>Code</label></th>
+                                    <th><label>Color</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblGroupbody"></tbody>   
+                        </table>
+
+
+
+                        @*<table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="CheckBox5"></th>
+                                    <th><label>Group Name</label></th>
+                                    <th><label>Code</label></th>
+                                    <th><label>Color</label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>*@
+
+                        @*<tr>
+                                <td><input type="checkbox" id="chkbox"></td>
+                                <td>data[i].GroupName </td>
+                                <td>data[i].GroupCode</td>
+                                <td>data[i].ColorCode</td>
+                                <td>Active</td>
+                                <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i></td>
+                            </tr>*@
+                        @*<tr>
+                                <td><input type="checkbox" id="CheckBox1"></td>
+                                <td>Dry Clean</td>
+                                <td>DC</td>
+                                <td>#f1f1f2</td>
+                                <td>Active</td>
+                                <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="CheckBox2"></td>
+                                <td>Dry Clean</td>
+                                <td>DC</td>
+                                <td>#f1f1f2</td>
+                                <td>Active</td>
+                                <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                            </tr>*@
+                        @*<tr>
+                                <td><input type="checkbox" id="CheckBox3"></td>
+                                <td>Dry Clean</td>
+                                <td>DC</td>
+                                <td>#f1f1f2</td>
+                                <td>Active</td>
+                                <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="CheckBox4"></td>
+                                <td>Dry Clean</td>
+                                <td>DC</td>
+                                <td>#f1f1f2</td>
+                                <td>Active</td>
+                                <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i></td>
+                            </tr>*@
+
+                        @*</tbody>
+                            </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script src="~/Scripts/Master/GroupMaster.js"></script>
+@*</Content>*@
+

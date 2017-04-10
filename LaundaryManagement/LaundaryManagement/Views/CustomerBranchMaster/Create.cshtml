@@ -1,0 +1,352 @@
+﻿@{
+    ViewBag.Title = "Customer Branch Master";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnUpdateCustomerB').hide();
+        BindCustomerBranchList();
+        BindCustomer();
+    });
+    var jsonCustomerBranchDetails = {};
+    function SaveCustomerBranch() {
+        jsonCustomerBranchDetails.CustomerID = $('#ddlCustomer option:selected').val();
+        jsonCustomerBranchDetails.BranchName = $('#txtbranchname').val();
+        jsonCustomerBranchDetails.CivilNumber = $('#txtcivilno').val();
+        jsonCustomerBranchDetails.Email = $('#txtEmail').val();
+        jsonCustomerBranchDetails.Address = $('#txtaddress').val();
+        jsonCustomerBranchDetails.Contact = $('#txtcontact').val();
+    }
+    $(document).on('click', '#btnSaveCustomerBranch', function () {
+        if (ValidateCustomerBranch() == true) {
+            SaveCustomerBranch();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertCustomerBranch",
+                data: { CustomerBranchModel: JSON.stringify(jsonCustomerBranchDetails) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindCustomerBranchList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+  
+    function BindCustomer()
+    {
+        $.ajax({
+            url: "BindCustomer",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlCustomer").empty();
+                $("#ddlCustomer").append($("<option></option>").val('0').html('--Select Customer--'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlCustomer").append($("<option></option>").val(item.CustomerID).html(item.CustomerName + ' - ' + item.Contact));
+                });
+            }
+        });
+    }
+
+   function BindCustomerBranchList()
+   {
+       $.ajax({
+           url: "GetCustomerBranchDetail",
+           type: "POST",
+           contentType: "application/json; charset=utf-8",
+           dataType: "json",
+           success: function (data) {
+               var tr;
+               var jsonObj = JSON.parse(data);
+               $.each(jsonObj, function (key, item) {
+                   tr += '<tr>';
+                   tr += '<td>' + item.BranchName + '</td>';
+                   tr += '<td>' + item.CivilNumber + '</td>';
+                   tr += '<td>' + item.Email + '</td>';
+                   tr += '<td>' + item.Address + '</td>';
+                   tr += '<td>' + item.Contact + '</td>';
+                   tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='CustomerBranchByID(" + item.CustomerBranchID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='CustomerBranchDelete(" + item.CustomerBranchID + ")' ></i></a></td>");
+                  // tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='CustomerBranchByID(" + item.CustomerBranchID + ")' >Edit</button></td>");
+                 //tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='CustomerBranchDelete(" + item.CustomerBranchID + ")' >Delete</button></td>");
+                   tr += '</tr>';
+               });
+               $('#tblCustomerBranchbody').html(tr);
+            
+                 
+
+
+           //    var tr;
+           //    for (var i = 0; i < data.length; i++) {
+           //        var jsonObj = JSON.parse(data);
+           //        tr = $('<tr/>');
+           //        tr.append("<td>" + jsonObj[i].BranchName + "</td>");
+           //        tr.append("<td>" + jsonObj[i].CivilNumber + "</td>");
+           //        tr.append("<td>" + jsonObj[i].Email + "</td>");
+           //        tr.append("<td>" + jsonObj[i].Address + "</td>");
+
+           //        tr.append("<td><button type='button' id='btnEdit' class='botaoadd' onclick='CustomerBranchByID(" + jsonObj[i].CustomerBranchID + ")' >Edit</button></td>");
+           //        tr.append("<td><button type='button' id='btnDelete' class='botaoadd' onclick='CustomerBranchDelete(" + jsonObj[i].CustomerBranchID + ")' >Delete</button></td>");
+           //        $('#tblCustomerBranch').append(tr);
+           //    }
+           },
+           error: function (msg) { alert(msg); }
+       });
+   }
+   function CustomerBranchByID(id) {
+       $('#btnUpdateCustomerB').show();
+       $('#btnSaveCustomerB').hide();
+       $.ajax({
+           type: "POST",
+           url: "GetCustomerBranchById",
+           data: { ID: id },
+           success: function (data) {
+               var jsonObj = JSON.parse(data);
+               $('#hdnCustomerBranchID').val(jsonObj[0].CustomerBranchID);
+               $('#ddlCustomer').val(jsonObj[0].CustomerID);
+               $('#txtbranchname').val(jsonObj[0].BranchName);
+               $('#txtcivilno').val(jsonObj[0].CivilNumber);
+               $('#txtEmail').val(jsonObj[0].Email);
+               $('#txtaddress').val(jsonObj[0].Address);
+               $('#txtcontact').val(jsonObj[0].Contact);
+              
+           },
+           error: function () { alert('error'); }
+       });
+
+   }
+   $(document).on('click', '#btnUpdateCustomerBranch', function () {
+       if (ValidateCustomerBranch() == true) {
+           jsonCustomerBranchDetails.CustomerBranchID = $('#hdnCustomerBranchID').val();
+           SaveCustomerBranch();
+           $.ajax({
+               type: "POST",
+               async: false,
+               url: "UpdateCustomerBranch",
+               data: { CustomerBranchModel: JSON.stringify(jsonCustomerBranchDetails) },
+               success: function (msg) {
+                   alert("Data Update Successfully");
+                   $('#btnSaveCustomerB').show();
+                   $('#btnUpdateCustomerB').hide();
+                   BindCustomerBranchList();
+                   Clear();
+               },
+               error: function () { alert('error'); }
+           });
+       }
+   });
+   function CustomerBranchDelete(id) {
+       $.ajax({
+           type: "POST",
+           url: "DeleteCustomerBranch",
+           data: { ID: id },
+           success: function (data) {
+               BindCustomerBranchList();
+           },
+           error: function () { alert('error'); }
+       });
+
+   }
+   function ValidateCustomerBranch() {
+       if ($("#ddlCustomer").val() == 0) {
+           alert('Please select customer');
+           return false;
+       }
+       if ($("#txtcontact").val() == '') {
+           alert('Please enter contact No');
+           return false;
+       }
+       if ($("#txtbranchname").val() == '') {
+           alert('Please enter branch name');
+           return false;
+       }
+       
+       return true;
+
+   }
+   function Clear() {
+       $('#ddlCustomer').val(0);
+       $('#txtcivilno').val('');
+       $('#txtEmail').val('');
+       $('#txtcontact').val('');
+       $('#txtbranchname').val('');
+       $('#txtaddress').val('');
+   }
+</script> 
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Customer Branch Master</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="~/Home/index">Laundry</a></li>
+            <li class="active">Customer Branch Master</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnCustomerBranchID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">Customer</label>
+                    <div>
+                        <select class="form-control" id="ddlCustomer" Width="100%" class="form-control" Width="100%"></select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Civil No</label>
+                    <div>
+                        <input type="text" id="txtcivilno" Width="100%" class="form-control" placeholder="Enter Civil No" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Email</label>
+                    <div>
+                        <input type="text" id="txtEmail" Width="100%" class="form-control" placeholder="Enter Email" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Contact</label>
+                    <div>
+                        <input type="text" id="txtcontact" Width="100%" class="form-control" placeholder="Enter Contact" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Branch Name</label>
+                    <div>
+                        <input type="text" id="txtbranchname" Width="100%" class="form-control" placeholder="Enter Branch Name" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Address</label>
+                    <div>
+                        <textarea name="address" rows="2" cols="20" id="txtaddress" class="form-control" placeholder="Enter Address" style="height:70px;width:100%;"></textarea>
+                    </div>
+                </div>
+
+                @*<%--                     <div class="form-group col-md-3">
+                        <label>Status</label>
+                        <div>
+                            <asp:DropDownList ID="ddlstatus" class="form-control" Width="100%" runat="server">
+                                <asp:ListItem Value="2">----Select Status---</asp:ListItem>
+                                <asp:ListItem Value="1">Active</asp:ListItem>
+                                <asp:ListItem Value="0">In Active</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>--%>*@
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnSaveCustomerB">
+                            <button type="button" id="btnSaveCustomerBranch" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateCustomerB">
+                            <button type="button" id="btnUpdateCustomerBranch" class="waves-button-input">Update</button>
+                        </i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+                <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+            </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table id="tblCustomerBranch" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>Branch</label></th>
+                                    <th><label>Civil No</label></th>
+                                    <th><label>Email</label></th>
+                                    <th><label>Address</label></th>
+                                    <th><label>Contact</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblCustomerBranchbody"></tbody>
+                        </table>
+                        @*<table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="CheckBox6"></th>
+                                    <th><label>Customer</label></th>
+                                    <th><label>Branch</label></th>
+                                    <th><label>Civil No</label></th>
+                                    <th><label>Contact</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox7"></td>
+                                    <td>Abdul</td>
+                                    <td>Abdul Branch</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox8"></td>
+                                    <td>Abdul</td>
+                                    <td>Abdul Branch</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox9"></td>
+                                    <td>Abdul</td>
+                                    <td>Abdul Branch</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox10"></td>
+                                    <td>Abdul</td>
+                                    <td>Abdul Branch</td>
+                                    <td>12345</td>
+                                    <td>88888888</td>
+                                    <td><i class="fa fa-edit fa-2x"></i><i class="fa fa-search fa-2x m-l-10"></i> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

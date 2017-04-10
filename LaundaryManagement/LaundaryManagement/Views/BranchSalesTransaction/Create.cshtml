@@ -1,0 +1,275 @@
+﻿@{
+    ViewBag.Title = "Branch Sales Transaction";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnUpdateBranch').hide();
+        BindBranch();
+        BindOfficeBranchSalesList();
+    });
+    function BindBranch() {
+        $.ajax({
+            url: "BindBranch",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlBranch").empty();
+                $("#ddlBranch").append($("<option></option>").val('0').html('--Select Branch--'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlBranch").append($("<option></option>").val(item.OfficeBranchID).html(item.BranchName + ' - ' + item.Contact));
+                });
+            }
+        });
+    }
+    var jsonBranchSalesDetails = {};
+    function SaveBranchSales() {
+        jsonBranchSalesDetails.OfficeBranchID = $('#ddlBranch option:selected').val();
+        jsonBranchSalesDetails.Amount = $('#txtamount').val();
+        jsonBranchSalesDetails.BillDate = $('#txtbilldate').val();
+    }
+    $(document).on('click', '#btnSaveBranchSales', function () {
+         if (ValidateBranchSalesTransaction() == true) {
+        SaveBranchSales();
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "InsertOfficeBranchSales",
+            data: { OfficeBranchSalesModel: JSON.stringify(jsonBranchSalesDetails) },
+            success: function (msg) {
+                alert("Data Save Successfully");
+                BindOfficeBranchSalesList();
+                Clear();
+            },
+            error: function () { alert('error'); }
+                 });
+             }
+        });
+
+    function BindOfficeBranchSalesList() {
+        $.ajax({
+            url: "GetOfficeBranchSalesDetail",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tr;
+                var jsonObj = JSON.parse(data);
+                
+                $.each(jsonObj, function (key, item) {
+                    var date = new Date(parseInt(item.BillDate.substring(6, item.BillDate.length - 2)));
+                    var dtbilldate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                    tr += '<tr>';
+                    tr += '<td>' + dtbilldate + '</td>';
+                    tr += '<td>' + item.OfficeBranchID + '</td>';
+                    tr += '<td>' + item.Amount + '</td>';
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='OfficeBranchSalesDetailById(" + item.BranchSalesID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='OfficeBranchSalesDelete(" + item.BranchSalesID + ")' ></i></a></td>");
+                    tr += '</tr>';
+                });
+                $('#tblfficeBranchSalesbody').html(tr);
+            }
+        });
+    }
+    function OfficeBranchSalesDetailById(id) {
+        $('#btnUpdateBranch').show();
+        $('#btnSaveBranch').hide();
+        $.ajax({
+            type: "POST",
+            url: "GetOfficeBranchSalesDetailById",
+            data: { ID: id },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                var date = new Date(parseInt(jsonObj[0].BillDate.substring(6, jsonObj[0].BillDate.length - 2)));
+                var dtbilldate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                $('#hdnBranchSalesID').val(jsonObj[0].BranchSalesID);
+                $('#ddlBranch').val(jsonObj[0].OfficeBranchID);
+                $('#txtamount').val(jsonObj[0].Amount);
+                $('#txtbilldate').val(dtbilldate);
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    $(document).on('click', '#btnUpdateBranchSales', function () {
+        if (ValidateBranchSalesTransaction() == true) {
+        jsonBranchSalesDetails.BranchSalesID = $('#hdnBranchSalesID').val();
+        SaveBranchSales();
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateCustomerBranch",
+                data: {  OfficeBranchSalesModel: JSON.stringify(jsonBranchSalesDetails) },
+                success: function (msg) {
+                    alert("Data Update Successfully");
+                    $('#btnSaveBranch').show();
+                    $('#btnUpdateBranch').hide();
+                    BindOfficeBranchSalesList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+    });
+    function OfficeBranchSalesDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteOfficeBranchSales",
+            data: { ID: id },
+            success: function (data) {
+                BindOfficeBranchSalesList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+    function ValidateBranchSalesTransaction() {
+        if ($("#ddlBranch").val() == 0) {
+            alert('Please select branch');
+            return false;
+        }
+        if ($("#txtamount").val() == '') {
+            alert('Please enter amount');
+            return false;
+        }
+        if ($("#txtbilldate").val() == '') {
+            alert('Please enter bill date');
+            return false;
+        }
+
+        return true;
+
+    }
+    function Clear() {
+        $('#ddlBranch').val(0);
+        $('#txtamount').val('');
+        $('#txtbilldate').val('');
+    }
+</script>
+
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Branch Sales Management</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.aspx">Laundry</a></li>
+            <li class="active">Branch Sales </li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            <div class="form-material form-inline" style="width:100%">
+                <input type="hidden" id="hdnBranchSalesID">
+                <div class="form-group col-md-3">
+                    <label for="example-text">Branch</label>
+                    <div>
+                        <select class="form-control" id="ddlBranch" Width="100%" class="form-control" Width="100%"></select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Amount</label>
+                    <div>
+                        <input type="text" id="txtamount" Width="100%" class="form-control" placeholder="Enter Amount" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Date</label>
+                    <div>
+                        <input type="text" id="txtbilldate" Width="100%" class="form-control mydatepicker" placeholder="Enter Your Birth Date" />
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label></label>
+                    <div class="m-l-10 m-t-5">
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" id="btnSaveBranch">
+                            <button type="button" id="btnSaveBranchSales" class="waves-button-input">Save</button>
+                        </i>
+                        <i class="btn btn-info waves-effect waves-light  waves-input-wrapper" style="" id="btnUpdateBranch">
+                            <button type="button" id="btnUpdateBranchSales" class="waves-button-input">Update</button>
+                        </i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        <div role="search" class="app-search " style="width:24%">
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        @*<%-- <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+        </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width:100%">
+
+                <div class="form-group col-md-12">
+                    <table id="tblOfficeBranchSales" class="table">
+                        <thead>
+                            <tr>
+                                <th><label>Date</label></th>
+                                <th><label>Amount</label></th>
+                                <th><label>Branch</label></th>
+                                <th><label>Action</label></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblfficeBranchSalesbody"></tbody>
+                    </table>
+                    @*<div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="CheckBox1"></th>
+                                    <th><label>Date</label></th>
+                                    <th><label>Branch</label></th>
+                                    <th><label>Amount</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>27/01/2017</td>
+                                    <td>Branch1</td>
+                                    <td>50.000</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>27/01/2017</td>
+                                    <td>Branch1</td>
+                                    <td>50.000</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox1"></td>
+                                    <td>27/01/2017</td>
+                                    <td>Branch1</td>
+                                    <td>50.000</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

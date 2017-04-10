@@ -1,0 +1,21 @@
+2017-03-15 10:13:21.2929|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Group Name :group2
+2017-03-15 10:19:15.0195|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Group Name :group2
+2017-03-15 10:19:32.1291|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 0
+2017-03-15 10:19:51.3961|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0 Group Name :group2
+2017-03-15 10:23:51.4598|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-15 10:59:58.2791|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-15 11:06:42.9671|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-15 11:09:10.6362|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-15 11:09:10.8583|ERROR|LoggerFactory|Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. - Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. -    at IntegrationAPI.Partial.laundry_Entities.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 479
+2017-03-15 11:09:10.9019|ERROR|LoggerFactory|Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. - Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. -    at IntegrationAPI.Partial.laundry_Entities.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 491
+   at IntegrationAPI.Services.CustomerService.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 634
+2017-03-15 11:09:10.9209|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2017-03-15 11:09:42.6673|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-15 11:09:47.0393|ERROR|LoggerFactory|Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. - Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. -    at IntegrationAPI.Partial.laundry_Entities.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 479
+2017-03-15 11:09:47.0724|ERROR|LoggerFactory|Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. - Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_groups_SelectOneResult]' to type 'System.Data.DataTable'. -    at IntegrationAPI.Partial.laundry_Entities.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 491
+   at IntegrationAPI.Services.CustomerService.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 634
+2017-03-15 11:09:47.0764|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2017-03-15 11:10:37.0718|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-15 18:08:34.7056|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-15 18:09:27.5195|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"GroupID":1,"InstanceID":1,"UserID":1,"GroupName":"group1","GroupCode":"grop001","ColorCode":"#000000","Status":0,"CreatedDate":"\/Date(1489429800000)\/"}]
+2017-03-15 18:09:40.0693|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 1 Group Name :

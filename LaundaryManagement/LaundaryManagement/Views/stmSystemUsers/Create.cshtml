@@ -1,0 +1,241 @@
+﻿<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        BindUserInfoList();
+      
+    });
+    function BindUserInfoList() {
+        $.ajax({
+            url: "GetUserInfoDetail",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tr;
+                var jsonObj = JSON.parse(data);
+                $.each(jsonObj, function (key, item) {
+                    tr += '<tr>';
+                    tr += '<td>' + item.firstname + '</td>';
+                    tr += '<td>' + item.lastname + '</td>';
+                    tr += '<td>' + item.empAdd + '</td>';
+                    tr += '<td>' + item.empMobile + '</td>';
+                    tr += '<td>' + item.empPhoneno + '</td>';
+                    tr += '<td>' + item.empemailId + '</td>';
+                    tr += '<td>' + item.civilno + '</td>';
+                    if (item.status == 1) {
+                        item.status = "Active";
+                    }
+                    else if (item.status == 2) {
+                        item.status  = "InActive";
+                    }
+                    tr += ("<td>" + item.status + "</td>");
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='UserInfoByID(" + item.empid + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='UserMasterDelete(" + item.empid + ")' ></i></a></td>");
+                   // tr += ("<td><button type='button' id='btnEdit'  onclick='UserInfoByID(" + item.UserID + ")' >Edit</button></td>");
+                    tr += ("<td></td>");
+                  //  tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='UserInfoDelete(" + item.UserID + ")' >Delete</button></td>");
+                    tr += '</tr>';
+                });
+                $('#tblUserInfobody').html(tr);
+            },
+            error: function (msg) { alert(msg); }
+        });
+    }
+
+    function UserMasterDelete(id) {
+        $.ajax({
+            type: "POST",
+            url: "DeleteUserMaster",
+            data: { ID: id },
+            success: function (data) {
+                BindUserInfoList();
+            },
+            error: function () { alert('error'); }
+        });
+
+    }
+
+    function UserInfoByID(id) {
+        window.location.href = 'EditUser?ID=' + id;
+    }
+  </script>
+
+<div class="row bg-title">
+    <input type="hidden" id="hdnUserID">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">System User Information</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.aspx">Laundry</a></li>
+            <li class="active">System User</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+<div class="panel panel-info">
+
+    <div class="panel-heading" style="padding: 10px 0 30px 10px !important;">
+
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a href="~/stmSystemUsers/AddUser"><i class="fa fa-plus fa-2x" style="font-size: 2em !important"></i></a>
+                <a href="#"><i class="fa fa-remove fa-2x" style="font-size: 2em !important"></i></a>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width: 100%">
+                <div class="form-group col-md-3">
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                   
+                                    <th>First Name</th>
+                                    <th>Last name</th>
+                                    <th>Address</th>
+                                    <th>Mobile</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Civil No</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody  id="tblUserInfobody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="panel-heading" style="padding: 10px 0 30px 10px !important;">
+
+    <div class="col-md-12">
+        <div class="pull-right">
+
+            <a href="~/stmSystemUsers/AddUser"><i class="fa fa-plus fa-2x" style="font-size: 2em !important"></i></a>
+            <a href="#"><i class="fa fa-remove fa-2x" style="font-size: 2em !important"></i></a>
+        </div>
+
+    </div>
+
+
+</div>*@
+@*<div class="col-md-12">
+    <div class="pull-right">
+        <a href="stsSystemuserAdd.aspx"><i class="fa fa-plus fa-2x" style="font-size: 2em !important"></i></a>
+        <a href="#"><i class="fa fa-remove fa-2x" style="font-size: 2em !important"></i></a>
+    </div>
+
+</div>*@
+@*<div class="panel panel-info">
+   
+
+
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+            <div class="form-material " style="width: 100%">
+                <div class="form-group col-md-3">
+                </div>
+                <div class="form-group col-md-12">
+
+                    <div class="table-responsive">
+                        <table id="tblUserInfo" class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>User Name</label></th>
+                                    <th><label>First Name</label></th>
+                                    <th><label>Last Name</label></th>
+                                    <th><label>Civil No</label></th>
+                                    <th><label>Email</label></th>
+                                    <th><label>Contact  </label></th>
+                                    <th><label>Status</label></th>
+                                    <th><label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblUserInfobody"></tbody>
+                        </table>
+
+                    @*<div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>User Name</th>
+                                    <th>First Name</th>
+                                    <th>Last name</th>
+                                    <th>Civil No</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox5"></td>
+                                    <td>urvish</td>
+                                    <td>Urvish </td>
+                                    <td>Patel</td>
+                                    <td>12345</td>
+                                    <td>urvish@gmail.com</td>
+                                    <td>987987987</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox5"></td>
+                                    <td>urvish</td>
+                                    <td>Urvish </td>
+                                    <td>Patel</td>
+                                    <td>12345</td>
+                                    <td>urvish@gmail.com</td>
+                                    <td>987987987</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" id="CheckBox5"></td>
+                                    <td>urvish</td>
+                                    <td>Urvish </td>
+                                    <td>Patel</td>
+                                    <td>12345</td>
+                                    <td>urvish@gmail.com</td>
+                                    <td>987987987</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>*@
+                @*</div>
+            </div>
+        </div>
+    </div>
+</div>*@

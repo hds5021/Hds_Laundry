@@ -1,0 +1,27 @@
+2017-03-14 12:28:37.2275|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0  Module Name :
+2017-03-14 12:29:57.9612|ERROR|LoggerFactory|Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_ModuleMaster_SelectAllResult]' to type 'Integration_Repository.SP_ModuleMaster_SelectAllResult'. - Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_ModuleMaster_SelectAllResult]' to type 'Integration_Repository.SP_ModuleMaster_SelectAllResult'. -    at IntegrationAPI.Partial.laundry_Entities.GetModuleMasterDetail(clsModuleMaster obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 976
+2017-03-14 12:30:03.4557|ERROR|LoggerFactory|Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_ModuleMaster_SelectAllResult]' to type 'Integration_Repository.SP_ModuleMaster_SelectAllResult'. - Unable to cast object of type 'SingleResult`1[Integration_Repository.SP_ModuleMaster_SelectAllResult]' to type 'Integration_Repository.SP_ModuleMaster_SelectAllResult'. -    at IntegrationAPI.Partial.laundry_Entities.GetModuleMasterDetail(clsModuleMaster obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 984
+   at IntegrationAPI.Services.CustomerService.GetModuleMasterDetail(clsModuleMaster obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 1308
+2017-03-14 12:30:04.8737|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2017-03-14 13:24:09.2474|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Group Name :
+2017-03-14 13:25:59.6898|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 13:32:37.7881|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 13:32:37.7881|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 13:38:57.5863|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 13:41:38.7546|ERROR|LoggerFactory|The null value cannot be assigned to a member with type System.DateTime which is a non-nullable value type. - The null value cannot be assigned to a member with type System.DateTime which is a non-nullable value type. -    at Read_SP_groups_SelectOneResult(ObjectMaterializer`1 )
+   at System.Data.Linq.SqlClient.ObjectReaderCompiler.ObjectReader`2.MoveNext()
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at IntegrationAPI.Partial.laundry_Entities.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 476
+2017-03-14 13:42:25.1961|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 13:44:06.9134|ERROR|LoggerFactory|The query results cannot be enumerated more than once. - The query results cannot be enumerated more than once. -    at System.Data.Linq.SqlClient.SqlProvider.OneTimeEnumerable`1.GetEnumerator()
+   at System.Data.Linq.SqlClient.SqlProvider.SingleResult`1.GetEnumerator()
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at IntegrationAPI.Partial.laundry_Entities.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 476
+2017-03-14 13:44:14.0121|ERROR|LoggerFactory|The query results cannot be enumerated more than once. - The query results cannot be enumerated more than once. -    at IntegrationAPI.Partial.laundry_Entities.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Partial\Customer_Entity.cs:line 485
+   at IntegrationAPI.Services.CustomerService.GetgroupsDetailById(clsgroups obj) in E:\@Jupiter\@Product\Laundry Mgmt\WebApiDataProject\Laundry\Laundry\IntegrationAPI\IntegrationAPI\Services\CompanyService.cs:line 632
+2017-03-14 13:44:16.7251|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 
+2017-03-14 19:22:44.0945|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 20:58:06.3766|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 21:59:55.2118|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 22:04:58.0273|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
+2017-03-14 22:07:06.8319|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 1 Group Name :
