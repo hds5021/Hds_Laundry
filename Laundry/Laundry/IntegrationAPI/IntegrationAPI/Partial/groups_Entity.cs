@@ -31,7 +31,7 @@ namespace IntegrationAPI.Partial
 
             {
                 objResult = db.SP_groups_SelectAll();
-                objResultList = new List<SP_groups_SelectAllResult>(objResult);
+                objResultList = new List<SP_groups_SelectAllResult>(objResult.ToList());
             }
             catch (Exception ex)
             {

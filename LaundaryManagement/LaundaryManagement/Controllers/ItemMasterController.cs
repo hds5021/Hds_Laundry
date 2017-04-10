@@ -22,6 +22,26 @@ namespace LaundaryManagement.Controllers
         {
             return View();
         }
+        public ActionResult Create1()
+        {
+            return View();
+        }
+        [HttpDelete]
+        public ActionResult DeleteItems(int itemId)
+        {
+            clsitems mitem = new clsitems();
+            mitem.ItemID = itemId;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:52761/");
+            client.DefaultRequestHeaders.Add("AppName", "Laundry");
+            client.DefaultRequestHeaders.Add("AppKey", "PassW0rd@2610");
+            client.DefaultRequestHeaders.Add("X-Version", "1.1");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var responseMessage = client.PostAsJsonAsync("DeleteItems", mitem).Result;
+            return Json("");
+
+        }
         public ActionResult BindCustomer()
         {
             customerRequest obj = new customerRequest();
@@ -67,9 +87,9 @@ namespace LaundaryManagement.Controllers
             return Json("");
 
         }
-        public ActionResult InsertItems(string ItemMasterModel)
+        public ActionResult InsertItems(string ItemMasterModel, string ItemPriceListModel)
         {
-            clsitems mitem= new clsitems();
+            clsitems mitem = new clsitems();
             var jsonExpenseMasterModel = JObject.Parse(Convert.ToString(ItemMasterModel));
             mitem = new JavaScriptSerializer().Deserialize<clsitems>(ItemMasterModel);
             mitem.InstanceID = 1;
@@ -83,9 +103,45 @@ namespace LaundaryManagement.Controllers
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var responseMessage = client.PostAsJsonAsync("InsertItems", mitem).Result;
+
+            var itemId = responseMessage.Content.ReadAsStringAsync().Result.ToString();
+            itemId = itemId.Replace("\"", "").Replace(@"\", "");
+            // Insert for clsitemPrice after getting itemId
+            List<clsitemPrice> listItemPrice = new List<clsitemPrice>();
+            //var jsonItemPriceListModel = JObject.Parse(Convert.ToString(ItemPriceListModel));
+            //listItemPrice = new JavaScriptSerializer().Deserialize<List<clsitemPrice>>(ItemPriceListModel);
+            listItemPrice = JsonConvert.DeserializeObject<List<clsitemPrice>>(ItemPriceListModel);
+            HttpClient client2 = new HttpClient();
+            client2.BaseAddress = new Uri("http://localhost:52761/");
+            client2.DefaultRequestHeaders.Add("AppName", "Laundry");
+            client2.DefaultRequestHeaders.Add("AppKey", "PassW0rd@2610");
+            client2.DefaultRequestHeaders.Add("X-Version", "1.1");
+            client2.DefaultRequestHeaders.Accept.Clear();
+            client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            for (int itemPrice = 0; itemPrice < listItemPrice.Count; itemPrice++)
+            {
+                listItemPrice[itemPrice].ItemID = Convert.ToInt32(itemId);
+            }
+
+            var responseMessage2 = client.PostAsJsonAsync("InsertItemPrice", listItemPrice).Result;
             return Json("");
         }
+        [HttpPost]
+        public ActionResult ItemPrice(string[] DynamicTextBox)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            ViewBag.Values = serializer.Serialize(DynamicTextBox);
 
+            string message = "";
+            foreach (string textboxValue in DynamicTextBox)
+            {
+                message += textboxValue + "\\n";
+            }
+            ViewBag.Message = message;
+
+            return View();
+        }
 
         public ActionResult GetItemDetail()
         {
@@ -121,8 +177,8 @@ namespace LaundaryManagement.Controllers
             {
                 message += textboxValue + "\\n";
             }
-            
-           // ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "alert('" + message + "');", true);
+
+            // ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "alert('" + message + "');", true);
         }
 
 

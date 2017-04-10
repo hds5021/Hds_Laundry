@@ -67,6 +67,7 @@ namespace IntegrationAPI.Partial
             try
             {
                 result = (long)db.SP_items_Insert(ref resultID, obj.InstanceID, obj.UserID, obj.CustomerID, obj.ItemName, obj.ItemLocalName, obj.PriceRate, obj.Status, obj.CreatedDate);
+                result = Convert.ToInt32(resultID);
             }
             catch (Exception ex)
             {

@@ -9,74 +9,61 @@
         BindItemMasterList();
         BindCustomer();
         BindGroup();
-       
-        
-    });
-    $(document).on("click", ".Add_Rct", function () { //
-        rowCount = $('.data-contact-person').length + 1;
-        //var contactdiv = '<tr class="data-contact-person" >' +
-        //    '<td><div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="group' + rowCount + '" class="form-control group_class "  name="GroupID[]"  required="required"></select></div></div></td>' +
-        //    '<td><div class="form-group mbottom0"><label for="Price" class="control-label col-md-4">Price</label><div class="col-md-7"><input type="text" name="Price[]" id="price' + rowCount + '" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off"></div></div>' +
-        //    '<td><i class="fa fa-plus add_row pointer Add_Rct"  style="color: limegreen;"></i>&nbsp;</td>' +
-        //'<td><i class="fa fa-minus delete_row pointer delete_Rct" style="color: red;"></i></td>' +
-        //    '</tr>';
-
-        var contactdiv = '<tr class="data-contact-person" >' +
-            '<td><select id="group' + rowCount + '" class="form-control group_class "  name="GroupID[]"  required="required"></select></td>' +
-            '<td><input type="text" name="Price[]" id="price' + rowCount + '" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off">' +
-            '<td><i class="fa fa-plus add_row pointer Add_Rct"  style="color: limegreen;"></i>&nbsp;</td>' +
-        '<td><i class="fa fa-minus delete_row pointer delete_Rct" style="color: red;"></i></td>' +
-            '</tr>';
+        $(document).on("click", ".Add_Rct", function () { //
+            rowCount = $('.data-contact-person').length + 1;
+            var contactdiv = '<tr class="data-contact-person" >' +
+                '<td><div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="group' + rowCount + '" class="form-control group_class "  name="GroupID[]"  required="required"></select></div></div></td>' +
+                '<td><div class="form-group mbottom0"><label for="Price" class="control-label col-md-4">Price</label><div class="col-md-7"><input type="text" name="Price[]" id="price' + rowCount + '" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off"></div></div>' +
+                '<td><i class="fa fa-plus add_row pointer Add_Rct"  style="color: limegreen;"></i>&nbsp;</td>' +
+            '<td><i class="fa fa-minus delete_row pointer delete_Rct" style="color: red;"></i></td>' +
+                '</tr>';
 
 
-        $('#maintable').append(contactdiv); // Adding these controls to Main table class
-        BindGroup();
-        $(".data-contact-person").each(function () {
-            alert('22');
-            var Group = document.getElementById('#price1').val();
-            alert(Group);
-
-            //var tbl = document.getElementById("maintable");
-            //if (tbl != null) {
-            //    for (var i = 0; i < tbl.rows.length; i++) {
-            //        for (var j = 0; j < tbl.rows[i].cells.length; j++)
-            //            tbl.rows[i].cells[j].onclick = function () { getval(this); };
-            //    }
-            //}
-
-            //function getval(cel) {
-            //    document.getElementById("price").value = row.cells[1].innerHTML;
-            //    alert(row.cells[1].innerHTML);
-            //}
-
-
-
-            // alert($("#group option:selected").val());
-            //  var customerId = $(this).find("#price").val();
-            //  alert(customerId);
-            //  var array = [];
-            //  alert(array.push($(".group_class").data(".data-contact-person")));
-            // var currentRow = $(this).closest(".data-contact-person");
-            //  currentRow.find("td:eq(.group_class)").text();
-            //  alert(currentRow);
-
-            //alert(Group);   
+            $('#maintable').append(contactdiv);
+            // Adding these controls to Main table class
+            BindGroup();
         });
 
     });
-  
     $(document).on("click", ".delete_Rct", function () {
+
 
         $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
     });
 
     var jsonItemMasterDetails = {};
     function SaveItemMaster() {
+
+        jsonItemMasterDetails.InstanceID = 1;
+        jsonItemMasterDetails.UserID = 1;
+        jsonItemMasterDetails.CustomerID = $('#ddlcustomer option:selected').val();
         jsonItemMasterDetails.ItemName = $('#txtitemname').val();
         jsonItemMasterDetails.ItemLocalName = $('#txtlocalname').val();
-        jsonItemMasterDetails.CustomerID = $('#ddlcustomer option:selected').val();
         jsonItemMasterDetails.PriceRate = $('#ddlpricerate option:selected').val();
         jsonItemMasterDetails.Status = $('#ddlstatus option:selected').val();
+
+        jsonItemPriceList = [];
+        var jsonItemPrice = {};
+        var _groupMakingId = "";
+        //var _priceMakingId = "";
+
+        var rowCount = $('.data-contact-person').length;
+        for (i = 1; i <= rowCount; i++) {
+            jsonItemPrice = {};
+            _groupMakingId = "";
+            //_priceMakingId = "";
+            _groupMakingId = "#group" + i + " option:selected";
+            //_groupMakingId = "#price" + i;
+            jsonItemPrice.GroupID = $(_groupMakingId).val();
+            jsonItemPrice.Price = $('#price' + i).val();
+            jsonItemPriceList.push(jsonItemPrice);
+        }
+
+
+        //rowCount = $('.data-contact-person').length;
+        //jsonItemMasterDetails.GroupID = $('group1 option:selected').val();
+
+        //alert(jsonItemMasterDetail.GroupID);
     }
     var jsonItemPriceDetails = {};
 
@@ -86,7 +73,7 @@
             type: "POST",
             async: false,
             url: "InsertItems",
-            data: { ItemMasterModel: JSON.stringify(jsonItemMasterDetails) },
+            data: { ItemMasterModel: JSON.stringify(jsonItemMasterDetails), ItemPriceListModel: JSON.stringify(jsonItemPriceList) },
             success: function (msg) {
                 alert("Data Save Successfully");
                 BindItemMasterList();
@@ -95,6 +82,21 @@
             error: function () { alert('error'); }
         });
     });
+
+    function SupplierMasterDelete(itemId) {
+        $.ajax({
+            type: "DELETE",
+            async: false,
+            url: "DeleteItems",
+            data: { itemId: itemId },
+            success: function (msg) {
+                alert("Data Deleted Successfully");
+                BindItemMasterList();
+                Clear();
+            },
+            error: function () { alert('error'); }
+        });
+    };
 
     function BindCustomer() {
         $.ajax({
@@ -108,7 +110,8 @@
                 $("#ddlCustomer").empty();
                 //   $("#ddlCustomer").append($("<option></option>").val('0').html('--Select Customer--'));
                 $.each(jsonObj, function (key, item) {
-                    $("#ddlcustomer").append($("<option></option>").val(item.CustomerID).html(item.CustomerName+' - '+item.Contact));
+
+                    $("#ddlcustomer").append($("<option></option>").val(item.CustomerID).html(item.CustomerName));
                 });
             }
         });
@@ -154,10 +157,15 @@
                         item.Status = "InActive";
                     }
                     tr += ("<td>" + item.Status + "</td>");
-                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='GetExpensesDetailById(" + item.ItemID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='ExpenseInvoiceTransactionDelete(" + item.ItemID + ")' ></i></a></td>");
-                            tr += '</tr>';
+                    //tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='SupplierMasterByID(" + item.ItemID + ")' >Edit</button></td>");
+                    //tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='SupplierMasterDelete(" + item.ItemID + ")' >Delete</button></td>");
+                    //tr += '</tr>';
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='GetExpensesDetailById(" + item.ItemID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='SupplierMasterDelete(" + item.ItemID + ")' ></i></a></td>");
+                    tr += '</tr>';
                 });
                 $('#tblItemMasterbody').html(tr);
+
+
 
             },
             error: function (msg) { alert(msg); }
@@ -177,12 +185,13 @@
 
 
 
+
 </script>
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <h4 class="page-title">Item Master</h4>
     </div>
-    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">  
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
         <ol class="breadcrumb">
             <li><a href="~/Home/index">Laundry</a></li>
             <li class="active">Item Master</li>
@@ -194,8 +203,9 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="white-box">
-
-            @*<%-- <h3 class="box-title">Basic Information</h3>--%>*@
+            @*<%--
+            <h3 class="box-title">Basic Information</h3>
+            --%>*@
             <div class="form-material form-inline" style="width: 100%">
                 <div class="row">
                     <div class="form-group col-md-3 ">
@@ -216,10 +226,11 @@
                             <select class="form-control" id="ddlcustomer">
                                 <option value="0">--Select Customer--</option>
                                 @*<option>Select Customer</option>
-                                    <option>Urvish</option>
-                                    <option>Sanket</option>
-                                    <option>Rikul</option>
-                                    <option>Naman</option>*@
+                                <option>Urvish</option>
+                                <option>Sanket</option>
+                                <option>Rikul</option>
+                                <option>Naman</option>
+                                *@
                             </select>
                         </div>
                     </div>
@@ -243,109 +254,135 @@
                         </div>
                     </div>
                     @*<div class="form-group col-md-3">
-                            <label for="input-file-now">Select Image</label>
-                            <input type="file" id="input-file-now" class="dropify" />
-                        </div>*@
+                        <label for="input-file-now">Select Image</label>
+                        <input type="file" id="input-file-now" class="dropify" />
+                    </div>
+                    *@
                     <input type="hidden" id="Dya" name="country" value="1">
                     <div class="col-md-6 pleft0 pright0 mbottom10">
                         @*<table class="table table-hover table-bordered table-striped" id="grouplist">
-                                <tbody></tbody>
-                            </table>*@
-                        <div id="maintable" class="table table-hover table-bordered table-striped" >
-                            <div class="data-contact-person col-md-12">
+                            <tbody></tbody>
+                        </table>
+                        *@
+                        @*<div class="table table-hover table-bordered table-striped" id="main">
+                            <div class="col-md-12">
+                                <div class="col-md-4 Leng">
+                                    <div class="data-contact-person">
+                                        <div class="form-group ">
+                                            <label class="control-label col-md-4">Group</label><div class="col-md-8">
+                                                <select id="group1" class="form-control group_class " name="GroupID[]" required="required"></select>
+                                            </div>
+                                        </div>
 
-                                <div class="col-lg-4">
-                                    <div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="group1" class="form-control group_class " name="GroupID[]" required="required"></select></div></div>
-                                    <select id="group1" class="form-control group_class " name="GroupID[]" required="required"></select>
+                                    </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div><label for="Price" class="control-label col-md-4">Price</label></div>
-                                    <input type="text" name="Price[]" id="price1" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off">
-
+                                <div class="col-md-4">
+                                    <div class="form-group mbottom0">
+                                        <label for="Price" class="control-label col-md-4">Price</label>
+                                        <div class="col-md-7">
+                                            <input type="text" name="Price[]" id="price1" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-md-2">
                                     <i class="fa fa-plus Add_Rct pointer" style="color: limegreen;"></i>&nbsp;
+
                                 </div>
-                              
+                                <div class="col-md-2">
+                                    <i class="fa fa-minus delete_row pointer delete_Rct" style="color: red;"></i>
+                                </div>
                             </div>
-                           
 
 
                         </div>
-
+                        *@
+                        @*
+                    </div>
+                    *@
                         <table class="table table-hover table-bordered table-striped" id="maintable">
 
                             <tbody>
                                 <tr class="data-contact-person">
                                     <td>
-                                        @*<div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="group1" class="form-control group_class " name="GroupID[]" required="required"></select></div></div>*@
-                                        <select id="group1" class="form-control group_class " name="GroupID[]" required="required"></select>
+                                        <div class="form-group ">
+                                            <label class="control-label col-md-4">Group</label><div class="col-md-8">
+                                                <select id="group1" class="form-control group_class " name="GroupID[]"></select>
+                                            </div>
+                                        </div>
+
                                     </td>
                                     <td>
-                                        @*<div class="form-group mbottom0">
+                                        <div class="form-group mbottom0">
                                             <label for="Price" class="control-label col-md-4">Price</label>
-                                            <div class="col-md-7">*@
-                                                <input type="text" name="Price[]" id="price1" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off">
-                                            @*</div>*@
+                                            <div class="col-md-7">
+                                                <input type="text" name="Price[]" id="price1" class="form-control price_class DecimalOnly" placeholder="Price" value="" maxlength="6" autocomplete="off">
+                                            </div>
 
-                                        @*</div>*@
+                                        </div>
                                     </td>
                                     <td>
                                         <i class="fa fa-plus Add_Rct pointer" style="color: limegreen;"></i>&nbsp;
-                                        @*<button type="button" id="btnAdd" class="btn btn-xs btn-primary Add_Rct">Add More</button>*@
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-
-                    <br />
-                    <br />
-                    <div id="TextBoxContainer">
-                        <!--Textboxes will be added here -->
-                    </div>
-                    <br />
-                    @*<input type="submit" value="Submit"  onclick="Dyanamic()" />*@
                 </div>
-                <div class="row">
-                    <div class=" form-group col-md-2 m-l-10">
-                        <button id="btnSaveItemMaster" class="btn btn-block btn-outline btn-info ">SAVE</button>
-                    </div>
-                    <div class=" form-group col-md-2 m-l-10">
-                        @*<button type="button" id="btnUpdateCustomerBranch" class="waves-button-input">Update</button>*@
+
+                <br />
+                <br />
+                <div id="TextBoxContainer">
+                    <!--Textboxes will be added here -->
+                </div>
+                <br />
+                @*<input type="submit" value="Submit" onclick="Dyanamic()" />*@
+            </div>
+            <div class="row">
+                <div class=" form-group col-md-2 m-l-10">
+                    <button id="btnSaveItemMaster" class="btn btn-block btn-outline btn-info ">SAVE</button>
+                </div>
+                <div class=" form-group col-md-2 m-l-10">
+                    @*
+                    <button type="button" id="btnUpdateCustomerBranch" class="waves-button-input">Update</button>*@
                         <button type="button" id="btnUpdateItemMaster" class="btn btn-block btn-outline btn-info " onclick="SetItemPriceDetails();">Delete</button>
-                    </div>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 
 </div>
 
-
+<div id="TextBoxContainer">
+    <!--Textboxes will be added here -->
+</div>
+<br />
+<button id="btnPost" text="Post" onclick="Post" />
 
 @*<table>
-        <tr id="Index1">
-            <td><span id="spnGroupName" class="display-mode" style="width: 85px">Group</span><select class="form-control" id="ddlGroup" class="edit-mode"></select></td>
-            <td><span id="spnPrice" class="display-mode" style="width: 85px">Price</span><input type="text" id="txtGroupPrice" class="edit-mode" /></td>
-            <td>
-                <button type="button" id="Additemprice" class="fa fa-plus add_row pointer">Add</button>
-                <button type="button" id="Edititemprice" class="clsEditButton" style="display: none">Edit</button>
-                <button type="button" id="Deleteitemprice" class="fa fa-minus delete_row pointer" style="display: none">Delete</button>
-            </td>
-        </tr>
-    </table>*@
+    <tr id="Index1">
+        <td><span id="spnGroupName" class="display-mode" style="width: 85px">Group</span><select class="form-control" id="ddlGroup" class="edit-mode"></select></td>
+        <td><span id="spnPrice" class="display-mode" style="width: 85px">Price</span><input type="text" id="txtGroupPrice" class="edit-mode" /></td>
+        <td>
+            <button type="button" id="Additemprice" class="fa fa-plus add_row pointer">Add</button>
+            <button type="button" id="Edititemprice" class="clsEditButton" style="display: none">Edit</button>
+            <button type="button" id="Deleteitemprice" class="fa fa-minus delete_row pointer" style="display: none">Delete</button>
+        </td>
+    </tr>
+</table>
+*@
 <div class="panel panel-info">
     <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
         <div role="search" class="app-search " style="width: 24%">
             <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
             <a href="#"><i class="fa fa-search"></i></a>
         </div>
-        @*<%-- <div class="pull-right">
-                <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+        @*<%--
+        <div class="pull-right">
+            <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
 
-            </div>--%>*@
+        </div>
+        --%>*@
     </div>
     <div class="panel-wrapper collapse in" aria-expanded="true">
         <div class="panel-body">
@@ -359,115 +396,129 @@
         <div class="white-box">
             <div class="form-material " style="width: 100%">
                 @*<%--<div class="form-group col-md-3">
-                        <div role="search" class="app-search ">
-                            <input type="text" placeholder="Filter by Item o..." class="form-control"> <a href="#"><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>--%>*@
+                    <div role="search" class="app-search ">
+                        <input type="text" placeholder="Filter by Item o..." class="form-control">
+                        <a href="#"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                --%>*@
                 <div class="form-group col-md-12">
                     <div class="table-responsive">
                         <table id="tblItemsMaster" class="table">
                             <thead>
                                 <tr>
-                                    <th><label>Item Name</label></th>
-                                    <th><label>Customer</label></th>
-                                    <th><label>Contact</label></th>
-                                    <th><label>DC</label></th>
-                                    <th><label>IR</label></th>
-                                    <th><label>IREx</label></th>
-                                    <th><label>W</label></th>
-                                    <th><label>WEx</label></th>
-                                    <th><label>Status</label></th>
-                                    <th><label>Action</label></th>
+                                    <th>
+                                        <label>Item Name</label></th>
+                                    <th>
+                                        <label>Customer</label></th>
+                                    <th>
+                                        <label>Contact</label></th>
+                                    <th>
+                                        <label>DC</label></th>
+                                    <th>
+                                        <label>IR</label></th>
+                                    <th>
+                                        <label>IREx</label></th>
+                                    <th>
+                                        <label>W</label></th>
+                                    <th>
+                                        <label>WEx</label></th>
+                                    <th>
+                                        <label>Status</label></th>
+                                    <th>
+                                        <label>Action</label></th>
                                 </tr>
                             </thead>
                             <tbody id="tblItemMasterbody"></tbody>
                         </table>
                         @*<table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <input type="checkbox" id="CheckBox5">
-                                        </th>
-                                        <th>
-                                            <label>Item Name</label>
-                                        </th>
-                                        <th>
-                                            <label>Customer</label>
-                                        </th>
-                                        <th>
-                                            <label>Contact</label>
-                                        </th>
-                                        <th>
-                                            <label>DC</label>
-                                        </th>
-                                        <th>
-                                            <label>IR</label>
-                                        </th>
-                                        <th>
-                                            <label>IREx</label>
-                                        </th>
-                                        <th>
-                                            <label>W</label>
-                                        </th>
-                                        <th>
-                                            <label>WEx</label>
-                                        </th>
-                                        <th><label>Status</label></th>
-                                        <th><label>Action</label></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" id="CheckBox5">
-                                        </td>
-                                        <td>Bed Sheet Double</td>
-                                        <td>Remal Internal Company</td>
-                                        <td>#97979797</td>
-                                        <td>---</td>
-                                        <td>---</td>
-                                        <td>---</td>
-                                        <td>0.300</td>
-                                        <td>0.500</td>
-                                        <td>Active</td>
-                                        <td><i class="fa fa-edit fa-2x"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" id="CheckBox6">
-                                        </td>
-                                        <td>Bed Sheet Double</td>
-                                        <td>Remal Internal Company</td>
-                                        <td>#97979797</td>
-                                        <td>---</td>
-                                        <td>---</td>
-                                        <td>---</td>
-                                        <td>0.300</td>
-                                        <td>0.500</td>
-                                        <td>Active</td>
-                                        <td><i class="fa fa-edit fa-2x"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" id="CheckBox7">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="CheckBox5">
+                                    </th>
+                                    <th>
+                                        <label>Item Name</label>
+                                    </th>
+                                    <th>
+                                        <label>Customer</label>
+                                    </th>
+                                    <th>
+                                        <label>Contact</label>
+                                    </th>
+                                    <th>
+                                        <label>DC</label>
+                                    </th>
+                                    <th>
+                                        <label>IR</label>
+                                    </th>
+                                    <th>
+                                        <label>IREx</label>
+                                    </th>
+                                    <th>
+                                        <label>W</label>
+                                    </th>
+                                    <th>
+                                        <label>WEx</label>
+                                    </th>
+                                    <th>
+                                        <label>Status</label></th>
+                                    <th>
+                                        <label>Action</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox5">
+                                    </td>
+                                    <td>Bed Sheet Double</td>
+                                    <td>Remal Internal Company</td>
+                                    <td>#97979797</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                    <td>0.300</td>
+                                    <td>0.500</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox6">
+                                    </td>
+                                    <td>Bed Sheet Double</td>
+                                    <td>Remal Internal Company</td>
+                                    <td>#97979797</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                    <td>0.300</td>
+                                    <td>0.500</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="CheckBox7">
+                                    </td>
+                                    <td>Bed Sheet Double</td>
+                                    <td>Remal Internal Company</td>
+                                    <td>#97979797</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                    <td>0.300</td>
+                                    <td>0.500</td>
+                                    <td>Active</td>
+                                    <td><i class="fa fa-edit fa-2x"></i></td>
+                                </tr>
 
-                                        </td>
-                                        <td>Bed Sheet Double</td>
-                                        <td>Remal Internal Company</td>
-                                        <td>#97979797</td>
-                                        <td>---</td>
-                                        <td>---</td>
-                                        <td>---</td>
-                                        <td>0.300</td>
-                                        <td>0.500</td>
-                                        <td>Active</td>
-                                        <td><i class="fa fa-edit fa-2x"></i></td>
-                                    </tr>
 
 
-
-                                </tbody>
-                            </table>*@
+                            </tbody>
+                        </table>
+                        *@
                     </div>
                 </div>
             </div>

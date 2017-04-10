@@ -23,7 +23,6 @@ namespace IntegrationAPI.Controllers
         [HttpPost]
         public HttpResponseMessage GetItemPriceDetail([FromBody]clsitemPrice request)
         {
-
             LoggerFactory.LoggerInstance.LogDebug("Request Started for : " + request.ItemPriceID + "  Price :" + request.Price);
             HttpResponseMessage response = new HttpResponseMessage();
             try
@@ -83,30 +82,33 @@ namespace IntegrationAPI.Controllers
         [Authorize]
         [Route("InsertItemPrice")]
         [HttpPost]
-        public HttpResponseMessage InsertItemPrice([FromBody]clsitemPrice request)
+        public HttpResponseMessage InsertItemPrice([FromBody]List<clsitemPrice> request)
         {
-
-            LoggerFactory.LoggerInstance.LogDebug("Request Started for : " + request.ItemPriceID + "  Price :" + request.Price);
             HttpResponseMessage response = new HttpResponseMessage();
             try
             {
-                item_priceService objComService = new item_priceService();
-                var objResponse = objComService.InsertItemPrice(request);
-                if (objResponse != null && objResponse.ToString() != "")
+                for (int i = 0; i < request.Count; i++)
                 {
-                    response = Request.CreateResponse(HttpStatusCode.OK, objResponse);
-                    LoggerFactory.LoggerInstance.LogDebug("Request End for : " + request.ItemPriceID + "  Price :" + request.Price);
-                }
-                else
-                {
-                    response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "No detail found  for  Price : " + request.Price + ".");
+                    LoggerFactory.LoggerInstance.LogDebug("Request Started for : " + request[i].ItemPriceID + "  Price :" + request[i].Price);
+
+                    item_priceService objComService = new item_priceService();
+                    var objResponse = objComService.InsertItemPrice(request[i]);
+                    if (objResponse != null && objResponse.ToString() != "")
+                    {
+                        response = Request.CreateResponse(HttpStatusCode.OK, objResponse);
+                        LoggerFactory.LoggerInstance.LogDebug("Request End for : " + request[i].ItemPriceID + "  Price :" + request[i].Price);
+                    }
+                    else
+                    {
+                        response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "No detail found  for  Price : " + request[i].Price + ".");
+                    }
                 }
             }
+
             catch (Exception ex)
             {
                 LoggerFactory.LoggerInstance.LogException(ex);
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while getting  Price " + request.Price + ".");
-
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while getting  Price " + request[0].Price + ".");
             }
             return response;
         }

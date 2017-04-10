@@ -75,3 +75,13 @@ D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration
 D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
 D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb
 D:\@Chaitali's Work\LaundryManagement\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.csprojResolveAssemblyReference.cache
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll.config
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.dll
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\Integration_Repository.pdb
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.dll
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.xml
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.csprojResolveAssemblyReference.cache
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.dll
+F:\Development\Git\LP\Laundry\Laundry\IntegrationAPI\Integration_Repository\obj\Debug\Integration_Repository.pdb

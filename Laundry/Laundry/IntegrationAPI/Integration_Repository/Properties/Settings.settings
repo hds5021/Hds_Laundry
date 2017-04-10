@@ -5,26 +5,26 @@
     <Setting Name="Laundry2017ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=LAPTOP-NI3IEQFR;Initial Catalog=jptLaundry;Persist Security Info=True;User ID=sa;Password=admin1234&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+  &lt;ConnectionString&gt;Data Source=USER-PC;Initial Catalog=jptLaundry;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.EntityClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=LAPTOP-NI3IEQFR;Initial Catalog=jptLaundry;Persist Security Info=True;User ID=sa;Password=admin1234</Value>
+      <Value Profile="(Default)">Data Source=USER-PC;Initial Catalog=jptLaundry;Integrated Security=True</Value>
     </Setting>
     <Setting Name="jptLaundryConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=LAPTOP-NI3IEQFR;Initial Catalog=jptLaundry;Persist Security Info=True;User ID=sa;Password=admin1234&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+  &lt;ConnectionString&gt;Data Source=USER-PC;Initial Catalog=jptLaundry;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.EntityClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=LAPTOP-NI3IEQFR;Initial Catalog=jptLaundry;Persist Security Info=True;User ID=sa;Password=admin1234</Value>
+      <Value Profile="(Default)">Data Source=USER-PC;Initial Catalog=jptLaundry;Integrated Security=True</Value>
     </Setting>
     <Setting Name="jptLaundryConnectionString2" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=LAPTOP-NI3IEQFR;Password=admin1234;Initial Catalog=jptLaundry;Persist Security Info=True;User ID=sa;Password=admin1234;MultipleActiveResultSets=True;Application Name=EntityFramework&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+  &lt;ConnectionString&gt;Data Source=USER-PC;Initial Catalog=jptLaundry;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.EntityClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=LAPTOP-NI3IEQFR;Password=admin1234;Initial Catalog=jptLaundry;Persist Security Info=True;User ID=sa;Password=admin1234;MultipleActiveResultSets=True;Application Name=EntityFramework</Value>
+      <Value Profile="(Default)">Data Source=USER-PC;Initial Catalog=jptLaundry;Integrated Security=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
