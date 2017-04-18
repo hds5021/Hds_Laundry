@@ -1,26 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="jptLaundry" Class="LaundryDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-NI3IEQFR;Initial Catalog=jptLaundry;User ID=sa" SettingsObjectName="Integration_Repository.Properties.Settings" SettingsPropertyName="jptLaundryConnectionString4" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.customers" Member="customers">
-    <Type Name="customer">
-      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
-      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="customer_customers_branch" Member="customers_branches" ThisKey="CustomerID" OtherKey="CustomerID" Type="customers_branch" />
-      <Association Name="customer_item" Member="items" ThisKey="CustomerID" OtherKey="CustomerID" Type="item" />
-      <Association Name="customer_po" Member="pos" ThisKey="CustomerID" OtherKey="CustomerID" Type="po" />
-      <Association Name="customer_sms_log" Member="sms_logs" ThisKey="CustomerID" OtherKey="CustomerID" Type="sms_log" />
-      <Association Name="instance_customer" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
-      <Association Name="UserMaster_customer" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.customers_branch" Member="customers_branches">
     <Type Name="customers_branch">
       <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -35,9 +13,9 @@
       <Column Name="ContactPerson" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="customers_branch_po" Member="pos" ThisKey="CustomerBranchID" OtherKey="CustomerBranchID" Type="po" />
-      <Association Name="customer_customers_branch" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
       <Association Name="instance_customers_branch" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
       <Association Name="UserMaster_customers_branch" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+      <Association Name="customer_customers_branch" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Expense_Mst" Member="Expense_Msts">
@@ -134,7 +112,6 @@
       <Column Name="LastRestoreUpto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="LastResetDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="instance_customer" Member="customers" ThisKey="InstanceID" OtherKey="InstanceID" Type="customer" />
       <Association Name="instance_customers_branch" Member="customers_branches" ThisKey="InstanceID" OtherKey="InstanceID" Type="customers_branch" />
       <Association Name="instance_Expense_Mst" Member="Expense_Msts" ThisKey="InstanceID" OtherKey="InstanceID" Type="Expense_Mst" />
       <Association Name="instance_expense" Member="expenses" ThisKey="InstanceID" OtherKey="InstanceID" Type="expense" />
@@ -148,6 +125,7 @@
       <Association Name="instance_purchase_items_master" Member="purchase_items_masters" ThisKey="InstanceID" OtherKey="InstanceID" Type="purchase_items_master" />
       <Association Name="instance_sms_log" Member="sms_logs" ThisKey="InstanceID" OtherKey="InstanceID" Type="sms_log" />
       <Association Name="instance_sms_log1" Member="sms_logs1" ThisKey="InstanceID" OtherKey="InstanceID" Type="sms_log" />
+      <Association Name="instance_customer" Member="customers" ThisKey="InstanceID" OtherKey="InstanceID" Type="customer" />
     </Type>
   </Table>
   <Table Name="dbo.item_price" Member="item_prices">
@@ -171,9 +149,9 @@
       <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="item_pos_item" Member="pos_items" ThisKey="ItemID" OtherKey="ItemID" Type="pos_item" />
-      <Association Name="customer_item" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
       <Association Name="instance_item" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
       <Association Name="UserMaster_item" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+      <Association Name="customer_item" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MenuMaster" Member="MenuMasters">
@@ -288,9 +266,9 @@
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="po_pos_item" Member="pos_items" ThisKey="PosID" OtherKey="PosID" Type="pos_item" />
       <Association Name="customers_branch_po" Member="customers_branch" ThisKey="CustomerBranchID" OtherKey="CustomerBranchID" Type="customers_branch" IsForeignKey="true" />
-      <Association Name="customer_po" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
       <Association Name="instance_po" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
       <Association Name="UserMaster_po" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+      <Association Name="customer_po" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.pos_items" Member="pos_items">
@@ -395,10 +373,10 @@
       <Column Name="Details" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="customer_sms_log" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
       <Association Name="instance_sms_log" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
       <Association Name="instance_sms_log1" Member="instance1" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
       <Association Name="UserMaster_sms_log" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
+      <Association Name="customer_sms_log" Member="customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="customer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.sms_templates" Member="sms_templates">
@@ -437,7 +415,6 @@
       <Column Name="deleteBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="viewedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="UserMaster_customer" Member="customers" ThisKey="userid" OtherKey="UserID" Type="customer" />
       <Association Name="UserMaster_customers_branch" Member="customers_branches" ThisKey="userid" OtherKey="UserID" Type="customers_branch" />
       <Association Name="UserMaster_expense" Member="expenses" ThisKey="userid" OtherKey="UserID" Type="expense" />
       <Association Name="UserMaster_group" Member="groups" ThisKey="userid" OtherKey="UserID" Type="group" />
@@ -451,6 +428,7 @@
       <Association Name="UserMaster_sms_log" Member="sms_logs" ThisKey="userid" OtherKey="UserID" Type="sms_log" />
       <Association Name="UserMaster_sms_template" Member="sms_templates" ThisKey="userid" OtherKey="UserID" Type="sms_template" />
       <Association Name="UserMaster_UserRightsMaster" Member="UserRightsMasters" ThisKey="userid" OtherKey="userid" Type="UserRightsMaster" />
+      <Association Name="UserMaster_customer" Member="customers" ThisKey="userid" OtherKey="UserID" Type="customer" />
     </Type>
   </Table>
   <Table Name="dbo.UserRightsMaster" Member="UserRightsMasters">
@@ -506,6 +484,27 @@
       <Column Name="isRetired" Type="System.String" CanBeNull="false" />
       <Column Name="isDeleted" Type="System.String" CanBeNull="false" />
       <Column Name="status" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customers" Member="customers">
+    <Type Name="customer">
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="customer_customers_branch" Member="customers_branches" ThisKey="CustomerID" OtherKey="CustomerID" Type="customers_branch" />
+      <Association Name="customer_item" Member="items" ThisKey="CustomerID" OtherKey="CustomerID" Type="item" />
+      <Association Name="customer_po" Member="pos" ThisKey="CustomerID" OtherKey="CustomerID" Type="po" />
+      <Association Name="customer_sms_log" Member="sms_logs" ThisKey="CustomerID" OtherKey="CustomerID" Type="sms_log" />
+      <Association Name="instance_customer" Member="instance" ThisKey="InstanceID" OtherKey="InstanceID" Type="instance" IsForeignKey="true" />
+      <Association Name="UserMaster_customer" Member="UserMaster" ThisKey="UserID" OtherKey="userid" Type="UserMaster" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.SP_customers_branch_Delete" Method="SP_customers_branch_Delete">
@@ -2402,5 +2401,58 @@
   <Function Name="dbo.SP_UserMaster_Delete" Method="SP_UserMaster_Delete">
     <Parameter Name="empid" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_item_price_SelectByItemId" Method="SP_item_price_SelectByItemId">
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_item_price_SelectByItemIdResult">
+      <Column Name="ItemPriceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_item_price_DeleteByItemId" Method="SP_item_price_DeleteByItemId">
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Items_Search" Method="SP_Items_Search">
+    <Parameter Name="ItemSearch" Parameter="itemSearch" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="SP_Items_SearchResult">
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLocalName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_customers_SelectOne_Contact" Method="SP_customers_SelectOne_Contact">
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SP_customers_SelectOne_ContactResult">
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CivilNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_Grid_SelectAll" Method="SP_pos_Grid_SelectAll">
+    <ElementType Name="SP_pos_Grid_SelectAllResult">
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ColorCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>

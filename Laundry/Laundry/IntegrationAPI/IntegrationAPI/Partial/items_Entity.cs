@@ -37,6 +37,22 @@ namespace IntegrationAPI.Partial
             }
             return objResultList;
         }
+        public virtual List<SP_Items_SearchResult> GetItemDetailBySearch(string searchString)
+        {
+            ISingleResult<SP_Items_SearchResult> objResult;
+            List<SP_Items_SearchResult> objResultList;
+            try
+            {
+                objResult = db.SP_Items_Search(searchString);
+                objResultList = new List<SP_Items_SearchResult>(objResult);
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+            return objResultList;
+        }
         public virtual List<SP_items_SelectOneResult> GetItemDetailById(clsitems obj)
         {
             ISingleResult<SP_items_SelectOneResult> objResult;

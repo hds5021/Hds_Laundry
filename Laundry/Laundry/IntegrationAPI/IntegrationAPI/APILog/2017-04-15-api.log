@@ -1,0 +1,24 @@
+2017-04-15 20:16:11.9883|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0  Branch Name :
+2017-04-15 20:16:11.9883|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0  Office branch Id :0
+2017-04-15 20:16:14.9424|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0  Branch Name :
+2017-04-15 20:16:14.9554|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Party name :
+2017-04-15 20:16:16.4675|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : []
+2017-04-15 20:16:16.5235|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0  Office branch Id :0
+2017-04-15 20:16:16.5655|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"SupplierID":1,"InstanceID":1,"UserID":1,"SupplierName":"Yukti","CivilNumber":"45","Email":"yukti@gmail.com","Address":"Maninagar","Balance":600.230,"Contact":"6326541210","Status":1,"CreatedDate":"\/Date(1490252037370)\/"},{"SupplierID":3,"InstanceID":1,"UserID":1,"SupplierName":"Meera","CivilNumber":"90","Email":"meera@gmail.com","Address":"Maninagar","Balance":1000.000,"Contact":"8756321452","Status":2,"CreatedDate":"\/Date(1490340001867)\/"},{"SupplierID":4,"InstanceID":1,"UserID":1,"SupplierName":"Maya","CivilNumber":"89","Email":"maya@gmail.com","Address":"GeetaMandir","Balance":900.000,"Contact":"7563214521","Status":1,"CreatedDate":"\/Date(1490252388103)\/"}]
+2017-04-15 20:16:16.5655|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"OfficeBranchID":1,"InstanceID":1,"UserID":1,"BranchName":"offic1","CivilNumber":"89","Email":"office@gmail.com","Address":"Manipur","Contact":"896325414","CreatedDate":"\/Date(1490260674633)\/"},{"OfficeBranchID":3,"InstanceID":1,"UserID":1,"BranchName":"office4","CivilNumber":"78","Email":"office4@gmail.com","Address":"Mithalal","Contact":"9632541521","CreatedDate":"\/Date(1490343695340)\/"}]
+2017-04-15 20:16:16.5985|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"OfficeBranchID":1,"InstanceID":1,"UserID":1,"BranchName":"offic1","CivilNumber":"89","Email":"office@gmail.com","Address":"Manipur","Contact":"896325414","CreatedDate":"\/Date(1490260674633)\/"},{"OfficeBranchID":3,"InstanceID":1,"UserID":1,"BranchName":"office4","CivilNumber":"78","Email":"office4@gmail.com","Address":"Mithalal","Contact":"9632541521","CreatedDate":"\/Date(1490343695340)\/"}]
+2017-04-15 20:16:16.5985|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0   Party name :
+2017-04-15 20:16:16.6085|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0  Branch Name :
+2017-04-15 20:16:16.6085|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0  Branch Name :
+2017-04-15 20:16:19.3636|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Item Name :
+2017-04-15 20:16:19.3636|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0  Branch Name :
+2017-04-15 20:16:19.3796|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"OfficeBranchID":1,"InstanceID":1,"UserID":1,"BranchName":"offic1","CivilNumber":"89","Email":"office@gmail.com","Address":"Manipur","Contact":"896325414","CreatedDate":"\/Date(1490260674633)\/"},{"OfficeBranchID":3,"InstanceID":1,"UserID":1,"BranchName":"office4","CivilNumber":"78","Email":"office4@gmail.com","Address":"Mithalal","Contact":"9632541521","CreatedDate":"\/Date(1490343695340)\/"}]
+2017-04-15 20:16:19.3796|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0  Branch Name :
+2017-04-15 20:16:19.4326|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Party name :
+2017-04-15 20:16:19.4406|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Item ID :0
+2017-04-15 20:16:19.5376|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : []
+2017-04-15 20:16:19.5376|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0 Item ID :0
+2017-04-15 20:16:19.5836|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"ExpenseItemID":1,"InstanceID":1,"ItemName":"Expense1","Status":1,"CreatedDate":"\/Date(1490259280777)\/"},{"ExpenseItemID":3,"InstanceID":1,"ItemName":"Expense4","Status":2,"CreatedDate":"\/Date(1490342333813)\/"}]
+2017-04-15 20:16:19.5836|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0 Item Name :
+2017-04-15 20:16:19.6216|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : []
+2017-04-15 20:16:19.6296|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request End for : 0   Party name :

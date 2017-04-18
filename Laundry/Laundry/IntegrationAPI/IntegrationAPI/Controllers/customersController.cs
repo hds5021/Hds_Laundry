@@ -83,6 +83,37 @@ namespace IntegrationAPI.Controllers
         }
 
         [Authorize]
+        [Route("GetCustomerDetailByContact")]
+        [HttpPost]
+        public HttpResponseMessage GetCustomerDetailByContact([FromBody]customerRequest request)
+        {
+
+            LoggerFactory.LoggerInstance.LogDebug("Request Started for : " + request.CustomerID + " Customer name :" + request.CustomerName);
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                customersService objComService = new customersService();
+                var CustomerResponse = objComService.getCustomerByContact(request);
+                if (CustomerResponse != null && CustomerResponse.ToString() != "")
+                {
+                    response = Request.CreateResponse(HttpStatusCode.OK, CustomerResponse);
+                    LoggerFactory.LoggerInstance.LogDebug("Request Started for : " + request.CustomerID + " Customer name :" + request.CustomerName);
+                }
+                else
+                {
+                    response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "No detail found  for requested Customer by ID : " + request.CustomerID + ".");
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while getting Customer Detail by ID " + request.CustomerID + ".");
+
+            }
+            return response;
+        }
+
+        [Authorize]
         [Route("InsertCustomer")]
         [HttpPost]
         public HttpResponseMessage InsertCustomer([FromBody]customerRequest request)

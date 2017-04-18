@@ -63,6 +63,27 @@ namespace IntegrationAPI.Services
             return result;
         }
 
+        public string getCustomerByContact(customerRequest obj)
+        {
+            string result = "";
+            try
+            {
+                customers_Entity objEntities = new customers_Entity();
+                List<SP_customers_SelectOne_ContactResult> CustomerData = new List<SP_customers_SelectOne_ContactResult>();
+                CustomerData = objEntities.getCustomerByContact(obj);
+                result = CustomerData.ToJSON();
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
+
         public string InsertCustomer(customerRequest obj)
         {
             string result = "";

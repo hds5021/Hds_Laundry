@@ -37,6 +37,26 @@ namespace IntegrationAPI.Services
             }
             return result;
         }
+        public string GetItemDetailBySearch(string searchString)
+        {
+            string result = "";
+            try
+            {
+                items_Entity objEntities = new items_Entity();
+                List<SP_Items_SearchResult> objResult = new List<SP_Items_SearchResult>();
+                objResult = objEntities.GetItemDetailBySearch(searchString);
+                result = objResult.ToJSON();
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
         public string GetItemDetailById(clsitems obj)
         {
             string result = "";

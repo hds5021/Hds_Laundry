@@ -1,0 +1,9 @@
+2017-04-17 22:54:33.4579|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Customer name :
+2017-04-17 22:54:36.6811|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 0
+2017-04-17 22:54:36.7781|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Customer name :
+2017-04-17 22:54:46.5766|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Customer name :
+2017-04-17 22:54:46.6586|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : [{"CustomerID":8,"InstanceID":1,"UserID":1,"CustomerName":"Harshil","CivilNumber":null,"Email":null,"Address":null,"Balance":0.000,"Contact":"9537581281","Status":0,"CreatedDate":"\/Date(1492328335137)\/"},{"CustomerID":12,"InstanceID":1,"UserID":1,"CustomerName":"","CivilNumber":null,"Email":null,"Address":null,"Balance":0.000,"Contact":"9537581281","Status":0,"CreatedDate":"\/Date(1492449869060)\/"}]
+2017-04-17 22:54:46.6586|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Customer name :
+2017-04-17 22:55:59.3618|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Customer name :hardik
+2017-04-17 22:56:01.1539|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Response Value : 0
+2017-04-17 22:56:01.1589|DEBUG|IntegrationAPI.Helpers.LoggerFactory|Request Started for : 0 Customer name :hardik

@@ -60,6 +60,26 @@ namespace IntegrationAPI.Services
             }
             return result;
         }
+        public string GetItemPriceByItemId(clsitemPrice obj)
+        {
+            string result = "";
+            try
+            {
+                item_price_Entity objEntities = new item_price_Entity();
+                List<SP_item_price_SelectByItemIdResult> objResult = new List<SP_item_price_SelectByItemIdResult>();
+                objResult = objEntities.GetItemPriceByItemId(obj);
+                result = objResult.ToJSON();
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
 
         public string InsertItemPrice  (clsitemPrice obj)
         {
@@ -117,6 +137,28 @@ namespace IntegrationAPI.Services
                 int objResult;
                 objResult = objEntities.DeleteItemPrice(obj);
                 result = objResult.ToJSON();
+
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
+
+        public string DeleteItemPriceByItemId(clsitemPrice obj)
+        {
+            string result = "";
+            try
+            {
+                item_price_Entity objEntities = new item_price_Entity();
+                long objdeleteResult;
+                objdeleteResult = objEntities.DeleteItemPriceByItemId(obj);
+                result = objdeleteResult.ToJSON();
 
             }
             catch (Exception ex)

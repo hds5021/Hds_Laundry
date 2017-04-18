@@ -5,6 +5,8 @@
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
 <script type="text/javascript">
     var rowCount = 1;
+    var groupData = {};
+    var edititemId = 0;
     $(document).ready(function () {
         BindItemMasterList();
         BindCustomer();
@@ -15,10 +17,8 @@
                 '<td><div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="group' + rowCount + '" class="form-control group_class "  name="GroupID[]"  required="required"></select></div></div></td>' +
                 '<td><div class="form-group mbottom0"><label for="Price" class="control-label col-md-4">Price</label><div class="col-md-7"><input type="text" name="Price[]" id="price' + rowCount + '" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off"></div></div>' +
                 '<td><i class="fa fa-plus add_row pointer Add_Rct"  style="color: limegreen;"></i>&nbsp;</td>' +
-            '<td><i class="fa fa-minus delete_row pointer delete_Rct" style="color: red;"></i></td>' +
+                '<td><i class="fa fa-minus delete_row pointer delete_Rct" style="color: red;"></i></td>' +
                 '</tr>';
-
-
             $('#maintable').append(contactdiv);
             // Adding these controls to Main table class
             BindGroup();
@@ -69,32 +69,178 @@
 
     $(document).on('click', '#btnSaveItemMaster', function () {
         SaveItemMaster();
+        if (edititemId > 0) {
+            jsonItemMasterDetails.ItemID = edititemId;
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "UpdateItems",
+                data: { ItemMasterModel: JSON.stringify(jsonItemMasterDetails), ItemPriceListModel: JSON.stringify(jsonItemPriceList) },
+                success: function (msg) {
+                    alert("Data Updated Successfully");
+                    edititemId = 0;
+                    BindItemMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "InsertItems",
+                data: { ItemMasterModel: JSON.stringify(jsonItemMasterDetails), ItemPriceListModel: JSON.stringify(jsonItemPriceList) },
+                success: function (msg) {
+                    alert("Data Save Successfully");
+                    BindItemMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+
+    });
+
+    function SupplierMasterUpdate() {
+        SaveItemMaster();
         $.ajax({
             type: "POST",
             async: false,
-            url: "InsertItems",
+            url: "UpdateItems",
             data: { ItemMasterModel: JSON.stringify(jsonItemMasterDetails), ItemPriceListModel: JSON.stringify(jsonItemPriceList) },
             success: function (msg) {
-                alert("Data Save Successfully");
+                alert("Data Updated Successfully");
                 BindItemMasterList();
                 Clear();
             },
             error: function () { alert('error'); }
         });
-    });
+    };
 
     function SupplierMasterDelete(itemId) {
+        if (itemId == undefined) {
+            itemId = edititemId;
+        }
+        if (itemId > 0) {
+            var retVal = confirm("Do you want to Delete this item ?");
+        }
+        else {
+            return false;
+        }
+        if (retVal == true) {
+            $.ajax({
+                type: "DELETE",
+                async: false,
+                url: "DeleteItems",
+                data: { itemId: itemId },
+                success: function (msg) {
+                    alert("Data Deleted Successfully");
+                    BindItemMasterList();
+                    Clear();
+                },
+                error: function () { alert('error'); }
+            });
+        }
+        else {
+            return false;
+        }
+    };
+    function SupplierMasterDetailById(itemId) {
+        GetItemMasterdetailById(itemId);
+        GetItemPricedetailById(itemId);
+    };
+
+    function GetItemMasterdetailById(itemId) {
         $.ajax({
-            type: "DELETE",
-            async: false,
-            url: "DeleteItems",
+            url: "GetItemDetailById",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
             data: { itemId: itemId },
-            success: function (msg) {
-                alert("Data Deleted Successfully");
-                BindItemMasterList();
-                Clear();
+            success: function (res) {
+                //clear();
+                var jsonObj = JSON.parse(res);
+                edititemId = jsonObj[0].ItemID;
+                $('#txtitemname').val(jsonObj[0].ItemName);
+                $('#txtlocalname').val(jsonObj[0].ItemLocalName);
+                $('#ddlcustomer').val(jsonObj[0].CustomerID);
+                $('#ddlpricerate').val(jsonObj[0].PriceRate);
+                $('#ddlstatus').val(jsonObj[0].Status);
             },
-            error: function () { alert('error'); }
+            error: function (msg) { alert(msg); }
+        });
+    };
+
+    function GetItemMasterdetailBySearch() {
+        var searchParam = $('#searchTxt').val();
+        if (searchParam != undefined && searchParam != null && searchParam != "") {
+            $.ajax({
+                url: "GetItemDetailBySearch",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { searchString: searchParam },
+                success: function (res) {
+                    $("#tblItemMasterbody").empty();
+                    var tr;
+                    var jsonObj = JSON.parse(res);
+                    if (jsonObj.length > 0) {
+                        $.each(jsonObj, function (key, item) {
+                            tr += '<tr>';
+                            tr += '<td>' + item.ItemName + '</td>';
+                            tr += '<td>' + item.ItemLocalName + '</td>';
+                            tr += '<td>' + item.PriceRate + '</td>';
+                            if (item.Status == 1) {
+                                item.Status = "Active";
+                            }
+                            else if (item.Status == 2) {
+                                item.Status = "InActive";
+                            }
+                            tr += ("<td>" + item.Status + "</td>");
+                            tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='SupplierMasterDetailById(" + item.ItemID + ");return false;' ></i></a><a><i class='ti-trash fa-2x' onclick='SupplierMasterDelete(" + item.ItemID + ")' ></i></a></td>");
+                            tr += '</tr>';
+                        });
+                    }
+                    $('#tblItemMasterbody').html(tr);
+                },
+                error: function (msg) { alert(msg); }
+            });
+        } else {
+            alert("Please enter some text to search the result.");
+        }
+    };
+
+    function GetItemPricedetailById(itemId) {
+        $.ajax({
+            url: "GetItemPricedetailById",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: { itemId: itemId },
+            success: function (res) {
+                //clear();
+                var jsonObj = JSON.parse(res);
+                for (var i = 1; i <= jsonObj.length; i++) {
+                    if (i > 1) {
+                        var contactdiv = '<tr class="data-contact-person" >' +
+                                        '<td><div class="form-group "><label class="control-label col-md-4">Group</label><div class="col-md-8"><select id="group' + i + '" class="form-control group_class "  name="GroupID[]"  required="required"></select></div></div></td>' +
+                                        '<td><div class="form-group mbottom0"><label for="Price" class="control-label col-md-4">Price</label><div class="col-md-7"><input type="text" name="Price[]" id="price' + i + '" class="form-control price_class DecimalOnly" placeholder="Price" required="required" value="" maxlength="6" autocomplete="off"></div></div>' +
+                                        '<td><i class="fa fa-plus add_row pointer Add_Rct"  style="color: limegreen;"></i>&nbsp;</td>' +
+                                        '<td><i class="fa fa-minus delete_row pointer delete_Rct" style="color: red;"></i></td>' +
+                                        '</tr>';
+                        $('#maintable').append(contactdiv);
+                    }
+                    if (groupData != undefined) {
+                        $("#group" + i).append($("<option></option>").val('0').html('Select Group')),
+                                        $.each(groupData, function (key, item) {
+                                            $("#group" + i).append($("<option></option>").val(item.GroupID).html(item.GroupName));
+                                        });
+                    }
+                    $("#group" + i).val(jsonObj[i - 1].GroupID);
+                    $("#price" + i).val(jsonObj[i - 1].Price);
+                }
+            },
+            error: function (msg) { alert(msg); }
         });
     };
 
@@ -125,7 +271,8 @@
             dataType: "json",
             success: function (data) {
                 var jsonObj = JSON.parse(data);
-
+                //store group data
+                groupData = jsonObj;
                 $("#group" + rowCount).append($("<option></option>").val('0').html('Select Group')),
                 $.each(jsonObj, function (key, item) {
 
@@ -160,7 +307,7 @@
                     //tr += ("<td><button type='button' id='btnEdit' class='botaoadd' onclick='SupplierMasterByID(" + item.ItemID + ")' >Edit</button></td>");
                     //tr += ("<td><button type='button' id='btnDelete' class='botaoadd' onclick='SupplierMasterDelete(" + item.ItemID + ")' >Delete</button></td>");
                     //tr += '</tr>';
-                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='GetExpensesDetailById(" + item.ItemID + ")' ></i></a><a><i class='ti-trash fa-2x' onclick='SupplierMasterDelete(" + item.ItemID + ")' ></i></a></td>");
+                    tr += ("<td><a><i class='fa fa-edit fa-2x' onclick='SupplierMasterDetailById(" + item.ItemID + ");return false;' ></i></a><a><i class='ti-trash fa-2x' onclick='SupplierMasterDelete(" + item.ItemID + ")' ></i></a></td>");
                     tr += '</tr>';
                 });
                 $('#tblItemMasterbody').html(tr);
@@ -343,7 +490,7 @@
                 <div class=" form-group col-md-2 m-l-10">
                     @*
                     <button type="button" id="btnUpdateCustomerBranch" class="waves-button-input">Update</button>*@
-                        <button type="button" id="btnUpdateItemMaster" class="btn btn-block btn-outline btn-info " onclick="SetItemPriceDetails();">Delete</button>
+                        <button type="button" id="btnUpdateItemMaster" class="btn btn-block btn-outline btn-info " onclick="SupplierMasterDelete();">Delete</button>
                 </div>
             </div>
         </div>
@@ -357,7 +504,9 @@
     <!--Textboxes will be added here -->
 </div>
 <br />
+@*
 <button id="btnPost" text="Post" onclick="Post" />
+*@
 
 @*<table>
     <tr id="Index1">
@@ -374,8 +523,8 @@
 <div class="panel panel-info">
     <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
         <div role="search" class="app-search " style="width: 24%">
-            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
-            <a href="#"><i class="fa fa-search"></i></a>
+            <input type="text" placeholder="Filter by Name or Contact..." class="form-control" id="searchTxt">
+            <a href="javascript:void(0)" onclick="GetItemMasterdetailBySearch();return false;"><i class="fa fa-search"></i></a>
         </div>
         @*<%--
         <div class="pull-right">

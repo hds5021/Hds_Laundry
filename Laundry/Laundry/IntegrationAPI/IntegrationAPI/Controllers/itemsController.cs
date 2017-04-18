@@ -8,12 +8,12 @@ using IntegrationAPI.Services;
 using IntegrationAPI.Helpers;
 namespace IntegrationAPI.Controllers
 {
-   public class itemsController : ApiController
+    public class itemsController : ApiController
     {/// <summary>
-     /// Created Date : 03/03/2017
-     /// <param name="request">http://localhost:52761/GetCustomerBranchDetail </param>
-     /// <returns></returns>
-     /// </summary>
+        /// Created Date : 03/03/2017
+        /// <param name="request">http://localhost:52761/GetCustomerBranchDetail </param>
+        /// <returns></returns>
+        /// </summary>
 
         /// Items
 
@@ -43,6 +43,37 @@ namespace IntegrationAPI.Controllers
             {
                 LoggerFactory.LoggerInstance.LogException(ex);
                 response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while getting  Item Name " + request.ItemName + ".");
+
+            }
+            return response;
+        }
+
+        [Authorize]
+        [Route("GetItemDetailBySearch")]
+        [HttpPost]
+        public HttpResponseMessage GetItemDetailBySearch([FromBody]string searchString)
+        {
+
+            LoggerFactory.LoggerInstance.LogDebug("Request Started for : " + searchString + "  Item Name :" + searchString);
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                itemsService objComService = new itemsService();
+                var objResponse = objComService.GetItemDetailBySearch(searchString);
+                if (objResponse != null && objResponse.ToString() != "")
+                {
+                    response = Request.CreateResponse(HttpStatusCode.OK, objResponse);
+                    LoggerFactory.LoggerInstance.LogDebug("Request End for : " + searchString + "  Item Name :" + searchString);
+                }
+                else
+                {
+                    response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "No detail found  for  Item Name : " + searchString + ".");
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while getting  Item Name " + searchString + ".");
 
             }
             return response;

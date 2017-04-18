@@ -9,5 +9,6 @@ namespace IntegrationAPI.Controllers
 {
     public class posController : ApiController
     {
+
     }
 }

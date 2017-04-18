@@ -14,7 +14,7 @@ using System.Data.Linq;
 
 namespace IntegrationAPI.Partial
 {
-    public class item_price_Entity:DbContext
+    public class item_price_Entity : DbContext
     {
         LaundryDBDataContext db = new LaundryDBDataContext();
         ///<summary>
@@ -51,6 +51,22 @@ namespace IntegrationAPI.Partial
             return objResult;
         }
 
+        public virtual List<SP_item_price_SelectByItemIdResult> GetItemPriceByItemId(clsitemPrice obj)
+        {
+            ISingleResult<SP_item_price_SelectByItemIdResult> objResult;
+            List<SP_item_price_SelectByItemIdResult> objResultList;
+            try
+            {
+                objResult = db.SP_item_price_SelectByItemId(obj.ItemID);
+                objResultList = new List<SP_item_price_SelectByItemIdResult>(objResult.ToList());
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+            return objResultList;
+        }
         public virtual long InsertItemPrice(clsitemPrice obj)
         {
             long result = 0;
@@ -90,6 +106,22 @@ namespace IntegrationAPI.Partial
             try
             {
                 result = (int)db.SP_item_price_Delete(obj.ItemPriceID);
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public virtual int DeleteItemPriceByItemId(clsitemPrice obj)
+        {
+            int result = 0;
+            try
+            {
+                result = (int)db.SP_item_price_DeleteByItemId(obj.ItemID);
             }
             catch (Exception ex)
             {

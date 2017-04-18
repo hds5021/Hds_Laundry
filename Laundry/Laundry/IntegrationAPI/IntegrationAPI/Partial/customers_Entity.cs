@@ -54,6 +54,23 @@ namespace IntegrationAPI.Partial
             return objResultList;
         }
 
+        public virtual List<SP_customers_SelectOne_ContactResult> getCustomerByContact(customerRequest obj)
+        {
+            ISingleResult<SP_customers_SelectOne_ContactResult> objResult;
+            List<SP_customers_SelectOne_ContactResult> objResultList;
+            try
+            {
+                objResult = db.SP_customers_SelectOne_Contact(obj.Contact);
+                objResultList = new List<SP_customers_SelectOne_ContactResult>(objResult).ToList();
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+            return objResultList;
+        }
+
         public virtual long InsertCustomer(customerRequest obj)
         {
             long? result = 0;
