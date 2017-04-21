@@ -1,0 +1,223 @@
+﻿@{
+    ViewBag.Title = "Purchase Inovice";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        BindSupplier();
+        BindBranch();
+    });
+    function BindSupplier() {
+        $.ajax({
+            url: "BindSupplier",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlsupplier").empty();
+                $("#ddlsupplier").append($("<option></option>").val('0').html('Select Supplier'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlsupplier").append($("<option></option>").val(item.SupplierID).html(item.SupplierName));
+                });
+            }
+        });
+    }
+    function BindBranch() {
+        $.ajax({
+            url: "BindBranch",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                $("#ddlbranch").empty();
+                $("#ddlbranch").append($("<option></option>").val('0').html('Head Office'));
+                $.each(jsonObj, function (key, item) {
+                    $("#ddlbranch").append($("<option></option>").val(item.OfficeBranchID).html(item.BranchName));
+                });
+            }
+        });
+    }
+</script>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="form-material form-inline" style="width:100%">
+                <div class="form-group col-md-3">
+                    <label>Cash/Debit</label>
+                    <div>
+                        <select class="form-control" id="ddlcahsdebit" class="form-control" Width="100%">
+                            <option value="1">Cash</option>
+                            <option value="2">Debit</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Supplier</label>
+                    <div>
+                        <select class="form-control" id="ddlsupplier" class="form-control" Width="100%">
+                            <option value="0">Select Supplier</option>
+                            @*<option value="2">Debit</option>*@
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Invoice No</label>
+                    <div>
+                        <input type="text" id="txtinvoiceno" required class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Invoice Date</label>
+                    <div>
+                        <input type="text" id="txtInvoiceDate" class="form-control mydatepicker" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Ref. No</label>
+                    <div>
+                        <input type="text" id="txtRefNo" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Branch</label>
+                    <div>
+                        <select class="form-control" id="ddlbranch" class="form-control" Width="100%">
+                            <option value="0">Head Office</option>
+                            @*<option value="2">Debit</option>*@
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Doc No</label>
+                    <div>
+                        <input type="text" id="txtDocNo" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Doc Date</label>
+                    <div>
+                        <input type="text" id="txtDocDate" class="form-control mydatepicker" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+        
+        @*<%-- <div class="pull-right">
+                <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+            </div>--%>*@
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive mtop5 table-scrollable">
+    <table class="table table-hover table-bordered table-striped font16" id="itemlist">
+        <thead>
+            <tr class="table-header">
+                <th style="width: 70px;">Sr. No</th>
+                <th style="width: 250px;">Item</th>
+                <th>Description</th>
+                <th class="text-center" style="width: 100px;">Qty</th>
+                <th class="text-center" style="width: 100px;">Rate</th>
+                <th class="text-center" style="width: 100px;">Amount</th>
+                <th style="width: 10px;"></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="form-material form-inline" style="width:100%">
+                <div class="form-group col-md-3">
+                    <label>Narration</label>
+                    <div>
+                        <textarea name="narration" rows="2" cols="20" id="txtnarration" class="form-control" style="height:70px;width:100%;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Total Quantity</label>
+                    <div>
+                        <input type="text" id="txttotalqty" required class="form-control" readonly/>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Total Amount</label>
+                    <div>
+                        <input type="text" id="txttotalamt" required class="form-control" readonly/>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="padding: 0 0 10px 10px !important;">
+                        <div role="search" class="app-search " style="width: 24%">
+                            <input type="text" placeholder="Filter by Name or Contact..." class="form-control">
+                            <a href="#"><i class="fa fa-search"></i></a>
+                        </div>
+                        @*<%-- <div class="pull-right">
+                                <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a><a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a>
+
+                            </div>--%>*@
+                    </div>
+                    <div class="panel-wrapper collapse in" aria-expanded="true">
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <div class="form-material " style="width: 100%">
+                                @*<%--<div class="form-group col-md-3">
+                                        <div role="search" class="app-search ">
+                                            <input type="text" placeholder="Filter by Item o..." class="form-control"> <a href="#"><i class="fa fa-search"></i></a>
+                                        </div>
+                                    </div>--%>*@
+                                <div class="form-group col-md-12">
+                                    <div class="table-responsive">
+                                        <table id="tblPurchaseInvoice" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th><label>Invoice</label></th>
+                                                    <th><label>Date</label></th>
+                                                    <th><label>Branch</label></th>
+                                                    <th><label>Supplier Name</label></th>
+                                                    <th><label>Contact</label></th>
+                                                    <th><label>Type</label></th>
+                                                    <th><label>Items</label></th>
+                                                    <th><label>Amount</label></th>
+                                                    <th><label>Action</label></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblPurchaseInvoice"></tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>

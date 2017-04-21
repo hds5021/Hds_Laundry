@@ -196,6 +196,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OfficeBranchMasterController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
+    <Compile Include="Controllers\POSController.cs" />
+    <Compile Include="Controllers\PurchaseInvoiceController.cs" />
     <Compile Include="Controllers\PurchaseMasterController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\SMSTemplateMasterController.cs" />
@@ -777,6 +779,8 @@
     <Content Include="Views\PartyMaster\Create.cshtml" />
     <Content Include="Views\stmSystemUsers\AddUser.cshtml" />
     <Content Include="Views\stmSystemUsers\EditUser.cshtml" />
+    <Content Include="Views\POS\Create.cshtml" />
+    <Content Include="Views\PurchaseInvoice\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

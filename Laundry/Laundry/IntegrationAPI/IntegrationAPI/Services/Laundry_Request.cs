@@ -59,33 +59,11 @@ namespace IntegrationAPI.Services
     public class clsEmployeeMaster
     {
         public Int32 Empid { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
+        public string EmpName { get; set; }
         public string EmpAdd { get; set; }
         public string EmpMobile { get; set; }
         public string EmpPhoneno { get; set; }
         public string EmpemailId { get; set; }
-        public string civilno { get; set; }
-        public string IsRetired { get; set; }
-        public string IsDeleted { get; set; }
-        public string Status { get; set; }
-    }
-    ///<summary>
-    ///Employee Master and User Master
-    ///</summary>
-    public class clsEmployee_UserMaster
-    {
-        public Int32 Empid { get; set; }
-        public Int32 userid { get; set; }
-        public string umusername { get; set; }
-        public string umpassword { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string EmpAdd { get; set; }
-        public string EmpMobile { get; set; }
-        public string EmpPhoneno { get; set; }
-        public string EmpemailId { get; set; }
-        public string civilno { get; set; }
         public string IsRetired { get; set; }
         public string IsDeleted { get; set; }
         public string Status { get; set; }
@@ -329,9 +307,9 @@ namespace IntegrationAPI.Services
         public string IsClothCollected { get; set; }
         public Int32 IsCarpetInvoice { get; set; }
         public DateTime BillDate { get; set; }
-        public DateTime BillTime { get; set; }
+        public TimeSpan BillTime { get; set; }
         public DateTime DeliveryDate { get; set; }
-        public DateTime DeliveryTime { get; set; }
+        public TimeSpan DeliveryTime { get; set; }
         public Int32 IsDeleted { get; set; }
         public string DeletedDateTime { get; set; }
         public string CreatedDate { get; set; }

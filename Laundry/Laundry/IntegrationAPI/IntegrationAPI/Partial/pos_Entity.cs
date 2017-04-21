@@ -23,9 +23,9 @@ namespace IntegrationAPI.Partial
         public virtual SP_pos_SelectAllResult GetPosDetail(clspos obj)
         {
             SP_pos_SelectAllResult objResult = new SP_pos_SelectAllResult();
+            List<SP_pos_SelectAllResult> objResultList = new List<SP_pos_SelectAllResult>();
             try
             {
-
                 objResult = (SP_pos_SelectAllResult)db.SP_pos_items_SelectAll();
             }
             catch (Exception ex)
@@ -50,22 +50,73 @@ namespace IntegrationAPI.Partial
             }
             return objResult;
         }
-        //public virtual long InsertPos(clspos obj)
-        //{
-        //    long result = 0;
-        //    long? resultID = 0;
-        //     try
-        //    {
-        //        result = (long)db.SP_pos_Insert(ref resultID,obj.InstanceID,obj.UserID,obj.BillNo,obj.CustomerID,obj.CustomerBranchID,obj.Type,obj.TotalQuantity,obj.TotalAmount,obj.Discount,obj.TotalPayable,obj.PaidAmount,obj.ReturnAmount,obj.IsPaid,obj.PaidBy,Convert.ToDateTime(obj.PaymentDateTime),obj.Status,obj.Comment,obj.HangerQuantity,obj.HangerRate,obj.HangerAmount,obj.IsClothCollected,obj.IsCarpetInvoice,obj.BillDate,obj.BillTime,obj.DeliveryDate,obj.DeliveryTime,obj.IsDeleted,Convert.ToDateTime(obj.DeletedDateTime),Convert.ToDateTime(obj.CreatedDate) );
-        //     }
-        //    catch (Exception ex)
-        //    {
-        //        LoggerFactory.LoggerInstance.LogException(ex);
-        //        throw ex;
-        //    }
+        public virtual List<SP_pos_Grid_SelectAllResult> GetItemGroupListByID(clsposItems obj)
+        {
 
-        //    return result;
-        //}
+            ISingleResult<SP_pos_Grid_SelectAllResult> objResult;
+            List<SP_pos_Grid_SelectAllResult> objResultList;
+            try
+            {
+
+                objResult = db.SP_pos_Grid_SelectAll(obj.ItemID);
+                objResultList = new List<SP_pos_Grid_SelectAllResult>(objResult);
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+            return objResultList;
+        }
+        public virtual long InsertPos(clspos obj)
+        {
+            long result = 0;
+            long? resultID = 0;
+            
+            try
+            {
+                result = (long)db.SP_pos_Insert(ref resultID, obj.InstanceID, obj.UserID, obj.BillNo, obj.CustomerID, obj.CustomerBranchID, obj.Type, obj.TotalQuantity, obj.TotalAmount, obj.Discount, obj.TotalPayable, obj.PaidAmount, obj.ReturnAmount, obj.IsPaid, obj.PaidBy, Convert.ToDateTime(obj.PaymentDateTime), obj.Status, obj.Comment, obj.HangerQuantity, obj.HangerRate, obj.HangerAmount, obj.IsClothCollected, obj.IsCarpetInvoice, obj.BillDate,obj.BillTime, obj.DeliveryDate,obj.DeliveryTime, obj.IsDeleted, Convert.ToDateTime(obj.DeletedDateTime), Convert.ToDateTime(obj.CreatedDate));
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+
+            return result;
+        }
+        public virtual int UpdatePos(clspos obj)
+        {
+            int result = 0;
+            
+            try
+            {
+                result = (int)db.SP_pos_Update(obj.PosID, obj.InstanceID, obj.UserID, obj.BillNo, obj.CustomerID, obj.CustomerBranchID, obj.Type, obj.TotalQuantity, obj.TotalAmount, obj.Discount, obj.TotalPayable, obj.PaidAmount, obj.ReturnAmount, obj.IsPaid, obj.PaidBy, Convert.ToDateTime(obj.PaymentDateTime), obj.Status, obj.Comment, obj.HangerQuantity, obj.HangerRate, obj.HangerAmount, obj.IsClothCollected, obj.IsCarpetInvoice, obj.BillDate, obj.BillTime, obj.DeliveryDate, obj.DeliveryTime, obj.IsDeleted, Convert.ToDateTime(obj.DeletedDateTime), Convert.ToDateTime(obj.CreatedDate));
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+
+            return result;
+        }
+        public virtual int DeletePos(clspos obj)
+        {
+            int result = 0;
+
+            try
+            {
+                result = (int)db.SP_pos_Delete(obj.PosID);
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+
+            return result;
+        }
 
     }
 }

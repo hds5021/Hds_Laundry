@@ -40,13 +40,13 @@ namespace LaundaryManagement.Controllers
             var responseMessage = client.PostAsJsonAsync("InsertCustomer", mcustomer).Result;
             if (responseMessage.IsSuccessStatusCode)
             {
-                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                var responseData = responseMessage.Content.ReadAsStringAsync().Result.ToString().Replace("\"", "").Replace(@"\", "");
                 var jsonresult = JsonConvert.DeserializeObject(responseData);
                 return Json(jsonresult, JsonRequestBehavior.AllowGet);
             }
             return Json("");
         }
-      
+
         public ActionResult GetCustomerDetail()
         {
             customerRequest obj = new customerRequest();
@@ -57,7 +57,7 @@ namespace LaundaryManagement.Controllers
             client.DefaultRequestHeaders.Add("X-Version", "1.1");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        
+
             var responseMessage = client.PostAsJsonAsync("getCustomerDetail", obj).Result;
 
             if (responseMessage.IsSuccessStatusCode)
@@ -93,6 +93,30 @@ namespace LaundaryManagement.Controllers
             return Json("");
 
         }
+        public ActionResult GetCustomerDetailByContact(string contactNum)
+        {
+
+            customerRequest obj = new customerRequest();
+            obj.Contact = contactNum;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:52761/");
+            client.DefaultRequestHeaders.Add("AppName", "Laundry");
+            client.DefaultRequestHeaders.Add("AppKey", "PassW0rd@2610");
+            client.DefaultRequestHeaders.Add("X-Version", "1.1");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            // GET: EmployeeInfo
+            var responseMessage = client.PostAsJsonAsync("GetCustomerDetailByContact", obj).Result;
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                var jsonresult = JsonConvert.DeserializeObject(responseData);
+                return Json(jsonresult, JsonRequestBehavior.AllowGet);
+            }
+            return Json("");
+
+        }
         public ActionResult UpdateCustomer(string CustomerMasterModel)
         {
             customerRequest obj = new customerRequest();
@@ -123,7 +147,7 @@ namespace LaundaryManagement.Controllers
             client.DefaultRequestHeaders.Add("X-Version", "1.1");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-           
+
             var responseMessage = client.PostAsJsonAsync("DeleteCustomer", obj).Result;
 
             if (responseMessage.IsSuccessStatusCode)

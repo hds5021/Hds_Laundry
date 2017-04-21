@@ -2446,13 +2446,17 @@
     </ElementType>
   </Function>
   <Function Name="dbo.SP_pos_Grid_SelectAll" Method="SP_pos_Grid_SelectAll">
+    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int64" DbType="BigInt" />
     <ElementType Name="SP_pos_Grid_SelectAllResult">
-      <Column Name="ItemName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemLocalName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="GroupName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="GroupCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="ColorCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
-      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

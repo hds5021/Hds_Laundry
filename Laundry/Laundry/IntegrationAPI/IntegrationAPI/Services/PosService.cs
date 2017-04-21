@@ -7,23 +7,19 @@ using IntegrationAPI.Models;
 using IntegrationAPI.Helpers;
 using Integration_Repository;
 using System.Data;
-
-
 namespace IntegrationAPI.Services
 {
-    public class EmployeeMasterService
+    public class PosService
     {
-        ///<summary>
-        /// Employee master
-        /// </summary>
-        public string GetEmployeeMasterDetail(clsEmployeeMaster obj)
+        public string GetPosDetail(clspos obj)
         {
             string result = "";
             try
             {
-                EmployeeMaster_Entity objEntities = new EmployeeMaster_Entity();
-                List<SP_EmployeeMaster_SelectAllResult> objResult = new List<SP_EmployeeMaster_SelectAllResult>();
-                objResult = objEntities.GetEmployeeMasterDetail(obj);
+                pos_Entity objEntities = new pos_Entity();
+                List<SP_pos_SelectAllResult> objResult = new List<SP_pos_SelectAllResult>();
+                //SP_pos_SelectAllResult objResult = new SP_pos_SelectAllResult();
+                objResult = objEntities.GetPosDetail(obj);
                 result = objResult.ToJSON();
             }
             catch (Exception ex)
@@ -36,14 +32,14 @@ namespace IntegrationAPI.Services
             }
             return result;
         }
-        public string GetEmployeeMasterDetailById(clsEmployeeMaster obj)
+        public string GetPosDetailById(clspos obj)
         {
             string result = "";
             try
             {
-                EmployeeMaster_Entity objEntities = new EmployeeMaster_Entity();
-                List<SP_EmployeeMaster_SelectOneResult> objResult = new List<SP_EmployeeMaster_SelectOneResult>();
-                objResult = objEntities.GetEmployeeMasterDetailById(obj);
+                pos_Entity objEntities = new pos_Entity();
+                List<SP_pos_SelectOneResult> objResult = new List<SP_pos_SelectOneResult>();
+                objResult = objEntities.GetPosDetailById(obj);
                 result = objResult.ToJSON();
 
             }
@@ -58,39 +54,16 @@ namespace IntegrationAPI.Services
             return result;
         }
 
-        public string GetEmployeeUserMasterDetailById(clsEmployee_UserMaster obj)
+        public string InsertPos(clspos obj)
         {
             string result = "";
             try
             {
-                EmployeeMaster_Entity objEntities = new EmployeeMaster_Entity();
-                List<SP_UserMaster_SelectOneFKIDResult> objResult = new List<SP_UserMaster_SelectOneFKIDResult>();
-                objResult = objEntities.GetEmployeeUserMasterDetailById(obj);
-                result = objResult.ToJSON();
-
-            }
-            catch (Exception ex)
-            {
-                LoggerFactory.LoggerInstance.LogException(ex);
-            }
-            finally
-            {
-                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
-            }
-            return result;
-        }
-        public string InsertEmployeeMaster(clsEmployeeMaster obj)
-        {
-            string result = "";
-            try
-            {
-                EmployeeMaster_Entity objEntities = new EmployeeMaster_Entity();
+                pos_Entity objEntities = new pos_Entity();
                 // SP_customers_SelectOneResult CustomerData = new SP_customers_SelectOneResult();
                 long objResult;
-                objResult = objEntities.InsertEmployeeMaster(obj);
-                
+                objResult = objEntities.InsertPos(obj);
                 result = objResult.ToJSON();
-                
 
             }
             catch (Exception ex)
@@ -104,15 +77,15 @@ namespace IntegrationAPI.Services
             return result;
         }
 
-        public string UpdateEmployeeMaster(clsEmployeeMaster obj)
+        public string UpdatePos(clspos obj)
         {
             string result = "";
             try
             {
-                EmployeeMaster_Entity objEntities = new EmployeeMaster_Entity();
+                pos_Entity objEntities = new pos_Entity();
                 // SP_customers_SelectOneResult CustomerData = new SP_customers_SelectOneResult();
                 int objResult;
-                objResult = objEntities.UpdateEmployeeMaster(obj);
+                objResult = objEntities.UpdatePos(obj);
                 result = objResult.ToJSON();
 
             }
@@ -127,15 +100,15 @@ namespace IntegrationAPI.Services
             return result;
         }
 
-        public string DeleteEmployeeMaster(clsEmployeeMaster obj)
+        public string DeletePos(clspos obj)
         {
             string result = "";
             try
             {
-                EmployeeMaster_Entity objEntities = new EmployeeMaster_Entity();
+                pos_Entity objEntities = new pos_Entity();
                 // SP_customers_SelectOneResult CustomerData = new SP_customers_SelectOneResult();
                 int objResult;
-                objResult = objEntities.DeleteEmployeeMaster(obj);
+                objResult = objEntities.DeletePos(obj);
                 result = objResult.ToJSON();
 
             }
@@ -150,5 +123,25 @@ namespace IntegrationAPI.Services
             return result;
         }
 
+        public string GetItemGroupListByID(clsposItems obj)
+        {
+            string result = "";
+            try
+            {
+                pos_Entity objEntities = new pos_Entity();
+                List<SP_pos_Grid_SelectAllResult> objResult = new List<SP_pos_Grid_SelectAllResult>();
+                objResult = objEntities.GetItemGroupListByID(obj);
+                result = objResult.ToJSON();
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
     }
 }
