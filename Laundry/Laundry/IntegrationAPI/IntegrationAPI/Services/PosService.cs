@@ -16,6 +16,7 @@ namespace IntegrationAPI.Services
             string result = "";
             try
             {
+                
                 pos_Entity objEntities = new pos_Entity();
                 List<SP_pos_SelectAllResult> objResult = new List<SP_pos_SelectAllResult>();
                 //SP_pos_SelectAllResult objResult = new SP_pos_SelectAllResult();
@@ -38,7 +39,7 @@ namespace IntegrationAPI.Services
             try
             {
                 pos_Entity objEntities = new pos_Entity();
-                List<SP_pos_SelectOneResult> objResult = new List<SP_pos_SelectOneResult>();
+                SP_pos_SelectOneResult objResult = new SP_pos_SelectOneResult();
                 objResult = objEntities.GetPosDetailById(obj);
                 result = objResult.ToJSON();
 

@@ -20,20 +20,21 @@ namespace IntegrationAPI.Partial
         ///<summary>
         ///pos
         /// </summary>
-        public virtual SP_pos_SelectAllResult GetPosDetail(clspos obj)
+        public virtual List<SP_pos_SelectAllResult> GetPosDetail(clspos obj)
         {
-            SP_pos_SelectAllResult objResult = new SP_pos_SelectAllResult();
-            List<SP_pos_SelectAllResult> objResultList = new List<SP_pos_SelectAllResult>();
+            ISingleResult<SP_pos_SelectAllResult> objResult;
+            List<SP_pos_SelectAllResult> objResultList;
             try
             {
-                objResult = (SP_pos_SelectAllResult)db.SP_pos_items_SelectAll();
+                objResult = db.SP_pos_SelectAll();
+                objResultList = new List<SP_pos_SelectAllResult>(objResult);
             }
             catch (Exception ex)
             {
                 LoggerFactory.LoggerInstance.LogException(ex);
                 throw ex;
             }
-            return objResult;
+            return objResultList;
         }
         public virtual SP_pos_SelectOneResult GetPosDetailById(clspos obj)
         {

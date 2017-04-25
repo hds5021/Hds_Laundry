@@ -2,18 +2,28 @@
     ViewBag.Title = "POS";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
-<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-    var getCustomerData = {};
-    var insCustomerData = {};
-    var GroupListJSON = "";
-    var ItemListJSON = "";
 
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+
+
+    var $NoOrder = '<tr class="NoOrder"><td class="text-center" colspan="12">Item List Empty</td></tr>';
     $(document).ready(function () {
         BindGroupMasterList();
-    });
+        $("#itemList").append($NoOrder);
+        $("#PaidAmount").change(function () {
+            $("#ReturnAmount").val($(this).val() - $("#TotalPayable").val());
+        });
+        $("#Discount").change(function () {
+            
 
+        });
+    });
+    var GroupListJSON = "";
+    var ItemListJSON = "";
     function BindGroupMasterList() {
+        debugger;
         $.ajax({
             url: "../GroupMaster/GetgroupsDetail",
             type: "POST",
@@ -29,7 +39,6 @@
 
     }
     function BindItemMasterList() {
-        debugger;
         $.ajax({
             url: "../ItemMaster/GetItemDetail",
             type: "POST",
@@ -46,6 +55,7 @@
     }
 
     function GetItemGroupList(itemID) {
+
         $.ajax({
             url: "GetItemGroupList",
             type: "POST",
@@ -80,15 +90,13 @@
                 for (var k = 0; k < BuildDiv.length; k++) {
                     for (var j = 0; j < groupList.length; j++) {
                         if (groupList[j].GroupID == BuildDiv[k].GroupID && BuildDiv[k].Price != "0.00") {
-                            debugger;
-                            ItemListGrid = ItemListGrid + ' <td class="text-center" style="width:' + GroupWidth + '%;"> <button type="button" class="btn btn-primary m0 p0 btn-item"' +
-                           'data-itemid="' + BuildDiv[k].ItemID + '" data-itemname="' + BuildDiv[k].ItemName + '" data-itemlocalname="' + BuildDiv[k].ItemLocalName + '" data-price="' + BuildDiv[k].Price + '" data-pricerate="' + BuildDiv[k].PriceRate + '" data-groupid="' + BuildDiv[k].GroupID + '" ' +
-                           'data-groupname="' + BuildDiv[k].GroupName + '" style="width: 100%; height: 35px; background-color: rgb(45, 189, 196); border-color: rgb(45, 189, 196);" ' +
+                            ItemListGrid = ItemListGrid + ' <td class="text-center" style="width:' + GroupWidth + '%;"> <button type="button" onclick="prodivFill(this);" class="btn btn-primary m0 p0 btn-item"' +
+                           'data-itemid="' + BuildDiv[k].ItemID + '"data-itemname="' + BuildDiv[k].ItemName + '"data-itemlocalname="' + BuildDiv[k].ItemLocalName + '"data-price="' + BuildDiv[k].Price + '"data-pricerate="' + BuildDiv[k].PriceRate + '"data-groupid="' + BuildDiv[k].GroupID + '" ' +
+                           'data-groupname="' + BuildDiv[k].GroupName + '" style="width: 100%; height: 35px; background-color: ' + BuildDiv[k].ColorCode + '; border-color: rgb(45, 189, 196);" ' +
                            'onmouseover="this.style.backgroundColor=\'#000000\'" onmouseout=" this.style.backgroundColor = \'' + BuildDiv[k].ColorCode + '\'">' + BuildDiv[k].GroupCode + '</button></td>';
                             break;
                         }
                         if (j == groupList.length - 1) {
-                            debugger;
                             ItemListGrid = ItemListGrid + ' <td class="text-center" style="width:' + GroupWidth + '%;"><button type="button" class="btn m0 p0" style="width: 100%; height:35px;" onclick="this.blur(); return false;"></button></td>';
                         }
                         //else {
@@ -100,9 +108,26 @@
             }
             ItemListGrid = ItemListGrid + '</tr>';
         }
-        debugger;
         ItemListGrid = ItemListGrid + '</tbody></table>';
         $('#items-div').html(ItemListGrid);
+
+
+
+        var table = document.getElementById("items_list_table");
+        var tableArr = [];
+        for (var i = 1; i < table.rows.length; i++) {
+            tableArr.push({
+                category: table.rows[i].cells[0].innerHTML,
+                brandName: table.rows[i].cells[1].innerHTML,
+                whenObtained: table.rows[i].cells[2].innerHTML,
+                howObtained: table.rows[i].cells[3].innerHTML,
+                howOftenWorn: table.rows[i].cells[4].innerHTML,
+                whereMade: table.rows[i].cells[5].innerHTML,
+                hasGraphic: table.rows[i].cells[6].innerHTML
+            });
+        }
+        debugger;
+
     }
     function getItemsDetails() {
         $.ajax({
@@ -134,55 +159,210 @@
             error: function (msg) { alert(msg); }
         });
     }
+    var prodDivJSON = "";
+    function prodivFill(btn) {
+        debugger;
+        var ItemID = $(btn).attr("data-itemid");
+        var ItemName = $(btn).attr("data-itemname");
+        var ItemLocalName = $(btn).attr("data-itemlocalname");;
+        var Price = $(btn).attr("data-price");
+        var GroupID = $(btn).attr("data-groupid");
+        var GroupName = $(btn).attr("data-groupname");;
+        var PriceRate = $(btn).attr("data-pricerate");;
+        var NoOrder = $("#itemList .NoOrder").length;
+        if (NoOrder > 0) {
+            $('#itemList > tbody > tr').remove();
+        }
+        var row = $("#itemList #GroupID_" + GroupID).length;
+        if (row <= 0) {
+            row = generateGroupRaw(GroupID, GroupName, 1, Price);
+            $("#itemList").append(row);
+        }
+        row = $("#itemList #ItemID_" + ItemID + "_" + GroupID).length;
+        if (row > 0) {
+            changeItemQtyAmount($("#ItemQty_" + ItemID + "_" + GroupID).parent().parent(), parseInt($("#ItemQty_" + ItemID + "_" + GroupID).val()) + 1, Price);
+        } else {
+            row = generateItemRaw(GroupID, GroupName, ItemID, ItemName, ItemLocalName, Price, 1, PriceRate);
+            $('#GroupID_' + GroupID).before(row);
+        }
+        calculate_total_qty_amount_group();
+        calculate_total_qty_amount();
+        $(this).blur();
+    }
 
-    function CheckCustomer() {
-        var contact = $('#Searchmono').val();
-        $.ajax({
-            type: "GET",
-            async: false,
-            //url: "GetCustomerDetailByContact",
-            url: "/CustomerMaster/GetCustomerDetailByContact",
-            //url: '<%= Url.Action("GetCustomerDetailByContact", "CustomerMaster") %>',
-            data: { contactNum: contact },
-            success: function (res) {
-                if (res != '[]') {
-                    getCustomerData = {};
-                    getCustomerData = JSON.parse(res);
-                    getCustomerData = getCustomerData[0];
-                    $('#Searchcname').val(getCustomerData.CustomerName);
-                }
-            },
-            error: function () { alert('error'); }
+    $(".btn-item").on("click", function () {
+        debugger;
+        var ItemID = $(this).data("itemid");
+        var ItemName = $(this).data("itemname");
+        var ItemLocalName = $(this).data("itemlocalname");
+        var Price = $(this).data("price");
+        var GroupID = $(this).data("groupid");
+        var GroupName = $(this).data("groupname");
+        var PriceRate = $(this).data("pricerate");
+        var NoOrder = $("#itemList .NoOrder").length;
+        if (NoOrder > 0) {
+            $('#itemList > tbody > tr').remove();
+        }
+        var row = $("#itemList #GroupID_" + GroupID).length;
+        if (row <= 0) {
+            row = generateGroupRaw(GroupID, GroupName, 1, Price);
+            $("#itemList").append(row);
+        }
+        row = $("#itemList #ItemID_" + ItemID + "_" + GroupID).length;
+        if (row > 0) {
+            changeItemQtyAmount($("#ItemQty_" + ItemID + "_" + GroupID).parent().parent(), parseInt($("#ItemQty_" + ItemID + "_" + GroupID).val()) + 1, Price);
+        } else {
+            row = generateItemRaw(GroupID, GroupName, ItemID, ItemName, ItemLocalName, Price, 1, PriceRate);
+            $('#GroupID_' + GroupID).before(row);
+        }
+        calculate_total_qty_amount_group();
+        calculate_total_qty_amount();
+        $(this).blur();
+    });
+    
+    function calculate_total_qty_amount() {
+        var total_qty = 0;
+        $(".ItemQty").each(function () {
+            total_qty += parseInt($(this).val());
+        });
+        var total_amount = 0.00;
+        $(".ItemAmount").each(function () {
+            total_amount += parseFloat($(this).html());
+        });
+        $("#total-qty").html(total_qty);
+        $("#TotalQuantity").val(total_qty);
+        $("#total-amount").html(total_amount.toFixed(3));
+        $("#TotalAmount").val(total_amount.toFixed(3));
+        //alert(total_amount);
+        //var HangerAmount = parseFloat($("#HangerAmount").val());
+
+        //total_amount += HangerAmount;
+
+        //$("#PaidAmount").val("1");
+        //alert(total_amount);
+        $("#TotalPayable").val(total_amount.toFixed(3));
+        //$("#ReturnAmount").val((1).toFixed(1));
+        //$("#Discount").val("1");
+        //$("#DiscountPercentage").val("0");
+    }
+
+    function calculate_total_qty_amount_group() {
+        var total_qty = 0;
+        var total_amount = 0.00;
+        var id = "";
+        $(".GroupRow").each(function () {
+            total_qty = 0;
+            total_amount = 0.00;
+            id = $(this).data("id");
+            $("." + id).each(function () {
+                total_qty += parseInt($(this).find(".ItemQty").val());
+                total_amount += parseFloat($(this).find(".ItemAmount").html());
+            });
+            $(this).find(".GroupQty").html(total_qty);
+            $(this).find(".GroupAmount").html(total_amount.toFixed(1));
         });
     }
-    function InsertCustomer() {
-        var cmodel = MkaingCustomerData();
-        if ((getCustomerData.CustomerID == undefined || getCustomerData.CustomerID == "") || cmodel.Contact != "" || cmodel.Contact != undefined) {
-            $.ajax({
-                type: "POST",
-                async: false,
-                url: "/CustomerMaster/InsertCustomer",
-                data: { CustomerMasterModel: JSON.stringify(cmodel) },
-                success: function (res) {
-                    insCustomerData.CustomerID = JSON.parse(res);
-                    getCustomerData = {};
-                    getCustomerData = insCustomerData;
-                },
-                error: function () { alert('error'); }
-            });
-        } else {
-            if (cmodel.Contact != "" || cmodel.Contact != undefined) {
-                alert('Please enter Customer Mobile Number.');
-            }
-        }
 
+    function changeItemQtyAmount(row, Qty, Price) {
+        var Amount = parseInt(Qty) * parseFloat(Price);
+        $(row).find(".ItemQty").val(Qty);
+        $(row).find(".ItemAmount").html(parseFloat(Amount).toFixed(1));
     }
-    function MkaingCustomerData() {
-        insCustomerData = {};
-        insCustomerData.Contact = $('#Searchmono').val();
-        insCustomerData.CustomerName = $('#Searchcname').val();
-        return insCustomerData;
+
+    function generateGroupRaw(GroupID, GroupName, Quantity, Amount) {
+        var raw = [
+            '<tr id="GroupID_' + GroupID + '" class="GroupRow" data-id="ItemGroup_' + GroupID + '">',
+            '<td style="background-color: #D4D0C8; font-weight: bold;">',
+            GroupName,
+            '</td>',
+            '<td style="background-color: #D4D0C8; width: 50px;" id="GroupQty_' + GroupID + '" class="GroupQty">',
+            0,
+            '</td>',
+            '<td style="width: 50px; background-color: #D4D0C8;"></td>',
+            '<td id="GroupAmount_' + GroupID + '" class="GroupAmount" colspan="2" style="padding-left: 0px; padding-right: 0px; width: 65px; background-color: #D4D0C8;">',
+            0,
+            '</td>',
+            '</tr>'
+        ].join('');
+        return raw;
     }
+
+    function generateItemRaw(GroupID, GroupName, ItemID, ItemName, ItemLocalName, Price, Quantity, PriceRate) {
+        var TotalPrice = parseFloat(Quantity) * parseFloat(Price);
+        var PriceHtml = "";
+        if (PriceRate == "Variable") {
+            PriceHtml = '<input type="text" id="ItemPrice_' + ItemID + '_' + GroupID + '" data-itemid="' + ItemID + '" data-groupid="' + GroupID + '" class="DecimalOnly ItemPrice" name="Price[]" value="' + Price + '" style="width: 100%;">';
+        } else {
+            PriceHtml = Price + '<input type="hidden" id="ItemPrice_' + ItemID + '_' + GroupID + '" name="Price[]" value="' + Price + '" class="ItemPrice">';
+        }
+        var raw = [
+            '<tr id="ItemID_' + ItemID + '_' + GroupID + '" class="ItemGroup_' + GroupID + '">',
+            '<td>',
+            ItemName,
+            '<input type="hidden" value=\'{"ItemID":"' + ItemID + '","ItemName":"' + ItemName + '","ItemLocalName":"' + ItemLocalName + '","PriceRate":"' + PriceRate + '","GroupID":"' + GroupID + '","GroupName":"' + GroupName + '"}\' name="Items[]">',
+            '</td>',
+            '<td style="width: 50px;">',
+            '<input type="number" id="ItemQty_' + ItemID + '_' + GroupID + '" data-itemid="' + ItemID + '" data-groupid="' + GroupID + '" class="DecimalOnly ItemQty" name="Quantity[]" value="' + Quantity + '" min="1" max="50" style="width: 40px;" required="required">',
+            '</td>',
+            '<td style="width: 50px;">',
+            PriceHtml,
+            '</td>',
+            '<td id="ItemAmount_' + ItemID + '_' + GroupID + '" class="ItemAmount" style="width: 50px; padding-left: 0px; padding-right: 0px;">',
+            TotalPrice.toFixed(1),
+            '</td>',
+            '<td style="width: 15px; padding-left: 0px; padding-right: 0px;">',
+            '<i class="fa fa-close fa-lg delete_item pointer" style=/"cursor: pointer;/" onclick="deleteItemList(this);" data-itemid="' + ItemID + '" data-groupid="' + GroupID + '" onMouseOver="this.style.color=\'#FF0000\'" onMouseOut="this.style.color =\'#000000\'"></i>',
+            '</td>',
+            '</tr>'
+        ].join('');
+        return raw;
+    }
+    function deleteItemList(btn) {
+        var GroupID = $(btn).attr("data-groupid");
+        var total = $("#itemList .ItemGroup_" + GroupID).length;
+        if (total == 1) {
+            $("#GroupID_" + GroupID).remove();
+        }
+        $(btn).parent().parent().remove();
+        var rows = $("#itemList tbody tr").length;
+        if (rows == 0) {
+            $("#itemList").append($NoOrder);
+        }
+        calculate_total_qty_amount_group();
+        calculate_total_qty_amount();
+    };
+
+    //$(".btn-item").on("click", function () {
+    //    var ItemID = $(this).data("itemid");
+    //    var ItemName = $(this).data("itemname");
+    //    var ItemLocalName = $(this).data("itemlocalname");
+    //    var Price = $(this).data("price");
+    //    var GroupID = $(this).data("groupid");
+    //    var GroupName = $(this).data("groupname");
+    //    var PriceRate = $(this).data("pricerate");
+    //    var NoOrder = $("#itemList .NoOrder").length;
+    //    if (NoOrder > 0) {
+    //        $('#itemList > tbody > tr').remove();
+    //    }
+    //    var row = $("#itemList #GroupID_" + GroupID).length;
+    //    if (row <= 0) {
+    //        row = generateGroupRaw(GroupID, GroupName, 1, Price);
+    //        $("#itemList").append(row);
+    //    }
+    //    row = $("#itemList #ItemID_" + ItemID + "_" + GroupID).length;
+    //    if (row > 0) {
+    //        changeItemQtyAmount($("#ItemQty_" + ItemID + "_" + GroupID).parent().parent(), parseInt($("#ItemQty_" + ItemID + "_" + GroupID).val()) + 1, Price);
+    //    } else {
+    //        row = generateItemRaw(GroupID, GroupName, ItemID, ItemName, ItemLocalName, Price, 1, PriceRate);
+    //        $('#GroupID_' + GroupID).before(row);
+    //    }
+    //    calculate_total_qty_amount_group();
+    //    calculate_total_qty_amount();
+    //    $(this).blur();
+    //});
+
+
+
 
 
 </script>
@@ -331,42 +511,36 @@
     </div>
     <div class="col-md-4" style="background-color: #03a9f3; margin-left: 10px; margin-right: 10px; padding: 0;">
         <div class="input-group pbottom5" style="width: 44%; float: left; margin-right: 20px;">
-            <input id="Searchmono" class="form-control" placeholder="Mobile No" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px; margin-left: 10px;">
+            <input id="Search" class="form-control" placeholder="Mobile No" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px; margin-left: 10px;">
             <span class="input-group-btn" style="float: left; margin-top: 21px; margin-left: 0px; background-color: #fff; margin-top: 20px; width: 0%;">
-                <button class="btn btn-default" type="button" id="btn-search" style="background-color: #fff; margin-left: 0; border: 0; padding-bottom: 10px; border-radius: 0px 8px 8px 0px;" onclick="CheckCustomer()">
+                <button class="btn btn-default" type="button" id="btn-search" style="background-color: #fff; margin-left: 0; border: 0; padding-bottom: 10px; border-radius: 0px 8px 8px 0px;">
                     <i class="fa fa-search"></i>
                 </button>
             </span>
         </div>
 
-        <div class="input-group pbottom5" style="width 44%;">
-            <input id="Searchcname" class="form-control" placeholder="Customer Name" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px;" onblur="InsertCustomer()">
-            @* <span class="input-group-btn" style="float: left; margin-top: 21px; margin-left: 0px; background-color: #fff; margin-top: 20px;">
-                <button class="btn btn-default" type="button" id="btn-search" style="background-color: #fff; margin-left: 0; border: 0; padding-bottom: 10px; border-radius: 0px 8px 8px 0px;">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>*@
+        <div class="input-group pbottom5" style="width: 44%;">
+            <input id="Search" class="form-control" placeholder="Customer Name" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px;">
+            <span class="input-group-btn" style="float: left; margin-top: 21px; margin-left: 0px; background-color: #fff; margin-top: 20px;">
+                <button class="btn btn-default" type="button" id="btn-search" style="background-color: #fff; margin-left: 0; border: 0; padding-bottom: 10px; border-radius: 0px 8px 8px 0px;"><i class="fa fa-search"></i></button>
+            </span>
         </div>
         <div class="well well-sm m0" style="display: table; padding-left: 0px; padding-right: 0px; margin-bottom: 0;">
             <div class="col-md-12">
-                <table style="width: 100%; background-color: #414141; color: #fff;" class="table table-striped table-condensed m0">
+                <table style="width: 98%; background-color: #414141; color: #fff;" class="table table-striped table-condensed m0">
                     <thead>
                         <tr class="table-header">
-                            <td>Product</td>
-                            <td style="width: 85px;">Qty</td>
-                            <td style="width: 80px;">Rate</td>
-                            <td style="width: 85px;">Amount</td>
-                            <td style="width: 15px;"><i data-groupid="2" data-itemid="23" class="fa fa-close fa-lg delete_item pointer"></i></td>
+                            <td style="width: 30%;">Product</td>
+                            <td style="width: 20%;">Qty</td>
+                            <td style="width: 20%;">Rate</td>
+                            <td style="width: 20%;">Amount</td>
+                            <td style="width: 10%;"><i data-groupid="2" data-itemid="23" class="fa fa-close fa-lg delete_item pointer"></i></td>
                         </tr>
                     </thead>
                 </table>
                 <div id="prodiv" style="height: 225px; overflow-y: auto;">
                     <table style="margin: 0; width: 100%;" id="itemList" class="table table-striped table-condensed table-hover protable" cellspacing="0" cellpadding="0" border="0">
                         <tbody>
-
-                            <tr class="NoOrder">
-                                <td class="text-center" colspan="12">Item List Empty</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -386,247 +560,136 @@
                 </table>
                 <table style="width: 100%;" class="table m0">
                     <tbody>
-                        <tr>
-                            <td style="width: 50%;">Amount Received
-                            </td>
-                            <td style="padding-left: 0px; padding-right: 0px; width: 50%;">
-                                <select name="DeliveryTime" id="DeliveryTime" class="form-control pleft5 pright5" tabindex="12">
-                                    <option value="00:00">cash</option>
-                                    <option value="00:15">00:15</option>
-                                    <option value="00:30">00:30</option>
-                                    <option value="00:45">00:45</option>
-                                    <option value="01:00">01:00</option>
-                                    <option value="01:15">01:15</option>
-                                    <option value="01:30">01:30</option>
-                                    <option value="01:45">01:45</option>
-                                    <option value="02:00">02:00</option>
-                                    <option value="02:15">02:15</option>
-                                    <option value="02:30">02:30</option>
-                                    <option value="02:45">02:45</option>
-                                    <option value="03:00">03:00</option>
-                                    <option value="03:15">03:15</option>
-                                    <option value="03:30">03:30</option>
-                                    <option value="03:45">03:45</option>
-                                    <option value="04:00">04:00</option>
-                                    <option value="04:15">04:15</option>
-                                    <option value="04:30">04:30</option>
-                                    <option value="04:45">04:45</option>
-                                    <option value="05:00">05:00</option>
-                                    <option value="05:15">05:15</option>
-                                    <option value="05:30">05:30</option>
-                                    <option value="05:45">05:45</option>
-                                    <option value="06:00">06:00</option>
-                                    <option value="06:15">06:15</option>
-                                    <option value="06:30">06:30</option>
-                                    <option value="06:45">06:45</option>
-                                    <option value="07:00">07:00</option>
-                                    <option value="07:15">07:15</option>
-                                    <option value="07:30">07:30</option>
-                                    <option value="07:45">07:45</option>
-                                    <option value="08:00">08:00</option>
-                                    <option value="08:15">08:15</option>
-                                    <option value="08:30">08:30</option>
-                                    <option value="08:45">08:45</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="09:15">09:15</option>
-                                    <option value="09:30">09:30</option>
-                                    <option value="09:45">09:45</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="10:15">10:15</option>
-                                    <option value="10:30">10:30</option>
-                                    <option value="10:45">10:45</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="11:15">11:15</option>
-                                    <option value="11:30">11:30</option>
-                                    <option value="11:45">11:45</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="12:15">12:15</option>
-                                    <option value="12:30">12:30</option>
-                                    <option value="12:45">12:45</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="13:15">13:15</option>
-                                    <option value="13:30">13:30</option>
-                                    <option value="13:45">13:45</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="14:15">14:15</option>
-                                    <option value="14:30">14:30</option>
-                                    <option value="14:45">14:45</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="15:15">15:15</option>
-                                    <option value="15:30">15:30</option>
-                                    <option value="15:45">15:45</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="16:15">16:15</option>
-                                    <option value="16:30">16:30</option>
-                                    <option value="16:45">16:45</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="17:15">17:15</option>
-                                    <option value="17:30">17:30</option>
-                                    <option value="17:45">17:45</option>
-                                    <option value="18:00">18:00</option>
-                                    <option value="18:15">18:15</option>
-                                    <option value="18:30">18:30</option>
-                                    <option value="18:45">18:45</option>
-                                    <option value="19:00">19:00</option>
-                                    <option value="19:15">19:15</option>
-                                    <option value="19:30">19:30</option>
-                                    <option value="19:45">19:45</option>
-                                    <option value="20:00">20:00</option>
-                                    <option value="20:15">20:15</option>
-                                    <option value="20:30">20:30</option>
-                                    <option value="20:45">20:45</option>
-                                    <option value="21:00">21:00</option>
-                                    <option value="21:15">21:15</option>
-                                    <option value="21:30">21:30</option>
-                                    <option value="21:45">21:45</option>
-                                    <option value="22:00">22:00</option>
-                                    <option value="22:15">22:15</option>
-                                    <option value="22:30">22:30</option>
-                                    <option value="22:45">22:45</option>
-                                    <option value="23:00">23:00</option>
-                                    <option value="23:15">23:15</option>
-                                    <option value="23:30">23:30</option>
-                                    <option value="23:45">23:45</option>
-                                </select>
-                            </td>
-                            <td style="padding-left: 0px; padding-right: 0px; width: 50%;">
-                                <input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text" style="margin-left: 10px;">
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>Amount Return</td>
-                            <td style="padding-left: 0px; padding-right: 0px;"></td>
-
-                            <td style="padding-left: 0px; padding-right: 0px;">
-                                <input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text" style="margin-left: 10px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Delivery</td>
-                            <td style="padding-left: 0px; padding-right: 0px; width: 90px;">
-                                <input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text" style="">
-                            </td>
-
-                            <td style="padding-left: 0px; padding-right: 0px; width: 87px;">
-                                <input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text" style="margin-left: 10px;">
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>cloth colected</td>
-                            <td colspan="3" style="padding-left: 0px; padding-right: 0px; text-align: center;">
-
-
-
-
-                                <select name="DeliveryTime" id="DeliveryTime" class="form-control pleft5 pright5" tabindex="12" style="width: 128px; margin-right: 0; padding-right: 0; margin: auto;">
-                                    <option value="00:00">Yes/No</option>
-                                    <option value="00:15">00:15</option>
-                                    <option value="00:30">00:30</option>
-                                    <option value="00:45">00:45</option>
-                                    <option value="01:00">01:00</option>
-                                    <option value="01:15">01:15</option>
-                                    <option value="01:30">01:30</option>
-                                    <option value="01:45">01:45</option>
-                                    <option value="02:00">02:00</option>
-                                    <option value="02:15">02:15</option>
-                                    <option value="02:30">02:30</option>
-                                    <option value="02:45">02:45</option>
-                                    <option value="03:00">03:00</option>
-                                    <option value="03:15">03:15</option>
-                                    <option value="03:30">03:30</option>
-                                    <option value="03:45">03:45</option>
-                                    <option value="04:00">04:00</option>
-                                    <option value="04:15">04:15</option>
-                                    <option value="04:30">04:30</option>
-                                    <option value="04:45">04:45</option>
-                                    <option value="05:00">05:00</option>
-                                    <option value="05:15">05:15</option>
-                                    <option value="05:30">05:30</option>
-                                    <option value="05:45">05:45</option>
-                                    <option value="06:00">06:00</option>
-                                    <option value="06:15">06:15</option>
-                                    <option value="06:30">06:30</option>
-                                    <option value="06:45">06:45</option>
-                                    <option value="07:00">07:00</option>
-                                    <option value="07:15">07:15</option>
-                                    <option value="07:30">07:30</option>
-                                    <option value="07:45">07:45</option>
-                                    <option value="08:00">08:00</option>
-                                    <option value="08:15">08:15</option>
-                                    <option value="08:30">08:30</option>
-                                    <option value="08:45">08:45</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="09:15">09:15</option>
-                                    <option value="09:30">09:30</option>
-                                    <option value="09:45">09:45</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="10:15">10:15</option>
-                                    <option value="10:30">10:30</option>
-                                    <option value="10:45">10:45</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="11:15">11:15</option>
-                                    <option value="11:30">11:30</option>
-                                    <option value="11:45">11:45</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="12:15">12:15</option>
-                                    <option value="12:30">12:30</option>
-                                    <option value="12:45">12:45</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="13:15">13:15</option>
-                                    <option value="13:30">13:30</option>
-                                    <option value="13:45">13:45</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="14:15">14:15</option>
-                                    <option value="14:30">14:30</option>
-                                    <option value="14:45">14:45</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="15:15">15:15</option>
-                                    <option value="15:30">15:30</option>
-                                    <option value="15:45">15:45</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="16:15">16:15</option>
-                                    <option value="16:30">16:30</option>
-                                    <option value="16:45">16:45</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="17:15">17:15</option>
-                                    <option value="17:30">17:30</option>
-                                    <option value="17:45">17:45</option>
-                                    <option value="18:00">18:00</option>
-                                    <option value="18:15">18:15</option>
-                                    <option value="18:30">18:30</option>
-                                    <option value="18:45">18:45</option>
-                                    <option value="19:00">19:00</option>
-                                    <option value="19:15">19:15</option>
-                                    <option value="19:30">19:30</option>
-                                    <option value="19:45">19:45</option>
-                                    <option value="20:00">20:00</option>
-                                    <option value="20:15">20:15</option>
-                                    <option value="20:30">20:30</option>
-                                    <option value="20:45">20:45</option>
-                                    <option value="21:00">21:00</option>
-                                    <option value="21:15">21:15</option>
-                                    <option value="21:30">21:30</option>
-                                    <option value="21:45">21:45</option>
-                                    <option value="22:00">22:00</option>
-                                    <option value="22:15">22:15</option>
-                                    <option value="22:30">22:30</option>
-                                    <option value="22:45">22:45</option>
-                                    <option value="23:00">23:00</option>
-                                    <option value="23:15">23:15</option>
-                                    <option value="23:30">23:30</option>
-                                    <option value="23:45">23:45</option>
-                                </select>
-                            </td>
-                            <td colspan="3" style="padding-left: 0px; padding-right: 0px;">
-
-
-
-
-                                <button type="button" class="btn" style="background-color: #FF4500; color: #ffffff; he; /* height: 25px; */dding-top: 0px; /* padding-bottom: 0px; */padding: 8px 16px;" data-toggle="modal" data-target="#hanger_modal">Hanger</button>
-                            </td>
-                        </tr>
+                                                       <tr>
+                                    <td>Amount</td>
+                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text"></td>
+                                    <td>Discount</td>
+                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="Discount" id="Discount" maxlength="10" class="form-control" required="required" value="" tabindex="7" style="width: 50%; display: inline; padding-left: 7px; padding-right: 5px;" type="text">&nbsp;<input id="DiscountPercentage" maxlength="5" class="form-control DecimalOnly" value="" style="width: 30%; display: inline; padding-left: 5px; padding-right: 0px;" type="text">%</td>
+                                </tr>
+                                <tr>
+                                    <td>Return</td>
+                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="ReturnAmount" id="ReturnAmount" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="9" type="text"></td>
+                                    <td>Total</td>
+                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="TotalPayable" id="TotalPayable" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="10" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td style="padding-left: 0px; padding-right: 0px; width: 87px;"><input class="form-control pleft5 pright5" id="DeliveryDate" name="DeliveryDate" readonly="readonly" style="cursor: pointer; background-color: white;" tabindex="11" type="text"></td>
+                                    <td>Time</td>
+                                    <td style="padding-left: 0px; padding-right: 0px;">
+                                        <select name="DeliveryTime" id="DeliveryTime" class="form-control pleft5 pright5" tabindex="12">
+                                                                                                                                                <option value="00:00">00:00</option>
+                                                    <option value="00:15">00:15</option>
+                                                    <option value="00:30">00:30</option>
+                                                    <option value="00:45">00:45</option>
+                                                                                                                                                                                                <option value="01:00">01:00</option>
+                                                    <option value="01:15">01:15</option>
+                                                    <option value="01:30">01:30</option>
+                                                    <option value="01:45">01:45</option>
+                                                                                                                                                                                                <option value="02:00">02:00</option>
+                                                    <option value="02:15">02:15</option>
+                                                    <option value="02:30">02:30</option>
+                                                    <option value="02:45">02:45</option>
+                                                                                                                                                                                                <option value="03:00">03:00</option>
+                                                    <option value="03:15">03:15</option>
+                                                    <option value="03:30">03:30</option>
+                                                    <option value="03:45">03:45</option>
+                                                                                                                                                                                                <option value="04:00">04:00</option>
+                                                    <option value="04:15">04:15</option>
+                                                    <option value="04:30">04:30</option>
+                                                    <option value="04:45">04:45</option>
+                                                                                                                                                                                                <option value="05:00">05:00</option>
+                                                    <option value="05:15">05:15</option>
+                                                    <option value="05:30">05:30</option>
+                                                    <option value="05:45">05:45</option>
+                                                                                                                                                                                                <option value="06:00">06:00</option>
+                                                    <option value="06:15">06:15</option>
+                                                    <option value="06:30">06:30</option>
+                                                    <option value="06:45">06:45</option>
+                                                                                                                                                                                                <option value="07:00">07:00</option>
+                                                    <option value="07:15">07:15</option>
+                                                    <option value="07:30">07:30</option>
+                                                    <option value="07:45">07:45</option>
+                                                                                                                                                                                                <option value="08:00">08:00</option>
+                                                    <option value="08:15">08:15</option>
+                                                    <option value="08:30">08:30</option>
+                                                    <option value="08:45">08:45</option>
+                                                                                                                                                                                                <option value="09:00">09:00</option>
+                                                    <option value="09:15">09:15</option>
+                                                    <option value="09:30">09:30</option>
+                                                    <option value="09:45">09:45</option>
+                                                                                                                                                                                                <option value="10:00">10:00</option>
+                                                    <option value="10:15">10:15</option>
+                                                    <option value="10:30">10:30</option>
+                                                    <option value="10:45">10:45</option>
+                                                                                                                                                                                                <option value="11:00">11:00</option>
+                                                    <option value="11:15">11:15</option>
+                                                    <option value="11:30">11:30</option>
+                                                    <option value="11:45">11:45</option>
+                                                                                                                                                                                                <option value="12:00">12:00</option>
+                                                    <option value="12:15">12:15</option>
+                                                    <option value="12:30">12:30</option>
+                                                    <option value="12:45">12:45</option>
+                                                                                                                                                                                                <option value="13:00">13:00</option>
+                                                    <option value="13:15">13:15</option>
+                                                    <option value="13:30">13:30</option>
+                                                    <option value="13:45">13:45</option>
+                                                                                                                                                                                                <option value="14:00">14:00</option>
+                                                    <option value="14:15">14:15</option>
+                                                    <option value="14:30">14:30</option>
+                                                    <option value="14:45">14:45</option>
+                                                                                                                                                                                                <option value="15:00">15:00</option>
+                                                    <option value="15:15">15:15</option>
+                                                    <option value="15:30">15:30</option>
+                                                    <option value="15:45">15:45</option>
+                                                                                                                                                                                                <option value="16:00">16:00</option>
+                                                    <option value="16:15">16:15</option>
+                                                    <option value="16:30">16:30</option>
+                                                    <option value="16:45">16:45</option>
+                                                                                                                                                                                                <option value="17:00">17:00</option>
+                                                    <option value="17:15">17:15</option>
+                                                    <option value="17:30">17:30</option>
+                                                    <option value="17:45">17:45</option>
+                                                                                                                                                                                                <option value="18:00">18:00</option>
+                                                    <option value="18:15">18:15</option>
+                                                    <option value="18:30">18:30</option>
+                                                    <option value="18:45">18:45</option>
+                                                                                                                                                                                                <option value="19:00">19:00</option>
+                                                    <option value="19:15">19:15</option>
+                                                    <option value="19:30">19:30</option>
+                                                    <option value="19:45">19:45</option>
+                                                                                                                                                                                                <option value="20:00">20:00</option>
+                                                    <option value="20:15">20:15</option>
+                                                    <option value="20:30">20:30</option>
+                                                    <option value="20:45">20:45</option>
+                                                                                                                                                                                                <option value="21:00">21:00</option>
+                                                    <option value="21:15">21:15</option>
+                                                    <option value="21:30">21:30</option>
+                                                    <option value="21:45">21:45</option>
+                                                                                                                                                                                                <option value="22:00">22:00</option>
+                                                    <option value="22:15">22:15</option>
+                                                    <option value="22:30">22:30</option>
+                                                    <option value="22:45">22:45</option>
+                                                                                                                                                                                                <option value="23:00">23:00</option>
+                                                    <option value="23:15">23:15</option>
+                                                    <option value="23:30">23:30</option>
+                                                    <option value="23:45">23:45</option>
+                                                                                                                                    </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Packing</td>                                    <td colspan="3" style="padding-left: 0px; padding-right: 0px;">
+                                        <button type="button" class="btn" style="background-color: #FF4500; color: #ffffff; height: 25px; padding-top: 0px; padding-bottom: 0px;" data-toggle="modal" data-target="#hanger_modal">Hanger</button>
+                                        <span class="pleft5 pright5 ">Collected</span>
+                                        <input name="IsClothCollected" id="IsClothCollectedYes" value="Yes" class="" type="radio">&nbsp;&nbsp;<label class="label-normal pointer " for="IsClothCollectedYes">Yes</label>
+                                        <div class="" style="display: inline; padding-left: 7px;">
+                                            <input name="IsClothCollected" id="IsClothCollectedNo" value="No" checked="checked" type="radio">&nbsp;&nbsp;<label class="label-normal pointer" for="IsClothCollectedNo">No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><textarea name="Comment" id="Comment" class="form-control ptop0 pbottom0" cols="33" rows="1" placeholder="Comment Area..." title="Enter Your Comment" style="resize: none;" tabindex="13"></textarea></td>
+                                </tr>
 
                     </tbody>
                 </table>
