@@ -16,7 +16,7 @@ namespace IntegrationAPI.Services
             string result = "";
             try
             {
-                
+
                 pos_Entity objEntities = new pos_Entity();
                 List<SP_pos_SelectAllResult> objResult = new List<SP_pos_SelectAllResult>();
                 //SP_pos_SelectAllResult objResult = new SP_pos_SelectAllResult();
@@ -33,6 +33,28 @@ namespace IntegrationAPI.Services
             }
             return result;
         }
+
+        public string GetPosDetailByCustomer()
+        {
+            string result = "";
+            try
+            {
+                pos_Entity objEntities = new pos_Entity();
+                List<SP_pos_SelectAll_By_CustomerResult> objResult = new List<SP_pos_SelectAll_By_CustomerResult>();
+                objResult = objEntities.GetPosDetailByCustomer();
+                result = objResult.ToJSON();
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
+
         public string GetPosDetailById(clspos obj)
         {
             string result = "";

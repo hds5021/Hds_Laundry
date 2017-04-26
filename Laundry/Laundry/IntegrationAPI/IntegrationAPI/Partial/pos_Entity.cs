@@ -36,6 +36,24 @@ namespace IntegrationAPI.Partial
             }
             return objResultList;
         }
+
+        public virtual List<SP_pos_SelectAll_By_CustomerResult> GetPosDetailByCustomer()
+        {
+            ISingleResult<SP_pos_SelectAll_By_CustomerResult> objResult;
+            List<SP_pos_SelectAll_By_CustomerResult> objResultList;
+            try
+            {
+                objResult = db.SP_pos_SelectAll_By_Customer();
+                objResultList = new List<SP_pos_SelectAll_By_CustomerResult>(objResult);
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+            return objResultList;
+        }
+
         public virtual SP_pos_SelectOneResult GetPosDetailById(clspos obj)
         {
             SP_pos_SelectOneResult objResult = new SP_pos_SelectOneResult();

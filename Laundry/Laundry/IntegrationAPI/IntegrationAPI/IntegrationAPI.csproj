@@ -180,7 +180,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\customersController.cs" />
     <Compile Include="Controllers\customers_branchController.cs" />
-    <Compile Include="Controllers\EmployeeMasterController.cs" />
     <Compile Include="Controllers\expensesController.cs" />
     <Compile Include="Controllers\Expense_MstController.cs" />
     <Compile Include="Controllers\groupsController.cs" />
@@ -254,7 +253,6 @@
     <Compile Include="Partial\customers_branch_Entity.cs" />
     <Compile Include="Partial\customers_Entity.cs" />
     <Compile Include="Partial\Customer_Entity.cs" />
-    <Compile Include="Partial\EmployeeMaster_Entity.cs" />
     <Compile Include="Partial\expenses_Entity.cs" />
     <Compile Include="Partial\Expense_Mst_Entity.cs" />
     <Compile Include="Partial\groups_Entity.cs" />
@@ -288,7 +286,6 @@
     <Compile Include="Models\customers_branch.cs" />
     <Compile Include="Services\customersService.cs" />
     <Compile Include="Services\customers_branchService.cs" />
-    <Compile Include="Services\EmployeeMasterService.cs" />
     <Compile Include="Services\expensesService.cs" />
     <Compile Include="Services\Expense_MstService.cs" />
     <Compile Include="Services\groupsService.cs" />
@@ -304,6 +301,7 @@
     <Compile Include="Services\PageMasterService.cs" />
     <Compile Include="Services\PartyService.cs" />
     <Compile Include="Services\posbillcountService.cs" />
+    <Compile Include="Services\PosService.cs" />
     <Compile Include="Services\pos_itemsService.cs" />
     <Compile Include="Services\PreSubMenuService.cs" />
     <Compile Include="Services\purchase_invoiceService.cs" />

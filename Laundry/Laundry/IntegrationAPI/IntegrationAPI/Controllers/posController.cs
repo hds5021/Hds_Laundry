@@ -47,6 +47,37 @@ namespace IntegrationAPI.Controllers
         }
 
         [Authorize]
+        [Route("GetPosDetailByCustomer")]
+        [HttpPost]
+        public HttpResponseMessage GetPosDetailByCustomer()
+        {
+
+            LoggerFactory.LoggerInstance.LogDebug("Request Started for :GetPosDetailByCustomer");
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                PosService objComService = new PosService();
+                var objResponse = objComService.GetPosDetailByCustomer();
+                if (objResponse != null && objResponse.ToString() != "")
+                {
+                    response = Request.CreateResponse(HttpStatusCode.OK, objResponse);
+                    LoggerFactory.LoggerInstance.LogDebug("Request End for :GetPosDetailByCustomer");
+                }
+                else
+                {
+                    response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "No detail found  for   GetPosDetailByCustomer.");
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while getting call GetPosDetailByCustomer");
+
+            }
+            return response;
+        }
+
+        [Authorize]
         [Route("GetPosDetailById")]
         [HttpPost]
         public HttpResponseMessage GetPosItemsDetailById([FromBody]clspos request)

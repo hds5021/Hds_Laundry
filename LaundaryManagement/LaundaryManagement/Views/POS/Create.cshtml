@@ -6,19 +6,183 @@
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
 
 <script type="text/javascript">
-
-
+    //Harshil**
+    var getCustomerData = {};
+    var insCustomerData = {};
+    //**Harshil
     var $NoOrder = '<tr class="NoOrder"><td class="text-center" colspan="12">Item List Empty</td></tr>';
     $(document).ready(function () {
-        BindGroupMasterList();
-        $("#itemList").append($NoOrder);
-        $("#PaidAmount").change(function () {
-            $("#ReturnAmount").val($(this).val() - $("#TotalPayable").val());
-        });
-        $("#Discount").change(function () {
-            
+        $("#PaidAmount").val("0.000");
+        $("#TotalPayable").val("0.000");
+        $("#ReturnAmount").val((0).toFixed(3));
+        $("#Discount").val("0.000");
+        $("#DiscountPercentage").val("0");
+        $("#HangerQuantity").val("0");
+        $("#HangerRate").val("0.100");
+        $("#HangerAmount").val("0.000");
 
+        BindGroupMasterList();
+        GetPOSListWithCustomer();
+        $("#itemList").append($NoOrder);
+        $("#HangerQuantity").on("change", function () {
+            var HangerQuantity = parseInt($(this).val());
+            var HangerRate = parseFloat($("#HangerRate").val());
+            var HangerAmount = 0;
+            if (HangerQuantity < 0 || HangerQuantity == "" || $(this).val().length == 0 || isNaN(HangerQuantity)) {
+                HangerQuantity = 0;
+            } else if (HangerQuantity > 0 && HangerRate > 0) {
+                HangerAmount = HangerQuantity * HangerRate;
+            }
+            $(this).val(HangerQuantity);
+            $("#HangerAmount").val(HangerAmount.toFixed(3));
+            calculate_total_qty_amount();
         });
+        $("#PaidAmount").keyup(function (event) {
+            var TotalPayable = parseFloat($("#TotalPayable").val());
+            var PaidAmount = parseFloat($("#PaidAmount").val());
+            $("#ReturnAmount").val(PaidAmount - TotalPayable);
+        }).keydown(function (event) {
+            if ("true" == "true") {
+                // Prevent Keys while pressing down
+                var key = window.event ? event.keyCode : event.which;
+                if (key >= 96 && key <= 105) {
+                    key = key - 48;
+                } else if (key == 110) {
+                    key = 190;
+                }
+                if ($.inArray(key, override_keys) >= 0 || $.inArray(key, accepted_keys) < 0) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return false;
+                }
+                if (key == 190) {
+                    var str = $(this).val().toString();
+                    if (str.indexOf('.') != -1) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        return false;
+                    }
+                }
+            } else {
+                BootstrapDialog.show({
+                    title: 'Access Denied',
+                    message: 'Sorry, you do not have rights to give discount on any bill.'
+                });
+                return false;
+            }
+        });
+        $("#HangerRate").on("change", function () {
+            var HangerQuantity = parseInt($("#HangerQuantity").val());
+            var HangerRate = parseFloat($(this).val());
+            var HangerAmount = 0;
+            if (HangerRate < 0 || HangerRate == "" || $(this).val().length == 0 || isNaN(HangerRate)) {
+                HangerRate = 0;
+            } else if (HangerQuantity > 0 && HangerRate > 0) {
+                HangerAmount = HangerQuantity * HangerRate;
+            }
+            $(this).val(HangerRate.toFixed(3));
+            $("#HangerAmount").val(HangerAmount.toFixed(3));
+            calculate_total_qty_amount();
+        });
+        $("#Discount").keyup(function (event) {
+            var MaxDiscountPercentage = parseFloat("30");
+            var BillAmount = parseFloat($("#TotalPayable").val());
+            var Discount = parseFloat($(this).val());
+            if (Discount <= 0 || Discount == undefined || $(this).val().length == 0 || isNaN(Discount)) {
+                Discount = 0;
+            } else if (Discount > BillAmount) {
+                Discount = BillAmount;
+                $(this).val(BillAmount.toFixed(3));
+            } else {
+            }
+            if (Discount > 0) {
+                var DiscountPercentage = (Discount * 100) / BillAmount;
+                if (DiscountPercentage > MaxDiscountPercentage) {
+                    Discount = 0;
+                    $(this).val("0.000");
+                    $("#DiscountPercentage").val("0.00");
+                    var message = 'Sorry, you can give maximum of ' + ((BillAmount * MaxDiscountPercentage) / 100) + ' discount (Max Percentage: ' + MaxDiscountPercentage + '%).';
+                    alert(message);
+                    $("#TotalPayable").val(BillAmount.toFixed(3));
+                    return;
+                } else {
+                    $("#DiscountPercentage").val(DiscountPercentage.toFixed(3));
+                }
+            } else {
+                Discount = 0;
+                $("#DiscountPercentage").val("0.00");
+            }
+            TotalPayable = BillAmount - Discount;
+            $("#TotalPayable").val(TotalPayable.toFixed(3));
+        }).keydown(function (event) {
+            if ("true" == "true") {
+                // Prevent Keys while pressing down
+                var key = window.event ? event.keyCode : event.which;
+                if (key >= 96 && key <= 105) {
+                    key = key - 48;
+                } else if (key == 110) {
+                    key = 190;
+                }
+                if ($.inArray(key, override_keys) >= 0 || $.inArray(key, accepted_keys) < 0) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return false;
+                }
+                if (key == 190) {
+                    var str = $(this).val().toString();
+                    if (str.indexOf('.') != -1) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        return false;
+                    }
+                }
+            } else {
+                BootstrapDialog.show({
+                    title: 'Access Denied',
+                    message: 'Sorry, you do not have rights to give discount on any bill.'
+                });
+                return false;
+            }
+        });
+        $("#DiscountPercentage").on("change", function () {
+            if ("true" == "true") {
+                var MaxDiscountPercentage = parseFloat("30");
+                var BillAmount = parseFloat($("#TotalPayable").val());
+                var DiscountPercentage = parseFloat($(this).val());
+                if (DiscountPercentage <= 0 || DiscountPercentage == undefined || $(this).val().length == 0 || isNaN(DiscountPercentage)) {
+                    DiscountPercentage = 0;
+                    //$(this).val("<?php echo DEFAULT_DECIMAL_VALUE; ?>");
+                } else if (DiscountPercentage > 100) {
+                    DiscountPercentage = 100;
+                }
+                if (DiscountPercentage > MaxDiscountPercentage) {
+                    DiscountPercentage = 0;
+                    $("#DiscountPercentage").val("0.00");
+                    $("#TotalPayable").val(BillAmount.toFixed(3));
+                    var message = 'Sorry, you can give maximum of ' + ((BillAmount * MaxDiscountPercentage) / 100) + ' discount (Max Percentage: ' + MaxDiscountPercentage + '%).'
+                    alert(message);
+                }
+                if (DiscountPercentage > 0) {
+                    var Discount = (BillAmount * DiscountPercentage) / 100;
+                    $("#Discount").val(Discount.toFixed(3));
+                    $("#Discount").keyup();
+                }
+            } else {
+                $("#DiscountPercentage").val("0.00");
+                BootstrapDialog.show({
+                    title: 'Access Denied',
+                    message: 'Sorry, you do not have rights to give discount on any bill.'
+                });
+                return false;
+            }
+        });
+
+        //Harshil**
+        $("#btn-save").on("click", function () {
+            submitpos("save", false);
+        });
+        //**Harshil
+
     });
     var GroupListJSON = "";
     var ItemListJSON = "";
@@ -53,7 +217,16 @@
         });
 
     }
-
+    function resetAll() {
+        alert('done');
+        $("#PaidAmount").val("0.000");
+        $("#TotalPayable").val(0.000);
+        $("#ReturnAmount").val((0).toFixed(3));
+        $("#Discount").val("0.000");
+        $("#DiscountPercentage").val("0");
+        $("#HangerQuantity").val("0");
+        $("#HangerRate").val("0.000");
+    }
     function GetItemGroupList(itemID) {
 
         $.ajax({
@@ -189,37 +362,6 @@
         calculate_total_qty_amount();
         $(this).blur();
     }
-
-    $(".btn-item").on("click", function () {
-        debugger;
-        var ItemID = $(this).data("itemid");
-        var ItemName = $(this).data("itemname");
-        var ItemLocalName = $(this).data("itemlocalname");
-        var Price = $(this).data("price");
-        var GroupID = $(this).data("groupid");
-        var GroupName = $(this).data("groupname");
-        var PriceRate = $(this).data("pricerate");
-        var NoOrder = $("#itemList .NoOrder").length;
-        if (NoOrder > 0) {
-            $('#itemList > tbody > tr').remove();
-        }
-        var row = $("#itemList #GroupID_" + GroupID).length;
-        if (row <= 0) {
-            row = generateGroupRaw(GroupID, GroupName, 1, Price);
-            $("#itemList").append(row);
-        }
-        row = $("#itemList #ItemID_" + ItemID + "_" + GroupID).length;
-        if (row > 0) {
-            changeItemQtyAmount($("#ItemQty_" + ItemID + "_" + GroupID).parent().parent(), parseInt($("#ItemQty_" + ItemID + "_" + GroupID).val()) + 1, Price);
-        } else {
-            row = generateItemRaw(GroupID, GroupName, ItemID, ItemName, ItemLocalName, Price, 1, PriceRate);
-            $('#GroupID_' + GroupID).before(row);
-        }
-        calculate_total_qty_amount_group();
-        calculate_total_qty_amount();
-        $(this).blur();
-    });
-    
     function calculate_total_qty_amount() {
         var total_qty = 0;
         $(".ItemQty").each(function () {
@@ -233,17 +375,13 @@
         $("#TotalQuantity").val(total_qty);
         $("#total-amount").html(total_amount.toFixed(3));
         $("#TotalAmount").val(total_amount.toFixed(3));
-        //alert(total_amount);
-        //var HangerAmount = parseFloat($("#HangerAmount").val());
-
-        //total_amount += HangerAmount;
-
-        //$("#PaidAmount").val("1");
-        //alert(total_amount);
+        var HangerAmount = parseFloat($("#HangerAmount").val());
+        total_amount += HangerAmount;
+        $("#PaidAmount").val("0.000");
         $("#TotalPayable").val(total_amount.toFixed(3));
-        //$("#ReturnAmount").val((1).toFixed(1));
-        //$("#Discount").val("1");
-        //$("#DiscountPercentage").val("0");
+        $("#ReturnAmount").val((0).toFixed(3));
+        $("#Discount").val("0.000");
+        $("#DiscountPercentage").val("0.00");
     }
 
     function calculate_total_qty_amount_group() {
@@ -259,14 +397,14 @@
                 total_amount += parseFloat($(this).find(".ItemAmount").html());
             });
             $(this).find(".GroupQty").html(total_qty);
-            $(this).find(".GroupAmount").html(total_amount.toFixed(1));
+            $(this).find(".GroupAmount").html(total_amount.toFixed(3));
         });
     }
 
     function changeItemQtyAmount(row, Qty, Price) {
         var Amount = parseInt(Qty) * parseFloat(Price);
         $(row).find(".ItemQty").val(Qty);
-        $(row).find(".ItemAmount").html(parseFloat(Amount).toFixed(1));
+        $(row).find(".ItemAmount").html(parseFloat(Amount).toFixed(3));
     }
 
     function generateGroupRaw(GroupID, GroupName, Quantity, Amount) {
@@ -296,7 +434,7 @@
             PriceHtml = Price + '<input type="hidden" id="ItemPrice_' + ItemID + '_' + GroupID + '" name="Price[]" value="' + Price + '" class="ItemPrice">';
         }
         var raw = [
-            '<tr id="ItemID_' + ItemID + '_' + GroupID + '" class="ItemGroup_' + GroupID + '">',
+            '<tr id="ItemID_' + ItemID + '_' + GroupID + '" class="ItemGroup_' + GroupID + ' positemcls">',
             '<td>',
             ItemName,
             '<input type="hidden" value=\'{"ItemID":"' + ItemID + '","ItemName":"' + ItemName + '","ItemLocalName":"' + ItemLocalName + '","PriceRate":"' + PriceRate + '","GroupID":"' + GroupID + '","GroupName":"' + GroupName + '"}\' name="Items[]">',
@@ -308,7 +446,7 @@
             PriceHtml,
             '</td>',
             '<td id="ItemAmount_' + ItemID + '_' + GroupID + '" class="ItemAmount" style="width: 50px; padding-left: 0px; padding-right: 0px;">',
-            TotalPrice.toFixed(1),
+            TotalPrice.toFixed(3),
             '</td>',
             '<td style="width: 15px; padding-left: 0px; padding-right: 0px;">',
             '<i class="fa fa-close fa-lg delete_item pointer" style=/"cursor: pointer;/" onclick="deleteItemList(this);" data-itemid="' + ItemID + '" data-groupid="' + GroupID + '" onMouseOver="this.style.color=\'#FF0000\'" onMouseOut="this.style.color =\'#000000\'"></i>',
@@ -331,39 +469,172 @@
         calculate_total_qty_amount_group();
         calculate_total_qty_amount();
     };
+    //Harshil**
+    function submitpos(process, checkout) {
+        MakingPosDetailListDetailData();
+        var CustomerName = $("#Searchcname").val();
+        var Contact = $("#Searchmono").val();
+        var TotalQuantity = parseInt($("#total-qty").html());
+        var TotalAmount = parseFloat($("#total-amount").html());
+        var PaidAmount = parseFloat($("#PaidAmount").val());
+        var ReturnAmount = parseFloat($("#ReturnAmount").val());
+        var Discount = parseFloat($("#Discount").val());
+        var TotalPayable = parseFloat($("#TotalPayable").val());
+        var HangerQuantity = parseFloat($("#HangerQuantity").val());
+        var HangerRate = parseFloat($("#HangerRate").val());
+        var HangerAmount = parseFloat($("#HangerAmount").val());
+        var Comment = $("#Comment").val();
+        if (TotalQuantity <= 0) {
+            alert("Invalid Total Quantity Value.!!!");
+            return false;
+        }
+        if (TotalAmount <= 0) {
+            alert("Invalid Total Amount Value.!!!");
+            return false;
+        }
+        if (TotalPayable < 0) {
+            alert("Invalid Bill Total Value.!!!");
+            return false;
+        }
+        if (Discount < 0) {
+            alert("Invalid Discount Value.!!!");
+            $("#Discount").focus();
+            return false;
+        }
+        if (PaidAmount < 0) {
+            alert("Invalid Paid Amount Value.!!!");
+            $("#PaidAmount").focus();
+            return false;
+        }
+        if (Contact == "" || Contact == undefined) {
+            alert("Invalid Customer Searchmono Number.!!!");
+            $("#Searchmono").focus();
+            return false;
+        }
+        if (CustomerName == "" || CustomerName == undefined) {
+            alert("Invalid Customer Name.!!!");
+            $("#Searchcname").focus();
+            return false;
+        }
+        if (($("input[type=radio][name=IsClothCollected][value=Yes]").is(":checked")) && (PaidAmount < TotalPayable)) {
+            alert("For Collected Cloths: 'YES', Full Amount has to be Paid. Please fill the full amount first.!!!");
+            $("#PaidAmount").focus();
+            return false;
+        }
+        var posData = {
+            CustomerID: getCustomerData.CustomerID,
+            CustomerBranchID: 1,
+            Type: 1,
+            TotalQuantity: TotalQuantity,
+            TotalAmount: TotalAmount,
+            Discount: Discount,
+            TotalPayable: TotalPayable,
+            PaidAmount: PaidAmount,
+            ReturnAmount: ReturnAmount,
+            IsPaid: ((PaidAmount >= TotalPayable) ? (getCustomerData.CustomerID) : 0),
+            PaidBy: ((PaidAmount >= TotalPayable) ? (getCustomerData.CustomerID) : 0),
+            Status: 1,
+            Comment: Comment,
+            HangerQuantity: HangerQuantity,
+            HangerRate: HangerRate,
+            HangerAmount: HangerAmount,
+            IsClothCollected: ($("input[type=radio][name=IsClothCollected][value=Yes]").is(":checked")) ? 1 : 0,
+            IsCarpetInvoice: 1,
+            IsDeleted: 0,
+        };
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "InsertPos",
+            data: { PosModel: JSON.stringify(posData) },
+            success: function (msg) {
+                alert("Data Save Successfully");
+                BindItemMasterList();
+                Clear();
+            },
+            error: function () { alert('error'); }
+        });
+    }
+    function CheckCustomer() {
+        var contact = $('#Searchmono').val();
+        $.ajax({
+            type: "GET",
+            async: false,
+            url: "/CustomerMaster/GetCustomerDetailByContact",
+            data: { contactNum: contact },
+            success: function (res) {
+                if (res != '[]') {
+                    getCustomerData = {};
+                    getCustomerData = JSON.parse(res);
+                    getCustomerData = getCustomerData[0];
+                    $('#Searchcname').val(getCustomerData.CustomerName);
+                }
+            },
+            error: function () { alert('error'); }
+        });
+    }
+    function InsertCustomer() {
+        var cmodel = MkaingCustomerData();
+        if ((getCustomerData.CustomerID == undefined || getCustomerData.CustomerID == "") || cmodel.Contact != "" || cmodel.Contact != undefined) {
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "/CustomerMaster/InsertCustomer",
+                data: { CustomerMasterModel: JSON.stringify(cmodel) },
+                success: function (res) {
+                    insCustomerData.CustomerID = JSON.parse(res);
+                    getCustomerData = {};
+                    getCustomerData = insCustomerData;
+                },
+                error: function () { alert('error'); }
+            });
+        } else {
+            if (cmodel.Contact != "" || cmodel.Contact != undefined) {
+                alert('Please enter Customer Mobile Number.');
+            }
+        }
 
-    //$(".btn-item").on("click", function () {
-    //    var ItemID = $(this).data("itemid");
-    //    var ItemName = $(this).data("itemname");
-    //    var ItemLocalName = $(this).data("itemlocalname");
-    //    var Price = $(this).data("price");
-    //    var GroupID = $(this).data("groupid");
-    //    var GroupName = $(this).data("groupname");
-    //    var PriceRate = $(this).data("pricerate");
-    //    var NoOrder = $("#itemList .NoOrder").length;
-    //    if (NoOrder > 0) {
-    //        $('#itemList > tbody > tr').remove();
-    //    }
-    //    var row = $("#itemList #GroupID_" + GroupID).length;
-    //    if (row <= 0) {
-    //        row = generateGroupRaw(GroupID, GroupName, 1, Price);
-    //        $("#itemList").append(row);
-    //    }
-    //    row = $("#itemList #ItemID_" + ItemID + "_" + GroupID).length;
-    //    if (row > 0) {
-    //        changeItemQtyAmount($("#ItemQty_" + ItemID + "_" + GroupID).parent().parent(), parseInt($("#ItemQty_" + ItemID + "_" + GroupID).val()) + 1, Price);
-    //    } else {
-    //        row = generateItemRaw(GroupID, GroupName, ItemID, ItemName, ItemLocalName, Price, 1, PriceRate);
-    //        $('#GroupID_' + GroupID).before(row);
-    //    }
-    //    calculate_total_qty_amount_group();
-    //    calculate_total_qty_amount();
-    //    $(this).blur();
-    //});
+    }
+    function MkaingCustomerData() {
+        insCustomerData = {};
+        insCustomerData.Contact = $('#Searchmono').val();
+        insCustomerData.CustomerName = $('#Searchcname').val();
+        return insCustomerData;
+    }
 
+    function GetPOSListWithCustomer() {
+        $.ajax({
+            url: "GetPOSListWithCustomer",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (res) {
+                var tr;
+                var jsonObj = JSON.parse(res);
+                if (jsonObj.length > 0) {
+                    $.each(jsonObj, function (key, item) {
+                        tr += '<tr class="pointer">';
+                        tr += '<td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid=' + item.PosID + 'data-customerid=' + item.CustomerID + ' data-customerbranchid=' + item.CustomerBranchID + ' data-type="Regular">'
+                        tr += '<div class="custom-checkbox">';
+                        tr += '<input id="CheckBox_' + item.PosID + ' class="bills-checkbox" name="ID[]" value=' + item.PosID + ' type="checkbox">';
+                        tr += '<label class="pointer label-normal" id="BillNoLbl_' + item.PosID + ' for="CheckBox_' + item.PosID + '>' + item.BillNo + '</label>';
+                        tr += '</div>';
+                        tr += '</td>';
+                        tr += '<td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">' + item.Contact + '</td>';
+                        tr += '<td class="order text-center">' + item.CustomerName + '</td>';
+                        tr += '</tr>';
+                    });
+                    $('#poscustomer').html(tr);
+                }
+            },
+            error: function (msg) { alert(msg); }
+        });
+    };
 
-
-
+    function MakingPosDetailListDetailData() {
+        row = $('#itemList tbody tr.positemcls').length;
+    }
+    //**Harshil
 
 </script>
 <div class="row" style="margin-top: 20px;">
@@ -391,88 +662,7 @@
         </table>
         <div id="orders-div" style="height: 375px; overflow-y: auto; border-bottom: solid #D4D0C8;" class="mbottom5">
             <table style="margin: 0; width: 100%;" id="billList" class="table table-striped table-condensed table-hover protable" cellspacing="0" cellpadding="0" border="0">
-                <tbody>
-
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
-                    <tr class="pointer">
-                        <td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid="88" data-customerid="45" data-customerbranchid="0" data-type="Regular">
-                            <div class="custom-checkbox">
-                                <input id="CheckBox_88" class="bills-checkbox" name="ID[]" value="88" type="checkbox">
-                                <label class="pointer label-normal" id="BillNoLbl_88" for="CheckBox_88">4</label>
-                            </div>
-                        </td>
-                        <td class="order OrderContact text-center" style="width: 90px; padding-left: 0px; padding-right: 0px;">91113333</td>
-                        <td class="order text-center">Sanket<input class="details" value="{&quot;PosID&quot;:&quot;88&quot;,&quot;BillNo&quot;:&quot;4&quot;,&quot;CustomerID&quot;:&quot;45&quot;,&quot;CustomerBranchID&quot;:&quot;0&quot;,&quot;CustomerName&quot;:&quot;Sanket&quot;,&quot;Contact&quot;:&quot;91113333&quot;,&quot;Type&quot;:&quot;Regular&quot;,&quot;TotalQuantity&quot;:&quot;1&quot;,&quot;TotalAmount&quot;:&quot;52.500&quot;,&quot;Discount&quot;:&quot;0.000&quot;,&quot;TotalPayable&quot;:&quot;52.500&quot;,&quot;PaidAmount&quot;:&quot;0.000&quot;,&quot;ReturnAmount&quot;:&quot;0.000&quot;,&quot;Comment&quot;:&quot;&quot;,&quot;HangerQuantity&quot;:&quot;0&quot;,&quot;HangerRate&quot;:&quot;0.000&quot;,&quot;HangerAmount&quot;:&quot;0.000&quot;,&quot;IsClothCollected&quot;:&quot;No&quot;,&quot;BillDate&quot;:&quot;03-01-2017&quot;,&quot;BillTime&quot;:&quot;21:45&quot;,&quot;DeliveryDate&quot;:&quot;04-01-2017&quot;,&quot;DeliveryTime&quot;:&quot;21:45&quot;,&quot;items&quot;:[{&quot;PosItemID&quot;:&quot;667&quot;,&quot;PosID&quot;:&quot;88&quot;,&quot;ItemID&quot;:&quot;6&quot;,&quot;ItemName&quot;:&quot;Carpet&quot;,&quot;ItemLocalName&quot;:&quot;&quot;,&quot;GroupID&quot;:&quot;5&quot;,&quot;GroupName&quot;:&quot;Washing&quot;,&quot;ItemWidth&quot;:&quot;5.000&quot;,&quot;ItemLength&quot;:&quot;7.000&quot;,&quot;PriceRate&quot;:&quot;&quot;,&quot;Price&quot;:&quot;1.500&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;TotalPrice&quot;:&quot;52.500&quot;}]}" type="hidden"></td>
-                    </tr>
+                <tbody id="poscustomer">
                 </tbody>
             </table>
         </div>
@@ -511,19 +701,19 @@
     </div>
     <div class="col-md-4" style="background-color: #03a9f3; margin-left: 10px; margin-right: 10px; padding: 0;">
         <div class="input-group pbottom5" style="width: 44%; float: left; margin-right: 20px;">
-            <input id="Search" class="form-control" placeholder="Mobile No" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px; margin-left: 10px;">
+            <input id="Searchmono" class="form-control" placeholder="Mobile No" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px; margin-left: 10px;">
             <span class="input-group-btn" style="float: left; margin-top: 21px; margin-left: 0px; background-color: #fff; margin-top: 20px; width: 0%;">
-                <button class="btn btn-default" type="button" id="btn-search" style="background-color: #fff; margin-left: 0; border: 0; padding-bottom: 10px; border-radius: 0px 8px 8px 0px;">
+                <button class="btn btn-default" type="button" id="btn-search" style="background-color: #fff; margin-left: 0; border: 0; padding-bottom: 10px; border-radius: 0px 8px 8px 0px;" onclick="CheckCustomer()">
                     <i class="fa fa-search"></i>
                 </button>
             </span>
         </div>
 
         <div class="input-group pbottom5" style="width: 44%;">
-            <input id="Search" class="form-control" placeholder="Customer Name" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px;">
-            <span class="input-group-btn" style="float: left; margin-top: 21px; margin-left: 0px; background-color: #fff; margin-top: 20px;">
+            <input id="Searchcname" class="form-control" placeholder="Customer Name" value="" autocomplete="off" tabindex="1" type="text" style="margin: 20px; width: 77%; margin-right: 0; border-radius: 9px 0px 0px 10px;" onblur="InsertCustomer()">
+            @*<span class="input-group-btn" style="float: left; margin-top: 21px; margin-left: 0px; background-color: #fff; margin-top: 20px;">
                 <button class="btn btn-default" type="button" id="btn-search" style="background-color: #fff; margin-left: 0; border: 0; padding-bottom: 10px; border-radius: 0px 8px 8px 0px;"><i class="fa fa-search"></i></button>
-            </span>
+            </span>*@
         </div>
         <div class="well well-sm m0" style="display: table; padding-left: 0px; padding-right: 0px; margin-bottom: 0;">
             <div class="col-md-12">
@@ -540,8 +730,7 @@
                 </table>
                 <div id="prodiv" style="height: 225px; overflow-y: auto;">
                     <table style="margin: 0; width: 100%;" id="itemList" class="table table-striped table-condensed table-hover protable" cellspacing="0" cellpadding="0" border="0">
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -560,137 +749,143 @@
                 </table>
                 <table style="width: 100%;" class="table m0">
                     <tbody>
-                                                       <tr>
-                                    <td>Amount</td>
-                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text"></td>
-                                    <td>Discount</td>
-                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="Discount" id="Discount" maxlength="10" class="form-control" required="required" value="" tabindex="7" style="width: 50%; display: inline; padding-left: 7px; padding-right: 5px;" type="text">&nbsp;<input id="DiscountPercentage" maxlength="5" class="form-control DecimalOnly" value="" style="width: 30%; display: inline; padding-left: 5px; padding-right: 0px;" type="text">%</td>
-                                </tr>
-                                <tr>
-                                    <td>Return</td>
-                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="ReturnAmount" id="ReturnAmount" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="9" type="text"></td>
-                                    <td>Total</td>
-                                    <td style="padding-left: 0px; padding-right: 0px;"><input name="TotalPayable" id="TotalPayable" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="10" type="text"></td>
-                                </tr>
-                                <tr>
-                                    <td>Date</td>
-                                    <td style="padding-left: 0px; padding-right: 0px; width: 87px;"><input class="form-control pleft5 pright5" id="DeliveryDate" name="DeliveryDate" readonly="readonly" style="cursor: pointer; background-color: white;" tabindex="11" type="text"></td>
-                                    <td>Time</td>
-                                    <td style="padding-left: 0px; padding-right: 0px;">
-                                        <select name="DeliveryTime" id="DeliveryTime" class="form-control pleft5 pright5" tabindex="12">
-                                                                                                                                                <option value="00:00">00:00</option>
-                                                    <option value="00:15">00:15</option>
-                                                    <option value="00:30">00:30</option>
-                                                    <option value="00:45">00:45</option>
-                                                                                                                                                                                                <option value="01:00">01:00</option>
-                                                    <option value="01:15">01:15</option>
-                                                    <option value="01:30">01:30</option>
-                                                    <option value="01:45">01:45</option>
-                                                                                                                                                                                                <option value="02:00">02:00</option>
-                                                    <option value="02:15">02:15</option>
-                                                    <option value="02:30">02:30</option>
-                                                    <option value="02:45">02:45</option>
-                                                                                                                                                                                                <option value="03:00">03:00</option>
-                                                    <option value="03:15">03:15</option>
-                                                    <option value="03:30">03:30</option>
-                                                    <option value="03:45">03:45</option>
-                                                                                                                                                                                                <option value="04:00">04:00</option>
-                                                    <option value="04:15">04:15</option>
-                                                    <option value="04:30">04:30</option>
-                                                    <option value="04:45">04:45</option>
-                                                                                                                                                                                                <option value="05:00">05:00</option>
-                                                    <option value="05:15">05:15</option>
-                                                    <option value="05:30">05:30</option>
-                                                    <option value="05:45">05:45</option>
-                                                                                                                                                                                                <option value="06:00">06:00</option>
-                                                    <option value="06:15">06:15</option>
-                                                    <option value="06:30">06:30</option>
-                                                    <option value="06:45">06:45</option>
-                                                                                                                                                                                                <option value="07:00">07:00</option>
-                                                    <option value="07:15">07:15</option>
-                                                    <option value="07:30">07:30</option>
-                                                    <option value="07:45">07:45</option>
-                                                                                                                                                                                                <option value="08:00">08:00</option>
-                                                    <option value="08:15">08:15</option>
-                                                    <option value="08:30">08:30</option>
-                                                    <option value="08:45">08:45</option>
-                                                                                                                                                                                                <option value="09:00">09:00</option>
-                                                    <option value="09:15">09:15</option>
-                                                    <option value="09:30">09:30</option>
-                                                    <option value="09:45">09:45</option>
-                                                                                                                                                                                                <option value="10:00">10:00</option>
-                                                    <option value="10:15">10:15</option>
-                                                    <option value="10:30">10:30</option>
-                                                    <option value="10:45">10:45</option>
-                                                                                                                                                                                                <option value="11:00">11:00</option>
-                                                    <option value="11:15">11:15</option>
-                                                    <option value="11:30">11:30</option>
-                                                    <option value="11:45">11:45</option>
-                                                                                                                                                                                                <option value="12:00">12:00</option>
-                                                    <option value="12:15">12:15</option>
-                                                    <option value="12:30">12:30</option>
-                                                    <option value="12:45">12:45</option>
-                                                                                                                                                                                                <option value="13:00">13:00</option>
-                                                    <option value="13:15">13:15</option>
-                                                    <option value="13:30">13:30</option>
-                                                    <option value="13:45">13:45</option>
-                                                                                                                                                                                                <option value="14:00">14:00</option>
-                                                    <option value="14:15">14:15</option>
-                                                    <option value="14:30">14:30</option>
-                                                    <option value="14:45">14:45</option>
-                                                                                                                                                                                                <option value="15:00">15:00</option>
-                                                    <option value="15:15">15:15</option>
-                                                    <option value="15:30">15:30</option>
-                                                    <option value="15:45">15:45</option>
-                                                                                                                                                                                                <option value="16:00">16:00</option>
-                                                    <option value="16:15">16:15</option>
-                                                    <option value="16:30">16:30</option>
-                                                    <option value="16:45">16:45</option>
-                                                                                                                                                                                                <option value="17:00">17:00</option>
-                                                    <option value="17:15">17:15</option>
-                                                    <option value="17:30">17:30</option>
-                                                    <option value="17:45">17:45</option>
-                                                                                                                                                                                                <option value="18:00">18:00</option>
-                                                    <option value="18:15">18:15</option>
-                                                    <option value="18:30">18:30</option>
-                                                    <option value="18:45">18:45</option>
-                                                                                                                                                                                                <option value="19:00">19:00</option>
-                                                    <option value="19:15">19:15</option>
-                                                    <option value="19:30">19:30</option>
-                                                    <option value="19:45">19:45</option>
-                                                                                                                                                                                                <option value="20:00">20:00</option>
-                                                    <option value="20:15">20:15</option>
-                                                    <option value="20:30">20:30</option>
-                                                    <option value="20:45">20:45</option>
-                                                                                                                                                                                                <option value="21:00">21:00</option>
-                                                    <option value="21:15">21:15</option>
-                                                    <option value="21:30">21:30</option>
-                                                    <option value="21:45">21:45</option>
-                                                                                                                                                                                                <option value="22:00">22:00</option>
-                                                    <option value="22:15">22:15</option>
-                                                    <option value="22:30">22:30</option>
-                                                    <option value="22:45">22:45</option>
-                                                                                                                                                                                                <option value="23:00">23:00</option>
-                                                    <option value="23:15">23:15</option>
-                                                    <option value="23:30">23:30</option>
-                                                    <option value="23:45">23:45</option>
-                                                                                                                                    </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Packing</td>                                    <td colspan="3" style="padding-left: 0px; padding-right: 0px;">
-                                        <button type="button" class="btn" style="background-color: #FF4500; color: #ffffff; height: 25px; padding-top: 0px; padding-bottom: 0px;" data-toggle="modal" data-target="#hanger_modal">Hanger</button>
-                                        <span class="pleft5 pright5 ">Collected</span>
-                                        <input name="IsClothCollected" id="IsClothCollectedYes" value="Yes" class="" type="radio">&nbsp;&nbsp;<label class="label-normal pointer " for="IsClothCollectedYes">Yes</label>
-                                        <div class="" style="display: inline; padding-left: 7px;">
-                                            <input name="IsClothCollected" id="IsClothCollectedNo" value="No" checked="checked" type="radio">&nbsp;&nbsp;<label class="label-normal pointer" for="IsClothCollectedNo">No</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4"><textarea name="Comment" id="Comment" class="form-control ptop0 pbottom0" cols="33" rows="1" placeholder="Comment Area..." title="Enter Your Comment" style="resize: none;" tabindex="13"></textarea></td>
-                                </tr>
-
+                        <tr>
+                            <td>Amount</td>
+                            <td style="padding-left: 0px; padding-right: 0px;">
+                                <input name="PaidAmount" id="PaidAmount" maxlength="10" class="form-control" required="required" value="" tabindex="8" type="text"></td>
+                            <td>Discount</td>
+                            <td style="padding-left: 0px; padding-right: 0px;">
+                                <input name="Discount" id="Discount" maxlength="10" class="form-control" required="required" value="" tabindex="7" style="width: 50%; display: inline; padding-left: 7px; padding-right: 5px;" type="text">&nbsp;<input id="DiscountPercentage" maxlength="5" class="form-control DecimalOnly" value="" style="width: 30%; display: inline; padding-left: 5px; padding-right: 0px;" type="text">%</td>
+                        </tr>
+                        <tr>
+                            <td>Return</td>
+                            <td style="padding-left: 0px; padding-right: 0px;">
+                                <input name="ReturnAmount" id="ReturnAmount" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="9" type="text"></td>
+                            <td>Total</td>
+                            <td style="padding-left: 0px; padding-right: 0px;">
+                                <input name="TotalPayable" id="TotalPayable" maxlength="10" class="form-control DecimalOnly" readonly="readonly" required="required" value="" tabindex="10" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td style="padding-left: 0px; padding-right: 0px; width: 87px;">
+                                <input class="form-control pleft5 pright5" id="DeliveryDate" name="DeliveryDate" readonly="readonly" style="cursor: pointer; background-color: white;" tabindex="11" type="text"></td>
+                            <td>Time</td>
+                            <td style="padding-left: 0px; padding-right: 0px;">
+                                <select name="DeliveryTime" id="DeliveryTime" class="form-control pleft5 pright5" tabindex="12">
+                                    <option value="00:00">00:00</option>
+                                    <option value="00:15">00:15</option>
+                                    <option value="00:30">00:30</option>
+                                    <option value="00:45">00:45</option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="01:15">01:15</option>
+                                    <option value="01:30">01:30</option>
+                                    <option value="01:45">01:45</option>
+                                    <option value="02:00">02:00</option>
+                                    <option value="02:15">02:15</option>
+                                    <option value="02:30">02:30</option>
+                                    <option value="02:45">02:45</option>
+                                    <option value="03:00">03:00</option>
+                                    <option value="03:15">03:15</option>
+                                    <option value="03:30">03:30</option>
+                                    <option value="03:45">03:45</option>
+                                    <option value="04:00">04:00</option>
+                                    <option value="04:15">04:15</option>
+                                    <option value="04:30">04:30</option>
+                                    <option value="04:45">04:45</option>
+                                    <option value="05:00">05:00</option>
+                                    <option value="05:15">05:15</option>
+                                    <option value="05:30">05:30</option>
+                                    <option value="05:45">05:45</option>
+                                    <option value="06:00">06:00</option>
+                                    <option value="06:15">06:15</option>
+                                    <option value="06:30">06:30</option>
+                                    <option value="06:45">06:45</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="07:15">07:15</option>
+                                    <option value="07:30">07:30</option>
+                                    <option value="07:45">07:45</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="08:15">08:15</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="08:45">08:45</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:15">09:15</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="09:45">09:45</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:15">10:15</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="10:45">10:45</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:15">11:15</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="11:45">11:45</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:15">12:15</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="12:45">12:45</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:15">13:15</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="13:45">13:45</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:15">14:15</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="14:45">14:45</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:15">15:15</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="15:45">15:45</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:15">16:15</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="16:45">16:45</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:15">17:15</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="17:45">17:45</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="18:15">18:15</option>
+                                    <option value="18:30">18:30</option>
+                                    <option value="18:45">18:45</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:15">19:15</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="19:45">19:45</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:15">20:15</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="20:45">20:45</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:15">21:15</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="21:45">21:45</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:15">22:15</option>
+                                    <option value="22:30">22:30</option>
+                                    <option value="22:45">22:45</option>
+                                    <option value="23:00">23:00</option>
+                                    <option value="23:15">23:15</option>
+                                    <option value="23:30">23:30</option>
+                                    <option value="23:45">23:45</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Packing</td>
+                            <td colspan="3" style="padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn" style="background-color: #FF4500; color: #ffffff; height: 25px; padding-top: 0px; padding-bottom: 0px;" data-toggle="modal" data-target="#hanger_modal">Hanger</button>
+                                <span class="pleft5 pright5 ">Collected</span>
+                                <input name="IsClothCollected" id="IsClothCollectedYes" value="Yes" class="" type="radio">&nbsp;&nbsp;<label class="label-normal pointer " for="IsClothCollectedYes">Yes</label>
+                                <div class="" style="display: inline; padding-left: 7px;">
+                                    <input name="IsClothCollected" id="IsClothCollectedNo" value="No" checked="checked" type="radio">&nbsp;&nbsp;<label class="label-normal pointer" for="IsClothCollectedNo">No</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <textarea name="Comment" id="Comment" class="form-control ptop0 pbottom0" cols="33" rows="1" placeholder="Comment Area..." title="Enter Your Comment" style="resize: none;" tabindex="13"></textarea></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -723,4 +918,21 @@
 
     </div>
 </div>
-
+<div class="modal fade" id="hanger_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #5b98d9; color: #FFFFFF;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Hanger Information</h4>
+            </div>
+            <div class="modal-body">
+                <label class="pright10" for="HangerQuantity">Quantity:</label><input type="number" class="form-control IntegerOnly" style="width: 100px; display: inline;" id="HangerQuantity" min="0" max="100" name="HangerQuantity" value="0" />
+                <label class="pright10 pleft10" for="HangerRate">Rate:</label><input type="text" class="form-control DecimalOnly" style="width: 100px; display: inline;" id="HangerRate" name="HangerRate" value="1" />
+                <label class="pright10 pleft10" for="HangerAmount">Amount:</label><input type="text" class="form-control" readonly="readonly" style="width: 100px; display: inline;" id="HangerAmount" name="HangerAmount" value="0" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
