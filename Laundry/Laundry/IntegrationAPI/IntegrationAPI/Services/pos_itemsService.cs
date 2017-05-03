@@ -59,6 +59,28 @@ namespace IntegrationAPI.Services
             return result;
         }
 
+        public string GetPosItemsDetailByPOSId(clsposItems obj)
+        {
+            string result = "";
+            try
+            {
+                pos_items_Entity objEntities = new pos_items_Entity();
+                List<SP_pos_items_SelectByPOSIdResult>  objResult = new List<SP_pos_items_SelectByPOSIdResult>();
+                objResult = objEntities.GetPosItemsDetailByPOSId(obj);
+                result = objResult.ToJSON();
+
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
+
         public string InsertPosItems(clsposItems obj)
         {
             string result = "";
@@ -114,6 +136,29 @@ namespace IntegrationAPI.Services
                 // SP_customers_SelectOneResult CustomerData = new SP_customers_SelectOneResult();
                 int objResult;
                 objResult = objEntities.DeletePosItems(obj);
+                result = objResult.ToJSON();
+
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+            }
+            finally
+            {
+                LoggerFactory.LoggerInstance.LogDebug("Response Value : " + result);
+            }
+            return result;
+        }
+
+        public string DeletePosItemsByPosId(clsposItems obj)
+        {
+            string result = "";
+            try
+            {
+                pos_items_Entity objEntities = new pos_items_Entity();
+                // SP_customers_SelectOneResult CustomerData = new SP_customers_SelectOneResult();
+                int objResult;
+                objResult = objEntities.DeletePosItemsByPosId(obj.PosID);
                 result = objResult.ToJSON();
 
             }

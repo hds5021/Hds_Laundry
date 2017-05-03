@@ -91,10 +91,11 @@ namespace IntegrationAPI.Partial
         {
             long result = 0;
             long? resultID = 0;
-            
+
             try
             {
-                result = (long)db.SP_pos_Insert(ref resultID, obj.InstanceID, obj.UserID, obj.BillNo, obj.CustomerID, obj.CustomerBranchID, obj.Type, obj.TotalQuantity, obj.TotalAmount, obj.Discount, obj.TotalPayable, obj.PaidAmount, obj.ReturnAmount, obj.IsPaid, obj.PaidBy, Convert.ToDateTime(obj.PaymentDateTime), obj.Status, obj.Comment, obj.HangerQuantity, obj.HangerRate, obj.HangerAmount, obj.IsClothCollected, obj.IsCarpetInvoice, obj.BillDate,obj.BillTime, obj.DeliveryDate,obj.DeliveryTime, obj.IsDeleted, Convert.ToDateTime(obj.DeletedDateTime), Convert.ToDateTime(obj.CreatedDate));
+                result = (long)db.SP_pos_Insert(ref resultID, obj.InstanceID, obj.UserID, obj.BillNo, obj.CustomerID, obj.CustomerBranchID, obj.Type, obj.TotalQuantity, obj.TotalAmount, obj.Discount, obj.TotalPayable, obj.PaidAmount, obj.ReturnAmount, obj.IsPaid, obj.PaidBy, Convert.ToDateTime(obj.PaymentDateTime), obj.Status, obj.Comment, obj.HangerQuantity, obj.HangerRate, obj.HangerAmount, obj.IsClothCollected, obj.IsCarpetInvoice, obj.BillDate, obj.BillTime, obj.DeliveryDate, obj.DeliveryTime, obj.IsDeleted, Convert.ToDateTime(obj.DeletedDateTime), Convert.ToDateTime(obj.CreatedDate));
+                result = (long)resultID;
             }
             catch (Exception ex)
             {
@@ -107,7 +108,7 @@ namespace IntegrationAPI.Partial
         public virtual int UpdatePos(clspos obj)
         {
             int result = 0;
-            
+
             try
             {
                 result = (int)db.SP_pos_Update(obj.PosID, obj.InstanceID, obj.UserID, obj.BillNo, obj.CustomerID, obj.CustomerBranchID, obj.Type, obj.TotalQuantity, obj.TotalAmount, obj.Discount, obj.TotalPayable, obj.PaidAmount, obj.ReturnAmount, obj.IsPaid, obj.PaidBy, Convert.ToDateTime(obj.PaymentDateTime), obj.Status, obj.Comment, obj.HangerQuantity, obj.HangerRate, obj.HangerAmount, obj.IsClothCollected, obj.IsCarpetInvoice, obj.BillDate, obj.BillTime, obj.DeliveryDate, obj.DeliveryTime, obj.IsDeleted, Convert.ToDateTime(obj.DeletedDateTime), Convert.ToDateTime(obj.CreatedDate));

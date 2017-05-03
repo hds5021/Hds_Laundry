@@ -53,6 +53,25 @@ namespace IntegrationAPI.Partial
             return objResult;
         }
 
+        public virtual List<SP_pos_items_SelectByPOSIdResult> GetPosItemsDetailByPOSId(clsposItems obj)
+        {
+            ISingleResult<SP_pos_items_SelectByPOSIdResult> objResult;
+            List<SP_pos_items_SelectByPOSIdResult> objResultList;
+            //SP_pos_items_SelectByPOSIdResult objResult = new SP_pos_items_SelectByPOSIdResult();
+            try
+            {
+
+                objResult = db.SP_pos_items_SelectByPOSId(obj.PosID);
+                objResultList = new List<SP_pos_items_SelectByPOSIdResult>(objResult);
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+            return objResultList;
+        }
+
         public virtual long InsertPosItems(clsposItems obj)
         {
             long result = 0;
@@ -92,6 +111,22 @@ namespace IntegrationAPI.Partial
             try
             {
                 result = (int)db.SP_pos_items_Delete(obj.PosItemID);
+            }
+            catch (Exception ex)
+            {
+                LoggerFactory.LoggerInstance.LogException(ex);
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public virtual int DeletePosItemsByPosId(int posId)
+        {
+            int result = 0;
+            try
+            {
+                result = (int)db.SP_pos_items_Delete_ByPosId(posId);
             }
             catch (Exception ex)
             {

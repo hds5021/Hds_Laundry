@@ -9,6 +9,7 @@
     //Harshil**
     var getCustomerData = {};
     var insCustomerData = {};
+    var GetPOSListWithCustomerDetailData = [];
     //**Harshil
     var $NoOrder = '<tr class="NoOrder"><td class="text-center" colspan="12">Item List Empty</td></tr>';
     $(document).ready(function () {
@@ -218,7 +219,6 @@
 
     }
     function resetAll() {
-        alert('done');
         $("#PaidAmount").val("0.000");
         $("#TotalPayable").val(0.000);
         $("#ReturnAmount").val((0).toFixed(3));
@@ -471,7 +471,6 @@
     };
     //Harshil**
     function submitpos(process, checkout) {
-        MakingPosDetailListDetailData();
         var CustomerName = $("#Searchcname").val();
         var Contact = $("#Searchmono").val();
         var TotalQuantity = parseInt($("#total-qty").html());
@@ -521,6 +520,7 @@
             $("#PaidAmount").focus();
             return false;
         }
+        var posItemDetail = MakingPosDetailListDetailData();
         var posData = {
             CustomerID: getCustomerData.CustomerID,
             CustomerBranchID: 1,
@@ -546,7 +546,7 @@
             type: "POST",
             async: false,
             url: "InsertPos",
-            data: { PosModel: JSON.stringify(posData) },
+            data: { PosModel: JSON.stringify(posData), PosItemModel: JSON.stringify(posItemDetail) },
             success: function (msg) {
                 alert("Data Save Successfully");
                 BindItemMasterList();
@@ -612,11 +612,14 @@
                 var tr;
                 var jsonObj = JSON.parse(res);
                 if (jsonObj.length > 0) {
+                    GetPOSListWithCustomerDetailData = [];
                     $.each(jsonObj, function (key, item) {
+                        var allVal = JSON.stringify(item);
+                        GetPOSListWithCustomerDetailData.push(allVal);
                         tr += '<tr class="pointer">';
                         tr += '<td class="bill-no-list" style="width: 60px; padding-right: 0px;" data-posid=' + item.PosID + 'data-customerid=' + item.CustomerID + ' data-customerbranchid=' + item.CustomerBranchID + ' data-type="Regular">'
                         tr += '<div class="custom-checkbox">';
-                        tr += '<input id="CheckBox_' + item.PosID + ' class="bills-checkbox" name="ID[]" value=' + item.PosID + ' type="checkbox">';
+                        tr += '<input id="CheckBox_' + item.PosID + '" class="bills-checkbox" name="ID[]" value=' + item.PosID + ' type="checkbox" onclick="clickOnBillNo(' + item.PosID + ');">';
                         tr += '<label class="pointer label-normal" id="BillNoLbl_' + item.PosID + ' for="CheckBox_' + item.PosID + '>' + item.BillNo + '</label>';
                         tr += '</div>';
                         tr += '</td>';
@@ -632,8 +635,95 @@
     };
 
     function MakingPosDetailListDetailData() {
-        row = $('#itemList tbody tr.positemcls').length;
+        var rowlength = $('#itemList tbody tr.positemcls').length;
+        var posItemDetail = [];
+        var tableBody = $('#itemList tbody').find('tr.positemcls');
+        for (var i = 0; i < tableBody.length; i++) {
+            var _itemid = tableBody[i].id.replace('ItemID_', '_');
+            var _ary = _itemid.split('_');
+            var _actItemId = 0;
+            var _actgrpId = 0;
+            var _totalprize = 0;
+            if (_ary != undefined && _ary[1] != undefined) {
+                _actItemId = _ary[1];
+                _actgrpId = _ary[2];
+            }
+            var _itemqty = $("#ItemQty" + _itemid).val();
+
+            var Amount = $("#ItemAmount" + _itemid)[0].innerHTML;
+            _totalprize = parseInt(_itemqty * Amount);
+            var positemDetailData = {
+                "ItemID": _actItemId,
+                "GroupID": _actgrpId,
+                "Price": Amount,
+                "Quantity": _itemqty,
+                "TotalPrice": _totalprize
+            };
+            posItemDetail.push(positemDetailData);
+        }
+        return posItemDetail;
     }
+    function MakingPosDetailListDetailDataXML() {
+        var rowlength = $('#itemList tbody tr.positemcls').length;
+        var XMLData = "<ROOT>";
+        var tableBody = $('#itemList tbody').find('tr.positemcls');
+        for (var i = 0; i < tableBody.length; i++) {
+            XMLData = XMLData + "<ELEMENT>";
+            var _itemid = tableBody[i].id.replace('ItemID_', '_');
+            var _ary = _itemid.split('_');
+            var _actItemId = 0;
+            var _actgrpId = 0;
+            var _totalprize = 0;
+            if (_ary != undefined && _ary[1] != undefined) {
+                _actItemId = _ary[1];
+                _actgrpId = _ary[2];
+            }
+            var _itemqty = $("#ItemQty" + _itemid).val();
+            var Amount = $("#ItemAmount_" + _itemid)[0].innerHTML;
+            _totalprize = parseInt(_itemqty * Amount);
+            XMLData = XMLData + "<PosID>PID</ItemID>";
+            XMLData = XMLData + "<ItemID>" + _actItemId + "</ItemID>";
+            XMLData = XMLData + "<GroupID>" + _actgrpId + "</GroupID>";
+            XMLData = XMLData + "<Price>" + Amount + "</Price>";
+            XMLData = XMLData + "<Quantity>" + _itemqty + "</Quantity>";
+            XMLData = XMLData + "<TotalPrice>" + _totalprize + "</TotalPrice>";
+            XMLData = XMLData + "</ELEMENT>";
+        }
+        XMLData = XMLData + "</ROOT>";
+        return XMLData;
+    }
+
+    function clickOnBillNo(valPosId) {
+        //alert('clickOnBillNo' + GetPOSListWithCustomerDetailData[0]);
+        var getPOSBillData = {};
+        var getPOSItemBillData = [];
+        var getBillData = {};
+        $.each(GetPOSListWithCustomerDetailData, function (key, item) {
+            getBillData = JSON.parse(item);
+            if (getBillData.PosID == valPosId) {
+                getPOSBillData = getBillData;
+                getPOSItemBillData = GetPOSItemBillDetail(valPosId);
+            }
+        });
+    };
+
+    function GetPOSItemBillDetail(posID) {
+        $.ajax({
+            url: "GetPOSItemBillDetail",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: { posId: posID },
+            success: function (res) {
+                //alert(res);
+                if (res != '[]') {
+                    return JSON.parse(res);
+                }
+                return [];
+            },
+            error: function (msg) { alert(msg); }
+        });
+    };
     //**Harshil
 
 </script>
@@ -650,7 +740,6 @@
                 </button>
             </span>
         </div>
-
         <table style="width: 100%; background-color: #414141; color: #fff; margin-bottom: 0;" class="table table-striped table-condensed m0">
             <thead>
                 <tr class="table-header">

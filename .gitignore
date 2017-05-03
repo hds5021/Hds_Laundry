@@ -1,8 +1,12 @@
 LaundaryManagement/packages/
 Laundry/Laundry/IntegrationAPI/packages/
+Laundry/Laundry/IntegrationAPI/IntegrationAPI/bin/
 Laundry/Laundry/IntegrationAPI/IntegrationAPI/obj/
+Laundry/Laundry/IntegrationAPI/Integration_Repository/bin/
 Laundry/Laundry/IntegrationAPI/Integration_Repository/obj/
 Laundry/Laundry/IntegrationAPI/Integration_UnitTest/bin/
+Laundry/Laundry/IntegrationAPI/Integration_UnitTest/obj/
 LaundaryManagement/LaundaryManagement/bin/Microsoft.Owin.Security.OAuth.dll
 LaundaryManagement/LaundaryManagement/bin/
+LaundaryManagement/LaundaryManagement/obj/
 Laundry/Laundry/IntegrationAPI/IntegrationAPI/APILog/
