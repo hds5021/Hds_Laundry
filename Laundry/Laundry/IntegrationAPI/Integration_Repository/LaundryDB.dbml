@@ -1392,39 +1392,6 @@
     <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.SP_pos_Insert" Method="SP_pos_Insert">
-    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
-    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="BillNo" Parameter="billNo" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(15)" />
-    <Parameter Name="TotalQuantity" Parameter="totalQuantity" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="Discount" Parameter="discount" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="TotalPayable" Parameter="totalPayable" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="PaidAmount" Parameter="paidAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="ReturnAmount" Parameter="returnAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="IsPaid" Parameter="isPaid" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PaidBy" Parameter="paidBy" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PaymentDateTime" Parameter="paymentDateTime" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Comment" Parameter="comment" Type="System.String" DbType="VarChar(255)" />
-    <Parameter Name="HangerQuantity" Parameter="hangerQuantity" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="HangerRate" Parameter="hangerRate" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="HangerAmount" Parameter="hangerAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="IsClothCollected" Parameter="isClothCollected" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="IsCarpetInvoice" Parameter="isCarpetInvoice" Type="System.Int32" DbType="Int" />
-    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="BillTime" Parameter="billTime" Type="System.TimeSpan" DbType="Time" />
-    <Parameter Name="DeliveryDate" Parameter="deliveryDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="DeliveryTime" Parameter="deliveryTime" Type="System.TimeSpan" DbType="Time" />
-    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
-    <Parameter Name="DeletedDateTime" Parameter="deletedDateTime" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.SP_pos_items_Delete" Method="SP_pos_items_Delete">
     <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
@@ -2457,6 +2424,139 @@
       <Column Name="GroupName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="GroupCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="ColorCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_Insert" Method="SP_pos_Insert">
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InstanceID" Parameter="instanceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="BillNo" Parameter="billNo" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerBranchID" Parameter="customerBranchID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TotalQuantity" Parameter="totalQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Discount" Parameter="discount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="TotalPayable" Parameter="totalPayable" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="PaidAmount" Parameter="paidAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ReturnAmount" Parameter="returnAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="IsPaid" Parameter="isPaid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PaidBy" Parameter="paidBy" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PaymentDateTime" Parameter="paymentDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Comment" Parameter="comment" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="HangerQuantity" Parameter="hangerQuantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="HangerRate" Parameter="hangerRate" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="HangerAmount" Parameter="hangerAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="IsClothCollected" Parameter="isClothCollected" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="IsCarpetInvoice" Parameter="isCarpetInvoice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillDate" Parameter="billDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="BillTime" Parameter="billTime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="DeliveryDate" Parameter="deliveryDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DeliveryTime" Parameter="deliveryTime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="IsDeleted" Parameter="isDeleted" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DeletedDateTime" Parameter="deletedDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_SelectAll_By_Customer" Method="SP_pos_SelectAll_By_Customer">
+    <ElementType Name="SP_pos_SelectAll_By_CustomerResult">
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstanceID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillNo" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerBranchID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPayable" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PaidAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaidBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerQuantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="HangerRate" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="HangerAmount" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsClothCollected" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IsCarpetInvoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BillTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID1" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserID1" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_items_Delete_ByPosId" Method="SP_pos_items_Delete_ByPosId">
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_Insert_List" Method="SP_pos_items_Insert_List" IsComposable="true">
+    <Parameter Name="PosItemVal" Parameter="posItemVal" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_Insert_List" Method="SP_pos_items_Insert_List1" IsComposable="true">
+    <Parameter Name="PosItemVal" Parameter="posItemVal" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ErrorCode" Parameter="errorCode" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_Insert_List" Method="SP_pos_items_Insert_List2" IsComposable="true">
+    <Parameter Name="PosItemVal" Parameter="posItemVal" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ErrorCode" Parameter="errorCode" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_Insert_List" Method="SP_pos_items_Insert_List3" IsComposable="true">
+    <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="PosItemVal" Parameter="posItemVal" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_SelectAll" Method="SP_pos_items_SelectAll1">
+    <ElementType Name="SP_pos_items_SelectAllResult1">
+      <Column Name="PosItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemWidth" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="ItemLength" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_pos_items_Insert_List" Method="SP_pos_items_Insert_List4" IsComposable="true">
+    <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="PosItemVal" Parameter="posItemVal" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_Insert_List" Method="SP_pos_items_Insert_List5" IsComposable="true">
+    <Parameter Name="PosItemID" Parameter="posItemID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="PosItemVal" Parameter="posItemVal" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.SP_pos_items_SelectByPOSId" Method="SP_pos_items_SelectByPOSId">
+    <Parameter Name="PosID" Parameter="posID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_pos_items_SelectByPOSIdResult">
+      <Column Name="PosItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PosID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ItemWidth" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="ItemLength" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="PriceRate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(10,3) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

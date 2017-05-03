@@ -118,19 +118,19 @@ namespace Integration_Repository
     partial void Updatecustomer(customer instance);
     partial void Deletecustomer(customer instance);
     #endregion
-
-        public LaundryDBDataContext() :
+		
+		public LaundryDBDataContext() :
         base("Data Source=USER-PC;Initial Catalog=jptLaundry;Integrated Security=True", mappingSource)
-        {
-            OnCreated();
-        }
-        
-        public LaundryDBDataContext(string connection) : 
-				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
-		
+
+        public LaundryDBDataContext(string connection) :
+            base(connection, mappingSource)
+        {
+            OnCreated();
+        }
+
 		public LaundryDBDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
@@ -1018,44 +1018,6 @@ namespace Integration_Repository
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_Insert")]
-		public int SP_pos_Insert(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosID", DbType="BigInt")] ref System.Nullable<long> posID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="InstanceID", DbType="BigInt")] System.Nullable<long> instanceID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="BigInt")] System.Nullable<long> userID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillNo", DbType="BigInt")] System.Nullable<long> billNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerBranchID", DbType="BigInt")] System.Nullable<long> customerBranchID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="VarChar(15)")] string type, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalQuantity", DbType="BigInt")] System.Nullable<long> totalQuantity, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> totalAmount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Decimal(18,0)")] System.Nullable<decimal> discount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPayable", DbType="Decimal(18,0)")] System.Nullable<decimal> totalPayable, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaidAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> paidAmount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReturnAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> returnAmount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPaid", DbType="Int")] System.Nullable<int> isPaid, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaidBy", DbType="Int")] System.Nullable<int> paidBy, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentDateTime", DbType="DateTime")] System.Nullable<System.DateTime> paymentDateTime, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comment", DbType="VarChar(255)")] string comment, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="HangerQuantity", DbType="BigInt")] System.Nullable<long> hangerQuantity, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="HangerRate", DbType="Decimal(18,0)")] System.Nullable<decimal> hangerRate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="HangerAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> hangerAmount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsClothCollected", DbType="VarChar(10)")] string isClothCollected, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsCarpetInvoice", DbType="Int")] System.Nullable<int> isCarpetInvoice, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillDate", DbType="Date")] System.Nullable<System.DateTime> billDate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillTime", DbType="Time")] System.Nullable<System.TimeSpan> billTime, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryDate", DbType="Date")] System.Nullable<System.DateTime> deliveryDate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryTime", DbType="Time")] System.Nullable<System.TimeSpan> deliveryTime, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsDeleted", DbType="Int")] System.Nullable<int> isDeleted, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeletedDateTime", DbType="DateTime")] System.Nullable<System.DateTime> deletedDateTime, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="DateTime")] System.Nullable<System.DateTime> createdDate)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posID, instanceID, userID, billNo, customerID, customerBranchID, type, totalQuantity, totalAmount, discount, totalPayable, paidAmount, returnAmount, isPaid, paidBy, paymentDateTime, status, comment, hangerQuantity, hangerRate, hangerAmount, isClothCollected, isCarpetInvoice, billDate, billTime, deliveryDate, deliveryTime, isDeleted, deletedDateTime, createdDate);
-			posID = ((System.Nullable<long>)(result.GetParameterValue(0)));
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Delete")]
 		public int SP_pos_items_Delete([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemID", DbType="BigInt")] System.Nullable<long> posItemID)
 		{
@@ -1755,10 +1717,122 @@ namespace Integration_Repository
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_Grid_SelectAll")]
-		public ISingleResult<SP_pos_Grid_SelectAllResult> SP_pos_Grid_SelectAll()
+		public ISingleResult<SP_pos_Grid_SelectAllResult> SP_pos_Grid_SelectAll([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="BigInt")] System.Nullable<long> itemID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemID);
+			return ((ISingleResult<SP_pos_Grid_SelectAllResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_Insert")]
+		public int SP_pos_Insert(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosID", DbType="BigInt")] ref System.Nullable<long> posID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="InstanceID", DbType="BigInt")] System.Nullable<long> instanceID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="BigInt")] System.Nullable<long> userID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillNo", DbType="BigInt")] System.Nullable<long> billNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerBranchID", DbType="BigInt")] System.Nullable<long> customerBranchID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="VarChar(15)")] string type, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalQuantity", DbType="BigInt")] System.Nullable<long> totalQuantity, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> totalAmount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Decimal(18,0)")] System.Nullable<decimal> discount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPayable", DbType="Decimal(18,0)")] System.Nullable<decimal> totalPayable, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaidAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> paidAmount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReturnAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> returnAmount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPaid", DbType="Int")] System.Nullable<int> isPaid, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaidBy", DbType="Int")] System.Nullable<int> paidBy, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentDateTime", DbType="DateTime")] System.Nullable<System.DateTime> paymentDateTime, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comment", DbType="VarChar(255)")] string comment, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="HangerQuantity", DbType="BigInt")] System.Nullable<long> hangerQuantity, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="HangerRate", DbType="Decimal(18,0)")] System.Nullable<decimal> hangerRate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="HangerAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> hangerAmount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsClothCollected", DbType="VarChar(10)")] string isClothCollected, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsCarpetInvoice", DbType="Int")] System.Nullable<int> isCarpetInvoice, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillDate", DbType="Date")] System.Nullable<System.DateTime> billDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillTime", DbType="Time")] System.Nullable<System.TimeSpan> billTime, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryDate", DbType="Date")] System.Nullable<System.DateTime> deliveryDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryTime", DbType="Time")] System.Nullable<System.TimeSpan> deliveryTime, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsDeleted", DbType="Int")] System.Nullable<int> isDeleted, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeletedDateTime", DbType="DateTime")] System.Nullable<System.DateTime> deletedDateTime, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="DateTime")] System.Nullable<System.DateTime> createdDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posID, instanceID, userID, billNo, customerID, customerBranchID, type, totalQuantity, totalAmount, discount, totalPayable, paidAmount, returnAmount, isPaid, paidBy, paymentDateTime, status, comment, hangerQuantity, hangerRate, hangerAmount, isClothCollected, isCarpetInvoice, billDate, billTime, deliveryDate, deliveryTime, isDeleted, deletedDateTime, createdDate);
+			posID = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_SelectAll_By_Customer")]
+		public ISingleResult<SP_pos_SelectAll_By_CustomerResult> SP_pos_SelectAll_By_Customer()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<SP_pos_Grid_SelectAllResult>)(result.ReturnValue));
+			return ((ISingleResult<SP_pos_SelectAll_By_CustomerResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Delete_ByPosId")]
+		public int SP_pos_items_Delete_ByPosId([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosID", DbType="BigInt")] System.Nullable<long> posID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Insert_List", IsComposable=true)]
+		public object SP_pos_items_Insert_List([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemVal", DbType="VarChar(MAX)")] string posItemVal)
+		{
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posItemVal).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Insert_List", IsComposable=true)]
+		public object SP_pos_items_Insert_List1([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemVal", DbType="VarChar(MAX)")] string posItemVal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ErrorCode", DbType="Int")] ref System.Nullable<int> errorCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posItemVal, errorCode);
+			errorCode = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			return ((object)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Insert_List", IsComposable=true)]
+		public object SP_pos_items_Insert_List2([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemVal", DbType="VarChar(MAX)")] string posItemVal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ErrorCode", DbType="Int")] ref System.Nullable<int> errorCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posItemVal, errorCode);
+			errorCode = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			return ((object)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Insert_List", IsComposable=true)]
+		public object SP_pos_items_Insert_List3([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemID", DbType="BigInt")] ref System.Nullable<long> posItemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemVal", DbType="VarChar(MAX)")] string posItemVal)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posItemID, posItemVal);
+			posItemID = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((object)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_SelectAll")]
+		public ISingleResult<SP_pos_items_SelectAllResult1> SP_pos_items_SelectAll1()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_pos_items_SelectAllResult1>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Insert_List", IsComposable=true)]
+		public object SP_pos_items_Insert_List4([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemID", DbType="BigInt")] ref System.Nullable<long> posItemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemVal", DbType="VarChar(MAX)")] string posItemVal)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posItemID, posItemVal);
+			posItemID = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((object)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_Insert_List", IsComposable=true)]
+		public object SP_pos_items_Insert_List5([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemID", DbType="BigInt")] ref System.Nullable<long> posItemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosItemVal", DbType="VarChar(MAX)")] string posItemVal)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posItemID, posItemVal);
+			posItemID = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((object)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_pos_items_SelectByPOSId")]
+		public ISingleResult<SP_pos_items_SelectByPOSIdResult> SP_pos_items_SelectByPOSId([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PosID", DbType="BigInt")] System.Nullable<long> posID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), posID);
+			return ((ISingleResult<SP_pos_items_SelectByPOSIdResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -25752,7 +25826,17 @@ namespace Integration_Repository
 	public partial class SP_pos_Grid_SelectAllResult
 	{
 		
+		private long _ItemID;
+		
 		private string _ItemName;
+		
+		private string _ItemLocalName;
+		
+		private decimal _Price;
+		
+		private string _PriceRate;
+		
+		private long _GroupID;
 		
 		private string _GroupName;
 		
@@ -25760,15 +25844,27 @@ namespace Integration_Repository
 		
 		private string _ColorCode;
 		
-		private System.Nullable<decimal> _Price;
-		
-		private long _GroupID;
-		
 		public SP_pos_Grid_SelectAllResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="VarChar(150)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemID", DbType="BigInt NOT NULL")]
+		public long ItemID
+		{
+			get
+			{
+				return this._ItemID;
+			}
+			set
+			{
+				if ((this._ItemID != value))
+				{
+					this._ItemID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
 		public string ItemName
 		{
 			get
@@ -25780,6 +25876,70 @@ namespace Integration_Repository
 				if ((this._ItemName != value))
 				{
 					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemLocalName", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string ItemLocalName
+		{
+			get
+			{
+				return this._ItemLocalName;
+			}
+			set
+			{
+				if ((this._ItemLocalName != value))
+				{
+					this._ItemLocalName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(10,3) NOT NULL")]
+		public decimal Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceRate", DbType="VarChar(11) NOT NULL", CanBeNull=false)]
+		public string PriceRate
+		{
+			get
+			{
+				return this._PriceRate;
+			}
+			set
+			{
+				if ((this._PriceRate != value))
+				{
+					this._PriceRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupID", DbType="BigInt NOT NULL")]
+		public long GroupID
+		{
+			get
+			{
+				return this._GroupID;
+			}
+			set
+			{
+				if ((this._GroupID != value))
+				{
+					this._GroupID = value;
 				}
 			}
 		}
@@ -25831,19 +25991,699 @@ namespace Integration_Repository
 				}
 			}
 		}
+	}
+	
+	public partial class SP_pos_SelectAll_By_CustomerResult
+	{
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(10,3)")]
-		public System.Nullable<decimal> Price
+		private long _PosID;
+		
+		private long _InstanceID;
+		
+		private long _UserID;
+		
+		private long _BillNo;
+		
+		private long _CustomerID;
+		
+		private long _CustomerBranchID;
+		
+		private string _Type;
+		
+		private long _TotalQuantity;
+		
+		private decimal _TotalAmount;
+		
+		private decimal _Discount;
+		
+		private decimal _TotalPayable;
+		
+		private decimal _PaidAmount;
+		
+		private decimal _ReturnAmount;
+		
+		private int _IsPaid;
+		
+		private int _PaidBy;
+		
+		private System.Nullable<System.DateTime> _PaymentDateTime;
+		
+		private int _Status;
+		
+		private string _Comment;
+		
+		private long _HangerQuantity;
+		
+		private decimal _HangerRate;
+		
+		private decimal _HangerAmount;
+		
+		private string _IsClothCollected;
+		
+		private int _IsCarpetInvoice;
+		
+		private System.DateTime _BillDate;
+		
+		private System.TimeSpan _BillTime;
+		
+		private System.DateTime _DeliveryDate;
+		
+		private System.TimeSpan _DeliveryTime;
+		
+		private int _IsDeleted;
+		
+		private System.Nullable<System.DateTime> _DeletedDateTime;
+		
+		private System.DateTime _CreatedDate;
+		
+		private long _CustomerID1;
+		
+		private long _UserID1;
+		
+		private string _CustomerName;
+		
+		private string _Contact;
+		
+		public SP_pos_SelectAll_By_CustomerResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosID", DbType="BigInt NOT NULL")]
+		public long PosID
 		{
 			get
 			{
-				return this._Price;
+				return this._PosID;
 			}
 			set
 			{
-				if ((this._Price != value))
+				if ((this._PosID != value))
 				{
-					this._Price = value;
+					this._PosID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InstanceID", DbType="BigInt NOT NULL")]
+		public long InstanceID
+		{
+			get
+			{
+				return this._InstanceID;
+			}
+			set
+			{
+				if ((this._InstanceID != value))
+				{
+					this._InstanceID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="BigInt NOT NULL")]
+		public long UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this._UserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillNo", DbType="BigInt NOT NULL")]
+		public long BillNo
+		{
+			get
+			{
+				return this._BillNo;
+			}
+			set
+			{
+				if ((this._BillNo != value))
+				{
+					this._BillNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt NOT NULL")]
+		public long CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this._CustomerID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerBranchID", DbType="BigInt NOT NULL")]
+		public long CustomerBranchID
+		{
+			get
+			{
+				return this._CustomerBranchID;
+			}
+			set
+			{
+				if ((this._CustomerBranchID != value))
+				{
+					this._CustomerBranchID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalQuantity", DbType="BigInt NOT NULL")]
+		public long TotalQuantity
+		{
+			get
+			{
+				return this._TotalQuantity;
+			}
+			set
+			{
+				if ((this._TotalQuantity != value))
+				{
+					this._TotalQuantity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Decimal(10,3) NOT NULL")]
+		public decimal TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this._TotalAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Decimal(10,3) NOT NULL")]
+		public decimal Discount
+		{
+			get
+			{
+				return this._Discount;
+			}
+			set
+			{
+				if ((this._Discount != value))
+				{
+					this._Discount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPayable", DbType="Decimal(10,3) NOT NULL")]
+		public decimal TotalPayable
+		{
+			get
+			{
+				return this._TotalPayable;
+			}
+			set
+			{
+				if ((this._TotalPayable != value))
+				{
+					this._TotalPayable = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaidAmount", DbType="Decimal(10,3) NOT NULL")]
+		public decimal PaidAmount
+		{
+			get
+			{
+				return this._PaidAmount;
+			}
+			set
+			{
+				if ((this._PaidAmount != value))
+				{
+					this._PaidAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnAmount", DbType="Decimal(10,3) NOT NULL")]
+		public decimal ReturnAmount
+		{
+			get
+			{
+				return this._ReturnAmount;
+			}
+			set
+			{
+				if ((this._ReturnAmount != value))
+				{
+					this._ReturnAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPaid", DbType="Int NOT NULL")]
+		public int IsPaid
+		{
+			get
+			{
+				return this._IsPaid;
+			}
+			set
+			{
+				if ((this._IsPaid != value))
+				{
+					this._IsPaid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaidBy", DbType="Int NOT NULL")]
+		public int PaidBy
+		{
+			get
+			{
+				return this._PaidBy;
+			}
+			set
+			{
+				if ((this._PaidBy != value))
+				{
+					this._PaidBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PaymentDateTime
+		{
+			get
+			{
+				return this._PaymentDateTime;
+			}
+			set
+			{
+				if ((this._PaymentDateTime != value))
+				{
+					this._PaymentDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this._Comment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HangerQuantity", DbType="BigInt NOT NULL")]
+		public long HangerQuantity
+		{
+			get
+			{
+				return this._HangerQuantity;
+			}
+			set
+			{
+				if ((this._HangerQuantity != value))
+				{
+					this._HangerQuantity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HangerRate", DbType="Decimal(10,3) NOT NULL")]
+		public decimal HangerRate
+		{
+			get
+			{
+				return this._HangerRate;
+			}
+			set
+			{
+				if ((this._HangerRate != value))
+				{
+					this._HangerRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HangerAmount", DbType="Decimal(10,3) NOT NULL")]
+		public decimal HangerAmount
+		{
+			get
+			{
+				return this._HangerAmount;
+			}
+			set
+			{
+				if ((this._HangerAmount != value))
+				{
+					this._HangerAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsClothCollected", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string IsClothCollected
+		{
+			get
+			{
+				return this._IsClothCollected;
+			}
+			set
+			{
+				if ((this._IsClothCollected != value))
+				{
+					this._IsClothCollected = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsCarpetInvoice", DbType="Int NOT NULL")]
+		public int IsCarpetInvoice
+		{
+			get
+			{
+				return this._IsCarpetInvoice;
+			}
+			set
+			{
+				if ((this._IsCarpetInvoice != value))
+				{
+					this._IsCarpetInvoice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillDate", DbType="Date NOT NULL")]
+		public System.DateTime BillDate
+		{
+			get
+			{
+				return this._BillDate;
+			}
+			set
+			{
+				if ((this._BillDate != value))
+				{
+					this._BillDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillTime", DbType="Time NOT NULL")]
+		public System.TimeSpan BillTime
+		{
+			get
+			{
+				return this._BillTime;
+			}
+			set
+			{
+				if ((this._BillTime != value))
+				{
+					this._BillTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryDate", DbType="Date NOT NULL")]
+		public System.DateTime DeliveryDate
+		{
+			get
+			{
+				return this._DeliveryDate;
+			}
+			set
+			{
+				if ((this._DeliveryDate != value))
+				{
+					this._DeliveryDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryTime", DbType="Time NOT NULL")]
+		public System.TimeSpan DeliveryTime
+		{
+			get
+			{
+				return this._DeliveryTime;
+			}
+			set
+			{
+				if ((this._DeliveryTime != value))
+				{
+					this._DeliveryTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Int NOT NULL")]
+		public int IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this._IsDeleted = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeletedDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DeletedDateTime
+		{
+			get
+			{
+				return this._DeletedDateTime;
+			}
+			set
+			{
+				if ((this._DeletedDateTime != value))
+				{
+					this._DeletedDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this._CreatedDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID1", DbType="BigInt NOT NULL")]
+		public long CustomerID1
+		{
+			get
+			{
+				return this._CustomerID1;
+			}
+			set
+			{
+				if ((this._CustomerID1 != value))
+				{
+					this._CustomerID1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID1", DbType="BigInt NOT NULL")]
+		public long UserID1
+		{
+			get
+			{
+				return this._UserID1;
+			}
+			set
+			{
+				if ((this._UserID1 != value))
+				{
+					this._UserID1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this._CustomerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contact", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Contact
+		{
+			get
+			{
+				return this._Contact;
+			}
+			set
+			{
+				if ((this._Contact != value))
+				{
+					this._Contact = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_pos_items_SelectAllResult1
+	{
+		
+		private long _PosItemID;
+		
+		private long _PosID;
+		
+		private long _ItemID;
+		
+		private long _GroupID;
+		
+		private System.Nullable<decimal> _ItemWidth;
+		
+		private System.Nullable<decimal> _ItemLength;
+		
+		private string _PriceRate;
+		
+		private decimal _Price;
+		
+		private long _Quantity;
+		
+		private decimal _TotalPrice;
+		
+		public SP_pos_items_SelectAllResult1()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosItemID", DbType="BigInt NOT NULL")]
+		public long PosItemID
+		{
+			get
+			{
+				return this._PosItemID;
+			}
+			set
+			{
+				if ((this._PosItemID != value))
+				{
+					this._PosItemID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosID", DbType="BigInt NOT NULL")]
+		public long PosID
+		{
+			get
+			{
+				return this._PosID;
+			}
+			set
+			{
+				if ((this._PosID != value))
+				{
+					this._PosID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemID", DbType="BigInt NOT NULL")]
+		public long ItemID
+		{
+			get
+			{
+				return this._ItemID;
+			}
+			set
+			{
+				if ((this._ItemID != value))
+				{
+					this._ItemID = value;
 				}
 			}
 		}
@@ -25860,6 +26700,290 @@ namespace Integration_Repository
 				if ((this._GroupID != value))
 				{
 					this._GroupID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemWidth", DbType="Decimal(10,3)")]
+		public System.Nullable<decimal> ItemWidth
+		{
+			get
+			{
+				return this._ItemWidth;
+			}
+			set
+			{
+				if ((this._ItemWidth != value))
+				{
+					this._ItemWidth = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemLength", DbType="Decimal(10,3)")]
+		public System.Nullable<decimal> ItemLength
+		{
+			get
+			{
+				return this._ItemLength;
+			}
+			set
+			{
+				if ((this._ItemLength != value))
+				{
+					this._ItemLength = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceRate", DbType="VarChar(10)")]
+		public string PriceRate
+		{
+			get
+			{
+				return this._PriceRate;
+			}
+			set
+			{
+				if ((this._PriceRate != value))
+				{
+					this._PriceRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(10,3) NOT NULL")]
+		public decimal Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="BigInt NOT NULL")]
+		public long Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this._Quantity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Decimal(10,3) NOT NULL")]
+		public decimal TotalPrice
+		{
+			get
+			{
+				return this._TotalPrice;
+			}
+			set
+			{
+				if ((this._TotalPrice != value))
+				{
+					this._TotalPrice = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_pos_items_SelectByPOSIdResult
+	{
+		
+		private long _PosItemID;
+		
+		private long _PosID;
+		
+		private long _ItemID;
+		
+		private long _GroupID;
+		
+		private System.Nullable<decimal> _ItemWidth;
+		
+		private System.Nullable<decimal> _ItemLength;
+		
+		private string _PriceRate;
+		
+		private decimal _Price;
+		
+		private long _Quantity;
+		
+		private decimal _TotalPrice;
+		
+		public SP_pos_items_SelectByPOSIdResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosItemID", DbType="BigInt NOT NULL")]
+		public long PosItemID
+		{
+			get
+			{
+				return this._PosItemID;
+			}
+			set
+			{
+				if ((this._PosItemID != value))
+				{
+					this._PosItemID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosID", DbType="BigInt NOT NULL")]
+		public long PosID
+		{
+			get
+			{
+				return this._PosID;
+			}
+			set
+			{
+				if ((this._PosID != value))
+				{
+					this._PosID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemID", DbType="BigInt NOT NULL")]
+		public long ItemID
+		{
+			get
+			{
+				return this._ItemID;
+			}
+			set
+			{
+				if ((this._ItemID != value))
+				{
+					this._ItemID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupID", DbType="BigInt NOT NULL")]
+		public long GroupID
+		{
+			get
+			{
+				return this._GroupID;
+			}
+			set
+			{
+				if ((this._GroupID != value))
+				{
+					this._GroupID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemWidth", DbType="Decimal(10,3)")]
+		public System.Nullable<decimal> ItemWidth
+		{
+			get
+			{
+				return this._ItemWidth;
+			}
+			set
+			{
+				if ((this._ItemWidth != value))
+				{
+					this._ItemWidth = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemLength", DbType="Decimal(10,3)")]
+		public System.Nullable<decimal> ItemLength
+		{
+			get
+			{
+				return this._ItemLength;
+			}
+			set
+			{
+				if ((this._ItemLength != value))
+				{
+					this._ItemLength = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceRate", DbType="VarChar(10)")]
+		public string PriceRate
+		{
+			get
+			{
+				return this._PriceRate;
+			}
+			set
+			{
+				if ((this._PriceRate != value))
+				{
+					this._PriceRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(10,3) NOT NULL")]
+		public decimal Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="BigInt NOT NULL")]
+		public long Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this._Quantity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Decimal(10,3) NOT NULL")]
+		public decimal TotalPrice
+		{
+			get
+			{
+				return this._TotalPrice;
+			}
+			set
+			{
+				if ((this._TotalPrice != value))
+				{
+					this._TotalPrice = value;
 				}
 			}
 		}
