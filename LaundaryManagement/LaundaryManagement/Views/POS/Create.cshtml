@@ -10,6 +10,7 @@
     var getCustomerData = {};
     var insCustomerData = {};
     var GetPOSListWithCustomerDetailData = [];
+    var EditPosId = 0;
     //**Harshil
     var $NoOrder = '<tr class="NoOrder"><td class="text-center" colspan="12">Item List Empty</td></tr>';
     $(document).ready(function () {
@@ -188,7 +189,6 @@
     var GroupListJSON = "";
     var ItemListJSON = "";
     function BindGroupMasterList() {
-        debugger;
         $.ajax({
             url: "../GroupMaster/GetgroupsDetail",
             type: "POST",
@@ -299,7 +299,7 @@
                 hasGraphic: table.rows[i].cells[6].innerHTML
             });
         }
-        debugger;
+
 
     }
     function getItemsDetails() {
@@ -334,7 +334,7 @@
     }
     var prodDivJSON = "";
     function prodivFill(btn) {
-        debugger;
+
         var ItemID = $(btn).attr("data-itemid");
         var ItemName = $(btn).attr("data-itemname");
         var ItemLocalName = $(btn).attr("data-itemlocalname");;
@@ -342,6 +342,11 @@
         var GroupID = $(btn).attr("data-groupid");
         var GroupName = $(btn).attr("data-groupname");;
         var PriceRate = $(btn).attr("data-pricerate");;
+        prodivFillAdd(ItemID, ItemName, ItemLocalName, Price, GroupID, GroupName, PriceRate);
+        $(this).blur();
+    }
+    function prodivFillAdd(ItemID, ItemName, ItemLocalName, Price, GroupID, GroupName, PriceRate) {
+
         var NoOrder = $("#itemList .NoOrder").length;
         if (NoOrder > 0) {
             $('#itemList > tbody > tr').remove();
@@ -360,7 +365,7 @@
         }
         calculate_total_qty_amount_group();
         calculate_total_qty_amount();
-        $(this).blur();
+
     }
     function calculate_total_qty_amount() {
         var total_qty = 0;
@@ -702,9 +707,12 @@
             getBillData = JSON.parse(item);
             if (getBillData.PosID == valPosId) {
                 getPOSBillData = getBillData;
-                getPOSItemBillData = GetPOSItemBillDetail(valPosId);
+
+                //generateItemRaw(GroupID, GroupName, ItemID, ItemName, ItemLocalName, Price, Quantity, PriceRate);
             }
         });
+        GetPOSItemBillDetail(valPosId);
+
     };
 
     function GetPOSItemBillDetail(posID) {
@@ -713,13 +721,14 @@
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+            async: false,
             data: { posId: posID },
             success: function (res) {
-                //alert(res);
-                if (res != '[]') {
-                    return JSON.parse(res);
+
+                var CustomerItemData = JSON.parse(res);
+                for (var i = 0; i < CustomerItemData.length; i++) {
+                    prodivFillAdd(CustomerItemData[i].ItemID, CustomerItemData[i].ItemName, CustomerItemData[i].ItemLocalName, CustomerItemData[i].Price, CustomerItemData[i].GroupID, CustomerItemData[i].GroupName, CustomerItemData[i].PriceRate);
                 }
-                return [];
             },
             error: function (msg) { alert(msg); }
         });

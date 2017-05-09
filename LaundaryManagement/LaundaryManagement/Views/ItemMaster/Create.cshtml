@@ -188,8 +188,9 @@
                         $.each(jsonObj, function (key, item) {
                             tr += '<tr>';
                             tr += '<td>' + item.ItemName + '</td>';
-                            tr += '<td>' + item.ItemLocalName + '</td>';
-                            tr += '<td>' + item.PriceRate + '</td>';
+                            tr += '<td>' + item.CustomerName + '</td>';
+                            tr += '<td>' + item.Contact + '</td>';
+                            tr += getGroupsForItems(item.ItemID);
                             if (item.Status == 1) {
                                 item.Status = "Active";
                             }
@@ -295,8 +296,9 @@
                 $.each(jsonObj, function (key, item) {
                     tr += '<tr>';
                     tr += '<td>' + item.ItemName + '</td>';
-                    tr += '<td>' + item.ItemLocalName + '</td>';
-                    tr += '<td>' + item.PriceRate + '</td>';
+                    tr += '<td>' + item.CustomerName + '</td>';
+                    tr += '<td>' + item.Contact + '</td>';
+                    tr += getGroupsForItems(item.ItemID);
                     if (item.Status == 1) {
                         item.Status = "Active";
                     }
@@ -328,7 +330,33 @@
         $('#ddlstatus').val(0);
     }
 
+    //Hardik 09-05-2017
+    function getGroupsForItems(itemID) {
+        var createTd = "";
+        debugger;
+        $.ajax({
+            url: "../POS/GetItemGroupList",
+            type: "POST",
+            async: false,
+            data: { ID: itemID },
+            success: function (data) {
+                ItemListJSON = JSON.parse(data);
+                for (var i = 0; i < ItemListJSON.length; i++) {
+                    //createTd += '<td>' + ItemListJSON[i].Price + '</td>';
+                    if (ItemListJSON[i].Price == 0) {
+                        createTd += '<td>--</td>';
+                    }
+                    else {
+                        createTd += '<td>' + ItemListJSON[i].Price.toFixed(3) + '</td>';
+                    }
+                }
 
+            },
+            error: function (msg) { alert(msg); }
+        });
+        return createTd;
+    }
+    //Hardik 09-05-2017
 
 
 
