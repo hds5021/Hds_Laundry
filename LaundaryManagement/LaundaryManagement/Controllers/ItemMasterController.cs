@@ -201,7 +201,7 @@ namespace LaundaryManagement.Controllers
                     listItemPrice[itemPrice].ItemID = Convert.ToInt32(itemId);
                 }
 
-                var responseMessage2 = client.PostAsJsonAsync("InsertItemPrice", listItemPrice).Result;
+                var responseMessage2 = client.PostAsJsonAsync("InsertItemPriceList", listItemPrice).Result;
             }
             return Json("");
         }

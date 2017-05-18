@@ -11,6 +11,9 @@
         jsonCustomerDetails.Email = $('#txtEmail').val();
         jsonCustomerDetails.Address = $('#txtaddress').val();
         jsonCustomerDetails.Balance = $('#txtbalance').val();
+        if (jsonCustomerDetails.Balance == '') {
+            jsonCustomerDetails.Balance = 0.0;
+        }
         jsonCustomerDetails.Contact = $('#txtcontact').val();
         jsonCustomerDetails.Status = $('#ddlstatus option:selected').val();
     }
@@ -157,10 +160,10 @@
             alert('Please enter contact No');
             return false;
         }
-        if ($("#txtbalance").val() == '') {
-            alert('Please enter balance');
-            return false;
-        }
+        //if ($("#txtbalance").val() == '') {
+        //    alert('Please enter balance');
+        //    return false;
+        //}
         return true;
 
     }
